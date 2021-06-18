@@ -1,0 +1,85 @@
+.save-button {
+    background-color: var(--mps-yellow);
+    color: #0a0a0a;
+    font-weight: bold;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.continue-button {
+    background-color: var(--mps-leaf);
+    color: #0a0a0a;
+    font-weight: bold;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.new-client-button {
+    background-color: var(--mps-blue);
+    color: #0a0a0a;
+    font-weight: bold;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.edit-client-button {
+    background-color: var(--mps-pink);
+    color: #0a0a0a;
+    font-weight: bold;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.reveal {
+    padding: 0;
+    background-color: #efefef;
+}
+
+.modal-header {
+    border-bottom: 1px solid black;
+}
+
+.modal-header > .cell > h3 {
+    color: white;
+    letter-spacing: 0.5px;
+}
+
+.modal-row {
+    margin-top: 1rem;
+    height: 2.4375rem;
+}
+
+.cancel-client-save {
+    background-color: var(--mps-stoplight);
+    color: white;
+    border-radius: 3px;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+.new-client-save {
+    background-color: var(--mps-leaf);
+    color: white;
+    border-radius: 3px;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+#client-content {
+    background-color: #DCDCDC;
+    padding-top: 2rem;
+    margin-top: 3.5rem;
+}
+
+#client-content > .grid-x {
+    margin-bottom: 1.25rem;
+}
+
+#client-content > .grid-x:last-child {
+    margin-bottom: 0;
+}
+
+.required-items {
+    color: red;
+    font: bold;
+}

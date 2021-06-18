@@ -1,0 +1,5 @@
+FOUNDATION CSS
+==============
+    -We are using a custom build of foundation 6.5. it has all of the components from version 6.5, but instead of the grid using 12 columns, it has 24 instead, for more flexibility.
+
+        - When updating foundation, make sure to use the "customize foundation" and set the grid to 24 columns.

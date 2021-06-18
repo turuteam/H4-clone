@@ -1,0 +1,49 @@
+<div class="reveal" id="addNonNetworkDevice" data-reveal data-overlay="true" data-multiple-opened="true">
+    <div class="grid-x grid-padding-y align-middle modal-header mps-blue">
+        <div class="cell large-21 large-offset-1">
+            <h3 class="bold">Add Non-Network Device</h3>
+        </div>
+        <div class="cell large-1 text-center">
+            <button data-close aria-label="Close reveal" type="button">
+                <h3>X</h3>
+            </button>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-10 medium-offset-2">Manufacturer</div>
+        <div class="cell medium-8 medium-offset-2">
+            <select id="nonNetworkDevice-makeName"></select>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-10 medium-offset-2">Device</div>
+        <div class="cell medium-8 medium-offset-2">
+            <select id="nonNetworkDevice-shortName">
+            </select>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-10 medium-offset-2">Number of Devices</div>
+        <div class="cell medium-8 medium-offset-2">
+            <input id="nonNetworkDevice-quantity" value="1" type="number" min="1">
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-10 medium-offset-2">Monthly Price</div>
+        <div class="cell medium-8 medium-offset-2">
+            <div class="input-group">
+                <span class="input-group-label">$</span>
+                <input id="nonNetworkDevice-price" class="input-group-field" disabled value="0.00" type="number"
+                    min="0" step="0.01">
+            </div>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row" style="margin-bottom: 1rem;">
+        <div class="cell medium-4 medium-offset-2 bold">Commission</div>
+        <div class="cell medium-4 medium-offset-2 bold" id="nonNetwork-commission">$ 0.00</div>
+        <div class="cell medium-8 medium-offset-2 text-center">
+            <button data-close aria-label="Close reveal" class="fake-btn cell size-16 button network-modal-btn"
+                id="add-non-network-device" disabled>Add</button>
+        </div>
+    </div>
+</div>

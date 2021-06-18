@@ -1,0 +1,229 @@
+{% extends 'rep/newProposal/proposal.html' %}
+{% load static from staticfiles %}
+
+{% block proposal_css %}
+<link rel="stylesheet" href="{% static 'css/rep/proposal/selectClient.css' %}">
+{% endblock %}
+
+{% block proposal_js %}
+<script>
+    {% if proposal.client_id is None %}
+        var client_id = -1;
+    {% else %}
+        var client_id = {{ proposal_client.id }};
+    {% endif %}
+    var all_clients_info = {{ all_clients_obj | safe }};
+    var proposal_id = {{ proposal_id }};
+</script>
+
+<script type="text/javascript" language="javascript" src="{% static 'js/rep/proposal/selectClient.js' %}"></script>
+{% endblock %}
+
+{% block proposal_page_content %}
+<div class="grid-x grid-margin-y grid-padding-y ">
+    <div class="cell large-12" id="client-content">
+        <div class="grid-x align-middle">
+            <div class="cell large-11 large-offset-1">
+                <b>Client</b>
+            </div>
+            <div class="cell large-8 large-offset-3">
+                <select name="clientSelect" id="clientSelect">
+                    <option value="-1">Select</option>
+                    {% for client in all_clients %}
+                        <option value="{{ client.id }}" {% if client == proposal_client %} selected {% endif %}>{{ client.organization_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="grid-x align-middle">
+            <div class="cell large-11 large-offset-1">
+                <b>Contact Name</b>
+            </div>
+            <div class="cell large-8 large-offset-3">
+                <input type="text" id="clientContactName" readonly {% if proposal_client %} value="{{ proposal_client.contact }}" {% endif %}>
+            </div>
+        </div>
+        <div class="grid-x align-middle">
+            <div class="cell large-11 large-offset-1">
+                <b>Phone Number</b>
+            </div>
+            <div class="cell large-8 large-offset-3">
+                <input type="text" id="clientPhoneNumber" class="client-number" readonly {% if proposal_client %} value="{{ proposal_client.phone_number }}" {% endif %}>
+            </div>
+        </div>
+        <div class="grid-x align-middle">
+            <div class="cell large-11 large-offset-1">
+                <b>Email</b>
+            </div>
+            <div class="cell large-8 large-offset-3">
+                <input type="text" id="clientEmail" readonly {% if proposal_client %} value="{{ proposal_client.email }}" {% endif %}>
+            </div>
+        </div>
+        <div class="grid-x text-center">
+            <div class="cell auto">
+                <button class="button new-client-button" data-toggle="addClient">New Client</button>
+            </div>
+            <div class="cell auto">
+                <button class="button edit-client-button" data-toggle="editClient">Edit Client</button>
+            </div>
+            <div class="cell auto">
+                <button class="button save-button">Save</button>
+            </div>
+            <div class="cell auto">
+                <button class="button continue-button">Continue</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="reveal" id="addClient" data-reveal data-overlay="true">
+        <div class="grid-x grid-padding-y align-middle modal-header mps-blue">
+            <div class="cell large-21 large-offset-1">
+                <h6 class="bold margin-0">New Client Details</h6>
+            </div>
+            <div class="cell large-1 text-center">
+                <button data-close aria-label="Close reveal" type="button">
+                    <h6>X</h6>
+                </button>
+            </div>
+        </div>
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">Client Company Name<span class="required-items">*</span></div>
+            <div class="cell medium-8 medium-offset-2">
+                <input value="" type="text" id="companyName">
+            </div>
+        </div>
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">Client Contact Name<span class="required-items">*</span></div>
+            <div class="cell medium-8 medium-offset-2">
+                <input value="" type="text" id="contactName">
+            </div>
+        </div>
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">Email<span class="required-items">*</span></div>
+            <div class="cell medium-8 medium-offset-2">
+                <input value="" type="email" id="email">
+            </div>
+        </div>
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">Phone Number</div>
+            <div class="cell medium-8 medium-offset-2">
+                <input value="" type="tel" placeholder="(XXX) XXX-XXXX" id="new-number">
+            </div>
+        </div>
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">Address</div>
+            <div class="cell medium-8 medium-offset-2">
+                <input value="" type="text" id="address">
+            </div>
+        </div>
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">City</div>
+            <div class="cell medium-8 medium-offset-2">
+                <input value="" type="text" id="city">
+            </div>
+        </div>
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">State</div>
+            <div class="cell medium-8 medium-offset-2">
+                <input value="" type="text" id="state">
+            </div>
+        </div>
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">Zipcode</div>
+            <div class="cell medium-8 medium-offset-2">
+                <input value="" type="text" id="zip">
+            </div>
+        </div>
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">Country</div>
+            <div class="cell medium-8 medium-offset-2">
+                <input value="" type="text" id="country">
+            </div>
+        </div>
+        <div class="grid-x align-middle modal-row" style="margin-bottom: 1rem; margin-top: 1.5rem;">
+            <div class="cell medium-6 medium-offset-2 bold">
+                <button data-close aria-label="Close reveal" type="button" class="button cancel-client-save" id="cancel-save-new-client">Cancel</button>
+            </div>
+            <div class="cell medium-6 medium-offset-10 text-center">
+                <button type="button" class="button new-client-save" id="save-new-client">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="reveal" id="editClient" data-reveal data-overlay="true">
+        <div class="grid-x grid-padding-y align-middle modal-header mps-blue">
+            <div class="cell large-21 large-offset-1">
+                <h6 class="bold margin-0">Edit Client Details</h6>
+            </div>
+            <div class="cell large-1 text-center">
+                <button data-close aria-label="Close reveal" type="button">
+                    <h6>X</h6>
+                </button>
+            </div>
+        </div>
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">Company Name<span class="required-items">*</span></div>
+            <div class="cell medium-8 medium-offset-2">
+                <input value="" type="text" id="editCompanyName">
+            </div>
+        </div>
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">Contact Name<span class="required-items">*</span></div>
+            <div class="cell medium-8 medium-offset-2">
+                <input value="" type="text" id="editContactName">
+            </div>
+        </div>
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">Email<span class="required-items">*</span></div>
+            <div class="cell medium-8 medium-offset-2">
+                <input value="" type="email" id="editEmail">
+            </div>
+        </div>
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">Phone Number</div>
+            <div class="cell medium-8 medium-offset-2">
+                <input value="" type="tel" id="editNumber">
+            </div>
+        </div>
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">Address</div>
+            <div class="cell medium-8 medium-offset-2">
+                <input value="" type="text" id="editAddress">
+            </div>
+        </div>
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">City</div>
+            <div class="cell medium-8 medium-offset-2">
+                <input value="" type="text" id="editCity">
+            </div>
+        </div>
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">State</div>
+            <div class="cell medium-8 medium-offset-2">
+                <input value="" type="text" id="editState">
+            </div>
+        </div>
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">Zipcode</div>
+            <div class="cell medium-8 medium-offset-2">
+                <input value="" type="text" id="editZip">
+            </div>
+        </div>
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">Country</div>
+            <div class="cell medium-8 medium-offset-2">
+                <input value="" type="text" id="editCountry">
+            </div>
+        </div>
+        <div class="grid-x align-middle modal-row" style="margin-bottom: 1rem; margin-top: 1.5rem;">
+            <div class="cell medium-6 medium-offset-2 bold">
+                <button data-close aria-label="Close reveal" type="button" class="button cancel-client-save" id="cancel-edit-client-info">Cancel</button>
+            </div>
+            <div class="cell medium-6 medium-offset-10 text-center">
+                <button type="button" class="button new-client-save" id="save-edit-client-info">Save</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

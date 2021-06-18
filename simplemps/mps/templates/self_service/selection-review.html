@@ -1,0 +1,24 @@
+{% extends 'self_service/base.html' %}
+{% load static from staticfiles %}
+
+{% block page_css %}
+    {% block proposal_css %}
+        <!-- <link rel="stylesheet" href="{% static 'css/rep/proposal/proposal.css' %}"> -->
+        <link rel="stylesheet" href="/static/css/rep/proposal/details.css">
+    {% endblock %}
+{% endblock %}
+
+<!-- {% block page_content %} -->
+    <!-- {% csrf_token %} -->
+    <h2>Managed Self-Service Portal</h2>
+    <br>
+    <div class="grid-x">
+        {% include 'self_service/header.html' %}
+    </div>
+    <div class="review-selections">
+       {% include path %}
+    </div>
+    {% block proposal_page_content %}
+    {% endblock %}
+
+<!-- {% endblock %} -->

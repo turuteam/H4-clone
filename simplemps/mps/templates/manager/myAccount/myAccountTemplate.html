@@ -1,0 +1,33 @@
+{% extends 'baseTemplate.html' %}
+{% load static from staticfiles %}
+
+{% block page_css %}
+    <link rel="stylesheet" href="{% static 'css/manager/myAccount.css' %}">
+    <link rel="stylesheet" href="{% static 'csslib/DataTables/datatables.min.css' %}">
+    {% block my_account_css %}
+    {% endblock %}
+{% endblock %}
+    
+    {% block page_js %}
+    <script type="text/javascript" language="javascript" src="{% static 'js/csrfSetUp.js' %}"></script>
+    <script src="{% static 'jslib/DataTables/datatables.min.js'%}"></script>
+    {% block my_account_js %}
+    {% endblock %}
+{% endblock %}
+
+{% block page_content %}
+    {% csrf_token %}
+    <div class="grid-x grid-margin-y grid-padding-y">
+        {% if 'equipment' in request.path or request.path == '/myAccount/' %}
+            {% include 'manager/myAccount/headers/equipmentHeader.html' %}
+        {% elif 'supplies' in request.path %}
+            {% include 'manager/myAccount/headers/suppliesHeader.html' %}
+        {% elif 'service' in request.path %}
+            {% include 'manager/myAccount/headers/serviceHeader.html' %}
+        {% else %}
+            {% include 'manager/myAccount/headers/tcvHeader.html' %}
+        {% endif %}
+    </div>
+    {% block my_account_content %}
+    {% endblock %}
+{% endblock %}

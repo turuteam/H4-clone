@@ -1,0 +1,452 @@
+<div class="grid-x align-bottom">
+    <table class="cell large-20 sum-table size-12" style="margin: 0;" id="Sum-table">
+        <thead>
+            <tr>
+                <th colspan="13">Tiered Pricing</th>
+            </tr>
+            <tr>
+                <th style="width: 6%;"></th>
+                <th>Base Volume</th>
+                <th>Base Rate</th>
+                <th>Overage Volume</th>
+                <th style="width: 7%;">Overage CPP Rate</th>
+                <th>Total Billing</th>
+                <th>Supply Cost</th>
+                <th>Service Cost</th>
+                <th>Cost</th>
+                <th>Margin $</th>
+                <th>Margin %</th>
+                <th>Proposed Margin</th>
+                <th>Proposed CPP</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="sum_bw1">
+                <td>BW 1</td>
+                <td class="base-volume" id="bw1_base_volume">0</td>
+                <td class="base-rate" id="bw1_base_rate">0</td>
+                <td class="overage-volume" id="bw1_overage_volume">0</td>
+                <td class="overage-cpp" id="bw1_overage_cpp">0</td>
+                <td class="total-revenue" id="bw1_total_revenue">0</td>
+                <td class="supply-cost" id="bw1_supply_cost">0</td>
+                <td class="service-cost" id="bw1_service_cost">0</td>
+                <td class="monthly-cost" id="bw1_cost">0</td>
+                <td class="margin1" id="bw1_margin1">0</td>
+                <td class="margin2" id="bw1_margin2">0</td>
+                <td class="proposed-margin" id="bw1_proposed_margin"></td>
+                <td class="proposed-cpp" id="bw1_proposed_cpp"><input type="number" step="0.0001" value="{{ tiered_values.bw1_proposed_cpp }}"></td>
+            </tr>
+            <tr id="sum_bw2">
+                <td>BW 2</td>
+                <td class="base-volume" id="bw2_base_volume">0</td>
+                <td class="base-rate" id="bw2_base_rate">0</td>
+                <td class="overage-volume" id="bw2_overage_volume">0</td>
+                <td class="overage-cpp" id="bw2_overage_cpp">0</td>
+                <td class="total-revenue" id="bw2_total_revenue">0</td>
+                <td class="supply-cost" id="bw2_supply_cost">0</td>
+                <td class="service-cost" id="bw2_service_cost">0</td>
+                <td class="monthly-cost" id="bw2_cost">0</td>
+                <td class="margin1" id="bw2_margin1">0</td>
+                <td class="margin2" id="bw2_margin2">0</td>
+                <td class="proposed-margin" id="bw2_proposed_margin"></td>
+                <td class="proposed-cpp" id="bw2_proposed_cpp"><input type="number" step="0.0001" value="{{ tiered_values.bw2_proposed_cpp }}"></td>
+            </tr>
+            <tr id="sum_bw3">
+                <td>BW 3</td>
+                <td class="base-volume" id="bw3_base_volume">0</td>
+                <td class="base-rate" id="bw3_base_rate">0</td>
+                <td class="overage-volume" id="bw3_overage_volume">0</td>
+                <td class="overage-cpp" id="bw3_overage_cpp">0</td>
+                <td class="total-revenue" id="bw3_total_revenue">0</td>
+                <td class="supply-cost" id="bw3_supply_cost">0</td>
+                <td class="service-cost" id="bw3_service_cost">0</td>
+                <td class="monthly-cost" id="bw3_cost">0</td>
+                <td class="margin1" id="bw3_margin1">0</td>
+                <td class="margin2" id="bw3_margin2">0</td>
+                <td class="proposed-margin" id="bw3_proposed_margin"></td>
+                <td class="proposed-cpp" id="bw3_proposed_cpp"><input type="number" step="0.0001" value="{{ tiered_values.bw3_proposed_cpp }}"></td>
+            </tr>
+            <tr id="sum_bw4">
+                <td>BW 4</td>
+                <td class="base-volume" id="bw4_base_volume">0</td>
+                <td class="base-rate" id="bw4_base_rate">0</td>
+                <td class="overage-volume" id="bw4_overage_volume">0</td>
+                <td class="overage-cpp" id="bw4_overage_cpp">0</td>
+                <td class="total-revenue" id="bw4_total_revenue">0</td>
+                <td class="supply-cost" id="bw4_supply_cost">0</td>
+                <td class="service-cost" id="bw4_service_cost">0</td>
+                <td class="monthly-cost" id="bw4_monthly_cost">0</td>
+                <td class="margin1" id="bw4_margin1">0</td>
+                <td class="margin2" id="bw4_margin2">0</td>
+                <td class="proposed-margin" id="bw4_proposed_margin"></td>
+                <td class="proposed-cpp" id="bw4_proposed_cpp"><input type="number" step="0.0001" value="{{ tiered_values.bw4_proposed_cpp }}"></td>
+            </tr>
+            <tr id="sum_color1">
+                <td>Color 1</td>
+                <td class="base-volume" id="color1_base_volume">0</td>
+                <td class="base-rate" id="color1_base_rate">0</td>
+                <td class="overage-volume" id="color1_overage_volume">0</td>
+                <td class="overage-cpp" id="color1_overage_cpp">0</td>
+                <td class="total-revenue" id="color1_total_revenue">0</td>
+                <td class="supply-cost" id="color1_supply_cost">0</td>
+                <td class="service-cost" id="color1_service_cost">0</td>
+                <td class="monthly-cost" id="color1_monthly_cost">0</td>
+                <td class="margin1" id="color1_margin1">0</td>
+                <td class="margin2" id="color1_margin2">0</td>
+                <td class="proposed-margin" id="color1_proposed_margin"></td>
+                <td class="proposed-cpp" id="color1_proposed_cpp"><input type="number" step="0.0001" value="{{ tiered_values.color1_proposed_cpp }}"></td>
+            </tr>
+            <tr id="sum_color2">
+                <td>Color 2</td>
+                <td class="base-volume" id="color2_base_volume">0</td>
+                <td class="base-rate" id="color2_base_rate">0</td>
+                <td class="overage-volume" id="color2_overage_volume">0</td>
+                <td class="overage-cpp" id="color2_overage_cpp">0</td>
+                <td class="total-revenue" id="color2_total_revenue">0</td>
+                <td class="supply-cost" id="color2_supply_cost">0</td>
+                <td class="service-cost" id="color2_service_cost">0</td>
+                <td class="monthly-cost" id="color2_cost">0</td>
+                <td class="margin1" id="color2_margin1">0</td>
+                <td class="margin2" id="color2_margin2">0</td>
+                <td class="proposed-margin" id="color2_proposed_margin"></td>
+                <td class="proposed-cpp" id="color2_proposed_cpp"><input type="number" step="0.0001" value="{{ tiered_values.color2_proposed_cpp }}"></td>
+            </tr>
+            <tr id="sum_color3">
+                <td>Color 3</td>
+                <td class="base-volume" id="color3_base_volume">0</td>
+                <td class="base-rate" id="color3_base_rate">0</td>
+                <td class="overage-volume" id="color3_overage_volume">0</td>
+                <td class="overage-cpp" id="color3_overage_cpp">0</td>
+                <td class="total-revenue" id="color3_total_revenue">0</td>
+                <td class="supply-cost" id="color3_supply_cost">0</td>
+                <td class="service-cost" id="color3_service_cost">0</td>
+                <td class="monthly-cost" id="color3_monthly_cost">0</td>
+                <td class="margin1" id="color3_margin1">0</td>
+                <td class="margin2" id="color3_margin2">0</td>
+                <td class="proposed-margin" id="color3_proposed_margin"></td>
+                <td class="proposed-cpp" id="color3_proposed_cpp"><input type="number" step="0.0001" value="{{ tiered_values.color3_proposed_cpp }}"></td>
+            </tr>
+            <tfoot class="summaryFooter">
+                <td></td>
+                <td class="base-volume">0</td>
+                <td class="base-rate">0</td>
+                <td class="overage-volume">0</td>
+                <td class="overage-cpp">0</td>
+                <td class="total-revenue">0</td>
+                <td class="supply-cost">0</td>
+                <td class="service-cost">0</td>
+                <td class="monthly-cost">0</td>
+                <td class="margin1">0</td>
+                <td class="margin2">0</td>
+                <td id="proposed_margin"></td>
+                <td id="proposed_cpp"></td>
+            </tfoot>
+        </tbody>
+    </table>
+    <div class="cell large-offset-1 large-3 grid-y grid-padding-y">
+        <button class="button radius bordered shadow btn-continue hide">Continue</button>
+    </div>
+</div>
+<div class="grid-x">
+    <div class="large-24" style="margin-top:20px;">
+        <table class="section-table size-12 connectedSortable mono" id="bw1">
+            <thead>
+                <tr>
+                    <th colspan="15">BW1</th>
+                </tr>
+                <tr>
+                    <th class="col-2">Model</th>
+                    <th class="col-3">Base Volume</th>
+                    <th class="col-4">Base Rate</th>
+                    <th class="col-5">Overage Volume</th>
+                    <th class="col-6 hide">Overage CPP</th>
+                    <th class="col-7">Total Revenue</th>
+                    <th class="col-8">Toner CPP</th>
+                    <th class="col-9">Service CPP</th>
+                    <th class="col-10">Total CPP Cost</th>
+                    <th class="col-11">Supply Cost</th>
+                    <th class="col-12">Service Cost</th>
+                    <th class="col-13">Monthly Cost</th>
+                    <th class="col-14">GP $</th>
+                    <th class="col-15">GP %</th>
+                </tr>
+            </thead>
+            <tbody class="">
+            </tbody>
+            <tfoot class="bw1Footer">
+                <td></td>
+                <td class="base-volume">0</td>
+                <td class="base-rate">0</td>
+                <td class="overage-volume">0</td>
+                <td class="overage-cpp hide">0</td>
+                <td class="total-revenue">0</td>
+                <td class="toner-coverage">0</td>
+                <td class="service-cpp">0</td>
+                <td class="total-cpp">0</td>
+                <td class="supply-cost">0</td>
+                <td class="service-cost">0</td>
+                <td class="monthly-cost">0</td>
+                <td class="gp1">0</td>
+                <td class="gp2">0</td>
+            </tfoot>
+        </table>
+    </div>
+    <div class="large-24">
+        <table class="section-table size-12 connectedSortable mono" id="bw2">
+            <thead>
+                <tr>
+                    <th colspan="15">BW2</th>
+                </tr>
+                <tr>
+                    <th class="col-2">Model</th>
+                    <th class="col-3">Base Volume</th>
+                    <th class="col-4">Base Rate</th>
+                    <th class="col-5">Overage Volume</th>
+                    <th class="col-6 hide">Overage CPP</th>
+                    <th class="col-7">Total Revenue</th>
+                    <th class="col-8">Toner CPP</th>
+                    <th class="col-9">Service CPP</th>
+                    <th class="col-10">Total CPP Cost</th>
+                    <th class="col-11">Supply Cost</th>
+                    <th class="col-12">Service Cost</th>
+                    <th class="col-13">Monthly Cost</th>
+                    <th class="col-14">GP $</th>
+                    <th class="col-15">GP %</th>
+                </tr>
+            </thead>
+            <tbody class="">
+            </tbody>
+            <tfoot class="bw2Footer">
+                <td></td>
+                <td class="base-volume">0</td>
+                <td class="base-rate">0</td>
+                <td class="overage-volume">0</td>
+                <td class="overage-cpp hide">0</td>
+                <td class="total-revenue">0</td>
+                <td class="toner-coverage">0</td>
+                <td class="service-cpp">0</td>
+                <td class="total-cpp">0</td>
+                <td class="supply-cost">0</td>
+                <td class="service-cost">0</td>
+                <td class="monthly-cost">0</td>
+                <td class="gp1">0</td>
+                <td class="gp2">0</td>
+            </tfoot>
+        </table>
+    </div>
+    <div class="large-24">
+        <table class="section-table size-12 connectedSortable mono" id="bw3">
+            <thead>
+                <tr>
+                    <th colspan="15">BW3</th>
+                </tr>
+                <tr>
+                    <th class="col-2">Model</th>
+                    <th class="col-3">Base Volume</th>
+                    <th class="col-4">Base Rate</th>
+                    <th class="col-5">Overage Volume</th>
+                    <th class="col-6 hide">Overage CPP</th>
+                    <th class="col-7">Total Revenue</th>
+                    <th class="col-8">Toner CPP</th>
+                    <th class="col-9">Service CPP</th>
+                    <th class="col-10">Total CPP Cost</th>
+                    <th class="col-11">Supply Cost</th>
+                    <th class="col-12">Service Cost</th>
+                    <th class="col-13">Monthly Cost</th>
+                    <th class="col-14">GP $</th>
+                    <th class="col-15">GP %</th>
+                </tr>
+            </thead>
+            <tbody class="">
+            </tbody>
+            <tfoot class="bw3Footer">
+                <td></td>
+                <td class="base-volume">0</td>
+                <td class="base-rate">0</td>
+                <td class="overage-volume">0</td>
+                <td class="overage-cpp hide">0</td>
+                <td class="total-revenue">0</td>
+                <td class="toner-coverage">0</td>
+                <td class="service-cpp">0</td>
+                <td class="total-cpp">0</td>
+                <td class="supply-cost">0</td>
+                <td class="service-cost">0</td>
+                <td class="monthly-cost">0</td>
+                <td class="gp1">0</td>
+                <td class="gp2">0</td>
+            </tfoot>
+        </table>
+    </div>
+    <div class="large-24">
+        <table class="section-table size-12 connectedSortable mono" id="bw4">
+            <thead>
+                <tr>
+                    <th colspan="15">BW4</th>
+                </tr>
+                <tr>
+                    <th class="col-2">Model</th>
+                    <th class="col-3">Base Volume</th>
+                    <th class="col-4">Base Rate</th>
+                    <th class="col-5">Overage Volume</th>
+                    <th class="col-6 hide">Overage CPP</th>
+                    <th class="col-7">Total Revenue</th>
+                    <th class="col-8">Toner CPP</th>
+                    <th class="col-9">Service CPP</th>
+                    <th class="col-10">Total CPP Cost</th>
+                    <th class="col-11">Supply Cost</th>
+                    <th class="col-12">Service Cost</th>
+                    <th class="col-13">Monthly Cost</th>
+                    <th class="col-14">GP $</th>
+                    <th class="col-15">GP %</th>
+                </tr>
+            </thead>
+            <tbody class="">
+            </tbody>
+            <tfoot class="bw4Footer">
+                <td></td>
+                <td class="base-volume">0</td>
+                <td class="base-rate">0</td>
+                <td class="overage-volume">0</td>
+                <td class="overage-cpp hide">0</td>
+                <td class="total-revenue">0</td>
+                <td class="toner-coverage">0</td>
+                <td class="service-cpp">0</td>
+                <td class="total-cpp">0</td>
+                <td class="supply-cost">0</td>
+                <td class="service-cost">0</td>
+                <td class="monthly-cost">0</td>
+                <td class="gp1">0</td>
+                <td class="gp2">0</td>
+            </tfoot>
+        </table>
+    </div>
+    <div class="large-24">
+        <table class="section-table size-12 connectedSortable color" id="color1">
+            <thead>
+                <tr>
+                    <th colspan="15">Color1</th>
+                </tr>
+                <tr>
+                    <th class="col-2">Model</th>
+                    <th class="col-3">Base Volume</th>
+                    <th class="col-4">Base Rate</th>
+                    <th class="col-5">Overage Volume</th>
+                    <th class="col-6 hide">Overage CPP</th>
+                    <th class="col-7">Total Revenue</th>
+                    <th class="col-8">Toner CPP</th>
+                    <th class="col-9">Service CPP</th>
+                    <th class="col-10">Total CPP Cost</th>
+                    <th class="col-11">Supply Cost</th>
+                    <th class="col-12">Service Cost</th>
+                    <th class="col-13">Monthly Cost</th>
+                    <th class="col-14">GP $</th>
+                    <th class="col-15">GP %</th>
+                </tr>
+            </thead>
+            <tbody class="">
+            </tbody>
+            <tfoot class="color1Footer">
+                <td></td>
+                <td class="base-volume">0</td>
+                <td class="base-rate">0</td>
+                <td class="overage-volume">0</td>
+                <td class="overage-cpp hide">0</td>
+                <td class="total-revenue">0</td>
+                <td class="toner-coverage">0</td>
+                <td class="service-cpp">0</td>
+                <td class="total-cpp">0</td>
+                <td class="supply-cost">0</td>
+                <td class="service-cost">0</td>
+                <td class="monthly-cost">0</td>
+                <td class="gp1">0</td>
+                <td class="gp2">0</td>
+            </tfoot>
+        </table>
+    </div>
+    <div class="large-24">
+        <table class="section-table size-12 connectedSortable color" id="color2">
+            <thead>
+                <tr>
+                    <th colspan="15">Color2</th>
+                </tr>
+                <tr>
+                    <th class="col-2">Model</th>
+                    <th class="col-3">Base Volume</th>
+                    <th class="col-4">Base Rate</th>
+                    <th class="col-5">Overage Volume</th>
+                    <th class="col-6 hide">Overage CPP</th>
+                    <th class="col-7">Total Revenue</th>
+                    <th class="col-8">Toner CPP</th>
+                    <th class="col-9">Service CPP</th>
+                    <th class="col-10">Total CPP Cost</th>
+                    <th class="col-11">Supply Cost</th>
+                    <th class="col-12">Service Cost</th>
+                    <th class="col-13">Monthly Cost</th>
+                    <th class="col-14">GP $</th>
+                    <th class="col-15">GP %</th>
+                </tr>
+            </thead>
+            <tbody class="">
+            </tbody>
+            <tfoot class="color2Footer">
+                <td></td>
+                <td class="base-volume">0</td>
+                <td class="base-rate">0</td>
+                <td class="overage-volume">0</td>
+                <td class="overage-cpp hide">0</td>
+                <td class="total-revenue">0</td>
+                <td class="toner-coverage">0</td>
+                <td class="service-cpp">0</td>
+                <td class="total-cpp">0</td>
+                <td class="supply-cost">0</td>
+                <td class="service-cost">0</td>
+                <td class="monthly-cost">0</td>
+                <td class="gp1">0</td>
+                <td class="gp2">0</td>
+            </tfoot>
+        </table>
+    </div>
+    <div class="large-24">
+        <table class="section-table size-12 connectedSortable color" id="color3">
+            <thead>
+                <tr>
+                    <th colspan="15">Color3</th>
+                </tr>
+                <tr>
+                    <th class="col-2">Model</th>
+                    <th class="col-3">Base Volume</th>
+                    <th class="col-4">Base Rate</th>
+                    <th class="col-5">Overage Volume</th>
+                    <th class="col-6 hide">Overage CPP</th>
+                    <th class="col-7">Total Revenue</th>
+                    <th class="col-8">Toner CPP</th>
+                    <th class="col-9">Service CPP</th>
+                    <th class="col-10">Total CPP Cost</th>
+                    <th class="col-11">Supply Cost</th>
+                    <th class="col-12">Service Cost</th>
+                    <th class="col-13">Monthly Cost</th>
+                    <th class="col-14">GP $</th>
+                    <th class="col-15">GP %</th>
+                </tr>
+            </thead>
+            <tbody class="">
+            </tbody>
+            <tfoot class="color3Footer">
+                <td></td>
+                <td class="base-volume">0</td>
+                <td class="base-rate">0</td>
+                <td class="overage-volume">0</td>
+                <td class="overage-cpp hide">0</td>
+                <td class="total-revenue">0</td>
+                <td class="toner-coverage">0</td>
+                <td class="service-cpp">0</td>
+                <td class="total-cpp">0</td>
+                <td class="supply-cost">0</td>
+                <td class="service-cost">0</td>
+                <td class="monthly-cost">0</td>
+                <td class="gp1">0</td>
+                <td class="gp2">0</td>
+            </tfoot>
+        </table>
+    </div>
+</div>

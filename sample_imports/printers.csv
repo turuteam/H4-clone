@@ -1,0 +1,427 @@
+model,make,releasedate,printertype,devicetype
+HP A3 E825 Series,HP,11/1/2017,Mono,Copier
+HP A3 E778 Series,HP,11/1/2017,Color,Copier
+HPPW P77740,HP,11/1/2017,Color,Printer
+HPPW P77750,HP,11/1/2017,Color,Printer
+HP A3 E876 Series,HP,11/1/2017,Color,Copier
+HP A3 E725 Series,HP,11/1/2017,Mono,Copier
+HPLJ 4345 & M4345 MFP,HP,11/1/2006,Mono,Printer
+HPPW 452,HP,3/1/2016,Color,Printer
+HPPW 477,HP,3/1/2016,Color,Printer
+HPPW 552,HP,3/1/2016,Color,Printer
+HPPW 577,HP,3/1/2016,Color,Printer
+HPPW 556,HP,3/1/2016,Color,Printer
+HPPW 586,HP,3/1/2016,Color,Printer
+"HPLJ 1000, 1200, 1220",HP,5/1/2001,Mono,Printer
+HPLJ 1010 / 1012 / 1015 / 1018 / 1020 / 1022,HP,5/1/2005,Mono,Printer
+HPLJ 1100 /3200,HP,11/1/2000,Mono,Printer
+HPLJ 1150,HP,9/1/2003,Mono,Printer
+HPLJ 1160 / 1320,HP,10/1/2004,Mono,Printer
+HPLJ 1300,HP,4/1/2003,Mono,Printer
+HPLJ 1319 MFP,HP,10/1/2004,Mono,Printer
+HPLJ 2100,HP,2/1/1999,Mono,Printer
+HPLJ 2200,HP,2/1/2001,Mono,Printer
+HPLJ 2300,HP,4/1/2003,Mono,Printer
+"HPLJ 2420, 2430",HP,10/1/2004,Mono,Printer
+HPLJ 3050 / 3052 / 3055 MFP,HP,4/1/2006,Mono,Printer
+HPLJ 3300 MFP,HP,5/1/2002,Mono,Printer
+"HPLJ 3SI, 4SI",HP,1/1/1999,Mono,Printer
+"HPLJ 4, 4+, 5",HP,1/1/1999,Mono,Printer
+"HPLJ 4000, 4050",HP,5/1/1999,Mono,Printer
+HPLJ 4100,HP,5/1/2001,Mono,Printer
+HPLJ 4100 MFP,HP,4/1/2002,Mono,Printer
+"HPLJ 4100, 4101 MFP",HP,3/1/2002,Mono,Printer
+HPLJ 4200,HP,11/1/2002,Mono,Printer
+HPLJ 4240,HP,3/1/2005,Mono,Printer
+HPLJ 4250,HP,10/1/2004,Mono,Printer
+HPLJ 4300,HP,11/1/2002,Mono,Printer
+HPLJ 4350,HP,10/1/2004,Mono,Printer
+HPLJ 4V,HP,1/1/1999,Mono,Printer
+HPLJ 5000 / 5100,HP,4/1/2003,Mono,Printer
+HPLJ 5200,HP,4/1/2003,Mono,Printer
+"HPLJ 5L, 6L, 3100",HP,2/1/2000,Mono,Printer
+"HPLJ 5P, 6P",HP,2/1/2000,Mono,Printer
+HPLJ 8000,HP,11/1/2000,Mono,Printer
+HPLJ 8100,HP,11/1/2000,Mono,Printer
+HPLJ 8150,HP,11/1/2000,Mono,Printer
+HPLJ 9000,HP,5/1/2001,Mono,Printer
+HPLJ 9000 MFP,HP,3/1/2002,Mono,Printer
+HPLJ 9040/9050,HP,11/1/2004,Mono,Printer
+HPLJ C1600 / 2600n / 2605,HP,4/1/2006,Color,Printer
+HPLJ C2500,HP,10/1/2002,Color,Printer
+HPLJ C2550,HP,6/1/2004,Color,Printer
+HPLJ C2800 MFP,HP,5/1/2005,Color,Printer
+HPLJ C2840,HP,5/1/2005,Color,Printer
+HPLJ C3000,HP,10/1/2005,Color,Printer
+HPLJ C3500 / 3550,HP,10/1/2004,Color,Printer
+HPLJ C3600,HP,10/1/2005,Color,Printer
+HPLJ C3700,HP,1/1/2004,Color,Printer
+HPLJ C3800,HP,10/1/2005,Color,Printer
+HPLJ C4500,HP,5/1/2000,Mono,Printer
+HPLJ C4550,HP,5/1/2000,Mono,Printer
+HPLJ C4600 / 4650,HP,6/1/2004,Color,Printer
+HPLJ C4700,HP,10/1/2005,Color,Printer
+HPLJ C4730 MFP,HP,11/1/2005,Color,Printer
+HPLJ C5500 / C5550,HP,10/1/2004,Color,Printer
+HPLJ C8500 / 8550,HP,5/1/2000,Mono,Printer
+HPLJ C9500,HP,9/1/2003,Color,Printer
+HPLJ C9500 MFP,HP,11/1/2004,Color,Printer
+HPLJ CM1015 / 1017 MFP,HP,11/1/2006,Color,Printer
+HPLJ CM1312nfi MFP,HP,6/1/2008,Color,Printer
+HPLJ CM1415 MFP,HP,6/1/2008,Color,Printer
+HPLJ CM2320 MFP,HP,9/1/2008,Color,Printer
+HPLJ CM3530 MFP,HP,11/1/2008,Color,Printer
+HPLJ CM4540 MFP,HP,11/1/2010,Color,Printer
+HPLJ CM6030/6040 MFP,HP,4/1/2008,Color,Printer
+HPLJ CP1025,HP,4/1/2006,Color,Printer
+HPLJ CP1210/1215 /1510/1518ni,HP,4/1/2008,Color,Printer
+HPLJ CP1525,HP,4/1/2008,Color,Printer
+HPLJ CP2025,HP,9/1/2008,Color,Printer
+HPLJ CP3505,HP,6/1/2007,Color,Printer
+HPLJ CP3525,HP,10/1/2008,Color,Printer
+HPLJ CP4005,HP,11/1/2006,Color,Printer
+HPLJ CP4025,HP,11/1/2009,Color,Printer
+HPLJ CP4525,HP,11/1/2009,Color,Printer
+HPLJ CP5225,HP,11/1/2010,Color,Printer
+HPLJ CP5525,HP,11/1/2010,Color,Printer
+HPLJ CP6015 ,HP,4/1/2008,Color,Printer
+HPLJ E62565 MFP,HP,6/1/2018,Mono,Copier
+HPLJ E67550 / E67650 MFP,HP,6/1/2018,Color,Copier
+HPLJ M1210,HP,4/1/2010,Mono,Printer
+HPLJ M1212nf MFP,HP,4/1/2010,Mono,Printer
+HPLJ M1217 MFP,HP,4/1/2011,Mono,Printer
+HPLJ M127,HP,10/1/2013,Mono,Printer
+HPLJ M1522 MFP,HP,4/1/2008,Mono,Printer
+HPLJ M1536 MFP,HP,9/1/2010,Mono,Printer
+HPLJ M175NW MFP,HP,7/1/2011,Color,Printer
+HPLJ M177 MFP,HP,7/1/2011,Color,Printer
+HPLJ M201,HP,4/1/2017,Mono,Printer
+HPLJ M225 MFP,HP,9/1/2014,Mono,Printer
+HPLJ M251,HP,9/1/2012,Color,Printer
+HPLJ M252 MFP,HP,3/1/2015,Color,Printer
+HPLJ M2727 MFP,HP,11/1/2007,Mono,Printer
+HPLJ M275 MFP,HP,10/1/2014,Color,Printer
+HPLJ M276 MFP,HP,10/1/2015,Color,Printer
+HPLJ M277 MFP,HP,9/1/2016,Color,Printer
+HPLJ M3027 MFP,HP,11/1/2006,Mono,Printer
+HPLJ M3035 MFP,HP,11/1/2006,Mono,Printer
+HPLJ M3390 MFP,HP,11/1/2006,Mono,Printer
+"HPLJ M351, M451",HP,2/1/2012,Color,Printer
+HPLJ M375 MFP,HP,2/1/2012,Color,Printer
+HPLJ M401,HP,6/1/2012,Mono,Printer
+HPLJ M402,HP,10/1/2015,Mono,Printer
+HPLJ M403,HP,10/1/2015,Mono,Printer
+HPLJ M425 MFP,HP,6/1/2012,Mono,Printer
+HPLJ M426 MFP,HP,10/1/2015,Mono,Printer
+HPLJ M452,HP,10/1/2015,Color,Printer
+HPLJ M4555 MFP,HP,5/1/2011,Mono,Printer
+HPLJ M475 MFP,HP,2/1/2012,Color,Printer
+HPLJ M476 MFP,HP,2/1/2012,Color,Printer
+HPLJ M477 MFP,HP,2/1/2012,Color,Printer
+HPLJ M5025 MFP,HP,11/1/2006,Mono,Printer
+HPLJ M5035 MFP,HP,11/1/2006,Mono,Printer
+HPLJ M501 / M506,HP,10/1/2015,Mono,Printer
+HPLJ M521dn MFP,HP,4/1/2013,Mono,Printer
+HPLJ M525 MFP,HP,11/1/2012,Mono,Printer
+HPLJ M527 MFP,HP,11/1/2015,Mono,Printer
+HPLJ M551 MFP,HP,10/1/2011,Color,Printer
+HPLJ M552,HP,10/1/2011,Color,Printer
+HPLJ M553,HP,10/1/2011,Color,Printer
+HPLJ M570 MFP,HP,6/1/2012,Color,Printer
+HPLJ M575 MFP,HP,6/1/2012,Color,Printer
+HPLJ M577 MFP,HP,6/1/2012,Color,Printer
+HPLJ M601,HP,11/1/2011,Mono,Printer
+HPLJ M602,HP,11/1/2011,Mono,Printer
+HPLJ M603,HP,11/1/2011,Mono,Printer
+HPLJ M604,HP,4/1/2015,Mono,Printer
+HPLJ M605,HP,4/1/2015,Mono,Printer
+HPLJ M606,HP,4/1/2015,Mono,Printer
+HPLJ M607,HP,5/1/2017,Mono,Printer
+HPLJ M630 MFP,HP,9/1/2014,Mono,Printer
+HPLJ M631 / M632 MFP,HP,5/1/2017,Mono,Printer
+HPLJ M651,HP,11/1/2014,Color,Printer
+HPLJ M652,HP,11/1/2014,Color,Printer
+HPLJ M680 MFP,HP,2/1/2014,Color,Printer
+HPLJ M681 / M682 MFP,HP,4/1/2017,Color,Printer
+HPLJ M712,HP,11/1/2012,Mono,Printer
+HPLJ M725 MFP,HP,5/1/2013,Mono,Printer
+HPLJ M750,HP,11/1/2013,Color,Printer
+HPLJ M775 MFP,HP,11/1/2012,Color,Printer
+HPLJ M806,HP,10/1/2013,Mono,Printer
+HPLJ M830 MFP,HP,10/1/2013,Mono,Printer
+HPLJ M855,HP,11/1/2013,Color,Printer
+HPLJ M880 MFP,HP,11/1/2013,Color,Printer
+HPLJ M9040 M9050 MFP,HP,4/1/2006,Mono,Printer
+HPLJ P1005/1006,HP,11/1/2007,Mono,Printer
+HPLJ P1100,HP,11/1/2007,Mono,Printer
+HPLJ P1102,HP,11/1/2007,Mono,Printer
+HPLJ P1500,HP,11/1/2007,Mono,Printer
+HPLJ P1505,HP,11/1/2007,Mono,Printer
+HPLJ P1606,HP,4/1/2010,Mono,Printer
+HPLJ P2014/P2015,HP,12/1/2006,Mono,Printer
+HPLJ P2030/P2035,HP,11/1/2008,Mono,Printer
+HPLJ P2055,HP,10/1/2008,Mono,Printer
+HPLJ P3005,HP,10/1/2006,Mono,Printer
+HPLJ P3010,HP,10/1/2006,Mono,Printer
+HPLJ P3015,HP,10/1/2006,Mono,Printer
+HPLJ P4014,HP,5/1/2008,Mono,Printer
+HPLJ P4015,HP,5/1/2008,Mono,Printer
+HPLJ P4515,HP,5/1/2008,Mono,Printer
+HPLJ SX,HP,5/1/2000,Mono,Printer
+"HPOJ X451, X476 MFP",HP,2/1/2013,Color,Printer
+"HPOJ X551, X576 MFP",HP,2/1/2013,Color,Printer
+HPOJ X555,HP,3/1/2014,Color,Printer
+HPOJ X585 MFP,HP,3/1/2014,Color,Printer
+IBM 4019 - 4028 - 4029,Oth,1/1/2000,Mono,Printer
+IBM 4039 - 4049,Oth,1/1/2000,Mono,Printer
+IBM InfoPrint 40 (4332),Oth,1/1/2000,Mono,Printer
+Lexmark C4150,Lex,1/1/2016,Color,Printer
+Lexmark C510,Lex,3/1/2004,Color,Printer
+Lexmark C524,Lex,10/1/2005,Color,Printer
+"Lexmark C530, C532",Lex,10/1/2006,Color,Printer
+Lexmark C534,Lex,10/1/2006,Color,Printer
+Lexmark C540 / C543,Lex,10/1/2008,Color,Printer
+Lexmark C544,Lex,10/1/2008,Color,Printer
+Lexmark C546,Lex,10/1/2009,Color,Printer
+Lexmark C6160,Lex,1/1/2016,Color,Printer
+Lexmark C734,Lex,5/1/2009,Color,Printer
+Lexmark C736,Lex,5/1/2009,Color,Printer
+Lexmark C746,Lex,4/1/2012,Color,Printer
+Lexmark C748,Lex,4/1/2012,Color,Printer
+Lexmark C760,Lex,9/1/2004,Color,Printer
+Lexmark C770 / C772,Lex,8/1/2006,Color,Printer
+Lexmark C780,Lex,4/1/2007,Color,Printer
+Lexmark C782,Lex,4/1/2007,Color,Printer
+Lexmark C792,Lex,10/1/2010,Color,Printer
+Lexmark C910,Lex,6/1/2005,Color,Printer
+Lexmark C912,Lex,6/1/2005,Color,Printer
+Lexmark C925,Lex,10/1/2010,Color,Printer
+Lexmark C935,Lex,4/1/2007,Color,Printer
+Lexmark C950,Lex,5/1/2011,Color,Printer
+Lexmark CS310,Lex,10/1/2012,Color,Printer
+Lexmark CS410,Lex,10/1/2012,Color,Printer
+Lexmark CS510,Lex,10/1/2012,Color,Printer
+Lexmark CS736,Lex,5/1/2009,Color,Printer
+Lexmark CS748,Lex,5/1/2012,Color,Printer
+Lexmark CS796de,Lex,5/1/2012,Color,Printer
+Lexmark CX310 MFP,Lex,10/1/2012,Color,Printer
+Lexmark CX410 MFP,Lex,10/1/2012,Color,Printer
+Lexmark CX510 MFP,Lex,10/1/2012,Color,Printer
+Lexmark E120n,Lex,2/1/2006,Mono,Printer
+Lexmark E210,Lex,9/1/2006,Mono,Printer
+Lexmark E232,Lex,6/1/2004,Mono,Printer
+Lexmark E240N,Lex,10/1/2005,Mono,Printer
+Lexmark E250d,Lex,10/1/2006,Mono,Printer
+Lexmark E260,Lex,10/1/2008,Mono,Printer
+Lexmark E260D,Lex,10/1/2008,Mono,Printer
+Lexmark E320,Lex,10/1/2001,Mono,Printer
+Lexmark E321 / 323,Lex,4/1/2003,Mono,Printer
+Lexmark E322,Lex,10/1/2001,Mono,Printer
+Lexmark E330 / 332,Lex,6/1/2004,Mono,Printer
+Lexmark E340,Lex,10/1/2005,Mono,Printer
+Lexmark E342,Lex,10/1/2005,Mono,Printer
+"Lexmark E350, E352",Lex,10/1/2006,Mono,Printer
+Lexmark E360,Lex,10/1/2008,Mono,Printer
+Lexmark E450,Lex,10/1/2006,Mono,Printer
+Lexmark E460,Lex,10/1/2008,Mono,Printer
+Lexmark E462,Lex,10/1/2009,Mono,Printer
+Lexmark ES460,Lex,10/1/2008,Mono,Printer
+Lexmark M1145,Lex,11/1/2012,Mono,Printer
+Lexmark M3150,Lex,11/1/2012,Mono,Printer
+Lexmark M410/412,Lex,11/1/2012,Mono,Printer
+Lexmark M5155,Lex,11/1/2012,Mono,Printer
+Lexmark M5163,Lex,11/1/2012,Mono,Printer
+Lexmark M5170,Lex,11/1/2012,Mono,Printer
+Lexmark MS310/312/315,Lex,4/1/2014,Mono,Printer
+Lexmark MS410/415,Lex,4/1/2014,Mono,Printer
+Lexmark MS510,Lex,10/1/2012,Mono,Printer
+Lexmark MS610,Lex,10/1/2012,Mono,Printer
+Lexmark MS810,Lex,10/1/2012,Mono,Printer
+Lexmark MS811,Lex,10/1/2012,Mono,Printer
+Lexmark MS812,Lex,10/1/2012,Mono,Printer
+Lexmark MS911 ,Lex,6/1/2014,Mono,Printer
+Lexmark MX310 MFP,Lex,10/1/2012,Mono,Printer
+Lexmark MX410 MFP,Lex,10/1/2012,Mono,Printer
+Lexmark MX510 MFP,Lex,10/1/2012,Mono,Printer
+Lexmark MX511 MFP,Lex,10/1/2012,Mono,Printer
+Lexmark MX610 MFP,Lex,10/1/2012,Mono,Printer
+Lexmark MX611 MFP,Lex,10/1/2012,Mono,Printer
+Lexmark MX710 MFP,Lex,10/1/2012,Mono,Printer
+Lexmark MX711 MFP,Lex,10/1/2012,Mono,Printer
+Lexmark MX810 MFP,Lex,10/1/2012,Mono,Printer
+Lexmark MX811 MFP,Lex,10/1/2012,Mono,Printer
+Lexmark MX812 MFP,Lex,10/1/2012,Mono,Printer
+Lexmark MX910-911-912 MFP,Lex,6/1/2014,Mono,Printer
+Lexmark Optra R&L 4039 - 4049,Lex,10/1/2010,Mono,Printer
+Lexmark Optra Se 3455,Lex,10/1/2010,Mono,Printer
+Lexmark T520 / 522,Lex,6/1/2001,Mono,Printer
+Lexmark T610/612/614/616,Lex,6/1/2001,Mono,Printer
+Lexmark T620/622,Lex,6/1/2001,Mono,Printer
+Lexmark T630/632/634,Lex,4/1/2003,Mono,Printer
+Lexmark T640,Lex,6/1/2005,Mono,Printer
+Lexmark T642,Lex,6/1/2005,Mono,Printer
+Lexmark T644,Lex,6/1/2005,Mono,Printer
+Lexmark T650,Lex,10/1/2008,Mono,Printer
+Lexmark T652,Lex,10/1/2008,Mono,Printer
+Lexmark T654,Lex,10/1/2008,Mono,Printer
+Lexmark T656,Lex,10/1/2009,Mono,Printer
+Lexmark TS652,Lex,10/1/2008,Mono,Printer
+Lexmark TS654 / TS656,Lex,10/1/2008,Mono,Printer
+Lexmark W812,Lex,6/1/2005,Mono,Printer
+Lexmark W820,Lex,6/1/2005,Mono,Printer
+Lexmark W840,Lex,6/1/2005,Mono,Printer
+Lexmark W850,Lex,6/1/2005,Mono,Printer
+Lexmark X204 MFP,Lex,3/1/2009,Mono,Printer
+"Lexmark X264, X363, X364 MFP",Lex,3/1/2009,Mono,Printer
+Lexmark X342 MFP,Lex,5/1/2006,Mono,Printer
+Lexmark X346DN MFP,Lex,5/1/2006,Mono,Printer
+"Lexmark X463, X464, X466 MFP",Lex,3/1/2009,Mono,Printer
+"Lexmark X500, X502 MFP",Lex,4/1/2007,Color,Printer
+Lexmark X543 MFP,Lex,10/1/2008,Color,Printer
+Lexmark X544 MFP,Lex,10/1/2008,Color,Printer
+Lexmark X546 MFP,Lex,10/1/2009,Color,Printer
+Lexmark X548 MFP,Lex,4/1/2011,Color,Printer
+Lexmark X560 MFP,Lex,10/1/2008,Color,Printer
+Lexmark X646 MFP,Lex,2/1/2006,Mono,Printer
+Lexmark X651 MFP,Lex,10/1/2008,Mono,Printer
+Lexmark X652 MFP,Lex,10/1/2008,Mono,Printer
+"Lexmark X654, X656, X658 MFP",Lex,10/1/2008,Mono,Printer
+Lexmark X734 MFP,Lex,5/1/2009,Color,Printer
+"Lexmark X736, X738 MFP",Lex,5/1/2009,Color,Printer
+Lexmark X746 MFP,Lex,4/1/2012,Color,Printer
+Lexmark X748 MFP,Lex,4/1/2012,Color,Printer
+Lexmark X782e MFP,Lex,4/1/2007,Color,Printer
+Lexmark X792 MFP,Lex,10/1/2010,Color,Printer
+Lexmark X860 MFP,Lex,10/1/2009,Mono,Printer
+Lexmark X862 MFP,Lex,10/1/2009,Mono,Printer
+Lexmark X864 MFP,Lex,10/1/2009,Mono,Printer
+Lexmark X925 MFP,Lex,10/1/2010,Color,Printer
+"Lexmark X940, X945 MFP",Lex,4/1/2007,Color,Printer
+Lexmark X950 MFP,Lex,5/1/2011,Color,Printer
+Lexmark X952 MFP,Lex,5/1/2011,Color,Printer
+Lexmark X954 MFP,Lex,5/1/2011,Color,Printer
+Lexmark XC2130 MFP,Lex,4/1/2013,Color,Printer
+Lexmark XC2132 MFP,Lex,4/1/2013,Color,Printer
+Lexmark XC4140 / 4150,Lex,1/1/2016,Color,Printer
+Lexmark XC6152,Lex,1/1/2016,Color,Printer
+Lexmark XC8155,Lex,1/1/2016,Color,Printer
+Lexmark XC8160,Lex,1/1/2016,Color,Printer
+"Lexmark XC940e MFP, XC945e MFP",Lex,1/1/2016,Color,Printer
+Lexmark XM1145 MFP,Lex,11/1/2012,Mono,Printer
+Lexmark XM3150 MFP,Lex,11/1/2012,Mono,Printer
+Lexmark XM5163 / XM5263 MFP,Lex,11/1/2012,Mono,Printer
+Lexmark XM5170 MFP,Lex,11/1/2012,Mono,Printer
+Lexmark XM5270 / XM7163 / XM7263 MFP,Lex,10/1/2016,Mono,Printer
+"Lexmark XM642, XM644, XM646 MFP",Lex,10/1/2014,Mono,Printer
+Lexmark XM7155 MFP,Lex,11/1/2012,Mono,Printer
+Lexmark XM7170 MFP,Lex,11/1/2012,Mono,Printer
+Lexmark XM7270 MFP,Lex,10/1/2016,Mono,Printer
+"Lexmark XM850, XM852, XM854 MFP",Lex,10/1/2016,Mono,Printer
+Lexmark XM9100 Series (9145-9155-9165),Lex,8/1/2014,Mono,Printer
+Lexmark XS463 MFP,Lex,3/1/2009,Mono,Printer
+Lexmark XS651 MFP,Lex,10/1/2008,Mono,Printer
+Lexmark XS652 MFP,Lex,10/1/2008,Mono,Printer
+Lexmark XS654 MFP,Lex,10/1/2008,Mono,Printer
+Lexmark XS658 MFP,Lex,10/1/2008,Mono,Printer
+Lexmark XS734 MFP,Lex,5/1/2009,Color,Printer
+Lexmark XS736 MFP,Lex,5/1/2009,Color,Printer
+Lexmark XS748de MFP,Lex,5/1/2012,Color,Printer
+Lexmark XS782 MFP,Lex,5/1/2012,Color,Printer
+Lexmark XS795/798dte MFP,Lex,7/1/2012,Color,Printer
+Lexmark XS796 MFP,Lex,2/1/2011,Color,Printer
+Lexmark XS860de 4 MFP,Lex,10/1/2012,Mono,Printer
+Lexmark XS862de 4 MFP,Lex,10/1/2012,Mono,Printer
+Lexmark XS864de 4 MFP,Lex,10/1/2012,Mono,Printer
+Lexmark XS925 MFP,Lex,2/1/2011,Color,Printer
+Lexmark XS955dhe MFP,Lex,2/1/2011,Color,Printer
+OKIdata 14e,Oth,2/1/2010,Mono,Printer
+Toshiba eS1105,Oth,10/1/2010,Mono,Copier
+Toshiba eS1355,Oth,10/1/2010,Mono,Copier
+Toshiba eS195,Oth,11/1/2011,Mono,Copier
+Toshiba eS2000AC / 2500AC,Oth,5/1/2016,Color,Copier
+Toshiba eS2007/2507,Oth,8/1/2013,Mono,Copier
+Toshiba eS2008A / 2508A / 3008A,Oth,5/1/2016,Mono,Copier
+Toshiba eS202/203,Oth,9/1/2008,Mono,Copier
+Toshiba eS2040C,Oth,5/1/2011,Color,Copier
+Toshiba eS205 I,Oth,2/1/2006,Mono,Copier
+Toshiba eS2050C/2051C,Oth,6/1/2012,Color,Copier
+Toshiba eS206,Oth,2/1/2012,Mono,Copier
+Toshiba eS207,Oth,6/1/2007,Mono,Copier
+Toshiba eS223,Oth,11/1/2011,Mono,Copier
+Toshiba eS225,Oth,11/1/2011,Mono,Copier
+Toshiba eS2306,Oth,6/1/2013,Mono,Copier
+Toshiba eS2330c or eS2830c,Oth,5/1/2008,Color,Copier
+Toshiba eS2505,Oth,7/1/2013,Mono,Copier
+Toshiba eS2505AC,Oth,5/1/2016,Color,Copier
+Toshiba eS2540C,Oth,5/1/2011,Color,Copier
+Toshiba Es255,Oth,6/1/2009,Mono,Copier
+Toshiba eS2550C/2551C,Oth,6/1/2012,Color,Copier
+Toshiba eS2555C,Oth,7/1/2013,Color,Copier
+Toshiba eS256,Oth,2/1/2012,Mono,Copier
+Toshiba eS257,Oth,6/1/2014,Mono,Copier
+Toshiba eS281c,Oth,8/1/2005,Color,Copier
+Toshiba eS287/347CS/407CS,Oth,4/1/2013,Color,Copier
+Toshiba eS3005,Oth,5/1/2016,Color,Copier
+Toshiba eS3040C,Oth,5/1/2011,Color,Copier
+Toshiba eS305,Oth,6/1/2009,Mono,Copier
+Toshiba eS3055C,Oth,7/1/2013,Color,Copier
+Toshiba eS306,Oth,2/1/2012,Mono,Copier
+Toshiba eS306LP & RD30,Oth,2/1/2012,Mono,Copier
+Toshiba eS307,Oth,6/1/2014,Mono,Copier
+Toshiba eS3505,Oth,5/1/2016,Color,Copier
+Toshiba eS3508A / 4508A / 5008A,Oth,5/1/2016,Mono,Copier
+Toshiba eS351c,Oth,8/1/2005,Color,Copier
+Toshiba eS3530c,Oth,5/1/2008,Color,Copier
+Toshiba eS3540C,Oth,5/1/2011,Color,Copier
+Toshiba eS355,Oth,6/1/2009,Mono,Copier
+Toshiba eS3555C,Oth,7/1/2013,Color,Copier
+Toshiba eS356,Oth,2/1/2012,Mono,Copier
+Toshiba eS357,Oth,6/1/2014,Mono,Copier
+Toshiba eS4505,Oth,5/1/2016,Color,Copier
+Toshiba eS451c,Oth,8/1/2005,Color,Copier
+Toshiba eS4520c,Oth,5/1/2008,Color,Copier
+Toshiba eS4540C,Oth,5/1/2011,Color,Copier
+Toshiba eS455,Oth,6/1/2009,Mono,Copier
+Toshiba eS4555C,Oth,7/1/2013,Color,Copier
+Toshiba eS456 / 506,Oth,2/1/2012,Mono,Copier
+Toshiba eS457/507,Oth,6/1/2014,Mono,Copier
+Toshiba eS477,Oth,8/1/2013,Mono,Copier
+Toshiba eS5005,Oth,11/1/2016,Color,Copier
+Toshiba eS5055C,Oth,7/1/2013,Color,Copier
+Toshiba eS527,Oth,8/1/2013,Mono,Copier
+Toshiba eS5506AC / 6506AC,Oth,8/1/2016,Color,Copier
+Toshiba eS5508A / 6508A / 7508A / 8508A,Oth,8/1/2016,Mono,Copier
+Toshiba eS5520c,Oth,10/1/2008,Color,Copier
+Toshiba eS5540C,Oth,5/1/2011,Color,Copier
+Toshiba eS555,Oth,6/1/2009,Mono,Copier
+Toshiba eS556,Oth,1/1/2012,Mono,Copier
+Toshiba eS5560c,Oth,4/1/2014,Color,Copier
+Toshiba eS557,Oth,6/1/2014,Mono,Copier
+Toshiba eS6520c,Oth,10/1/2008,Color,Copier
+Toshiba eS6530c,Oth,10/1/2008,Color,Copier
+Toshiba eS6540C,Oth,5/1/2011,Color,Copier
+Toshiba eS655,Oth,6/1/2009,Mono,Copier
+Toshiba eS6550C,Oth,5/1/2011,Color,Copier
+Toshiba eS656,Oth,1/1/2012,Mono,Copier
+Toshiba eS6560c,Oth,4/1/2014,Color,Copier
+Toshiba eS657,Oth,6/1/2014,Mono,Copier
+Toshiba eS6570c,Oth,4/1/2014,Color,Copier
+Toshiba eS7506AC,Oth,8/1/2016,Color,Copier
+Toshiba eS755,Oth,6/1/2009,Mono,Copier
+Toshiba eS756,Oth,1/1/2012,Mono,Copier
+Toshiba eS757,Oth,6/1/2014,Mono,Copier
+Toshiba eS855,Oth,6/1/2009,Mono,Copier
+Toshiba eS856,Oth,1/1/2012,Mono,Copier
+Toshiba eS857,Oth,6/1/2014,Mono,Copier
+Toshiba eS905,Oth,10/1/2010,Mono,Copier
+Toshiba eS907 / 1057 / 1207,Oth,3/1/2015,Mono,Copier
+Dell B3465,Oth,11/1/2012,Mono,Printer
+HPLJ E65050,HP,6/1/2018,Color,Printer
+HPOJ 7500A,HP,9/1/2010,Color,Printer
+HPOJ 8720,HP,4/1/2016,Color,Printer
+HPPW 772,HP,5/1/2017,Color,Printer
+HPPW 777,HP,5/1/2017,Color,Printer
+Samsung 3471,Oth,11/1/2007,Mono,Printer
+Samsung 3710,Oth,1/1/2011,Mono,Printer
+Xerox 3300 MFP,XER,9/1/2008,Mono,Copier
+HPLJ E55040,HP,6/1/2018,Color,Printer

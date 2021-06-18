@@ -1,0 +1,21 @@
+<!doctype html>
+
+<body>
+    {% if success %}
+        <h4>Successfully imported {{ s_count }} items</h4>
+        <br />
+    {% endif %}
+    {% if had_errors %}
+        {% if error %}
+            <h4>Failed to import: {{ error }}</h4>
+        {% else %}
+            <h4>Failed to import. Please make sure the file is valid and contains the required fields.</h4>
+        {% endif %}
+        <br/>
+    {% endif %}
+    <br />
+    <button>
+        <a href="/proposal/pricing/{{ proposal_id }}">Go to Pricing Detail</a>
+    </button>
+
+</body>

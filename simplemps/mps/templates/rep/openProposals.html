@@ -1,0 +1,74 @@
+{% extends 'baseTemplate.html' %}
+{% load static from staticfiles %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'css/manager/manageReps.css' %}">
+<link rel="stylesheet" href="{% static 'css/rep/openProposals.css' %}">
+<link rel="stylesheet" href="{% static 'csslib/DataTables/datatables.min.css' %}">
+{% endblock %}
+
+{% block page_js %}
+<script type="text/javascript" language="javascript" src="{% static 'js/csrfSetUp.js' %}"></script>
+<script type="text/javascript" language="javascript" src="{% static 'js/rep/openProposals.js' %}"></script>
+<script src="{% static 'jslib/DataTables/datatables.min.js'%}"></script>
+
+{% endblock %}
+
+{% block page_content %}
+{% csrf_token %}
+<div class="grid-x">
+    <div class="cell large-23 align-middle">
+        <div class="text-center callout border-none title">
+            <h6>Open Proposals</h6>
+        </div>
+    </div>
+    <div class='grid-x large-23'>
+        <div class="cell">
+            <div id="table-body">
+                <table id="open-proposals">
+                    <thead style="background-color: var(--mps-yellow);">
+                        <td>Proposal ID</td>
+                        <td>Company</td>
+                        <td>Date Edited</td>
+                        <td>Status</td>
+                        <td>Actions</td>
+                    </thead>
+                    <tbody style="background-color: var(--mps-blue);">
+                        {% if dashboard_prop_prog %}
+                            {% for entry in dashboard_prop_prog%}
+                                <tr>
+                                    <td>{{entry.proposal_id}}</td>
+                                    <td>{{entry.client}}</td>
+                                    <td>{{entry.date_edited}}</td>
+                                    <td>{{entry.status}}</td>
+                                    <td>
+                                        <button class="edit" id="e{{entry.proposal_id}}">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="delete" id="d{{entry.proposal_id}}">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="6" class="text-center">you have no open proposals</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                    <tfoot>
+                        <td colspan="6" class="text-center">
+                            <button id="add-proposal"><i class="fas fa-plus-circle"></i></button>
+                        </td>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="grid-x large-23 hide">
+        <button class="cell large-3 large-offset-21 button proposal-button">New Proposal</button>
+    </div>
+</div>
+{% endblock %}

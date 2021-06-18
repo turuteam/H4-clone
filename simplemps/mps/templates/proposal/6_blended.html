@@ -1,0 +1,797 @@
+{% load static %}
+{% load humanize %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Landing Page</title>
+        <!--Css Importing-->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.min.css" />
+        <!-- <link rel="stylesheet" href="{% static 'css/proposal/6_proposal.css' %}">  -->
+    </head>
+    <style>
+        body{
+                background: #ababab ;
+                color:#000;
+                max-width: 793.700787402px;
+                margin: auto;
+            }
+            section{
+                padding: 7%;
+                background: #fff;
+                border: 1px solid #111;
+                margin-bottom: 9px;
+                position: relative;
+                height: 980px;
+            }
+            img{
+                width:100%;
+            }
+            h1{
+                font-weight: bold;
+                line-height: 1.5em;
+                text-align: center;
+                font-size: 19px;
+                margin-top: 10px;
+            }
+            h2{
+                line-height: 1.3em;
+                font-size: 17px;
+                margin-top: 10px;
+            }
+            h3,h4{
+                font-weight: bold;
+                line-height: 1.3em;
+                font-size: 15px;
+                margin-top: 10px;
+            }
+            p{ 
+                font-size: 11px;
+                font-weight: 400;
+                margin-bottom: 5px;
+            }
+            hr {
+                margin-top: 10px;
+                margin-bottom: 0px;
+                border-top: 1px solid #000;
+            }
+            td {
+                font-size: 11px;
+                border: 1px solid #000 !important;
+                height: 15px;
+                padding-left: 3px;
+                
+            }
+
+            .statement {
+                background-color : lightgrey 
+            }
+          
+            .pricing {
+                background-color : lightgrey;
+            }
+            
+            li {
+                font-size: 11px;
+            }
+            a{
+                color:#0732FF;
+            }
+            .container{
+                width:100%;
+                padding:0px;
+            }
+            input{
+                border: 0;
+                border-bottom: 1px solid;
+                width: 100%;
+            }
+            label{
+                font-weight: 400;
+            }
+            .co_field{
+                display: flex;
+                align-items: center;
+                font-size: 11px;
+                margin-top: 3%;
+            }
+            table{
+                width: 100%;
+            }
+
+            .button {
+                background-color: #4caf50;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+            }
+            th {
+                text-align: center;
+                background: #cacaca;
+                vertical-align: middle;
+                height: 20px;
+                border: 1px solid;
+            }
+            .section-footer{
+                position: absolute;
+                width: 86%;
+                bottom: 50px;
+            }
+     @media print
+            {
+
+                @page 
+                    {
+                        size:  auto;   
+                         margin: 8mm;   
+                    }
+
+                body {
+                color-adjust: exact ;
+                -webkit-print-color-adjust: exact;
+               
+                }
+
+                .statement {
+                    background-color : black !important
+                }
+
+                .pricing {
+                    background-color : lightgrey !important 
+                }
+
+                .table td:nth-child(1) {
+                    background-color : lightgrey !important
+                }
+                
+                .page-break{
+                  display:block;
+                  page-break-before:always;
+                  
+                }
+                .col-md-6{
+                    width: 50%;
+                    float: left;
+                }
+                .row {
+                    margin-right: -15px;
+                    margin-left: -15px;
+                }
+                
+            }
+                .button  {
+                    background-color: #4caf50 !important;
+                    border: none ;
+                    color: rgb(167, 145, 145);
+                    padding: 15px 32px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 16px;
+                }    
+
+                a[href]:after {
+                        content: none !important;
+                    }
+        </style>
+    <body>
+        <section class="page-break">
+            <div id="logo" style="width: 100%">
+                <img src="{{ proposal.logo.url }}" style="max-width: 100%" />
+            </div>
+            <h1 class="text-center" style="text-transform:uppercase">STATEMENT OF WORK<br>FOR<br>{{ client.name }}</h1>
+            <br>
+            <h2><b>Project Name</b></h2>
+            <p>CPI Services</p>
+            <br>
+            <h2><b>Presented to: {{ client.name }}</b></h2>
+            <p>Submitted on: {{ proposal.create_date }}</p>
+            <br>
+            <h2><b>Prepared by:</b></h2>
+            <p><b><i>CDW Solutions & Services-AP-1F</i></b></p>
+            <br>
+        </section>
+        <section class="page-break">
+            <h1>STATEMENT OF WORK</h1>
+            <table class="table">
+                <tbody>
+                <tr>
+                    <td class = "statement"><b>Project Name:</b></td>
+                    <td>CPI Services</td>
+                    <td rowspan="3"><b>Seller Representative</b><br><b>Name: {{ sales_rep.first_name }} {{ sales_rep.last_name }}</b><br><b>Telephone: {{ company.telephone }}</b><br><b>Email: {{ sales_rep.email }}</a></b></td>
+                </tr>
+                <tr>
+                    <td class = "statement"><b>Customer Name:</b></td>
+                    <td><b>{{ client.name }}</b></td>
+                </tr>
+                <tr>
+                    <td class = "statement"><b>CDW Affiliate:</b></td>
+                    <td>CDW Canada Corp.</td>
+                </tr>
+                <tr>
+                    <td class = "statement"><b>SOW Creation Date:</b></td>
+                    <td>{{ proposal.create_date }}</td>
+                    <td rowspan="2"><b>Solution & Services Representative:</b><br>{{ sales_rep.first_name }} {{ sales_rep.last_name }}</td>
+                </tr>
+                <tr>
+                    <td class = "statement"><b>Version:</b></td>
+                    <td>1.0</td>
+                </tr>
+                </tbody>
+            </table>
+            <p>This Statement of Work (“SOW”) is made and entered into on the last signature below (the “SOW Effective Date”) by and between the undersigned, CDW Canada Corp. (“Provider”, “Seller” and “Company”) and {{ client.name }} (“Customer” and “You”).</p>
+            <h1>PROJECT DESCRIPTION</h1>
+            <h2>PROJECT SCOPE</h2>
+            <p>The scope of this engagement is for Seller to provide the Services as specified on Schedule 1 for {{ client.name }}.
+                The terms and conditions as specified in Schedule 1 will govern CDW’s delivery of Services to Customer.
+                Services not specified in this SOW are considered out of scope and will be addressed with a separate SOW or Change Order.</p>
+            <h2>PROJECT SCHEDULING</h2>
+            <p>Customer and Seller, who will jointly manage this project, will together develop timelines for an anticipated schedule
+                (“Anticipated Schedule”) based on Seller’s project management methodology. Any dates, deadlines, timelines or schedules
+                contained in the Anticipated Schedule, in this SOW or otherwise, are estimates only, and the Parties will not rely on them
+                for purposes other than initial planning.</p>
+            <h2>TOTAL FEES</h2>
+            <p>The total fees due and payable under this SOW (“Total Fees”) include both fees for Seller’s performance of work (“Services
+                Fees”) and any other related costs and fees specified (“Expenses”). Unless otherwise specified, taxes will be invoiced but
+                are not included in any numbers or calculations provided herein.</p>
+            <p>Seller will invoice for the Total Fees.</p>
+            <h3>KEY ACTIVITIES AND DELIVERABLES</h3>
+            <h4>CDW Responsibilities</h4>
+            <h3>STANDARD ASSUMPTIONS</h3>
+            <p>1. Seller’s project manager will be the primary contact for any questions or concerns that the Customer may have during this engagement.</p>
+            <p>2. Work and travel for this project will not begin until both parties agree to the project scope and cost.</p>
+            <p>3. Seller and the Customer will regularly review project status, schedule, and issues during the engagement.</p>
+            <br>
+            <hr>
+            <p style="text-align: center;"><b>Page 1</b></p>
+            <p style="margin-top: -37px;">CDW Canada Corp.<br>Proprietary and Confidential</p>
+        </section>
+        <section class="page-break">
+            <p>4. Unless otherwise agreed, all work shall occur during normal business hours, Monday through Friday, 8:00am – 6:00pm,
+                except holidays. A typical work day at a customer location is 8 hours.</p>
+            <p>5. Seller and the Customer agree to cooperate in good faith to provide the services and attain the deliverables outlined in
+                this SOW in a timely and professional manner. Seller’s ability to provide services and attain deliverables depends on the
+                active participation of, and access to, appropriate Partner / Customer resources.</p>
+            <p>6. Seller shall not take responsibility for any product or service performed that is not provided by Seller</p>
+            <p>7. Seller shall not take responsibility for any errors, incompatibilities or defects in third-party software or network
+                devices. Any errors, incompatibilities, or defects in such software or devices may add time and cost to the project.</p>
+            <p>8. Seller is not responsible for delays, errors, or omissions caused or incurred by other parties. Such delays, errors, or
+                omissions may increase the time and cost of the project.</p>
+            <p>9. This SOW shall expire 30 days from the SOW date listed above.</p>
+            <h3>PROJECT-SPECIFIC ASSUMPTIONS</h3>
+            <p>1. See Schedule 1 Terms and Conditions</p>
+            <h3>OUT OF SCOPE</h3>
+            <p>The project team may need to revisit this SOW should it encounter any tasks that are not in scope.</p>
+            <h4>The following are not in scope:</h4>
+            <p>1. Anything not explicitly stated as a deliverable in this SOW.</p>
+            <p>Seller will perform and bill for changes as follows:</p>
+            <p>1. Small changes (less than two days’ work) will be performed once authorized in writing in four-hour increments billed at
+                below rate schedule if onsite, or as per actual if performed remotely.</p>
+            <p>2. Large changes (greater than two days’ work) will be performed once the following occur: 1) the project team prepares
+                a change request that identifies both the effort involved and the price of that effort, and: 2) the Customer approves the
+                change request.</p>
+            <h3>STANDARD CUSTOMER RESPONSIBILITIES</h3>
+            <p>1. The Customer shall designate a primary project contact. This person shall: handle and monitor all communications
+                related to this project and have the authority to act on the Customer’s behalf in matters regarding this project.</p>
+            <p>2. The Customer will provide accurate information regarding network provisioning, TCP/IP settings, software versions,
+                regulatory requirements, and any other information Seller needs to successfully complete this project. If any of this
+                information is not accurate, project timelines and cost will increase.</p>
+            <p>3. The Customer shall grant Seller adequate and reasonable access to its network, services and end-user PCs where
+                necessary. If such access requires authorization and provisioning, the Customer shall inform Seller in advance.</p>
+            <p>4. The Customer shall provide Seller staff adequate working space where they can work on-site.</p>
+            <p>5. The Customer shall provide Internet access to on-site Seller staff.</p>
+            <p>6. The Customer performs all appropriate back-ups.</p>
+            <p>7. The Customer shall prepare the site for project work (e.g. space, cabling, electrical requirements).</p>
+            <p>8. The Customer's employees shall answer Seller questions and provide important information concerning the project on
+                a timely basis (e.g. network design, existing processes, IP addresses, usernames and passwords, etc.). Delays may
+                increase the time and cost of the project.</p>
+            <p>9. The Customer shall ensure that Seller is notified of any issues that may affect this SOW.</p>
+            <h3>PROJECT-SPECIFIC RESPONSIBILITIES</h3>
+            <p>1. See Schedule 1 Terms and Conditions</p>
+            <br><hr>
+            <p style="text-align: center;"><b>Page 2</b></p>
+            <p style="margin-top: -37px;">CDW Canada Corp.<br>Proprietary and Confidential</p>
+        </section>
+        <section class="page-break">
+            <h3>SERVICES FEES</h3>
+            <p>1.0 SEE SCHEDULE 1</p>
+            <h3>GENERAL NOTES</h3>
+            <p>1. Pricing does not include applicable taxes.</p>
+            <p>2. Any associated travel, lodging, transportation, etc. outside of the Greater Toronto Area is billable as actual expenses
+                with receipts, other than meals/food expenses for which a daily $55 per diem will be billed <b>“(Expenses”)</b>.</p>
+            <p>3. Seller bills for both completed milestones and work towards completed milestones each month.</p>
+            <p>4. Monthly summary billing applies at above rate table.</p>
+            <p>5. All products will be billed upon delivery with terms of net invoice.</p>
+            <h2>CUSTOMER-DESIGNATED LOCATIONS</h2>
+            <p>[Seller will provide Services benefiting the locations specified on the attached <b>Exhibit A (“Customer-Designated
+                Locations”)</b>. Any work performed elsewhere, including the below location, is subject to the change control process
+                documented in <b>Exhibit B.]</b> All work is to be carried out remotely. Any work performed elsewhere is subject to the change
+                control process documented in <b>Exhibit B</b>.</p>
+            <h3>SOW TERMS AND CONDITIONS</h3>
+            <h2>CONTACT PERSON(S)</h2>
+            <p>Each Party will appoint a person to act as that Party’s point of contact (“<b>Contact Person</b>”) as the time for performance
+                nears, and will communicate that person’s name and information to the other Party’s Contact Person. The Customer
+                Contact Person is authorized to approve materials and Services provided by Seller, and Seller may rely on the decisions and
+                approvals made by the Customer Contact Person (except that Seller understands that Customer may require a different
+                person to sign any Change Orders amending this SOW). The Customer Contact Person will manage all communications with
+                Seller, and when Services are performed at a Customer-Designated Location, the Customer Contact Person will be present
+                or available. The Parties’ Contact Persons shall be authorized to approve changes in personnel and associated rates for
+                Services under this SOW.</p>
+            <h2>PAYMENT TERMS</h2>
+            <p>See Schedule 1.</p>
+            <h2>EXPIRATION AND TERMINATION</h2>
+            <p>See Schedule 1 Terms and Conditions.</p>
+            <p>This SOW expires and will be of no force or effect unless it is fully executed by Customer and Seller within thirty (30) days
+                from the SOW Creation Date.</p>
+            <h2>MISCELLANEOUS</h2>
+            <p>Seller terms and conditions of Product Sales and Service Projects available on the Seller’s web site at www.cdw.ca
+                (“Webterms”) shall govern the SOW. If there is a conflict between this SOW and the Webterms, then Webterms will control,
+                except as expressly amended in this SOW by specific reference to the Webterms. This SOW and any Change Order may be
+                signed in separate counterparts, each of which shall be deemed an original and all of which together will be deemed to be</p>
+            <br><hr>
+            <p style="text-align: center;"><b>Page 3</b></p>
+            <p style="margin-top: -37px;">CDW Canada Corp.<br>Proprietary and Confidential</p>
+        </section>
+        <section class="page-break">
+            <p>one original. Electronic signatures on this SOW or on any Change Order (or copies of signatures sent via electronic means)
+                are the equivalent of handwritten signatures. This SOW is the proprietary and confidential information of Seller.</p>
+            <h2><b>AUTHORIZED USER FOR COMPUTER INSTALLATIONS</b></h2>
+            <p>If and to the extent Seller and/or its agents, employees, subcontractors, third party service providers ("Seller's Personnel"),
+                at the request of Customer or otherwise pursuant to this Agreement or any Statement of Work issued hereunder, (a) installs
+                or causes to be installed on Customer’s computer systems any computer program or any updates or upgrades to such
+                computer programs (collectively, “Computer Programs”), or (b) having so installed or caused to be installed such Computer
+                Programs, causes an electronic message to be sent from Customer’s computer system, then Customer acknowledges and
+                agrees that Seller and Seller's Personnel, as applicable, shall be authorized user(s) of Customer’s computer system at the time
+                of such installation or transmission for the purposes of Canada’s Anti-Spam Legislation (“CASL”) and its regulations
+                thereunder, as same may be amended from time to time. In connection with the installation of Computer Programs or the
+                transmission of electronic messages set out above by Seller and/or Seller's Personnel, Customer shall indemnify and hold
+                Seller, its Affiliates, and their directors, officers, employees and agents harmless from any loss, cost, damage or expense
+                (including lawyer’s fees) arising out of or in connection with any alleged or actual breach of CASL.</p>
+            <h2>SIGNATURES</h2>
+            <p>In acknowledgement that the parties below have read and understood this Statement of Work and agree to be bound by it,
+                each party has caused this Statement of Work to be signed and transferred by its respective authorized representative.</p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h3>CDW Canada Corp.</h3>
+                        <div class="co_field">
+                            <label>By:</label>
+                            <input type="text" name="signature" id="signature">
+                        </div>
+                        <span>signature</span>
+                        <div class="co_field">
+                            <label>Name:</label>
+                            <input type="text" name="name" id="name">
+                        </div>
+                        <div class="co_field">
+                            <label>Title:</label>
+                            <input type="text" name="title" id="title">
+                        </div>
+                        <div class="co_field">
+                            <label>Date:</label>
+                            <input type="text" name="date" id="date">
+                        </div>
+                        <h3>Mailing Address:</h3>
+                        <p>185 The West Mall Suite 1700</p>
+                        <p>Etobicoke, ON M9C 5L5</p>
+                        <ul>
+                            <li>A purchase order for payment hereunder is attached.</li>
+                            <li>A purchase order is not required for payment hereunder.</li>
+                            <li>The following PSM has given approval:</li>
+                        </ul>
+                        <hr>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>{{ client.name }}</h3>
+                        <div class="co_field">
+                            <label>By:</label>
+                            <input type="text" name="signature1" id="signature1">
+                        </div>
+                        <span>signature</span>
+                        <div class="co_field">
+                            <label>Name:</label>
+                            <input type="text" name="name1" id="name1">
+                        </div>
+                        <div class="co_field">
+                            <label>Title:</label>
+                            <input type="text" name="title1" id="title1">
+                        </div>
+                        <div class="co_field">
+                            <label>Date:</label>
+                            <input type="text" name="date1" id="date1">
+                        </div>
+                        <h3>Mailing Address:</h3>
+                        <div class="co_field">
+                            <label>Street:</label>
+                            <input type="text" name="street" id="street">
+                        </div>
+                        <div class="co_field">
+                            <label>City/PR/Postal Code:</label>
+                            <input type="text" name="postal" id="postal">
+                        </div>
+                        <h3>Billing Contact:</h3>
+                        <div class="co_field">
+                            <label>Street:</label>
+                            <input type="text" name="street1" id="street1">
+                        </div>
+                        <div class="co_field">
+                            <label>City/PR/Postal Code:</label>
+                            <input type="text" name="postal1" id="postal1">
+                        </div>
+                    </div>
+                    <div class="col-md-6"></div>
+                </div>
+            </div>
+            <br><hr>
+            <p style="text-align: center;"><b>Page 4</b></p>
+            <p style="margin-top: -37px;">CDW Canada Corp.<br>Proprietary and Confidential</p>
+        </section>
+        <section class="page-break">
+            <h1>EXHIBIT A.</h1>
+            <h2 style="text-align: center;">CUSTOMER-DESIGNATED LOCATIONS</h2>
+            <table style="text-align: center;">
+                <tbody>
+                <tr>
+                    <td><b>Customer</b></td>
+                    <td><b>Location</b></td>
+                    <td><b>Contact</b></td>
+                </tr>
+                <tr>
+                    <td>{{ client.name }}</td>
+                    <td>{{ client.address }}, {{ client.city }}, {{ client.state }}, {{ client.zipcode }}<br>{{ client.telephone }}</td>
+                    <td>{{ client.contact }}</td>
+                </tr>
+                <tr>
+                    <td><b>Customer Account #</b></td>
+                    <td><b>Scope of Work</b></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Scope of Work</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody>
+            </table>
+            <div style="height: 50vh;"></div>
+            <br><hr>
+            <p style="text-align: center;"><b>Page 5</b></p>
+            <p style="margin-top: -37px;">CDW Canada Corp.<br>Proprietary and Confidential</p>
+        </section>
+        <section class="page-break">
+            <table>
+                <tbody>
+                <tr>
+                    <td colspan="3" rowspan="2" style="text-align: center;">
+                        Schedule 1<br> CPI Agreement <span style="font-size: 12px;">(cost per impression)</span>
+                        <h5>This Agreement (“Agreement”) between CDW (“Company”) and the Customer is drafted in plain English. In this Agreement the Customer is also referred to as “You” and “Your.”</h5>
+                    </td>
+                    <td width="157">CUSTOMER #</td>
+                    <td width="177">AGREEMENT #</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>CUSTOMER LEGAL NAME</td>
+                    <td colspan="4" style="text-transform:uppercase">{{ client.name }}</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">BILLING ADDRESS</td>
+                    <td colspan="4" style="text-transform:uppercase">STREET: {{ client.address }}</td>
+                </tr>
+                <tr>
+                    <td style="text-transform:uppercase">CITY: {{ client.city }}</td>
+                    <td style="text-transform:uppercase">PROVINCE: {{ client.state }}</td>
+                    <td colspan="2">POSTAL CODE: {{ client.zipcode }}</td>
+                </tr>
+                <tr>
+                    <td>PRIMARY CONTACT</td>
+                    <td style="text-transform:uppercase">NAME: {{ client.contact }}</td>
+                    <td>PHONE:
+                        {{ client.telephone }}</td>
+                    <td colspan="2">EMAIL: {{ client.email }}</td>
+                </tr>
+                </tbody>
+            </table>
+            <br>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>COMPANY</td>
+                        <td>CDW Canada Corp.</td>
+                        <td width="201">PHONE: <br>
+                                {{ company.telephone }}</td>
+                        <td colspan="2" width="201">WEBSITE: <BR>
+                                www.cdw.ca</td>
+                    </tr>
+                <tr>
+                    <td>EQUIPMENT DESCRIPTION <span style="font-size: 13px;">(If required, refer to attached schedule)</span></td>
+                    <td colspan="4">See below.</td>
+                </tr>
+                <tr>
+                    <td>EQUIPMENT LOCATION <span style="font-size: 13px;">(If Different Then Above)</span></td>
+                    <td>STREET <span style="font-size: 13px;">(If multiple locations or insufficient space, see schedule attached)</span>
+                        See Customer Designated Location below.</td>
+                    <td>CITY</td>
+                    <td width="157">PROVINCE</td>
+                    <td width="157">POSTAL CODE</td>
+                </tr>
+                </tbody>
+            </table>
+            <br>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>PAYMENT DETAILS</td>
+                        <td>PER IMPRESSION Cost</td>
+                        <td>ADDITIONAL INFORMATON</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Term: {{ proposal.term }}</p>
+                            <p>Frequency: Monthly</p>
+                            <p>Payment:_________________</p>
+                            <p>Start Date:______________</p>
+                            <p>Pre-Authorized Payment:<br>
+                            Yes/No:_____________</p>
+                        </td>
+                        <td>See below</td>
+                        <td>
+                            <p>OEM Toner included?<br>
+                                Yes / No: yes</p>
+                            <p>Service included?<br>
+                                Yes / No:
+                                    {% if proposal.service_type == 'supplies_only' %}
+                                        no</p>
+                                    {% else %}
+                                        yes</p>
+                                    {% endif %}
+                            <p>Equipment owned by the customer?<br>
+                                Yes / No: yes</p>
+                            <p>Additional information attached<br>
+                                Yes / No: yes</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br><hr>
+            <p style="text-align: center;"><b>Page 6</b></p>
+            <p style="margin-top: -37px;">CDW Canada Corp.<br>Proprietary and Confidential</p>
+        </section>
+        <section class="page-break">
+            <h4>Subject: Managed Print Support for printers located in {{ client.city }}, {{ client.state }}.</h4>
+            <p><b>CDW</b> is proposing the following support pricing:</p>
+            <p style="border-bottom: 1px solid;"><b>–{{ proposal.term }} month term</b></p>
+            <table style="text-align: center;">
+                <thead>
+                    <h3 style="text-align: center;">RATE SCHEDULE</h2>
+                    <tr>
+                        <th class = "pricing">Type</th>
+                        <th class = "pricing">Allowance</th>
+                        <th class = "pricing">Base Rate</th>
+                        <th class = "pricing">CPP {{ proposal.term }} months</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if mono %}
+                    <tr>
+                        <td>Mono</td>
+                        {% if mono.base_volume_mono > 0 %}
+                            <td>{{ mono.base_volume_mono|intcomma }}</td>
+                        {% else %}
+                            <td style="background: #eaeaea;"></td>
+                        {% endif %}
+                        {% if mono.monthly_cost > 0 %}
+                            <td>${{ mono.monthly_cost|floatformat:2|intcomma }}</td>
+                        {% else %}
+                            <td style="background: #eaeaea;"></td>
+                        {% endif %}
+                        {% if mono.cpp_mono > 0 %}
+                            <td>${{ mono.cpp_mono|floatformat:4 }}</td>
+                        {% else %}
+                            <td style="background: #eaeaea;"></td>
+                        {% endif %}
+                    </tr>
+                    {% endif %}
+                    {% if mono_on_color %}
+                    <tr>
+                        <td>Mono on Colour</td>
+                        {% if mono_on_color.base_volume_mono_on_color > 0 %}
+                            <td>{{ mono_on_color.base_volume_mono_on_color|intcomma }}</td>
+                        {% else %}
+                            <td style="background: #eaeaea;"></td>
+                        {% endif %}
+                        {% if mono_on_color.monthly_cost > 0 %}
+                            <td>${{ mono_on_color.monthly_cost|floatformat:2|intcomma }}</td>
+                        {% else %}
+                            <td style="background: #eaeaea;"></td>
+                        {% endif %}
+                        {% if mono_on_color.cpp_mono_on_color > 0 %}
+                            <td>${{ mono_on_color.cpp_mono_on_color|floatformat:4 }}</td>
+                        {% else %}
+                            <td style="background: #eaeaea;"></td>
+                        {% endif %}
+                    </tr>
+                    {% endif %}
+                    {% if color %}
+                    <tr>
+                        <td>Colour</td>
+                        {% if color.base_volume_color > 0 %}
+                            <td>{{ color.base_volume_color|intcomma }}</td>
+                        {% else %}
+                            <td style="background: #eaeaea;"></td>
+                        {% endif %}
+                        {% if color.monthly_cost > 0 %}
+                            <td>${{ color.monthly_cost|floatformat:2|intcomma }}</td>
+                        {% else %}
+                            <td style="background: #eaeaea;"></td>
+                        {% endif %}
+                        {% if color.cpp_color > 0 %}
+                            <td>${{ color.cpp_color|floatformat:4 }}</td>
+                        {% else %}
+                            <td style="background: #eaeaea;"></td>
+                        {% endif %}
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+            <br>
+            <br>
+            {% if proposal.service_type == 'total' %}
+                {% if proposal.response_time == '24 Hours' %}
+                    <p>*Next Business Day Service</p>
+                {% elif proposal.response_time == '4 Hours' %}
+                    <p>*4 Hour Service</p>
+                {% else %}
+                    <p>*{{ proposal.response_time }} Service</p>
+                {% endif %}
+            {% elif proposal.service_type == 'service_only' %}  
+                {% if proposal.response_time == '24 Hours' %}
+                    <p>*Next Business Day Service</p>
+                {% elif proposal.response_time == '4 Hours' %}
+                    <p>*4 Hour Service</p>
+                {% else %}
+                    <p>*{{ proposal.response_time }} Service</p>
+                {% endif %}
+            {% endif %}
+            {% if proposal.service_type == 'total' %}
+                <p>*pricing would include all supplies, parts, and labour</p>
+            {% elif proposal.service_type == 'service_only' %}
+                <p>*pricing would include all parts and labour</p>
+            {% elif proposal.service_type == 'supplies_only' %}
+                <p>*pricing would include all supplies</p>
+            {% endif %}
+            <p>*pricing excludes paper as there is no way for us to actively track this item</p>
+            <br><br>
+            <p style="border-bottom: 1px solid;"><b>Other Notes</b></p>
+            <P>*Excludes applicable sales tax</P>
+            <P>*Proposal valid through {{ proposal.expiration_date }}</P>
+            <P>*Install not included</P>
+            <h3 style="text-align: center;"><i>TERMS & CONDITIONS</i></h3>
+            <p>1. You and the Company agree that:</p>
+            <p><b>(1) Services</b></p>
+            <p>a) Service under this Agreement, (the “Service”), includes replacement of all standard parts to maintain the equipment listed by
+                make/model and serial number in this SOW and in all schedules referred to in this SOW, (the “Equipment”) in good condition in
+                accordance with performance specifications and labour necessary to make such parts replacements, technical adjustments, cleaning,
+                and lubrication. Service does not include furnishing of supplies such as staples or paper and may or may not include toner.</p>
+            <p>b) Labour, parts and expense necessary to repair damage and/or malfunctions caused by, but not limited to, non-trained Customer
+                personnel, by accident, abuse, voltage, fire, water, or the use of non-approved items by the Service Provider for use in the Equipment
+                are not covered by this SOW. When such service is required, a cost estimate of labour and material charges will be submitted under
+                a Change Order for CDW’s authorization before work is started.</p>
+            <p>c) All obligations under this SOW will be performed on Customer’s premises during regular business hours, Monday through Friday
+                between 8 AM to 5PM except holidays. Emergency service calls required by Customer that are not performed during regular</p>
+            <br><hr>
+            <p style="text-align: center;"><b>Page 7</b></p>
+            <p style="margin-top: -37px;">CDW Canada Corp.<br>Proprietary and Confidential</p>
+        </section>
+        <section class="page-break">
+            <p>business hours will be on an “as available” basis and will be billed at the then current hourly rates for overtime labour.</p>
+            <p>d) It is understood that the Customer Equipment covered by this SOW is in good condition on the date this SOW becomes effective.
+                Should the Service Provider consider that an overhaul of Customer Equipment is necessary before accepting this SOW, a cost
+                estimate of labour and material charges will be submitted for CDW’s authorization before proceeding with the work. Such charges
+                will be in addition to the rate set forth above.</p>
+            <p>e) If this SOW includes toner, Customer may use the toner only in Equipment covered by the SOW. Customer shall notify the Service
+                Provider of any equipment subsequently acquired by Customer which uses toner cartridges of the same type as those supplied by
+                the Service Provider for the Equipment, and CDW will include the newly acquired Equipment under the SOW. The addition of
+                equipment to this SOW may require an adjustment to the rate per page.</p>
+            <p>f) Used parts and toner cartridge cores, spent or otherwise, supplied by the Service Provider for Customer’s use remain the property
+                of the Service Provider and must be returned to a representative of the Service Provider. A charge of $20.00 per cartridge will be
+                payable if spent toner cartridges are not returned.</p>
+            <p>g) This SOW does not include the rebuilding, reconditioning of, re-installation of or alterations to the Equipment.</p>
+            <p>h) Service on Equipment that is more than seven (7) years old will be provided a best efforts basis and may be withdrawn within 90
+                days’ notice if the Service Provider in its sole discretion believes that acceptable performance standards cannot be maintained.</p>
+            <p>i) All components of any one integral system must be simultaneously covered by a Service Agreement.</p>
+            <p>(2) <b>Commencement:</b> This SOW’s original term (the “Term”) commences on the date (“Commencement Date”) that CDW accepts
+                this SOW and shall remain in effect for the number of calendar months indicated as the “Term” unless terminated by either party
+                for the other party’s default. Unless this SOW is cancelled by CDW or the Service Provider by written notice at least thirty (30) days
+                prior to the completion of the Term, it will be automatically renewed at expiry for a subsequent twelve (12) months until cancelled,
+                without submission of another executed agreement, in accordance with the terms above.</p>
+            <p>(3) <b>Payments:</b> Under this SOW the payments CDW will be required to make are periodic payments based on the schedule included
+                in this SOW.</p>
+            <P>If impressions are included in the Total Payment, plus applicable Taxes, are payable to the Service Provider regardless of usage at,
+                until notice from the Service Provider, the address indicated above. Impressions will be calculated starting the 1st of each month
+                until the last day of each month. All devices under this SOW will be billed a minimum 250 pages per month. Should Customer exceed
+                the included number of impressions during any period of this SOW an Overage charge per impression will be charged based on the
+                SOW’s schedule. CDW shall, within 30 days of the Service Provider’s request therefor, pay the Company an amount (an “Overage
+                Payment”) plus applicable taxes.</P>
+            <p>CDW agrees that the Service Provider, on each anniversary of the Commencement Date, will increase the Charge(s) per Page and
+                Overage Charge(s) per Page, to cover its increased costs up to maximum of 10%. The Rate per Page is also subject to increase if
+                average toner coverage per page is consistently greater than 5% (monochrome) or 20% (colour).</p>
+            <p>The Company shall be entitled to obtain impressions counts at the end of each Payment Period. CDW will provide the Service
+                Provider with any reasonable assistance necessary to permit the Service Provider to obtain accurate impression counts, including
+                facilitating the installation of software and/or hardware to enable electronic meter readings. If electronic meter readings cannot be
+                obtained, Customer representative will provide meter readings to the Service Provider at the end of each billing period. If the Service
+                Provider is unable to ascertain the actual number of impressions Customer have made during the period, the Service Provider shall
+                estimate Customer’s impression usage. CDW shall make an Overage Payment based upon such estimate and future payments shall
+                be adjusted to reflect any difference between actual and estimated usage.</p>
+            <p>(4) <b>Print Quality:</b> Before acceptance of the SOW, the Service Provider may make a sample print on Equipment and obtain a signature
+                from Customer representative attesting to the acceptability of the print quality. Prints which do not meet this standard because of</p>
+            <br><hr>
+            <p style="text-align: center;"><b>Page 8</b></p>
+            <p style="margin-top: -37px;">CDW Canada Corp.<br>Proprietary and Confidential</p>
+        </section>
+        <section class="page-break">
+            <p>factors within the Service Provider’s control can be presented to the Service Provider’s representative for credit against payments
+                due under this SOW.</p>
+            <p>(5) <b>Cancellation:</b> Provided neither You nor the Company is in default under this Agreement, neither you nor the Company may
+                cancel the Agreement. You are in default if:</p>
+            <p>a) You fail to make payments when due.</p>
+            <p>b) You make an assignment for the benefit of Your creditors, are insolvent, commit an act of bankruptcy, take any action to wind-up
+                or dissolve, cease or threaten to cease to do business as a going concern, sell all or substantially all of Your assets, amalgamate, are
+                subject to a change in control or seek any arrangement with your creditors; or</p>
+            <p>c) any proceeding in bankruptcy, receivership, winding-up, dissolution, liquidation or insolvency is commenced by or against You or
+                any of Your property; or</p>
+            <p>d) The Company in good faith believes and has commercially reasonable grounds to believe that the prospect of payment or
+                performance by You under this Agreement is or is about to be impaired or the Equipment is or is about to be placed in jeopardy; or
+                any guarantor of Your obligations under this Agreement disputes or seeks to terminate its guarantee of Your obligations or becomes
+                subject to any of the events in clauses (c) and (d) above.</p>
+            <p>The Company is in default if:</p>
+            <p>a) It is failing to perform its obligations under this Agreement; and</p>
+            <p>b) You have notified the Company in writing of its alleged failure; and</p>
+            <p>c) The Company has failed to remedy any such failure within a period of thirty (30) days of the Company’s receipt of your written
+                notice.</p>
+            <p>d) Service Provider makes an assignment for the benefit of its creditors, are insolvent, commit an act of bankruptcy, take any action
+                to wind-up or dissolve, cease or threaten to cease to do business as a going concern, sell all or substantially all of Service Provider’s
+                assets, amalgamate, are subject to a change in control or seek any arrangement with your creditors; or</p>
+            <p>e) any proceeding in bankruptcy, receivership, winding-up, dissolution, liquidation or insolvency is commenced by or against the
+                Service Provider or any of Service Provider’s property;</p>
+            <p>Upon Your Default, in addition to the Company’s other rights under this Agreement and at law or equity:</p>
+                <p>You shall pay to the Company an amount equal to the sum of:</p>
+            <p>i) all amounts then due and unpaid for all Services performed.</p>
+            <p>ii) the present value (calculated using a discount rate of six percent (6%) per annum, compounded monthly) of the remaining
+                Total Payments due up to the end of the applicable quarter and</p>
+            <p>iii) all other charges which would become payable by the Agreement.</p>
+            <p>Upon the Company’s Default you may cancel this Agreement without further penalty by means of written notice delivered to the
+                Company. You shall pay to the Company any amounts due and unpaid for all Services performed, plus any Enforcement Costs
+                incurred by the Company in collecting such payments, and interest thereon.</p>
+            <p>Customer’s Initials ______________</p>
+            <P>Date:</P>
+            <br><hr>
+            <p style="text-align: center;"><b>Page 9</b></p>
+            <p style="margin-top: -37px;">CDW Canada Corp.<br>Proprietary and Confidential</p>
+            <br>
+            <div id="acceptance">
+                <table>
+                    <tr>
+                        <td colspan="2" style="text-align: center; padding: 8px;">
+                            {% if proposal.status != 'proposal_accepted' %}
+                                <a href="{% url 'mps:accept_proposal' proposal.id %}" class="button">Accept</a>
+                            {% else %}
+                                Accepted on {{ proposal.signed_date }}
+                            {% endif %}
+                        </td>         
+                    </tr>
+                </table>
+            </div>
+        </section>
+    </body>
+</html>

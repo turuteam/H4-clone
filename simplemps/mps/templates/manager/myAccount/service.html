@@ -1,0 +1,111 @@
+{% extends 'manager/myAccount/myAccountTemplate.html' %}
+{% load static from staticfiles %}
+
+{% block my_account_js %}
+<script type="text/javascript" language="javascript" src="{% static 'js/manager/myAccount/service.js' %}"></script>
+<script>
+  // https://docs.djangoproject.com/en/2.2/ref/csrf/#acquiring-the-token-if-csrf-use-sessions-and-csrf-cookie-httponly-are-false
+  function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        // Does this cookie string begin with the name we want?
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+  var csrftoken = getCookie('csrftoken');
+
+  $(document).ready(function () {
+    const csrftoken = getCookie('csrftoken');
+
+    $('.page-cost-input').on('input', function (e) {
+      const pageCostId = $(this).data('page-cost-id');
+      const pageCostSaveButton = $(`[name='${pageCostId}-page-cost-save']`);
+
+      pageCostSaveButton.prop('disabled', false);
+    });
+
+    $('.page-cost-save').click(function (e) {
+      const pageCostId = $(this).data('page-cost-id');
+      const sourceInput = $(`[name='${pageCostId}-source']`);
+      const serviceCPPInput = $(`[name='${pageCostId}-page-cost-service-cpp']`);
+      $(this).prop('disabled', true);
+
+      $.ajax({
+        method: 'PATCH',
+        url: `/api/page-costs/${pageCostId}/`,
+        headers: {
+          "X-CSRFTOKEN": csrftoken
+        },
+        data: {
+        /*  "source": sourceInput.val(),  */
+          "service_cpp": serviceCPPInput.val(),
+        },
+        context: $(this),
+        success: function (data, status, jqXHR) {
+          console.log(data, status);
+        },
+      });
+    });
+  });
+</script>
+{% endblock %}
+
+{% block my_account_content %}
+<div class='grid-x size-14'>
+  <table id="serviceTable" class="cell">
+    <thead>
+      <tr>
+        <th class="th-5">Model Short Name</th>
+        <th class="th-5 text-center">Source Type</th>
+        <th class="th-5 text-center">Worldwide Service CPP</th>
+        <!-- <th class="th-5 text-center">Monthly Carepack Cost</th> -->
+        <!-- <th class="th-5 text-center">Your Recommended Service Cost</th> -->
+        <th class="th-4"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for page_cost in page_costs %}
+      <tr>
+        <td>{{ page_cost.printer.short_model }}</td>
+        <td>
+          <div class="input-group">
+            <class="input-group-label">
+            <input disabled name='{{ page_cost.id }}-source' class="input-group-field page-cost-input" value="{{ page_cost.source }}" type="text" data-page-cost-id="{{ page_cost.id }}">
+          </div>
+        </td>
+        <td>
+          <div class="input-group">
+            <span class="input-group-label">$</span>
+            <input name='{{ page_cost.id }}-page-cost-service-cpp' class="input-group-field page-cost-input" value="{{ page_cost.service_cpp }}" type="number" min="0" step=".0001" data-page-cost-id="{{ page_cost.id }}">
+          </div>
+        </td>
+        <!-- <td>
+          <div class="input-group">
+            <span class="input-group-label">$</span>
+            <input disabled class="input-group-field" value="" step="0.0001" type="number" min="0">
+          </div>
+        </td>
+        <td>
+          <div class="input-group">
+            <span class="input-group-label">$</span>
+            <input disabled class="input-group-field" value="" step="0.0001" type="number" min="0">
+          </div>
+        </td> -->
+        <td class="text-center">
+          <button name="{{ page_cost.id }}-page-cost-save" type="button" class='button page-cost-save' data-page-cost-id="{{ page_cost.id }}" disabled>Save</button>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

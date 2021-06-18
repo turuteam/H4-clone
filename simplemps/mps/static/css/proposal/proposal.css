@@ -1,0 +1,106 @@
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th.text {
+    text-align: left;
+    background: black;
+    color: white;
+    padding: 8px;
+}
+
+th.no-text {
+    background: black;
+}
+
+td.header {
+    border-left: 1px solid black;
+    border-right: 1px solid;
+    padding: 8px;
+}
+
+.button {
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    top: 5px;
+    left: 60px;
+    font-size: 16px;
+}
+
+@media print {
+
+    body {
+        color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+        margin-top: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    table {
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th.text {
+        text-align: left;
+        background: black;
+        color: white;
+        padding: 4px;
+    }
+
+    th.no-text {
+        background: black;
+    }
+
+    td.header {
+        border-left: 1px solid black;
+        border-right: 1px solid;
+        padding: 4px;
+    }
+
+    #logo {
+        width: 100px;
+        height: 50px;
+        margin-top: 0px;
+        margin-bottom: 40px;
+        position: relative;
+        justify-content: right
+    }
+
+
+    .signature_button {
+        visibility: hidden;
+        border-collapse: collapse;
+    }
+
+
+    #managed {
+        margin: auto;
+    }
+
+    p{
+        margin: 0;
+        padding: 1px;
+        line-height: 20px;
+    }
+
+    #acceptance{
+        text-align: center;
+    }
+    #print{
+        text-align: center;
+        width: 50%;
+        margin: 0px;
+        padding: 0px;
+    }
+}

@@ -1,0 +1,41 @@
+{% extends 'self_service/base.html' %}
+{% load static from staticfiles %}
+
+{% block page_css %}
+    {% block proposal_css %}
+        <!-- <link rel="stylesheet" href="{% static 'css/rep/proposal/proposal.css' %}"> -->
+        <link rel="stylesheet" href="/static/css/rep/proposal/details.css">
+        <!-- <link rel="stylesheet" href="../self_service/self-service.css"> -->
+    {% endblock %}
+{% endblock %}
+    
+<!-- {% block page_content %} -->
+    <!-- {% csrf_token %} -->
+    <h2 id="self-service-header">Managed Self-Service Portal</h2>
+    <br>
+    <div class="grid-x">
+        {% include 'self_service/header.html' %}
+    </div>
+    {% block proposal_page_content %}
+    <div class="cell medium-auto medium-cell-block-container">
+        <div class="grid-x grid-padding-x">
+            <div class="cell medium-20 medium-cell-block-y">
+                <div style="color: white; font-weight: bold; margin-top: 25px; margin-left: 300px; margin-right: 300px; font-size: 24px">
+                    <p>Review Agreement And Sign In Gray Box Below</p>
+                    <p>One Of Our Representatives Will Contact You Shortly!</p>
+                </div>
+                
+                {% if proposal.proposal_type == 'cpp' %}
+                    <form action="{% url 'mps:accept_proposal' proposal.id %}" method="POST" id="pleaseWork">
+                {% else %}
+                    <form action="{% url 'mps:accept_proposal' proposal.id %}" method="POST" id="pleaseWork">
+                {% endif %}
+                    {% include path %}
+                </form>
+               
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+<!-- {% endblock %} -->

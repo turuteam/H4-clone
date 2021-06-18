@@ -1,0 +1,278 @@
+{% load static %}
+{% load humanize %}
+<!DOCTYPE html>
+<hmtl>
+<head>
+    <title>Proposal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/proposal/proposal.css' %}">
+</head>
+<body>
+    <div id="logo" style="width: 30%">
+        <img src="{{ proposal.logo.url }}" style="max-width: 100%" />
+    </div>
+    <div>
+        <p>
+            <b>{{ proposal.create_date }}</b><br>
+            <b>{{ client.name }}</b><br>
+            <b>ATTN: {{ client.contact }}</b><br>
+        </p>
+    </div>
+    <div>
+        <p>Dear {{ client.contact }},</p>
+        <p>Thank you for the opportunity to provide pricing for {{ client.name }}.</p>
+    </div>
+    <div>
+        <p><b>Subject: Managed Print Support for devices in {{ client.city }}, {{ client.state }}</b></p>
+        <p>{{ company.name }} is proposing the following support pricing:</p>
+    </div>
+
+    {% if buy_items.items or lease_items.items %}
+    <div id="equipment">
+        <table style="border: 1px solid black; border-collapse: collapse; width: 100%">
+        <tr>
+            <th style="text-align: left; background: black; color: white; padding: 8px;">
+                Equipment
+            </th>
+            <th style="background: black; color: white;"></th>
+        </tr>
+        {% if buy_items.items %}
+        <tr>
+            <td style="border-left: 1px solid black; border-right: 1px solid; padding: 8px;" colspan="2">
+                We recommend you spend ${{ buy_items.total|floatformat:2|intcomma }} on new equipment.  The equipment will be a one-time
+                charge billed up front after the delivery and installation.
+            </td>
+        </tr>
+            {% for item in buy_items.items %}
+        <tr>
+            <td style="border: 1px solid black; background: lightgrey; padding: 8px;">
+                <b>{{ item.long_model }}</b>
+            </td>
+            <td style="border: 1px solid black; background: lightgrey; text-align: center;">
+                ${{ item.proposed_cost|floatformat:2|intcomma }}
+            </td>
+        </tr>
+            {% endfor %}
+        {% endif %}
+
+        {% if lease_items.items %}
+        <tr>
+            <td colspan="2" style="padding: 8px;">
+                We also recommend replacing some of your equipment that will be covered in a lease.
+                Your monthly lease payment will be ${{ lease_items.total|floatformat:2|intcomma }}/month.
+            <td>
+        </tr>
+            {% for item in lease_items.items %}
+        <tr style="border: 1px solid black; background: lightgrey;">
+            <td style="border: 1px solid black; padding: 8px;">
+                <b>{{ item.long_model }}</b>
+            </td>
+            <td style="border: 1px solid black; text-align: center;">
+                ${{ item.lease_payment|floatformat:2|intcomma }}/month ({{ item.lease_term }} Month Term)
+            </td>
+        </tr>
+            {% endfor %}
+        {% endif %}
+        </table>
+    </div>
+    <br>
+    {% endif %}
+
+    <div id="managed">
+        <table style="border: 1px solid black; border-collapse: collapse; width: 100%">
+            <tr>
+                <th style="text-align: left; background: black; color: white; padding: 8px;">Managed Services Contract</th>
+            </tr>
+            <tr>
+                <td>
+                    <ul>
+                        <li>{{ proposal.term }} Month Term</li>
+                        {% if proposal.service_type == 'total' %}
+                            {% if proposal.response_time == '24 Hours' %}
+                                <li>Next Business Day Response Time</li>
+                            {% elif proposal.response_time == '4 Hours' %}
+                                <li>4 Hour Response Time</li>
+                            {% else %}
+                                <li>{{ proposal.response_time }} Response Time</li>
+                            {% endif %}
+                        {% elif proposal.service_type == 'service_only' %}
+                            {% if proposal.response_time == '24 Hours' %}
+                                <li>Next Business Day Response Time</li>
+                            {% elif proposal.response_time == '4 Hours' %}
+                                <li>4 Hour Response Time</li>
+                            {% else %}
+                                <li>{{ proposal.response_time }} Response Time</li>
+                            {% endif %}
+                        {% endif %}
+                        {% if proposal.service_type == 'total' %}
+                            <li>Pricing would include all supplies, parts, and labor</li>
+                        {% elif proposal.service_type == 'service_only' %}
+                            <li>Pricing would include all parts and labor</li>
+                        {% elif proposal.service_type == 'supplies_only' %}
+                            <li>Pricing would include all supplies</li>
+                        {% endif %}
+                        <li>Pricing excludes paper as there is no way for us to actively track this item</li>
+                    </ul>
+                </td>
+            </tr>
+            {% if mono %}
+            <tr>
+                <td style="background: lightgrey; padding: 8px;">
+                    MONO DEVICES
+                    <br>
+                    Monthly Cost: ${{ mono.monthly_cost|floatformat:2|intcomma }}/month per device
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 8px;">
+                    {% for item in mono.items %}
+                        <p>{{ item.device_name  }} ({{ item.device_count }})</p>
+                    {% endfor %}
+                    {% if mono.base_volume_mono > 0 %}
+                        <p>*includes the first {{ mono.base_volume_mono }} mono printed pages per month</p>
+                    {% endif %}
+                    <p>*additional printed pages would be at a rate of ${{ mono.cpp_mono|floatformat:4 }}/page mono</p>
+                </td>
+            </tr>
+            {% endif %}
+            {% if mono_on_color %}
+            <tr>
+                <td style="background: lightgrey; padding: 8px;">
+                    MONO ON COLOR DEVICES
+                    <br>
+                    Monthly Cost: ${{ mono_on_color.monthly_cost|floatformat:2|intcomma }}/month per device
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 8px;">
+                    {% for item in mono_on_color.items %}
+                        <p>{{ item.device_name  }} ({{ item.device_count }})</p>
+                    {% endfor %}
+                    {% if mono_on_color.base_volume_mono_on_color > 0 %}
+                        <p>*includes the first {{ mono_on_color.base_volume_mono_on_color }} mono on color printed pages per month</p>
+                    {% endif %}
+                    <p>*additional printed pages would be at a rate of ${{ mono_on_color.cpp_mono_on_color|floatformat:4 }}/page mono on color</p>
+                </td>
+            </tr>
+            {% endif %}
+            {% if color %}
+            <tr>
+                <td style="background: lightgrey; padding: 8px;">
+                    COLOR DEVICES
+                    <br>
+                    Monthly Cost: ${{ color.monthly_cost|floatformat:2|intcomma }}/month per device
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 8px;">
+                    {% for item in color.items %}
+                        <p>{{ item.device_name  }} ({{ item.device_count }})</p>
+                    {% endfor %}
+                    {% if color.base_volume_color > 0 %}
+                        <p>*includes the first {{ color.base_volume_color }} color printed pages per month</p>
+                    {% endif %}
+                    <p>*additional printed pages would be at a rate of ${{ color.cpp_color|floatformat:4 }}/page color</p>
+                </td>
+            </tr>
+            {% endif %}
+            {% if non_network_devices %}
+                {% for item in non_network_devices %}
+            <tr>
+                <td style="background: lightgrey; padding: 8px;">
+                    Monthly Cost: ${{ item.non_network_cost|floatformat:2|intcomma }}/month per non-network device
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 8px;">
+                    <p>{{ item.device_name }}<p>
+                    <p>*overage rates may apply</p>
+                </td>
+            </tr>
+                {% endfor %}
+            {% endif %}
+        </table>
+    </div>
+    
+    <br>
+
+    <div id="notes">
+        <table style="border: 1px solid black; border-collapse: collapse; width: 100%;">
+            <tr>
+                <th style="background: black; color: white; text-align: left;">
+                    Other Notes
+                </th>
+            </tr>
+            <tr>
+                <td style="padding: 8px">
+                    <p>
+                        **Our proposed equipment cost above is an estimated value that includes the device,
+                        all accessories, installation, and tax.  Once this form is electronically signed and
+                        returned, we will provide you an actual cost on an invoice for the devices specified
+                        in this proposal.
+                    </p>
+                    <br>
+                    <p>
+                        *Proposal valid through {{ proposal.expiration_date }} 
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <br>
+
+    <div id="acceptance">
+        <table style="border: 1px solid black; width: 100%; border-collapse: collapse;">
+            <tr>
+                <th style="background: black; color: white; text-align: left;">
+                    Acceptance
+                </th>
+                <th style="background: black; color: white; text-align: left;"></th>
+            </tr>
+            <tr>
+                <td style="text-align: center; width: 50%;">
+                    <p>{{ company.name }}</p>
+                    <br>
+                    <span></span>
+                    <hr style="width: 50%">
+                    <p>Sign Here</p>
+                    <br>
+                    <p>{{ sales_rep.first_name }} {{ sales_rep.last_name }}</p>
+                    <hr style="width: 50%">
+                    <p>Print Name</p>
+                    <br>
+                    <p>{% now "m/d/Y" %}</p>
+                    <hr style="width: 50%">
+                    <p>Date</p>
+                </td>
+                <td style="text-align: center; width: 50%">
+                    <p>{{ client.name }}</p>
+                    <br>
+                    <span></span>
+                    <hr style="width: 50%">
+                    <p>Sign Here</p>
+                    <br>
+                    <p>{{ client.contact }}</p>
+                    <hr style="width: 50%">
+                    <p>Print Name</p>
+                    <br>
+                    <p>{% now "m/d/Y" %}</p>
+                    <hr style="width: 50%">
+                    <p>Date</p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center; padding: 8px;">
+                    {% if proposal.status != 'proposal_accepted' %}
+                        <a href="{% url 'mps:accept_proposal' proposal.id %}" class="button">Accept</a>
+                    {% else %}
+                        Accepted on {{ proposal.signed_date }}
+                    {% endif %}
+                </td>
+                    
+            </tr>
+        </table>
+    </div>
+    <br>
+</body>
+</hmtl>

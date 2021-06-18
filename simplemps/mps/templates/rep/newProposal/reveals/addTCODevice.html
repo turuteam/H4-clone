@@ -1,0 +1,122 @@
+<div class="reveal" id="addTCODevice" data-reveal data-overlay="true" data-multiple-opened="true">
+  <div class="grid-x grid-padding-y align-middle modal-header mps-blue">
+      <div class="cell large-21 large-offset-1">
+          <h3 class="bold">Add TCO Device</h3>
+      </div>
+      <div class="cell large-1 text-center">
+          <button data-close aria-label="Close reveal" type="button">
+              <h3>X</h3>
+          </button>
+      </div>
+  </div>
+  <div class="grid-x align-middle modal-row">
+      <div class="cell medium-10 medium-offset-2">Manufacturer</div>
+      <div class="cell medium-8 medium-offset-2">
+          <select id="tcoDevice-makeName"></select>
+      </div>
+  </div>
+  <div class="grid-x align-middle modal-row">
+      <div class="cell medium-10 medium-offset-2">Device</div>
+      <div class="cell medium-8 medium-offset-2">
+          <select id="tcoDevice-shortName"></select>
+      </div>
+  </div>
+  <div class="grid-x align-middle modal-row">
+      <div class="cell medium-10 medium-offset-2">Number of Devices</div>
+      <div class="cell medium-8 medium-offset-2">
+          <input id="tcoDevice-quantity" type="number" value="1" min="1">
+      </div>
+  </div>
+  <div class="grid-x align-middle modal-row">
+    <div class="cell medium-10 medium-offset-2">Monthly Lease Payment</div>
+    <div class="cell medium-8 medium-offset-2">
+        <div class="input-group">
+            <span class="input-group-label">$</span>
+            <input id="monthly-lease-payment" class="input-group-field reactive" step="0.25" type="number" min="0">
+        </div>
+    </div>
+</div>
+  <div class="grid-x align-middle modal-row">
+      <div class="cell medium-10 medium-offset-2">Total Monthly Mono Pages</div>
+      <div class="cell medium-8 medium-offset-2">
+          <input id="total-monthly-mono-pages" class='reactive' type="number" min="0" step="100">
+      </div>
+  </div>
+  <div class="grid-x align-middle modal-row">
+      <div class="cell medium-10 medium-offset-2">Total Monthly Color Pages</div>
+      <div class="cell medium-8 medium-offset-2">
+          <input id="total-monthly-color-pages" class='reactive' type="number" min="0" step="100" disabled>
+      </div>
+  </div>
+  <div class="grid-x align-middle modal-row">
+      <div class="cell medium-10 medium-offset-2">Total Monthly Pages Printed</div>
+      <div class="cell medium-8 medium-offset-2">
+          <input id="total-monthly-pages" type="number" min="0" step="100" disabled>
+      </div>
+  </div>
+  <div class="grid-x align-middle modal-row">
+      <div class="cell medium-10 medium-offset-2">Base Volume Mono</div>
+      <div class="cell medium-8 medium-offset-2">
+          <input id="base-volume-mono" class='reactive' type="number" min="0" step="100">
+      </div>
+  </div>
+  <div class="grid-x align-middle modal-row">
+    <div class="cell medium-10 medium-offset-2">Base Rate Mono</div>
+    <div class="cell medium-8 medium-offset-2">
+        <div class="input-group">
+            <span class="input-group-label">$</span>
+            <input id="base-rate-mono" class="input-group-field reactive" step="0.25" type="number" min="0">
+        </div>
+    </div>
+</div>
+  <div class="grid-x align-middle modal-row">
+      <div class="cell medium-10 medium-offset-2">Base Volume Color</div>
+      <div class="cell medium-8 medium-offset-2">
+          <input id="base-volume-color" class='reactive' type="number" min="0" step="100" disabled>
+      </div>
+    </div>
+  <div class="grid-x align-middle modal-row">
+      <div class="cell medium-10 medium-offset-2">Base Rate Color</div>
+      <div class="cell medium-8 medium-offset-2">
+          <div class="input-group">
+              <span class="input-group-label">$</span>
+              <input id="base-rate-color" class="input-group-field reactive" step="0.25" type="number" min="0" disabled>
+          </div>
+      </div>
+  </div>
+  <div class="grid-x align-middle modal-row">
+      <div class="cell medium-10 medium-offset-2">Current Mono CPP</div>
+      <div class="cell medium-8 medium-offset-2">
+          <div class="input-group">
+              <span class="input-group-label">$</span>
+              <input id="current-mono-cpp" class="input-group-field reactive" step="0.0001" type="number" min="0">
+          </div>
+      </div>
+  </div>
+  <div class="grid-x align-middle modal-row">
+      <div class="cell medium-10 medium-offset-2">Current Color CPP</div>
+      <div class="cell medium-8 medium-offset-2">
+          <div class="input-group">
+              <span class="input-group-label">$</span>
+              <input id="current-color-cpp" class="input-group-field reactive" step="0.0001" type="number" min="0" disabled>
+          </div>
+      </div>
+  </div>
+  <div class="grid-x align-middle modal-row hide">
+      <div class="cell medium-8 medium-offset-2">
+          <div class="input-group">
+              <input id="saved-mono-sales" class="input-group-field reactive" type="number" min="0">
+          </div>
+          <div class="input-group">
+              <input id="saved-color-sales" class="input-group-field reactive" type="number" min="0">
+          </div>
+      </div>
+  </div>
+  <div class="grid-x align-middle modal-row" style="margin-bottom: 1rem;">
+      <div class="cell medium-10 medium-offset-2 bold"></div>
+      <div class="cell medium-8 medium-offset-2 text-center">
+          <button id="add-tco-device" class="fake-btn cell size-16 button network-modal-btn" data-close aria-label="Close reveal"
+               disabled>Save</button>
+      </div>
+  </div>
+</div>

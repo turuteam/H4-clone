@@ -1,0 +1,36 @@
+{% if not is_self_service_review_selection %}
+<div class="grid-x">
+    <div class="large-24" style="margin-top:20px;">
+        <table id="price-per-cartridge-table" class="section-table size-12 connectedSortable mono">
+            <thead>
+                <tr>
+                    <th class="">Model</th>
+                    <th class="">Recommended Mono Cartridge Price</th>
+                    <th class="">Recommended Color Cartridge Price</th>
+                    <th class="">Proposed Mono Cartridge Price</th>
+                    <th class="">Proposed Color Cartridge Price</th>
+                    <th class=""></th>
+                </tr>
+            </thead>
+            <tbody id="price-per-cartridge-table-body" style="text-align:center;"></tbody>
+        </table>
+    </div>
+</div>
+{% else %}
+
+<div class="grid-x">
+    <div class="large-24" style="margin-top:20px;">
+        <table id="price-per-cartridge-table" class="section-table size-8 connectedSortable mono">
+            <thead>
+                <tr>
+                    <th class="">Model</th>
+                    <th class="">Mono Cartridge Price</th>
+                    <th class="">Color Cartridge Price</th>
+                </tr>
+            </thead>
+            <tbody id="price-per-cartridge-table-body" style="text-align:center;"></tbody>
+        </table>
+    </div>
+</div>
+
+{% endif %}

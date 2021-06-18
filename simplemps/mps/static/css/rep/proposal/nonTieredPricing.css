@@ -1,0 +1,122 @@
+thead th {
+    text-align: center;
+}
+
+tbody {
+    text-align: right;
+}
+
+tbody>tr>td:first-child {
+    text-align: left;
+}
+
+.subtotal-table th {
+    background-color: var(--mps-blue);
+}
+
+.subtotal-table caption {
+    background-color: darkgrey;
+    border: 0;
+    text-align: center;
+}
+
+.subtotal-table,
+.total-table {
+    height: 91%;
+}
+
+.total-table caption {
+    background-color: darkgrey;
+    border: 1;
+    text-align: center;
+}
+
+.total-table tbody {
+    background: transparent;
+    border: 0;
+    text-align: left;
+}
+
+.total-table td {
+    border: solid 1px gray;
+}
+
+.total-table tbody>tr:nth-child(even) {
+    background: none;
+}
+
+.total-table tbody>tr:nth-child(1)>td:nth-child(3n+1) {
+    background-color: var(--mps-yellow);
+}
+
+.total-table tbody>tr:nth-child(2)>td:nth-child(1) {
+    background-color: var(--mps-blue);
+}
+
+.total-table tbody>tr:nth-child(3)>td:nth-child(3n+1) {
+    background-color: var(--mps-pink);
+}
+
+.total-table tbody>tr:nth-child(4)>td:nth-child(1) {
+    background-color: #d3d3d3;
+}
+
+.total-table tbody>tr>td:nth-child(2),
+.total-table tbody>tr:nth-child(odd)>td:last-child {
+    background-color: #fefefe;
+    text-align: right;
+}
+
+.total-table tbody>tr:nth-child(odd)>td:nth-child(3) {
+    border-top: 0;
+    border-bottom: 0;
+}
+
+.total-table tbody>tr:nth-child(even)>td:last-child {
+    border-right: 0;
+    border-bottom: 0;
+    border-top: 0;
+}
+
+.network-table thead,
+.network-table tbody,
+.network-table tfoot,
+.non-network-table thead,
+.non-network-table tbody,
+.non-network-table tfoot {
+    border: 1px solid black;
+}
+
+.network-table tfoot td,
+.non-network-table tfoot td {
+    padding: 0;
+}
+
+.network-table thead>tr:nth-child(2)>th:nth-child(n+1):nth-child(-n+4) {
+    background-color: var(--mps-blue);
+}
+
+.network-table thead>tr:nth-child(2)>th:nth-child(n+5):nth-child(-n+10) {
+    background-color: var(--mps-yellow);
+}
+
+.network-table thead>tr:nth-child(2)>th:nth-child(n+11):nth-child(-n+13) {
+    background-color: var(--mps-pink);
+}
+
+.non-network-table thead>tr:nth-child(2) {
+    background-color: var(--mps-blue);
+}
+
+.data_table_wrapper label {
+    color: #fefefe;
+}
+
+.red-delete-icon {
+    color: firebrick;
+}
+
+.row.expanded {
+    background-color: lightgray;
+    text-align: center;
+}

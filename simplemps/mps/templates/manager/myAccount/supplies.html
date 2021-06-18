@@ -1,0 +1,298 @@
+{% extends 'manager/myAccount/myAccountTemplate.html' %}
+{% load static from staticfiles %}
+
+{% block my_account_js %}
+<script type="text/javascript" language="javascript" src="{% static 'js/manager/myAccount/supplies.js' %}"></script>
+<script>
+  // https://docs.djangoproject.com/en/2.2/ref/csrf/#acquiring-the-token-if-csrf-use-sessions-and-csrf-cookie-httponly-are-false
+  function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+      var cookies = document.cookie.split(';');
+      for (var i = 0; i < cookies.length; i++) {
+        var cookie = cookies[i].trim();
+        // Does this cookie string begin with the name we want?
+        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+          cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+          break;
+        }
+      }
+    }
+    return cookieValue;
+  }
+  var csrftoken = getCookie('csrftoken');
+
+  $(document).ready(function () {
+    const csrftoken = getCookie('csrftoken');
+
+    $('.toner-price').on('input', function (e) {
+      const tonerId = $(this).data('toner-id');
+      const tonerSaveButton = $(`[name='${tonerId}-toner-save']`);
+      const tonerYield = $(`#${tonerId}-toner-yield`);
+      const tonerCPP = $(`#${tonerId}-toner-cpp`);
+
+      tonerSaveButton.prop('disabled', false);
+      const costPerPage = ($(this).val() / tonerYield.text()).toFixed(4);
+      console.log($(this).val(), tonerYield.text(), costPerPage);
+      tonerCPP.text(costPerPage);
+    });
+
+    $('.toner-save').click(function (e) {
+      const tonerId = $(this).data('toner-id');
+      const tonerPriceInput = $(`[name='${tonerId}-toner-price']`);
+      $(this).prop('disabled', true);
+
+      console.log(tonerPriceInput.val());
+
+      $.ajax({
+        method: 'PATCH',
+        url: `/api/toners/${tonerId}/`,
+        headers: {
+          "X-CSRFTOKEN": csrftoken
+        },
+        data: {
+          "price": tonerPriceInput.val(),
+        },
+        context: $(this),
+        success: function (data, status, jqXHR) {
+          console.log(data, status);
+        },
+      });
+    });
+  });
+</script>
+{% endblock %}
+
+{% block my_account_content %}
+<div class="grid-x tab-section size-14">
+  <ul class="tabs grid-x cell large-23" data-tabs id="supplies-tabs">
+    <li class="tabs-title is-active cell large-8">
+      <a href="#oem" aria-selected="true">OEM</a>
+    </li>
+    <li class="tabs-title cell large-8">
+      <a href="#smp">OEM SMP</a>
+    </li>
+    <li class="tabs-title cell large-8 hidden" id="show-reman">
+      <a href="#reman">Reman</a>
+    </li>
+  </ul>
+</div>
+<div class='grid-x size-14'>
+  <div class="tabs-content tab-independent-content cell large-23" data-tabs-content="supplies-tabs">
+    <div class="tabs-panel is-active" id="oem">
+      <table id="suppliesTable" class="cell">
+        <thead>
+          <tr>
+            <th>
+              Supplies
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <ul class='accordion' data-accordion data-multi-expand='true' data-allow-all-closed='true'>
+                {% for printer in oem.values %}
+                <li class='accordion-item' data-accordion-item>
+                  <a href='#' class='accordion-title'>{{ printer.printer.short_model }}</a>
+                  <div class='accordion-content' data-tab-content>
+                    <ul class='accordion' data-accordion data-multi-expand='true' data-allow-all-closed='true'>
+                      <li class='accordion-item' data-accordion-item>
+                        <a href='#' class='accordion-title'>Toner</a>
+                        <div class='accordion-content' data-tab-content>
+                          <div class='grid-x'>
+                            <table class="cell">
+                              <thead>
+                                <tr>
+                                  <th class="th-4">Color</th>
+                                  <th class="th-4">Part ID</th>
+                                  <th class="th-5">Price</th>
+                                  <th class="th-3">Yield</th>
+                                  <th class="th-4">Cost Per Page</th>
+                                  <th class="th-4"></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {% for toner in printer.toners %}
+                                <tr>
+                                  <td>{{ toner.part_color|capfirst }}</td>
+                                  <td>{{ toner.part_id }}</td>
+                                  <td>
+                                    <div class="input-group" style="margin: auto 0;">
+                                      <span class="input-group-label">$</span>
+                                      <input name='{{ toner.id }}-toner-price' class="input-group-field toner-price" value="{{ toner.price|floatformat:2 }}" step="0.01"
+                                        type="number" min="0" data-toner-id="{{ toner.id }}">
+                                    </div>
+                                  </td>
+                                  <td id="{{ toner.id }}-toner-yield">
+                                    {{ toner.yield_amount }}
+                                  </td>
+                                  <td>
+                                    $<span id='{{ toner.id }}-toner-cpp'>{{ toner.cost_per_page|floatformat:4 }}</span>
+                                  </td>
+                                  <td class="text-center">
+                                    <button name='{{ toner.id }}-toner-save' type="button" class='button toner-save' disabled data-toner-id='{{ toner.id }}'>Save</button>
+                                  </td>
+                                </tr>
+                                {% endfor %}
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tabs-panel" id="smp">
+      <table id="suppliesTable" class="cell">
+        <thead>
+          <tr>
+            <th>
+              Supplies
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <ul class='accordion' data-accordion data-multi-expand='true' data-allow-all-closed='true'>
+                {% for printer in oem_smp.values %}
+                <li class='accordion-item' data-accordion-item>
+                  <a href='#' class='accordion-title'>{{ printer.printer.short_model }}</a>
+                  <div class='accordion-content' data-tab-content>
+                    <ul class='accordion' data-accordion data-multi-expand='true' data-allow-all-closed='true'>
+                      <li class='accordion-item' data-accordion-item>
+                        <a href='#' class='accordion-title'>Toner</a>
+                        <div class='accordion-content' data-tab-content>
+                          <div class='grid-x'>
+                            <table class="cell">
+                              <thead>
+                                <tr>
+                                  <th class="th-4">Color</th>
+                                  <th class="th-4">Part ID</th>
+                                  <th class="th-5">Price</th>
+                                  <th class="th-3">Yield</th>
+                                  <th class="th-4">Cost Per Page</th>
+                                  <th class="th-4"></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {% for toner in printer.toners %}
+                                <tr>
+                                  <td>{{ toner.part_color|capfirst }}</td>
+                                  <td>{{ toner.part_id }}</td>
+                                  <td>
+                                    <div class="input-group" style="margin: auto 0;">
+                                      <span class="input-group-label">$</span>
+                                      <input name='{{ toner.id }}-toner-price' class="input-group-field toner-price" value="{{ toner.price|floatformat:2 }}" step="0.01"
+                                        type="number" min="0" data-toner-id="{{ toner.id }}">
+                                    </div>
+                                  </td>
+                                  <td id='{{ toner.id }}-toner-yield'>
+                                    {{ toner.yield_amount }}
+                                  </td>
+                                  <td>
+                                    $<span id='{{ toner.id }}-toner-cpp'>{{ toner.cost_per_page|floatformat:4 }}</span>
+                                  </td>
+                                  <td class="text-center">
+                                    <button name='{{ toner.id }}-toner-save' type="button" class='button toner-save' disabled data-toner-id='{{ toner.id }}'>Save</button>
+                                  </td>
+                                </tr>
+                                {% endfor %}
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tabs-panel" id="reman">
+      <table id="suppliesTable" class="cell">
+        <thead>
+          <tr>
+            <th>
+              Supplies
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <ul class='accordion' data-accordion data-multi-expand='true' data-allow-all-closed='true'>
+                {% for printer in reman.values %}
+                <li class='accordion-item' data-accordion-item>
+                  <a href='#' class='accordion-title'>{{ printer.printer.short_model }}</a>
+                  <div class='accordion-content' data-tab-content>
+                    <ul class='accordion' data-accordion data-multi-expand='true' data-allow-all-closed='true'>
+                      <li class='accordion-item' data-accordion-item>
+                        <a href='#' class='accordion-title'>Toner</a>
+                        <div class='accordion-content' data-tab-content>
+                          <div class='grid-x'>
+                            <table class="cell">
+                              <thead>
+                                <tr>
+                                  <th class="th-4">Color</th>
+                                  <th class="th-4">Part ID</th>
+                                  <th class="th-5">Price</th>
+                                  <th class="th-3">Yield</th>
+                                  <th class="th-4">Cost Per Page</th>
+                                  <th class="th-4"></th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {% for toner in printer.toners %}
+                                <tr>
+                                  <td>{{ toner.part_color|capfirst }}</td>
+                                  <td>{{ toner.part_id }}</td>
+                                  <td>
+                                    <div class="input-group" style="margin: auto 0;">
+                                      <span class="input-group-label">$</span>
+                                      <input name='{{ toner.id }}-toner-price' class="input-group-field toner-price" value="{{ toner.price|floatformat:2 }}" step="0.01"
+                                        type="number" min="0" data-toner-id="{{ toner.id }}">
+                                    </div>
+                                  </td>
+                                  <td id='{{ toner.id }}-toner-yield'>
+                                    {{ toner.yield_amount }}
+                                  </td>
+                                  <td>
+                                    $<span id='{{ toner.id }}-toner-cpp'>{{ toner.cost_per_page|floatformat:4 }}</span>
+                                  </td>
+                                  <td class="text-center">
+                                    <button name='{{ toner.id }}-toner-save' type="button" class='button toner-save' disabled data-toner-id='{{ toner.id }}'>Save</button>
+                                  </td>
+                                </tr>
+                                {% endfor %}
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

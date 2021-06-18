@@ -1,0 +1,91 @@
+#
+# Install environment for H4 Simple MPS Tool
+# on Ubuntu 16.04 LTS
+#
+# This assumes MPS Tool is being installed on a DEDICATED/NON-SHARED virtual machine
+#
+# To use:
+#          ansible-playbook -i "localhost," -c local ansible/simplemps.yml
+#
+- hosts: localhost 
+  become: yes
+  become_user: root
+
+  vars:
+       simplemps_home: "/opt/simplemps"
+
+  tasks:
+    - name: install nginx
+      apt: pkg=nginx state=installed update_cache=true
+
+    - name: install python3
+      apt: pkg=python3
+
+    - name: install python3-dev
+      apt: pkg=python3-dev
+
+    - name: install python dev tools
+      apt: name={{item}} state=installed
+      with_items:
+           - python-dev
+           - autoconf
+           - g++ 
+           - python2.7-dev
+           - libssl-dev
+
+    - name: install virtualenv
+      apt: pkg=python3-venv
+
+    - name: install uwsgi
+      apt: pkg=uwsgi-core
+
+    - name: install uwsgi-emperor
+      apt: pkg=uwsgi-emperor
+
+    - name: uwsgi python plugin
+      apt: pkg=uwsgi-plugin-python3
+
+    - name: create simple mps home directory
+      file:
+         path: "{{ simplemps_home }}"
+         state: directory
+         owner: www-data
+         group: www-data
+         mode: 0775
+
+    - name: deploy simple mps
+      copy:
+        src: ../simplemps
+        dest: "{{ simplemps_home }}"
+        owner: www-data
+        group: www-data
+        mode: 0664
+
+    - name: Create virtualenv for mps tool
+      pip:
+        requirements: "{{ simplemps_home }}/simplemps/requirements.txt"
+        virtualenv: "{{ simplemps_home }}/mps-env"
+        virtualenv_command: /usr/bin/python3 -m venv
+
+    - name: deploy nginx config
+      copy:
+        src: ../etc/nginx/sites-enabled/default
+        dest: /etc/nginx/sites-enabled/default
+        mode: 0644
+      notify: restart nginx
+
+    - name: deploy uwsgi config
+      copy:
+        src: ../etc/uwsgi-emperor/vassals/simplemps_uwsgi.ini
+        dest: /etc/uwsgi-emperor/vassals/simplemps_uwsgi.ini
+        mode: 0644
+      notify: restart uwsgi-emperor
+
+
+  handlers:
+    - name: restart nginx
+      service: name=nginx state=restarted
+
+    - name: restart uwsgi-emperor
+      service: name=uwsgi-emperor state=restarted
+

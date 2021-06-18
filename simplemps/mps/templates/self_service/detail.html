@@ -1,0 +1,160 @@
+{% extends 'self_service/proposal.html' %}
+{% load static from staticfiles %}
+
+{% block proposal_css %}
+    <link rel="stylesheet" href="{% static 'css/rep/proposal/details.css' %}">
+{% endblock %}
+
+{% block proposal_page_content %}
+    {% if form.errors %}
+        <p>NOT VALID</p>
+        {% for errors in form.errors %}
+            {{ errors }}
+        {% endfor %}
+    {% endif %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form method="post" name="self_service_initialize" enctype="multipart/form-data" action="/self-service/{{ client_self_service_key }}/">
+    <div class="grid-x grid-margin-y grid-padding-y align-bottom">
+        <div id="client-content" class="cell grid-x grid-margin-y large-10" style="min-width: 60%">
+            <div class="grid-x cell large-24 align-middle">
+                <div class="grid-x cell large-24 align-middle">
+                    <div class="cell large-24 large-offset-6">
+                        <p>Contact Details (needed for A formal proposal)</p>
+                    </div>
+                    <div class="cell large-10 large-offset-1">
+                        <p>{{ clientForm.organization_name.label }}</p>
+                    </div>
+                    <div class="cell large-10 large-offset-2">
+                        <div class="select-group input-group">
+                            {{ clientForm.organization_name }}
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-x large-24 align-middle">
+                    <div class="cell large-10 large-offset-1">
+                        <p>{{ clientForm.contact.label }}</p>
+                    </div>
+                    <div class="cell large-10 large-offset-2">
+                        {{ clientForm.contact }}
+                    </div>
+                </div>
+                <div class="grid-x cell large-24 align-middle">
+                    <div class="cell large-10 large-offset-1" id=mfrButton-1>
+                        <p>{{ clientForm.email.label }}</p>
+                    </div>
+                    <div class="cell large-10 large-offset-2">
+                        {{ clientForm.email }}
+                    </div>
+                </div>
+                <div class="grid-x large-24 align-middle">
+                    <div class="cell large-10 large-offset-1" id="locationTT">
+                        <p>{{ clientForm.phone_number.label }}</p>
+                    </div>
+                    <div class="cell large-10 large-offset-2">
+                        {{ clientForm.phone_number }}
+                    </div>
+                </div>
+                <div class="grid-x large-24 align-middle">
+                    <div class="cell large-10 large-offset-1">
+                        <p>{{ clientForm.city.label }}</p>
+                    </div>
+                    <div class="cell large-10 large-offset-2">
+                        {{ clientForm.city }}
+                    </div>
+                </div>
+                <div class="grid-x large-24 align-middle">
+                    <div class="cell large-10 large-offset-1">
+                        <p>{{ clientForm.state.label }}</p>
+                    </div>
+                    <div class="cell large-10 large-offset-2">
+                        {{ clientForm.state }}
+                    </div>
+                </div>
+                <div class="grid-x large-24 align-middle">
+                    <div class="cell large-10 large-offset-1">
+                        <p>{{ clientForm.zipcode.label }}</p>
+                    </div>
+                    <div class="cell large-10 large-offset-2">
+                        {{ clientForm.zipcode }}
+                    </div>
+                </div>
+                <div class="grid-x cell large-24 align-middle">
+                    <div class="cell large-10 large-offset-1">
+                        <p>{{ clientForm.country.label }}</p>
+                    </div>
+                    <div class="cell large-10 large-offset-2">
+                        {{ clientForm.country }}
+                    </div>
+                </div>
+                <div class="grid-x cell large-24 align-middle" id="customer">
+                    <div class="cell large-10 large-offset-1" >
+                        <p>{{ clientForm.rep_company.label }}</p>
+                    </div>
+                    <div class="cell large-10 large-offset-2">
+                        {{ clientForm.rep_company }}
+                    </div>
+                </div>
+                {% if is_staff %}
+                    <div class="grid-x cell large-24 align-middle" id="representative">
+                        <div class="cell large-10 large-offset-1">
+                            <p>{{ clientForm.recurring_client.label }}</p>
+                        </div>
+                        <div class="cell large-10 large-offset-2">
+                            {{ clientForm.recurring_client }}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="grid-x cell large-24 align-middle" style="margin-bottom: 0" id="service-level">
+                <div class="cell large-10 large-offset-1">
+                    <p>Contract Service Level</p>
+                </div>
+                
+                <div class="cell large-10 large-offset-2" style="margin-bottom: 0">
+                    {{ clientForm.contract_service_levels }}
+                </div>
+            </div>
+            <div class="cell large-24 large-offset-1">
+                <p>Contract Type (determines if costs are for just supplies or also for service)</p>
+            </div>
+            
+            {% for option in clientForm.is_supplies_only %}
+            <div class="grid-x cell large-24 align-middle" style="margin-bottom: 0">
+                <div class="cell large-10 large-offset-1">
+                    {% if forloop.counter == 1 %}<p>Contract Type</p>{% endif %}
+                </div>
+                
+                <div class="cell large-10 large-offset-2" style="margin-bottom: 0">
+                    {{ option }}
+                    {{ option.label }}
+                </div>
+            </div>
+            {% endfor %}
+            
+            {% for option in clientForm.is_pricing_per_page %}
+                <div class="grid-x cell large-24 align-middle" style="margin-bottom: 0">
+                    <div class="cell large-10 large-offset-1">
+                        {% if forloop.counter == 1 %}<p>Pricing Type</p>{% endif %}
+                    </div>
+                    <div class="cell large-10 large-offset-2" style="margin-bottom: 0">
+                        {{ option }}
+                        {{ option.label }}
+                    </div>
+                </div>
+            {% endfor %}
+            
+            <div class="grid-x large-24 align-middle button-row">
+                <button class="cell button mps-red" type="reset">Cancel</button>
+                <button class="cell button mps-green" type="submit" >Save</button>
+            </div>
+        </div>
+    </div>
+    {% csrf_token %}
+</form>
+{% endblock %}

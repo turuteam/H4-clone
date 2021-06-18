@@ -1,0 +1,313 @@
+{% load template_group %}
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<style> 
+.self_service_info {
+    background-color: var(--mps-blue-transparent);
+    color: #353535;
+    font-size: .70rem;
+    letter-spacing: 1px;
+    /* margin: 5%; */
+    padding: 1%;
+    min-width: 100%;
+}
+
+/* Style the button that is used to open and close the collapsible content */
+.collapsible {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .collapsible:hover {
+    background-color: #ccc;
+}
+
+/* Style the collapsible content. Note: hidden by default */
+.content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+}
+
+.self_service_info h2 {text-align:center;border: 1px solid black;font-size:1.0rem;color:black;}
+.self_service_info select {margin-bottom:0px;margin-top:8px;}
+
+@media screen and (max-width: 540px) {
+    .self_service_info {
+        margin: 0px;
+    }
+}
+</style>
+
+<form method="post" name="self_service_filters" enctype="multipart/form-data" 
+      action="/self-service/{{ client_self_service_key }}/{{ proposal_id }}/equipment" style="min-width: 100%">
+    <div class="self_service_info">
+        <h2><span>Type of Equipment</span></h2>
+        <div style="padding-left: 10px;">
+            <input type="radio" id="equipment_type" name="equipment_type_new" value=True required checked>
+            <label for="equipment_type">Purchase New</label>
+        </div>
+        <div style="padding-left: 10px;">
+            <input type="radio" id="equipment_type" name="equipment_type_new" value=False required>
+            <label for="equipment_type">Include Existing</label>
+        </div>
+        <div style="display:flex;" id="filter">
+            <select name="filter">
+                <option value="apply">Apply Filters</option>
+                <option value="clear">Clear All</option>
+            </select>
+            <!-- <button class="cell button mps-green" type="submit">Apply Filters</button> -->
+            <button class="button mps-green" type="submit">Go</button>
+        </div>
+        <div class="existing_equipment">
+            <button type="button" class="collapsible" style="background-color: var(--mps-blue-transparent);"><i
+                    class="fas fa-plus-square" style="padding-right: 5%;"></i>Brand
+            </button>
+            <div class="content" style="background-color: var(--mps-blue-transparent);">
+                {% for id, brand in brand.items %}
+                    <input name={{ "brand_"|add:brand }} type="checkbox" value={{ id }}>
+                    <label>{{ brand }}</label>
+                    <br>
+                {% endfor %}
+            </div>
+            <button type="button" class="collapsible" style="background-color: var(--mps-blue-transparent);"><i
+                    class="fas fa-plus-square" style="padding-right: 5%;"></i>Monochrome / Color
+            </button>
+            <div class="content" style="background-color: var(--mps-blue-transparent);">
+                <input type="checkbox" id="monochrome" name="is_mono" value="True">
+                <label for="monochrome">Monochrome</label>
+                <br>
+                <input type="checkbox" id="color" name="is_color" value="True">
+                <label for="color">Color</label>
+            </div>
+        </div>
+        
+    <ul class="new_equipment vertical menu accordion-menu" data-accordion-menu>
+        <li>
+            <a href="#"  style="background-color: var(--mps-blue-transparent);padding-left:10px"><i class="fas fa-plus-square" 
+                 style="padding-right: 5%;"></i>Brand
+            </a>
+            <ul class="menu vertical nested" style="background-color: var(--mps-blue-transparent);margin-left:0;padding-left:10px;">
+                {% for id, brand in brand.items %}
+                <li>
+                    <input name={{ "brand_"|add:brand }} type="checkbox" value={{ id }}>
+                    <label>{{ brand }}</label>
+                    <br>
+                </li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li>
+            <a href="#" style="background-color: var(--mps-blue-transparent);padding-left:10px"><i
+                    class="fas fa-plus-square" style="padding-right: 5%;"></i>Monochrome / Color
+            </a>
+            <ul class="menu vertical nested" style="background-color: var(--mps-blue-transparent);margin-left:0;padding-left:10px;">
+                <li>
+                    <input type="checkbox" name="is_mono" value="True">
+                    <label>Monochrome</label>
+                </li>
+                <li>
+                    <input type="checkbox" name="is_color" value="True">
+                    <label>Color</label>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#"  style="background-color: var(--mps-blue-transparent);padding-left:10px"><i class="fas fa-plus-square" 
+                style="padding-right: 5%;"></i>Print Technology
+            </a>
+            <ul class="menu vertical nested" style="background-color: var(--mps-blue-transparent);margin-left:0;padding-left:10px;">
+                {% for technology in print_technology %}
+                    <li>
+                        <input type="checkbox" name={{ "print_technology_"|add:technology }} value={{ technology }}>
+                        <label>{{ technology }}</label>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li>
+        <a href="#"  style="background-color: var(--mps-blue-transparent);padding-left:10px"><i
+                class="fas fa-plus-square" style="padding-right: 5%;"></i>Functions
+        </a>
+            <ul class="menu vertical nested" style="background-color: var(--mps-blue-transparent);margin-left:0;padding-left:10px;">
+                <li>
+                    <input type="checkbox"name="f_copy" value="True">
+                    <label>Copy</label>
+                </li>
+                <li>
+                    <input type="checkbox"name="f_fax" value="True">
+                    <label>Fax</label>
+                </li>
+                <li>
+                    <input type="checkbox"name="f_print" value="True">
+                    <label>Print</label>
+                </li>
+                <li>
+                    <input type="checkbox"name="f_scan" value="True">
+                    <label>Scan</label>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#"  style="background-color: var(--mps-blue-transparent);padding-left:10px"><i
+                    class="fas fa-plus-square" style="padding-right: 5%;"></i>Max Paper Size
+            </a>
+            <ul class="menu vertical nested" style="background-color: var(--mps-blue-transparent);margin-left:0;padding-left:10px;">
+                {% for papersize in max_papersize %}
+                    <li>
+                        <input type="checkbox" name={{ "max_papersize_"|add:papersize }} value={{ papersize }}>
+                        <label>{{ papersize }}</label>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li>
+            <a href="#"  style="background-color: var(--mps-blue-transparent);padding-left:10px"><i
+                    class="fas fa-plus-square" style="padding-right: 5%;"></i>Auto-Feeder Capacity
+            </a>
+            <ul class="menu vertical nested" style="background-color: var(--mps-blue-transparent);margin-left:0;padding-left:10px;">
+                {% for capacity in o_adf_capacity %}
+                    <li>
+                        <input type="checkbox" name={{ "adf_capacity_"|add:capacity }} value={{ capacity }}>
+                        <label>{{ capacity }}</label>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li>
+            <a href="#"  style="background-color: var(--mps-blue-transparent);padding-left:10px"><i
+                    class="fas fa-plus-square" style="padding-right: 5%;"></i>Connectivity
+            </a>
+            <ul class="menu vertical nested" style="background-color: var(--mps-blue-transparent);margin-left:0;padding-left:10px;">
+                <li>
+                    <input type="checkbox"name="c_bluetooth" value="True">
+                    <label>Blutooth</label>
+                </li>
+                <li>
+                    <input type="checkbox"name="c_ethernet" value="True">
+                    <label>Ethernet</label>
+                </li>
+                <li>
+                    <input type="checkbox"name="c_usb" value="True">
+                    <label>USB</label>
+                </li>
+                <li>
+                    <input type="checkbox"name="c_walk_up" value="True">
+                    <label>Walk-up</label>
+                </li>
+                <li>
+                    <input type="checkbox"name="c_wifi" value="True">
+                    <label>WiFi</label>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#"  style="background-color: var(--mps-blue-transparent);padding-left:10px"><i
+                    class="fas fa-plus-square" style="padding-right: 5%;"></i>Print Speed (Mono)
+            </a>
+            <ul class="menu vertical nested" style="background-color: var(--mps-blue-transparent);margin-left:0;padding-left:10px;">
+                {% for mono_speed in mono_print_speed %}
+                    <li>
+                        <input type="checkbox" name={{ "mono_print_speed_"|add:mono_speed }} value={{ mono_speed }}>
+                        <label>{{ mono_speed }}</label>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li>
+            <a href="#"  style="background-color: var(--mps-blue-transparent);padding-left:10px"><i
+                    class="fas fa-plus-square" style="padding-right: 5%;"></i>Print Speed (Color)
+            </a>
+            <ul class="menu vertical nested" style="background-color: var(--mps-blue-transparent);margin-left:0;padding-left:10px;">
+                {% for color_speed in color_print_speed %}
+                    <li>
+                        <input type="checkbox" name={{ "color_print_speed_"|add:color_speed }} value={{ color_speed }}>
+                        <label>{{ color_speed }}</label>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li>
+            <a href="#"  style="background-color: var(--mps-blue-transparent);padding-left:10px"><i
+                    class="fas fa-plus-square" style="padding-right: 5%;"></i>Additional Features
+            </a>
+            <ul class="menu vertical nested" style="background-color: var(--mps-blue-transparent);margin-left:0;padding-left:10px;">
+                <li>
+                    <input type="checkbox"name="o_borderless" value="True">
+                    <label>Borderless</label>
+                </li>
+                <li>
+                    <input type="checkbox"name="o_duplex" value="True">
+                    <label>Duplex</label>
+                </li>
+                <li>
+                    <input type="checkbox"name="o_duplex_scan" value="True">
+                    <label>Duplex Scan</label>
+                </li>
+                <li>
+                    <input type="checkbox"name="o_staple" value="True">
+                    <label>Staple</label>
+                </li>
+                <li>
+                    <input type="checkbox"name="o_touchscreen" value="True">
+                    <label>Touch Screen</label>
+                </li>
+            </ul>
+        </li>
+        {% comment %}<button type="button" class="collapsible" style="background-color: var(--mps-blue-transparent);"><i
+                class="fas fa-plus-square" style="padding-right: 5%;"></i>Purchase Price
+        </button>
+        <div class="content">
+            <p>Lorem ipsum...</p>
+        </div>{% endcomment %}
+    </ul>
+</div>
+    {% csrf_token %}
+</form>
+
+<script>
+    $(document).ready(function () {
+        $("div.existing_equipment").hide();
+        $("div.new_equipment").show();
+        $("input[name$='equipment_type_new']").click(function () {
+            var value = $(this).val();
+            if (value == "True") {
+                $("div.existing_equipment").hide();
+                $("div.new_equipment").show();
+            }
+            else {
+                $("div.existing_equipment").show();
+                $("div.new_equipment").hide();
+            }
+
+        });
+        var coll = document.getElementsByClassName("collapsible");
+        var i;
+
+        for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    });
+</script>

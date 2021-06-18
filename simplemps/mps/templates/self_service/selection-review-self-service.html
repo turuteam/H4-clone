@@ -1,0 +1,120 @@
+{% extends 'self_service/base.html' %}
+{% load static from staticfiles %}
+
+{% block page_css %}
+    <link rel="stylesheet" href="{% static 'css/rep/proposal/proposal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/rep/proposal/pricing.css' %}">
+    <link rel="stylesheet" href="{% static 'css/rep/proposal/PricePerCartridge.css' %}">
+    <link rel="stylesheet" href="{% static 'css/rep/proposal/tieredPricing.css' %}">
+    <link rel="stylesheet" href="{% static 'css/rep/proposal/nonTieredPricing.css' %}">
+    <link rel="stylesheet" href="{% static 'jslib/jquery-ui/jquery-ui.css' %}" >
+    <link rel="stylesheet" href="{% static 'csslib/DataTables/datatables.min.css' %}">
+{% endblock %}
+
+{% block page_js %}
+    <script type="text/javascript" language="javascript" src="{% static 'js/csrfSetUp.js' %}"></script>
+    <script type="text/javascript" language="javascript" src="{% static 'js/rep/proposal/proposal.js' %}"></script>
+    <script type="text/javascript" language="javascript" src="{% static 'js/rep/proposal/tieredPricing.js' %}"></script>
+    <script type="text/javascript" language="javascript" src="{% static 'js/rep/proposal/nonTieredPricing.js' %}"></script>
+    <script type="text/javascript" language="javascript" src="{% static 'js/rep/proposal/PricePerCartridge.js' %}"></script>
+    <script type="text/javascript" language="javascript" src="{% static 'js/rep/proposal/FlatRate.js' %}"></script>
+    <script type="text/javascript" language="javascript" src="{% static 'js/rep/proposal/pricing.js' %}"></script>
+    <script type="text/javascript" language="javascript" src="{% static 'jslib/jquery-ui/jquery-ui.js' %}"></script>
+    <script src="{% static 'jslib/DataTables/datatables.min.js'%}"></script>
+    <script>
+        var mgmtAsmpts = {{ proposal_json_string | safe }};
+        var proposal_service_items = {{ proposal_service_items | safe}};
+        var proposal_purchase_items = {{ proposal_purchase_items | safe}};
+        var p_objects = {}
+        updatePObjects();
+        var streetFighter = {{ street_fighter }};
+        var minNetMargin = (mgmtAsmpts.min_mono_margin + mgmtAsmpts.min_mono_on_color_margin + mgmtAsmpts.min_color_margin) / 3;
+    </script>
+{% endblock %}
+
+{% block page_content %}
+    {% csrf_token %}
+    
+<!-- <div class="grid-container fluid" style="margin-top: 5rem;"> -->
+    <div class="" style="margin-top: 5rem;"></div>
+<h2 id="self-service-header">Managed Self-Service Portal</h2>
+<br>
+<div class="grid-x">
+    {% include 'self_service/header.html' %}
+</div>
+
+<div class="grid-x grid-padding-x align-spaced bg-white" id="selection-review">
+    <div class="cell medium-6 large-2">
+        <div class="label">Manufacturer</div>
+        <select class="review-sel" id="networkDevice-makeName"></select>
+    </div>
+    <div class="cell medium-6  large-2">
+        <div class="label">Device</div>
+        <select class="review-sel" id="networkDevice-shortName" ></select>
+    </div>
+    <div class="cell  medium-6 large-2">
+        <div class="label">Our Mono Cartridge Price</div>
+        <div class="button retail" id="rcmdp-mono-sales">$<span id="self-service-mono-price">0.00</span></div>
+    </div>
+    <div class="cell  medium-6 large-2">
+        <div class="label">Our Color Price</div>
+        <div class="button retail" id="rcmdp-color-sales">$<span id="self-service-color-price">0.00</span></div>
+    </div>
+    <div class="cell  medium-6 large-2">
+        <div class="label">Your Savings</div>
+        <div class="button retail">$<span id="retail-total-sales-mono-price">0.00</span></div>
+    </div>
+    <div class="cell  medium-6 large-2">
+        <div class="label">Retail Mono Cartridge Price</div>
+        <div class="button retail">$<span id="retail-mono-price">0.00</span></div>
+    </div>
+    <div class="cell  medium-6 large-2">
+        <div class="label">Retail Color Cartridge Price</div>
+            <div class="button retail">$<span id="retail-color-price">0.00</span></div>
+    </div>
+    
+</div>
+<div class="grid-x grid-padding-x align-spaced bg-white" >
+    <a class="button large" href="#" id="next">Click Next To Continue</a>
+</div>
+<div id="self-service-viewer" data-results="{}" ></div>
+                    
+<div>
+    <input class="button self-service-next-page" type="button" value="Continue To Shopping Cart" style="margin-left: 450px">
+</div>
+<!-- this is the script from the compiled directory -->
+<script src="/static/js/rep/proposal/js/compiled/adjuster/bundle.js"></script>
+<style>
+    .bg-white { 
+        color: white;
+        background-color: white;
+    }
+    #selection-review {
+        padding: 15px;
+    }
+    #selection-review div.label {
+        padding: 25px;
+        font-size: 1rem;
+        height: 90px;
+        white-space: normal;
+        text-align: center;
+    }
+    select {margin: 15px 0px 15px;}
+    .retail {
+        padding: 25px;
+        margin-top: 15px;
+    }
+    #networkDevice-shortName, #networkDevice-makeName {
+        width: 230px;
+        height: 65px;   
+    }
+    .medium-offset-1 {
+        padding: 0 15px;
+        margin-left: 0px;
+    }
+    #next {
+       padding: 25px;
+       border-radius: 30px;
+    }
+</style>
+{% endblock %}

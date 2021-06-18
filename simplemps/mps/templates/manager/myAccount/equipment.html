@@ -1,0 +1,264 @@
+{% extends 'manager/myAccount/myAccountTemplate.html' %}
+{% load static from staticfiles %}
+
+{% block my_account_js %}
+<script type="text/javascript" language="javascript" src="{% static 'js/manager/myAccount/equipment.js' %}"></script>
+<script>
+  // https://docs.djangoproject.com/en/2.2/ref/csrf/#acquiring-the-token-if-csrf-use-sessions-and-csrf-cookie-httponly-are-false
+  function getCookie(name) {
+      var cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+          var cookies = document.cookie.split(';');
+          for (var i = 0; i < cookies.length; i++) {
+              var cookie = cookies[i].trim();
+              // Does this cookie string begin with the name we want?
+              if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                  cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                  break;
+              }
+          }
+      }
+      return cookieValue;
+  }
+  var csrftoken = getCookie('csrftoken');
+
+  $(document).ready(function () {
+    const csrftoken = getCookie('csrftoken');
+
+    $('.printer-cost-out-cost').change(function(e) {
+      const printerCostId = $(this).data('printer-cost-id');
+      const printerCostSaveButton = $(`[name='${printerCostId}-printer-cost-save']`);
+
+      // not the same number of decimal points, need to figure this out
+      if ($(this).val() !== $(this).data('initial-value')) {
+        printerCostSaveButton.prop('disabled', false);
+      } else {
+        printerCostSaveButton.prop('disabled', true);
+      }
+    });
+
+    $('.printer-cost-save').click(function(e) {
+      const printerCostId = $(this).data('printer-cost-id');
+      const outCostInput = $(`[name='${printerCostId}-printer-cost-out-cost']`);
+      $(this).prop('disabled', true);
+
+      $.ajax({
+        method: 'PATCH',
+        url: `/api/printer-cost/${printerCostId}/`,
+        headers: {
+          "X-CSRFTOKEN": csrftoken
+        },
+        data: {
+          "out_cost": outCostInput.val(),
+        },
+        context: $(this),
+        success: function(data, status, jqXHR) {
+          outCostInput.data('initial-value', data['out_cost']);
+          console.log(data, status);
+        },
+      });
+    });
+
+    $('.accessory-out-cost').change(function(e) {
+      const accessoryId = $(this).data('accessory-id');
+      const accessorySaveButton = $(`[name='${accessoryId}-accessory-save']`);
+
+      accessorySaveButton.prop('disabled', false);
+    });
+
+    $('.accessory-save').click(function(e) {
+      const accessoryId = $(this).data('accessory-id');
+      const outCostInput = $(`[name='${accessoryId}-accessory-out-cost']`);
+      $(this).prop('disabled', true);
+
+      $.ajax({
+        method: 'PATCH',
+        url: `/api/accessories/${accessoryId}/`,
+        headers: {
+          "X-CSRFTOKEN": csrftoken
+        },
+        data: {
+          "out_cost": outCostInput.val(),
+        },
+        context: $(this),
+        success: function(data, status, jqXHR) {
+          // outCostInput.data('initial-value', data['out_cost']);
+          console.log(data, status);
+        },
+      });
+    });
+
+  });
+  </script>
+{% endblock %}
+
+{% block my_account_content %}
+<div class='grid-x'>
+  <table id="equipmentTable" class="cell large-23 unstriped">
+    <thead>
+      <tr>
+        <th>
+          Printers Offered
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for data in arranged.values %}
+      <tr>
+        <td>
+          <ul class='accordion' data-accordion data-multi-expand='true' data-allow-all-closed='true'>
+            <li class='accordion-item' data-accordion-item>
+              <a href='#' class='accordion-title'>{{ data.printer_family.short_model }}</a>
+              <div class='accordion-content' data-tab-content>
+                <ul class='accordion' data-accordion data-multi-expand='true' data-allow-all-closed='true'>
+                  <li class='accordion-item' data-accordion-item>
+                    <a href='#' class='accordion-title'>Configuration</a>
+                    <div class='accordion-content' data-tab-content>
+                      <div class='grid-x'>
+                        <table class="cell">
+                          <thead>
+                            <tr class="text-center">
+                              <th>Mono Toner</th>
+                              <th>Cyan Toner</th>
+                              <th>Yellow Toner</th>
+                              <th>Magenta Toner</th>
+                              <th>Mono Drum</th>
+                              <th>Cyan Drum</th>
+                              <th>Yellow Drum</th>
+                              <th>Magenta Drum</th>
+                              <th>Mono Developer</th>
+                              <th>Cyan Developer</th>
+                              <th>Yellow Developer</th>
+                              <th>Magenta Developer</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="text-center">
+                              <td>
+                                <input type="checkbox" disabled {% if data.printer_family.mono_toner %}checked{% endif %} />
+                              </td>
+                              <td>
+                                <input type="checkbox" disabled {% if data.printer_family.cyan_toner %}checked{% endif %} />
+                              </td>
+                              <td>
+                                <input type="checkbox" disabled {% if data.printer_family.yellow_toner %}checked{% endif %} />
+                              </td>
+                              <td>
+                                <input type="checkbox" disabled {% if data.printer_family.magenta_toner %}checked{% endif %} />
+                              </td>
+                              <td>
+                                <input type="checkbox" disabled {% if data.printer_family.mono_drum %}checked{% endif %} />
+                              </td>
+                              <td>
+                                <input type="checkbox" disabled {% if data.printer_family.cyan_drum %}checked{% endif %} />
+                              </td>
+                              <td>
+                                <input type="checkbox" disabled {% if data.printer_family.yellow_drum %}checked{% endif %} />
+                              </td>
+                              <td>
+                                <input type="checkbox" disabled {% if data.printer_family.magenta_drum %}checked{% endif %} />
+                              </td>
+                              <td>
+                                <input type="checkbox" disabled {% if data.printer_family.mono_developer %}checked{% endif %} />
+                              </td>
+                              <td>
+                                <input type="checkbox" disabled {% if data.printer_family.cyan_developer %}checked{% endif %} />
+                              </td>
+                              <td>
+                                <input type="checkbox" disabled {% if data.printer_family.yellow_developer %}checked{% endif %} />
+                              </td>
+                              <td>
+                                <input type="checkbox" disabled {% if data.printer_family.magenta_developer %}checked{% endif %} />
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </li>
+                  <li class='accordion-item' data-accordion-item>
+                    <a href='#' class='accordion-title'>Models</a>
+                    <div class='accordion-content' data-tab-content>
+                      <div class='grid-x'>
+                        <table class="cell">
+                          <thead>
+                            <tr>
+                              <th class="th-4">Part ID</th>
+                              <th class="th-8">Name</th>
+                              <th class="th-4">Outcost</th>
+                              <th class="th-4">MSRP</th>
+                              <th class="th-4"></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for model in data.printers %}
+                            <tr>
+                              <td>{{ model.product_id }}</td>
+                              <td>{{ model.long_model }}</td>
+                              <td>
+                                <div class="input-group" style="margin: auto 0;">
+                                  <span class="input-group-label">$</span>
+                                  <input name="{{ model.id }}-printer-cost-out-cost" class="input-group-field printer-cost-out-cost" value="{{ model.out_cost|floatformat:2 }}" step="0.01" type="number" min="0" data-printer-cost-id="{{ model.id }}" data-initial-value="{{ model.out_cost }}">
+                                </div>
+                              </td>
+                              <td>
+                                ${{ model.msrp_cost|floatformat:2 }}
+                              </td>
+                              <td class="text-center">
+                                <button name='{{ model.id }}-printer-cost-save' type="button" class='button printer-cost-save' disabled data-printer-cost-id="{{ model.id }}">Save</button>
+                              </td>
+                            </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </li>
+                  <li class='accordion-item' data-accordion-item>
+                    <a href='#' class='accordion-title'>Accessories</a>
+                    <div class='accordion-content' data-tab-content>
+                      <div class='grid-x'>
+                        <table class="cell">
+                          <thead>
+                            <tr>
+                              <th class="th-4">Part ID</th>
+                              <th class="th-8">Name</th>
+                              <th class="th-4">Outcost</th>
+                              <th class="th-4">MSRP</th>
+                              <th class="th-4"></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {% for accessory in data.accessories %}
+                            <tr>
+                              <td>{{ accessory.part_number }}</td>
+                              <td>{{ accessory.description }}</td>
+                              <td>
+                                <div class="input-group" style="margin: auto 0;">
+                                  <span class="input-group-label">$</span>
+                                  <input name="{{ accessory.id }}-accessory-out-cost" class="input-group-field accessory-out-cost" value="{{ accessory.out_cost|floatformat:2 }}" step="0.01" type="number"
+                                  min="0" data-accessory-id="{{ accessory.id }}">
+                                </div>
+                              </td>
+                              <td>${{ accessory.msrp_cost|floatformat:2 }}</td>
+                              <td class="text-center">
+                                <button name="{{ accessory.id }}-accessory-save" disabled type="button" class='button accessory-save' data-accessory-id="{{ accessory.id }}">Save</button>
+                              </td>
+                            </tr>
+                            {% endfor %}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

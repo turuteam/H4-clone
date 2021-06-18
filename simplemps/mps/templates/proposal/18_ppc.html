@@ -1,0 +1,218 @@
+{% load static %}
+{% load humanize %}
+<!DOCTYPE html>
+<hmtl>
+<head>
+    <title>Proposal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/proposal/proposal.css' %}">
+    <link rel="stylesheet" href="{% static 'css/proposal/signature.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    </style>
+</head>
+<body>
+    <div id="logo" style="width: 30%">
+        <img src="{{ proposal.logo.url }}" style="max-width: 100%" />
+    </div>
+    <div>
+        <p>
+            <b>{{ proposal.create_date }}</b><br>
+            <b>{{ client.name }}</b><br>
+            <b>ATTN: {{ client.contact }}</b><br>
+        </p>
+    </div>
+    <div>
+        <p>Dear {{ client.contact }},</p>
+        <p>Thank you for the opportunity to provide pricing for {{ client.name }}.</p>
+    </div>
+    <div>
+        <p><b>Subject: Managed Print Support for devices in {{ client.city }}, {{ client.state }}</b></p>
+        <p>{{ company.name }} is proposing the following support pricing:</p>
+    </div>
+
+    {% if buy_items.items or lease_items.items %}
+    <div id="equipment">
+        <table style="border: 1px solid black; border-collapse: collapse; width: 100%">
+        <tr>
+            <th style="text-align: left; background: black; color: white; padding: 8px;">
+                Equipment
+            </th>
+            <th style="background: black; color: white;"></th>
+        </tr>
+        {% if buy_items.items %}
+        <tr>
+            <td style="border-left: 1px solid black; border-right: 1px solid; padding: 8px;" colspan="2">
+                We recommend you spend ${{ buy_items.total|floatformat:2|intcomma }} on new equipment.  The equipment will be a one-time
+                charge billed up front after the delivery and installation.
+            </td>
+        </tr>
+            {% for item in buy_items.items %}
+        <tr>
+            <td style="border: 1px solid black; background: lightgrey; padding: 8px;">
+                <b>{{ item.long_model }}</b>
+            </td>
+            <td style="border: 1px solid black; background: lightgrey; text-align: center;">
+                ${{ item.proposed_cost|floatformat:2|intcomma }}
+            </td>
+        </tr>
+            {% endfor %}
+        {% endif %}
+
+        {% if lease_items.items %}
+        <tr>
+            <td colspan="2" style="padding: 8px;">
+                We also recommend replacing some of your equipment that will be covered in a lease.
+                Your monthly lease payment will be ${{ lease_items.total|floatformat:2|intcomma }}/month.
+            <td>
+        </tr>
+            {% for item in lease_items.items %}
+        <tr style="border: 1px solid black; background: lightgrey;">
+            <td style="border: 1px solid black; padding: 8px;">
+                <b>{{ item.long_model }}</b>
+            </td>
+            <td style="border: 1px solid black; text-align: center;">
+                ${{ item.lease_payment|floatformat:2|intcomma }}/month ({{ item.lease_term }} Month Term)
+            </td>
+        </tr>
+            {% endfor %}
+        {% endif %}
+        </table>
+    </div>
+    <br>
+    {% endif %}
+
+    <div id="managed">
+        <table>
+            <tr>
+                <th class="text">Managed Services Contract</th>
+            </tr>
+            <tr>
+                <td>
+                    <ul>
+                        <li>{{ proposal.term }} Month Term</li>
+                        <li>Investment Includes Supplies Only</li>
+                        <li>Pricing excludes paper</li>
+                    </ul>
+                </td>
+            </tr>
+            {% for item in service_items %}
+            <tr>
+                <td style="border: 1px solid black; background: white; padding: 8px;">
+                    <p><b>{{ forloop.counter }}. {{ item.device_name }} ({{ item.device_count }})</b></p>
+                    {% if not item.info.is_non_network %}
+                        <p>Mono Price: ${{ item.ppc_mono|floatformat:2|intcomma }}/cartridge</p>
+                        {% if item.ppc_color > 0 %}
+                            <p>Color Price: ${{ item.ppc_color|floatformat:2|intcomma }}/cartridge</p>
+                        {% endif %}
+                    {% else %}
+                        Monthly Cost: ${{ item.monthly_cost|floatformat:2|intcomma }}/month per non-network device
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    
+    <br>
+
+    <div id="notes">
+        <table>
+            <tr>
+                <th class="text">
+                    Other Notes
+                </th>
+            </tr>
+            <tr>
+                <td style="padding: 8px">
+                    {% if buy_items.items or lease_items.items %}
+                        <p>
+                            **Our proposed equipment cost above is an estimated value that includes the device,
+                            all accessories, installation, and tax.  Once this form is electronically signed and
+                            returned, we will provide you an actual cost on an invoice for the devices specified
+                            in this proposal.
+                        </p>
+                        <br>
+                    {% endif %}
+                    <p>
+                        *Proposal valid through {{ proposal.expiration_date }} 
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <br>
+
+    <div id="acceptance">
+        <table>
+            <tr>
+                <th class="text">
+                    Acceptance
+                </th>
+                <th class="no-text"></th>
+            </tr>
+            <tr>
+                <td style="text-align: center; width: 50%;">
+                    <br/>
+                    <p>{{ company.name }}</p>
+                    <br>
+                    <span></span>
+                    <hr style="width: 50%">
+                    <p>Sign Here</p>
+                    <br>
+                    <br>
+                    <p>{{ sales_rep.first_name }} {{ sales_rep.last_name }}</p>
+                    <hr style="width: 50%">
+                    <p>Print Name</p>
+                    <br>
+                    <p>{% now "m/d/Y" %}</p>
+                    <hr style="width: 50%">
+                    <p>Date</p>
+                </td>
+                <td style="text-align: center; width: 50%">
+                    <!-- <div id="signature_div"> -->
+                        <br/>
+                        <p>{{ client.name }}</p>
+                        {% if proposal.status != 'proposal_accepted' %}
+    
+                            {{ form.media }}
+                            <form action="{% url 'mps:accept_proposal' proposal.id %}" method="POST">
+                                {% for field in form %}
+                                    {{ field }}
+                                    {{ field.label_tag }}
+                                {% endfor %}
+                                <input type="submit" class="signature_button button" value="Accept"/>
+                                {% csrf_token %}
+                            </form>
+                            <br/>
+                           
+                            <p>{{ client.contact }}</p>
+                            <hr style="width: 50%">
+                            <p>Print Name</p>
+                            <br/>
+                            <p>{% now "m/d/Y" %}</p>
+                            <hr style="width: 50%">
+                            <p>Date</p>
+                        {% else %}
+                            Signature:<img id="s_signature" src="{{ form }}"/>
+                            <br>
+                            {{ proposal.signed_date }}
+                            <br>
+                            <br>
+                            <p>{{ client.contact }}</p>
+                            <hr style="width: 50%">
+                            <p>Print Name</p>
+                            <br/>
+                            <p>{% now "m/d/Y" %}</p>
+                            <hr style="width: 50%">
+                            <p>Date</p>
+                        {% endif %}
+                    <!-- </div> -->
+                    
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br>
+</body>
+</hmtl>

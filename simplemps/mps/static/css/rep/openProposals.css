@@ -1,0 +1,27 @@
+.proposal-button {
+    background-color: var(--mps-leaf);
+    font-size: larger;
+}
+
+#open-proposals_wrapper {
+    font-size: 14px;
+}
+
+.table-alt-bg th {
+    background-color: var(--mps-yellow);
+}
+
+.table-alt-bg tbody tr:nth-child(odd) {
+    background-color: var(--mps-blue);
+}
+
+.table-alt-bg tbody tr:nth-child(even) {
+    background-color: var(--mps-pink);
+}
+
+.open-proposals tbody tr:nth-last-child(1) {
+    background-color: #ffffff;
+
+/* .wtBorder {
+    background-color: #F00!important;
+} */

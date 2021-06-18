@@ -1,0 +1,33 @@
+{% load template_group %}
+
+<ul class="vertical menu cell">
+    <li id="dash"><a href="/repDashboard">Dashboard</a></li>
+    <li id="open"><a href="/openProposals">Open Proposals</a></li>
+    <li id="sent"><a href="/sentProposals">Sent Proposals</a></li>
+    <li id="contracts"><a href="/contracts">Contracts</a></li>
+    {% if self_service_key %}
+        <li class=""><a href="/self-service/{{self_service_key}}/">Self Service Portal</a></li>
+    {% endif %}
+    {% if request.user|has_group:'Admin' or request.user|has_group:'Manager' %}
+        <li id="sales_rep"><a href="/SalesRep">Sales Rep</a></li>
+    {% endif %}
+    {% if request.user|has_group:'Admin' %}
+        <li id="reps"><a href="/manageReps">Sales Representatives</a></li>
+    {% endif %}
+    {% if request.user|has_group:'Admin' or request.user|has_group:'Manager' %}
+        <li id="assmpts"><a href="/manageAssumptions">Management Assumptions</a></li>
+    {% endif %}
+    {% if request.user|has_group:'Admin' or request.user|has_group:'Manager' %}
+        <li id="alerts"><a href="/alerts">Proposal Alerts</a></li>
+    {% endif %}
+    {% if request.user|has_group:'Admin' or request.user|has_group:'Manager' %}
+        <li><a href="/myAccount">My Account</a></li>
+    {% endif %}
+    {% if request.user|has_group:'Admin' or request.user|has_group:'Manager' %}
+        <li><a href="/settings">Settings</a></li>
+    {% endif %}
+    {% if request.user|has_group:'Admin' %}
+        <li><a href="/imports">Imports</a></li>
+    {% endif %}
+        <li><a href="{% url 'mps:logout' %}">Logout</a></li>
+</ul>

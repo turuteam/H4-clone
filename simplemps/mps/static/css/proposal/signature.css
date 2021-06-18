@@ -1,0 +1,69 @@
+#signature_div {
+    width: 40%;
+    margin-left: 33%;
+}
+
+.jsign-wrapper {
+    background-color: lightgrey;
+    width: 100%;
+    position: relative;
+    right: 20px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.signature_button {
+    position: relative;
+    cursor: pointer;
+}
+
+.jsign-wrapper .btn {
+    float: left;
+    position: relative;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    color: white;
+    font-weight: bold;
+    background-color: #4caf50;
+    border: None;
+    cursor: pointer;
+
+}
+
+#s_signature {
+    width: 6em;
+    height: 50px;
+}
+
+@media print {
+    
+    /* #signature_div {
+        width: 40%;
+        margin-left: 33%;
+    } */
+    
+    .jsign-wrapper {
+        background-color: lightgrey;
+        width: 100%;
+        position: relative;
+        right: 20px;
+        height: 50px;
+        cursor: pointer;
+    }
+    
+    .signature_button {
+        visibility: hidden;
+    }
+    
+    .jsign-wrapper .btn {
+        visibility: hidden;
+    
+    }
+
+    #signature_div {
+        margin-top: 30px;
+    }
+
+}

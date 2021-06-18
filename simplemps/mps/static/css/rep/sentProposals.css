@@ -1,0 +1,33 @@
+.introduction-top-bar {
+    color: white;
+    padding: 4rem 0rem 4rem 0rem;
+}
+
+.log-out-btn {
+    background-color: var(--mps-blue);
+    letter-spacing: 1px;
+    font-weight: bold;
+    color: white;
+    padding: 0.6rem 1.5rem;
+}
+
+.title {
+    font-weight: bold;
+}
+
+.sent-proposal th, td{
+    text-align: center;
+    border: solid 1px gray;
+}
+
+.sent-proposal th {
+    background-color: var(--mps-yellow);
+}
+
+.sent-proposal tbody tr:nth-child(odd) {
+    background-color: var(--mps-blue);
+}
+
+.sent-proposal tbody tr:nth-child(even) {
+    background-color: var(--mps-pink);
+}

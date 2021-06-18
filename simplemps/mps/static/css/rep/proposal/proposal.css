@@ -1,0 +1,35 @@
+.prop-menu.menu>li>a {
+    padding: 1.5rem 0;
+    background-color: var(--mps-blue-transparent);
+    border: 1px solid darkslategray;
+    color: #353535;
+    margin-bottom: 1rem;
+}
+
+.prop-menu.menu>li>a:hover {
+    color: black;
+}
+
+.prop-menu.menu>li.is-active>a {
+    background-color: white;
+    color: black;
+    border-color: black;
+}
+
+h2 {
+    color: white;
+    font-weight: bold;
+}
+
+.tab-section {
+    margin-bottom: 2rem;
+}
+.Overlay {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    background-color: rgba(255, 255, 255, 0.75);
+    z-index: 9999;
+}

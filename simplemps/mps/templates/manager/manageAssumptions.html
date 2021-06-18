@@ -1,0 +1,682 @@
+{% extends 'baseTemplate.html' %}
+{% load static %}
+{% load template_math %}
+
+{% block page_js %}
+<script type="text/javascript" language="javascript" src="{% static 'js/csrfSetUp.js' %}"></script>
+<script type="text/javascript" language="javascript" src="{% static 'js/manager/manageAssumptions.js' %}"></script>
+{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'css/manager/manageAssumptions.css' %}">
+{% endblock %}
+
+{% block page_content %}
+{% csrf_token %}
+<div class="grid-x grid-padding-y grid-margin-y">
+   <div id="page-header" class="cell large-23 align-middle">
+      <div class="text-center callout">
+         <h6>Management Assumptions</h6>
+      </div>
+   </div>
+   <div class="cell large-10 large-offset-1 assumption-card" style="background-color: #efefef;">
+      <h4 class="cell large-auto text-center">Supplies</h4>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Company Target Margin - Toner</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="input-group">
+               <input id="targetMarginToner" class="input-group-field" value="{{ assumptions.target_margin_toner|mult:100|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+               <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Effective Mono Yield</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="input-group">
+               <input id="effectiveMonoYield" class="input-group-field" value="{{ assumptions.effective_mono_yield|mult:100|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+               <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Effective Color Yield</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="input-group">
+               <input id="effectiveColorYield" class="input-group-field" value="{{ assumptions.effective_color_yield|mult:100|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+               <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Reman Toner Rebates</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="input-group">
+               <input id="remanRebate" class="input-group-field" value="{{ assumptions.reman_rebate|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+               <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>OEM SMP Toner Rebates</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="input-group">
+               <input id="smpRebate" class="input-group-field" value="{{ assumptions.oem_smp_rebate|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+               <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>OEM Toner Rebates</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="input-group">
+               <input id="oemRebate" class="input-group-field" value="{{ assumptions.oem_rebate|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+               <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Shipping / Freight on Toner</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="input-group">
+               <span class="input-group-label">$</span>
+               <input id="shippingOnToner" class="input-group-field" value="{{ assumptions.toner_shipping_price|floatformat:2 }}" step="0.01" type="number" min="0" max="100">
+            </div>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Distribution Markup</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="input-group">
+               <input id="distroMarkup" class="input-group-field" value="{{ assumptions.distro_markup|mult:100|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+               <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Supplies Only Bump</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="input-group">
+               <input id="suppliesOnly" class="input-group-field" value="{{ assumptions.supplies_only|mult:100|floatformat:2 }}" type="number" min="0" max="100" step="0.01">
+               <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Cost/Cartridge - Exclude Non-Toner</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <select id="changeCPCTonerOnly">
+               <option value="1" {% if assumptions.cpc_toner_only %} selected {% endif %}>Yes</option>
+               <option value="0" {% if not assumptions.cpc_toner_only %} selected {% endif %}>No</option>
+            </select>
+         </div>
+      </div>
+   </div>
+   <div class="cell large-10 large-offset-1 assumption-card" style="background-color: #efefef;">
+      <h4 class="cell large-auto text-center">Service</h4>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Company Target Margin - Service</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="input-group">
+               <input id="targetMarginService" class="input-group-field" value="{{ assumptions.target_margin_service|mult:100|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+               <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>4 Hour Response Premium</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="input-group">
+               <input id="goldService" class="input-group-field" value="{{ assumptions.gold_service|mult:100|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+               <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>2 Hour Response Premium</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="input-group">
+               <input id="platinumService" class="input-group-field" value="{{ assumptions.platinum_service|mult:100|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+               <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Service Only Bump</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="input-group">
+               <input id="serviceOnly" class="input-group-field" value="{{ assumptions.service_only|mult:100|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+               <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Inflate Cost for Devices Older Than</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="input-group">
+               <input id="inflateAge" class="input-group-field" value="{{ assumptions.inflate_older_than }}" type="number" min="0" max="100">
+               <span class="input-group-label">Years</span>
+            </div>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Percentage to Inflate Cost</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="input-group">
+               <input id="inflateAgePercent" class="input-group-field" value="{{ assumptions.old_inflate_percent|mult:100|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+               <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-12 large-offset-1">
+            <p>Percentage to Inflate Out of Area Zone 1 Devices</p>
+         </div>
+         <div class="cell large-8 large-offset-2">
+            <div class="input-group">
+               <input id="inflateOOAZ1" class="input-group-field" value="{{ assumptions.inflate_out_of_area|mult:100|floatformat:2 }}" type="number" min="0" max="100">
+               <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-12 large-offset-1">
+            <p>Percentage to Inflate Out of Area Zone 2 Devices</p>
+         </div>
+         <div class="cell large-8 large-offset-2">
+            <div class="input-group">
+               <input id="inflateOOAZ2" class="input-group-field" value="{{ assumptions.tier2_inflate|mult:100|floatformat:2 }}" type="number" min="0" max="100">
+               <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-12 large-offset-1">
+            <p>Percentage to Inflate Out of Area Zone 3 Devices</p>
+         </div>
+         <div class="cell large-8 large-offset-2">
+            <div class="input-group">
+               <input id="inflateOOAZ3" class="input-group-field" value="{{ assumptions.tier3_inflate|mult:100|floatformat:2 }}" type="number" min="0" max="100">
+               <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="cell large-10 large-offset-1 assumption-card" style="background-color: #efefef;">
+      <h4 class="cell large-auto text-center">Non-Network</h4>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Annual Black Cartridges</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <select id="annualMonoCartridges">
+               <option value="0" {% if assumptions.annual_mono_cartridges == 0 %} selected {% endif %}>Unsure</option>
+               {% for i in cart_range %}
+                  <option value="{{ i }}" {% if assumptions.annual_mono_cartridges == i %} selected {% endif %}>{{ i }}</option>
+               {% endfor %}
+            </select>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Maintenance kit replaced every</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="select-group input-group">
+               <select id="kitReplacedAge">
+                  {% for i in maint_range %}
+                     <option value="{{ i }}" {% if assumptions.maintenance_kit_replaced_years == i %} selected {% endif %}>{{ i }}</option>
+                  {% endfor %}
+               </select>
+               <span class="select-label input-group-label">Years</span>
+            </div>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+          <div class="cell large-11 large-offset-1">
+              <p>Percentage Color</p>
+          </div>
+          <div class="cell large-8 large-offset-3">
+              <div class="input-group">
+                  <input id="percentageColor" class="input-group-field" value={{ assumptions.percentage_color|mult:100|floatformat:2 }} type="number" min="0" max="100" step="1">
+                  <span class="input-group-label">%</span>
+              </div>
+          </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Non-Network Device Margin</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="input-group">
+                  <input id="nonNetworkDeviceMargin" class="input-group-field" value={{ assumptions.non_network_margin|mult:100|floatformat:2 }} type="number" min="0" max="100" step="1">
+                  <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="cell large-10 large-offset-1 assumption-card" style="background-color: #efefef;">
+      <h4 class="cell large-auto text-center">Equipment</h4>
+      <div class="grid-x align-middle">
+          <div class="cell large-11 large-offset-1">
+              <p>Company Target Margin - Equipment</p>
+          </div>
+          <div class="cell large-8 large-offset-3">
+              <div class="input-group">
+                  <input id="targetMarginEquipment" class="input-group-field" value={{ assumptions.target_margin_equipment|mult:100|floatformat:2 }} type="number" min="0" max="100" step="0.1">
+                  <span class="input-group-label">%</span>
+              </div>
+          </div>
+      </div>
+      <div class="grid-x align-middle">
+          <div class="cell large-11 large-offset-1">
+              <p>Equipment - Inflate Cost</p>
+          </div>
+          <div class="cell large-8 large-offset-3">
+              <div class="input-group">
+                  <input id="equipmentInflate" class="input-group-field" value={{ assumptions.equipment_inflate|mult:100|floatformat:2 }} type="number" min="0" max="100" step="0.1">
+                  <span class="input-group-label">%</span>
+              </div>
+          </div>
+      </div>
+      <div class="grid-x align-middle">
+          <div class="cell large-11 large-offset-1">
+              <p>Accessories - Inflate Cost</p>
+          </div>
+          <div class="cell large-8 large-offset-3">
+              <div class="input-group">
+                  <input id="accessoryInflate" class="input-group-field" value={{ assumptions.accessory_inflate|mult:100|floatformat:2 }} type="number" min="0" max="100" step="0.1">
+                  <span class="input-group-label">%</span>
+              </div>
+          </div>
+      </div>
+
+      <div class="grid-x align-middle">
+          <div class="cell large-11 large-offset-1">
+              <p>How do I want to pay my commissions</p>
+          </div>
+          <div class="cell large-8 large-offset-3">
+              <select id="eqcommissionSelect">
+                  {% for value, text in eq_commission_choices %}
+                     <option value="{{ value }}" {% if assumptions.eq_commission_type == value %} selected {% endif %}>{{ text }}</option>
+                  {% endfor %}
+              </select>
+          </div>
+      </div>
+      <div id='eqflatPrintInputs' class="grid-x align-middle">
+          <div class="cell large-11 large-offset-1">
+              <p id='eqmarginFlatLabel'>Percentage of Margin Flat Rate</p>
+              <p id='eqrevenueFlatLabel' class='hide'>Percentage of Revenue Flat Rate</p>
+          </div>
+          <div class="cell large-8 large-offset-3">
+              <div class="input-group">
+                 <input id="eqmarginFlatRate" class="input-group-field" value="{{ assumptions.eq_percent_margin_flat_rate|mult:100|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+                 <input id="eqrevenueFlatRate" class="input-group-field hide" value="{{ assumptions.eq_percentage_revenue_flat_rate|mult:100|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+                 <span class="input-group-label">%</span>
+              </div>
+          </div>
+      </div>
+      <div id='eqblendedPrinterInputs' class="grid-x align-middle hide">
+         <div class="cell large-11 large-offset-1">
+            <p>Rate on printers</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="input-group">
+               <input id="eqmarginRateOnPrinters" class="input-group-field" value="{{ assumptions.eq_margin_rate_printers|mult:100|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+               <input id="eqrevenueRateOnPrinters" class="input-group-field hide" value="{{ assumptions.eq_revenue_rate_printers|mult:100|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+               <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+      <div id='eqblendedCopierInputs' class="grid-x align-middle hide">
+         <div class="cell large-11 large-offset-1">
+            <p>Rate on Copiers</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="input-group">
+               <input id="eqmarginRateOnCopiers" class="input-group-field" value="{{ assumptions.eq_margin_rate_copiers|mult:100|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+               <input id="eqrevenueRateOnCopiers" class="input-group-field hide" value="{{ assumptions.eq_revenue_rate_copiers|mult:100|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+               <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="cell large-10 large-offset-1 assumption-card" style="background-color: #efefef;">
+    <h4 class="cell large-auto text-center">Commissions</h4>
+
+     <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+             <p>How do I want to pay my commissions</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+             <select id="commissionSelect">
+                 {% for value, text in commission_choices %}
+                    <option value="{{ value }}" {% if assumptions.commission_type == value %} selected {% endif %}>{{ text }}</option>
+                 {% endfor %}
+             </select>
+         </div>
+     </div>
+     <div id='flatPrintInputs' class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+             <p id='marginFlatLabel'>Percentage of Margin Flat Rate</p>
+             <p id='revenueFlatLabel' class='hide'>Percentage of Revenue Flat Rate</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+             <div class="input-group">
+                <input id="marginFlatRate" class="input-group-field" value="{{ assumptions.percent_margin_flat_rate|mult:100|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+                <input id="revenueFlatRate" class="input-group-field hide" value="{{ assumptions.percentage_revenue_flat_rate|mult:100|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+                <span class="input-group-label">%</span>
+             </div>
+         </div>
+     </div>
+     <div id='blendedPrinterInputs' class="grid-x align-middle hide">
+        <div class="cell large-11 large-offset-1">
+           <p>Rate on printers</p>
+        </div>
+        <div class="cell large-8 large-offset-3">
+           <div class="input-group">
+              <input id="marginRateOnPrinters" class="input-group-field" value="{{ assumptions.margin_rate_printers|mult:100|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+              <input id="revenueRateOnPrinters" class="input-group-field hide" value="{{ assumptions.revenue_rate_printers|mult:100|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+              <span class="input-group-label">%</span>
+           </div>
+        </div>
+     </div>
+     <div id='blendedCopierInputs' class="grid-x align-middle hide">
+        <div class="cell large-11 large-offset-1">
+           <p>Rate on Copiers</p>
+        </div>
+        <div class="cell large-8 large-offset-3">
+           <div class="input-group">
+              <input id="marginRateOnCopiers" class="input-group-field" value="{{ assumptions.margin_rate_copiers|mult:100|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+              <input id="revenueRateOnCopiers" class="input-group-field hide" value="{{ assumptions.revenue_rate_copiers|mult:100|floatformat:2 }}" type="number" min="0" max="100" step="0.1">
+              <span class="input-group-label">%</span>
+           </div>
+        </div>
+     </div>
+     <div class="grid-x align-middle">
+        <div class="cell large-11 large-offset-1">
+           <p>Commission on Non-Network Devices</p>
+        </div>
+        <div class="cell large-8 large-offset-3">
+           <select id="payNonNetworkCommission">
+              {% for value, text in non_net_choices %}
+                 <option value="{{ value|bool_to_int }}" {% if assumptions.pay_non_network_commission == value %} selected {% endif %}>{{ text }}</option>
+              {% endfor %}
+           </select>
+        </div>
+     </div>
+   </div>
+  <div class="cell large-10 large-offset-1 assumption-card" style="background-color: #efefef;">
+      <h4 class="cell large-auto text-center">Contract Term Cost Management</h4>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Base Cost offset for 12 Month Term</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="input-group">
+               <input id="offset12Month" class="input-group-field" value={{ assumptions.cost_offset_12month|mult:100|floatformat:2 }} type="number" min="-100" max="100" step="1">
+               <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Base Cost offset for 24 Month Term</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="input-group">
+               <input id="offset24Month" class="input-group-field" value={{ assumptions.cost_offset_24month|mult:100|floatformat:2 }} type="number" min="-100" max="100" step="1">
+               <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Base Cost offset for 36 Month Term</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="input-group">
+               <input id="offset36Month" class="input-group-field" value={{ assumptions.cost_offset_36month|mult:100|floatformat:2 }} type="number" min="-100" max="100" step="1">
+               <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Base Cost offset for 48 Month Term</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="input-group">
+               <input id="offset48Month" class="input-group-field" value={{ assumptions.cost_offset_48month|mult:100|floatformat:2 }} type="number" min="-100" max="100" step="1">
+               <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Base Cost offset for 60 Month Term</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <div class="input-group">
+               <input id="offset60Month" class="input-group-field" value={{ assumptions.cost_offset_60month|mult:100|floatformat:2 }} type="number" min="-100" max="100" step="1">
+               <span class="input-group-label">%</span>
+            </div>
+         </div>
+      </div>
+   </div>
+  <div class="cell large-10 large-offset-1 assumption-card" style="background-color: #efefef;">
+      <h4 class="cell large-auto text-center">Features</h4>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Allow Cost Per Cartridge Option</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <select id="changeCPCOption">
+               <option value="1" {% if assumptions.allow_cartridge_pricing %} selected {% endif %}>Yes</option>
+               <option value="0" {% if not assumptions.allow_cartridge_pricing %} selected {% endif %}>No</option>
+            </select>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Allow Leasing Option</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <select id="changeLeasingOption">
+               <option value="1" {% if assumptions.allow_leasing %} selected {% endif %}>Yes</option>
+               <option value="0" {% if not assumptions.allow_leasing %} selected {% endif %}>No</option>
+            </select>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Allow Rental Option</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <select id="changeRentalOption">
+               <option value="1" {% if assumptions.allow_rental %} selected {% endif %}>Yes</option>
+               <option value="0" {% if not assumptions.allow_rental %} selected {% endif %}>No</option>
+            </select>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Allow Reman Option</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <select id="changeRemanOption">
+               <option value="1" {% if assumptions.allow_reman %} selected {% endif %}>Yes</option>
+               <option value="0" {% if not assumptions.allow_reman %} selected {% endif %}>No</option>
+            </select>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Allow Tiered Pricing</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <select id="changeTieredOption">
+               <option value="1" {% if assumptions.allow_tiered %} selected {% endif %}>Yes</option>
+               <option value="0" {% if not assumptions.allow_tiered %} selected {% endif %}>No</option>
+            </select>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Allow Term Offsets</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <select id="changeTermOffsetOption">
+               <option value="1" {% if assumptions.allow_term_offsets %} selected {% endif %}>Yes</option>
+               <option value="0" {% if not assumptions.allow_term_offsets %} selected {% endif %}>No</option>
+            </select>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Allow TCO Settings</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <select id="changeTCOOption">
+               <option value="1" {% if assumptions.allow_tco %} selected {% endif %}>Yes</option>
+               <option value="0" {% if not assumptions.allow_tco %} selected {% endif %}>No</option>
+            </select>
+         </div>
+      </div>
+      <div class="grid-x align-middle">
+         <div class="cell large-11 large-offset-1">
+            <p>Allow Flat Rate</p>
+         </div>
+         <div class="cell large-8 large-offset-3">
+            <select id="changeFlatRateOption">
+               <option value="1" {% if assumptions.allow_flat_rate %} selected {% endif %}>Yes</option>
+               <option value="0" {% if not assumptions.allow_flat_rate %} selected {% endif %}>No</option>
+            </select>
+         </div>
+      </div>
+   </div>
+   <div class="cell large-10 large-offset-1 assumption-card" style="background-color: #efefef;">
+      <h4 class="cell large-auto text-center">Miscellaneous</h4>
+      <div class="grid-x align-middle">
+          <div class="cell large-11 large-offset-1">
+              <p>Toner Order Pick List after Reman</p>
+          </div>
+          <div class="cell large-8 large-offset-3">
+              <select id="tonerAfterReman">
+                  {% for value, text in manufacturers %}
+                     {% if text != 'Reman' %}
+                        <option value="{{ value }}" {% if assumptions.toner_after_reman == value %} selected {% endif %}>{{ text }}</option>
+                     {% endif %}
+                  {% endfor %}
+              </select>
+          </div>
+      </div>
+      <div class="grid-x align-middle">
+          <div class="cell large-11 large-offset-1">
+              <p>Toner Order Pick List after OEM SMP</p>
+          </div>
+          <div class="cell large-8 large-offset-3">
+              <select id="tonerAfterSMP">
+                  {% for value, text in manufacturers %}
+                     {% if text != 'OEM SMP' %}
+                        <option value="{{ value }}" {% if assumptions.toner_after_oem_smp == value %} selected {% endif %}>{{ text }}</option>
+                     {% endif %}
+                  {% endfor %}
+              </select>
+          </div>
+      </div>
+      <div class="grid-x align-middle">
+          <div class="cell large-11 large-offset-1">
+              <p>Minimum Mono Margin</p>
+          </div>
+          <div class="cell large-8 large-offset-3">
+              <div class="input-group">
+                  <input id="minMonoMargin" class="input-group-field" value={{ assumptions.min_mono_margin|mult:100|floatformat:2 }} type="number" min="0" max="100" step="0.1">
+                  <span class="input-group-label">%</span>
+
+              </div>
+          </div>
+      </div>
+      <div class="grid-x align-middle">
+          <div class="cell large-11 large-offset-1">
+              <p>Minimum Color Margin</p>
+          </div>
+          <div class="cell large-8 large-offset-3">
+              <div class="input-group">
+                  <input id="minColorMargin" class="input-group-field" value={{ assumptions.min_color_margin|mult:100|floatformat:2 }} type="number" min="0" max="100" step="0.1">
+                  <span class="input-group-label">%</span>
+              </div>
+          </div>
+      </div>
+      <div class="grid-x align-middle">
+          <div class="cell large-11 large-offset-1">
+              <p>Minimum Mono on Color Margin</p>
+          </div>
+          <div class="cell large-8 large-offset-3">
+              <div class="input-group">
+                  <input id="minMonoOnColorMargin" class="input-group-field" value={{ assumptions.min_mono_on_color_margin|mult:100|floatformat:2 }} type="number" min="0" max="100" step="0.1">
+                  <span class="input-group-label">%</span>
+              </div>
+          </div>
+      </div>
+      <div class="grid-x align-middle">
+          <div class="cell large-11 large-offset-1">
+              <p>Change Device Price with Base</p>
+          </div>
+          <div class="cell large-8 large-offset-3">
+              <select id="changeDevicePriceBase">
+                  <option value="1" {% if assumptions.change_device_price_base %} selected {% endif %}>Yes</option>
+                  <option value="0" {% if not assumptions.change_device_price_base %} selected {% endif %}>No</option>
+              </select>
+          </div>
+      </div>
+      <div class="grid-x align-middle">
+          <div class="cell large-11 large-offset-1">
+              <p>Managed Cartridge - Inflate Cost</p>
+          </div>
+          <div class="cell large-8 large-offset-3">
+              <div class="input-group">
+                  <input id="managedCartridgeInflate" class="input-group-field" value={{ assumptions.managed_cartridge_inflate|mult:100|floatformat:2 }} type="number" min="0" max="100" step="0.5">
+                  <span class="input-group-label">%</span>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="cell large-11 large-offset-1">
+            <p> </p>
+</div>
+<a class="button large-offset-18" id="save" style="float: center;">Save</a>
+{% endblock %}

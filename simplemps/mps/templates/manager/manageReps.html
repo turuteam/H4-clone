@@ -1,0 +1,114 @@
+{% extends 'baseTemplate.html' %}
+{% load static from staticfiles %}
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'css/manager/manageReps.css' %}">
+
+{% endblock %}
+{% block page_js %}
+<script type="text/javascript" language="javascript" src="{% static 'jslib/handsontable.full.min.js' %}"></script>
+<script type="text/javascript" language="javascript" src="{% static 'js/manager/manageReps.js' %}"></script>
+{% endblock %}
+
+{% block page_content %}
+{% csrf_token %}
+<div class="grid-x">
+    <div class="cell large-23 align-middle">
+        <div class="text-center callout border-none title">
+            <h6>Manage Your Representatives</h6>
+        </div>
+    </div>
+    <div class="grid-x large-23">
+        <div class="cell align-middle medium-cell-block">
+            <table class="radius bordered shadow hover rep-table size-14">
+                <thead>
+                    <tr>
+                        <th>Representative</th>
+                        <th>Pending Proposals</th>
+                        <th>Sent Proposals</th>
+                        <th>Unsigned Contracts</th>
+                        <th>Closed Contracts</th>
+                        <th>Estimated Monthly MPS Sales</th>
+                        <th>Estimated Monthly Equipment Sales</th>
+                        <th>Actions</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td>{{user.firstName}} {{user.lastName}}</td>
+                            <td>{{pendingProposalMap|get_value:user}}</td>
+                            <td>{{sentProposalMap|get_value:user}}</td>
+                            <td>{{unsignedContractMap|get_value:user}}</td>
+                            <td>{{closedContractMap|get_value:user}}</td>
+                            <td>${{mpsSaleMap|get_value:user}}</td>
+                            <td>${{equipmentSaleMap|get_value:user}}</td>
+                            <td>
+                                <button onclick="">
+                                    <i class="fa fa-search size-14"></i></button>
+                                <button value={{user.id}} onclick="editUser(this.value)">
+                                    <i class="fa fa-edit size-14"></i></button>
+                                <button value={{user.id}} onclick="deleteReps(this.value)">
+                                    <i class="fa fa-trash-alt size-14"></i></button>
+                            </td>
+                        </tr>
+                        <div id={{user.id}} class="modal">
+                            <div class="modal-content">
+                                <div class="grid-x align-middle">
+                                    <div class="cell large-11 large-offset-1">
+                                       <p>First name : </p>
+                                    </div>
+                                    <div class="cell large-8 large-offset-3">
+                                       <div class="input-group">
+                                          <input class="input-group-field" value={{user.firstName}} id="userFirstName">
+
+                                       </div>
+                                    </div>
+                                </div>
+                                <div class="grid-x align-middle">
+                                    <div class="cell large-11 large-offset-1">
+                                       <p>Last name : </p>
+                                    </div>
+                                    <div class="cell large-8 large-offset-3">
+                                       <div class="input-group">
+                                          <input class="input-group-field" value={{user.lastName}} id="userLastName">
+
+                                       </div>
+                                    </div>
+                                </div>
+                                <div class="grid-x align-middle">
+                                    <div class="cell large-11 large-offset-1">
+                                       <p>User's email : </p>
+                                    </div>
+                                    <div class="cell large-8 large-offset-3">
+                                       <div class="input-group">
+                                          <input class="input-group-field" value={{user.email}} id="userEmail">
+
+                                       </div>
+                                    </div>
+                                </div>
+                                <div class="grid-x align-middle">
+                                    <div class="cell large-11 large-offset-1">
+                                       <p>Phone number :  </p>
+                                    </div>
+                                    <div class="cell large-8 large-offset-3">
+                                       <div class="input-group">
+                                          <input class="input-group-field" value={{user.phoneNumber}} id="userNumber">
+
+                                       </div>
+                                    </div>
+                                </div>
+                                <div class="button-group grid-x align-right">
+                                    <a id={{user.id}} class="button" onclick="closeDiv(this.id)"> Cancel </a>
+                                    <a id={{user.id}} class="button" onclick="updateDiv(this.id)"> Submit </a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

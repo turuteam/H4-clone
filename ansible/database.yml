@@ -1,0 +1,57 @@
+#
+# Install environment for H4 Simple MPS Tool
+# on Ubuntu 16.04 LTS
+#
+# This assumes MPS Tool is being installed on a DEDICATED/NON-SHARED virtual machine
+#
+# To use:
+#          ansible-playbook -i "localhost," -c local ansible/database.yml
+#
+- hosts: localhost 
+  become: yes
+  become_user: root
+
+  vars:
+       mps_dir: "/opt/simplemps"
+
+  tasks:
+    - name: install db
+      apt: name={{item}} state=installed
+      with_items:
+           - postgresql
+           - postgresql-contrib
+
+    - name: install psycopg2 python package
+      pip:
+        name: psycopg2
+
+    - name: create db
+      become: true
+      become_user: postgres
+      postgresql_db:
+        name: simplemps_dev
+        encoding: UTF-8
+        #notify:
+        #- restore db
+
+    - name: create db user
+      become: true
+      become_user: postgres
+      postgresql_user:
+        db: simplemps_liuz6
+        name: simplemps_user
+        password: VrxfL04iEAuJ6pB8
+        encrypted: true
+
+#TODO: Add code to load db schema and data here?
+
+
+  handlers:
+    - name: restart uwsgi-emperor
+      service: name=uwsgi-emperor state=restarted
+
+      #    - name: restore db
+      #become: true
+      #become_user: postgres
+      #postgresql_db: name=simplemps state=restore target=../database/dump.sql
+

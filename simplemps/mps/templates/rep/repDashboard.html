@@ -1,0 +1,166 @@
+{% extends 'baseTemplate.html' %}
+{% load static from staticfiles %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'css/rep/repDashboard.css' %}">
+<link rel="stylesheet" href="{% static 'csslib/DataTables/datatables.min.css' %}">
+<!-- <link rel="stylesheet" href="{% static 'csslib/handsontable.full.min.css' %}"> -->
+{% endblock %}
+
+{% block page_js %}
+<!-- <script type="text/javascript" language="javascript" src="{% static 'jslib/handsontable.full.min.js' %}"></script> -->
+<script type="text/javascript" language="javascript" src="{% static 'js/rep/repDashboard.js' %}"></script>
+<script src="{% static 'jslib/DataTables/datatables.min.js'%}"></script>
+<script type="text/javascript" language="javascript" src="{% static 'js/csrfSetUp.js' %}"></script>
+{% endblock %}
+
+{% block page_content %}
+{% csrf_token %}
+<div class="grid-x">
+    <div class="cell medium-7">
+        <div class="cell align-middle">
+            <div class="text-center callout border-none title">
+                <h6>Proposals in Progress</h6>
+            </div>
+        </div>
+        <div class="cell align-middle medium-cell-block full">
+            <table class="table-alt-bg proposal-in-progress size-14" id="proposal-in-progress">
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Date Edited</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="in-progress" counter="{{dashboard_prop_prog|length}}">
+                    {% for item in dashboard_prop_prog %}
+                        <tr id="proposal-in-progress-{{item.proposal_id}}" class="row" data-proposal-id="{{ item.proposal_id }}">
+                            <td class="clickable-row" data-proposal-id="{{ item.proposal_id }}">{{item.client}}</td>
+                            <td>{{item.date_edited}}</td>
+                            <td>
+                                <select class="ChangeProposalStatus reduced_select" proposal-id="{{ item.proposal_id }}" status="{{ item.status }}" client="{{ item.client }}" date_edited="{{ item.date_edited }}"
+                                    proposal_id="{{item.proposal_id}}"
+                                    status="{{item.status}}"
+                                    date_edited="{{item.date_edited}}"
+                                    client="{{item.client}}">
+                                    {% for status, status_verbose in status_list_verbose.items %}
+                                        <option value="{{ status }}" {% if item.status == status %} selected {% endif %}} >{{ status_verbose }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr id="in-progress_counter_remove">
+                            <td colspan="3" class="text-center">You have no open proposals</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr style="cursor: pointer;" id="addProposal">
+                        <td colspan="3" class="text-center">
+                            <button>
+                                <i class="fa fa-plus-circle size-14"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="cell medium-7 medium-offset-1">
+        <div class="cell align-middle">
+            <div class="text-center callout border-none title">
+                <h6>Sent Proposals</h6>
+            </div>
+        </div>
+        <!-- TODO make this dynamic -->
+        <div class="cell align-middle medium-cell-block full">
+            <table class="table-alt-bg sent-proposals size-14" id="sent-proposals">
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Date Sent</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="proposal_sent" counter="{{sent_proposals|length}}">
+                    {% for item in sent_proposals %}
+                        <tr id="sent-proposals-{{item.proposal_id}}" class="row" data-proposal-id="{{item.proposal_id}}">
+                            <td class="clickable-row" data-proposal-id="{{ item.proposal_id }}">{{item.client}}</td>
+
+                            <td>{{item.date_sent}}</td>
+                            <td>
+                                <select class="ChangeProposalStatus reduced_select" proposal-id="{{ item.proposal_id }}" status="{{ item.status }}" client="{{ item.client }}" date_edited="{{ item.date_edited }}"
+                                    proposal_id="{{item.proposal_id}}"
+                                    status="{{item.status}}"
+                                    date_edited="{{item.date_edited}}"
+                                    client="{{item.client}}">
+                                    {% for status, status_verbose in status_list_verbose.items %}
+                                        <option value="{{ status }}" {% if item.status == status %} selected {% endif %}} >{{ status_verbose }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr id="proposal_sent_counter_remove">
+                            <td colspan="3" class="text-center">You have no sent proposals</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+    <div class="cell medium-7 medium-offset-1">
+        <div class="cell align-middle">
+            <div class="text-center callout border-none title">
+                <h6>Open Contracts</h6>
+            </div>
+        </div>
+        <div class="cell align-middle medium-cell-block full">
+            <table class="table-alt-bg size-14", id="open-contracts">
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Date Opened</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="proposal_accepted" counter="{{open_contracts|length}}">
+                    {% for item in open_contracts %}
+                        <tr id="open-contracts-{{item.proposal_id}}" class="clickable-row" data-proposal-id="{{item.proposal_id}}">
+                            <td>{{item.client}}</td>
+                            <td>{{item.date_edited}}</td>
+                            <td>
+                                <select class="ChangeProposalStatus reduced_select" proposal-id="{{ item.proposal_id }}" status="{{ item.status }}" client="{{ item.client }}" date_edited="{{ item.date_edited }}"
+                                    proposal_id="{{item.proposal_id}}"
+                                    status="{{item.status}}"
+                                    date_edited="{{item.date_edited}}"
+                                    client="{{item.client}}">
+                                    {% for status, status_verbose in status_list_verbose.items %}
+                                        <option value="{{ status }}" {% if item.status == status %} selected {% endif %}} >{{ status_verbose }}</option>
+                                    {% endfor %}
+                                </select>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr id="proposal_accepted_counter_remove">
+                            <td colspan="3" class="text-center">You have no open contracts.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %} {% block page_footer %}
+<!--<div class="grid-x align-middle">
+    <div class="grid-x cell large-23 callout align-middle independent-footer">
+        <div class="cell medium-20 medium-offset-1">
+            <Pviews>Total MPS Comissions Earned This Month:</Pviews>
+        </div>
+        <div class="cell medium-3 total-mission">$4,321.00</div>
+    </div>-->
+</div>
+{% endblock %}-->

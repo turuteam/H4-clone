@@ -1,0 +1,210 @@
+.size-12 { font-size: 12px; }
+.size-14 { font-size: 14px; }
+.size-16 { font-size: 16px; }
+.size-18 { font-size: 18px; }
+.size-21 { font-size: 21px; }
+.size-24 { font-size: 24px; }
+.size-36 { font-size: 36px; }
+.size-48 { font-size: 48px; }
+.size-60 { font-size: 60px; }
+.size-72 { font-size: 72px; }
+
+.th-24 { width: 100.00%; }
+.th-23 { width: 95.83%; }
+.th-22 { width: 91.67%; }
+.th-21 { width: 87.50%; }
+.th-20 { width: 83.33%; }
+.th-19 { width: 79.17%; }
+.th-18 { width: 75.00%; }
+.th-17 { width: 70.83%; }
+.th-16 { width: 66.67%; }
+.th-15 { width: 62.50%; }
+.th-14 { width: 58.33%; }
+.th-13 { width: 54.17%; }
+.th-12 { width: 50.00%; }
+.th-11 { width: 45.83%; }
+.th-10 { width: 41.67%; }
+.th-9 { width: 37.50%; }
+.th-8 { width: 33.33%; }
+.th-7 { width: 29.17%; }
+.th-6 { width: 25.00%; }
+.th-5 { width: 20.83%; }
+.th-4 { width: 16.67%; }
+.th-3 { width: 12.50%; }
+.th-2 { width: 8.33%; }
+.th-1 { width: 4.17%; }
+
+button:hover {
+    cursor: pointer;
+}
+
+.left-container,
+.right-container {
+    padding-top: 1rem;
+}
+
+.background {
+    background-image: url('../img/background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    filter: brightness(40%)
+}
+
+.background-self-service {
+    background-image: url('../img/Background-3.jpg');
+}
+
+.outer-container {
+    padding-top: 2rem;
+}
+
+.vertical.menu > li > a {
+    padding: .75rem 0 .75rem 2.5rem;
+    background-color: var(--mps-blue-transparent);
+    color: #353535;
+    font-size: .85rem;
+    letter-spacing: 1px;
+}
+
+.vertical.menu > li > a:hover {
+    color: black;
+}
+
+.vertical.menu > li.is-active > a {
+    background-color: white;
+    color: black;
+    border-color: black;
+}
+
+.independent-content {
+    height: 94vh;
+}
+
+.independent-footer {
+    margin: 0;
+    padding: .5rem;
+    font-size: 14px;
+}
+
+.independent-footer h2{
+    margin: 0;
+}
+
+.logo {
+    /* height: auto;
+    min-height: 180px; */
+    width: 100%;
+    height: 100%;
+    margin-bottom: 2rem;
+}
+
+.mps-blue {
+    background-color: var(--mps-blue);
+}
+
+.mps-yellow {
+    background-color: var(--mps-yellow);
+}
+
+.mps-green {
+    background-color: var(--mps-leaf);
+}
+
+.mps-red {
+    background-color: var(--mps-red);
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.warning {
+    color: red;
+}
+
+.margin-0 {
+    margin: 0;
+}
+
+.padding-0 {
+    padding: 0;
+}
+
+.reveal {
+    padding: 0;
+    background-color: #efefef;
+}
+
+.modal-header {
+    border-bottom: 1px solid black;
+}
+
+.modal-header > .cell > h3 {
+    color: white;
+    letter-spacing: 0.5px;
+}
+
+.tlength-btn {
+    width: 99.9%;    /* for some reason 100% will overflow some tables */
+    margin: 0;
+    padding: 0.8rem 0;
+    color: black;
+    border-radius: 0;
+    background-color: #f1f1f1;
+}
+
+.tlength-btn:focus {
+    /* after button has been clicked, we don't want it to stay blue */
+    background-color: inherit;
+    color: inherit;
+}
+
+.tlength-btn:hover {
+    background-color: var(--mps-blue);
+    color: black;
+}
+
+.fa-plus-circle {
+    background-color: white;
+    border-radius: 100%;
+}
+
+.top-border {
+    border-top: 1px solid black;
+}
+
+#self-service-viewer {margin: auto;}
+
+#pleaseWork {
+    background-color: white;
+    margin: 20px 20px 20px 20px;
+}
+
+#self-service-header {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.new_equipment.accordion-menu .is-accordion-submenu-parent:not(.has-submenu-toggle)>a::after{content:none}
+.self-main {width:100%; margin-left:0px;}
+.accordion-menu .is-accordion-submenu-parent:not(.has-submenu-toggle)>a::after {
+    display: block;
+    width: 0;
+    height: 0;
+    border: inset 10px;
+    content: '';
+    border-bottom-width: 0;
+    border-top-style: solid;
+    border-color: #757575 transparent transparent;
+    position: absolute;
+    top: 50%;
+    margin-top: -7px;
+    right: 1rem;
+}
+.background-self-service {width: inherit;}
+.background-self-service .messages {list-style: none;}
+.background-self-service .messages .error {color:red;}

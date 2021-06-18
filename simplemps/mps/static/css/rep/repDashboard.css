@@ -1,0 +1,51 @@
+.title {
+    font-weight: bold;
+}
+
+.table-alt-bg th, td{
+    text-align: center;
+    border: solid 1px gray;
+}
+
+.table-alt-bg th {
+    background-color: var(--mps-yellow);
+}
+
+.table-alt-bg tbody tr:nth-child(odd) {
+    background-color: var(--mps-blue);
+}
+
+.table-alt-bg tbody tr:nth-child(even) {
+    background-color: var(--mps-pink);
+}
+
+.proposal-in-progress tbody tr:nth-last-child(1) {
+    background-color: #ffffff;
+}
+
+.total-mission {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0.5rem 1rem;
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-family: inherit;
+    transition: background-color 0.25s ease-out, color 0.25s ease-out;
+    text-align: center;
+    -webkit-appearance: none;
+    /* font-size: xx-large; */
+    line-height: 1;
+    background-color: var(--mps-blue);
+    color: #fefefe;
+}
+
+.clickable-row {
+    cursor: pointer;
+}
+
+.reduced_select {
+    width: 115px !important;
+}
+.ChangeProposalStatus {
+    font-size: 14px;
+}

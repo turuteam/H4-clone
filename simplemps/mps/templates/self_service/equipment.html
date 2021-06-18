@@ -1,0 +1,92 @@
+{% extends 'self_service/proposal.html' %}
+{% load static from staticfiles %}
+
+{% block proposal_css %}
+    <link rel="stylesheet" href="{% static 'css/rep/proposal/details.css' %}">
+{% endblock %}
+
+{% block proposal_page_content %}
+    <form method="post" name="self_service_selection" enctype="multipart/form-data"
+          action="/self-service/{{ client_self_service_key }}/selections">
+        <div class="grid-x grid-margin-y grid-padding-y align-bottom">
+            <div id="client-content" class="cell grid-x grid-margin-y large-10" style="min-width: 80%">
+                {% if show_instructions %}
+                    <div style="padding: 2%">
+                        <h5 style="text-align: center; font-weight: bold;">Hints and Directions</h5>
+                        <br>
+                        1. Decide on the type of equipment. You may add printers/copiers that you already own (include
+                        existing) or select new equipment that will be purchased as part of the proposal.
+                        <br>
+                        <br>
+                        2. Use the filters to narrow your options. Existing equipment can only be filtered by Brand and
+                        Mono/Color while new equipment includes many more options to help you decide what best meets
+                        your
+                        needs. When you check off an option, this area of the screen will be replaced with a list of
+                        equipment that meets the criteria.
+                        <br>
+                        <br>
+                        3. When you see a model which you would like to add to the proposal, click Select and you will
+                        be
+                        able to fill in some important information about the device. Lastly click Add when you are
+                        finished
+                        inputting data.
+                        <br>
+                        <br>
+                        4. You may switch between types of equipment as much as you like, we will keep track of
+                        everything
+                        for you! When you switch equipment types, the filters will be cleared and these instructions
+                        will be
+                        displayed.
+                        <br>
+                        <br>
+                        Once you have finished selecting one type of equipment, click the Review Selection tab or change
+                        the
+                        Equipment Type to add a different type. Good luck!
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <h5 style="font-weight: 500;">Tips & Tricks:</h5>
+                        <br>
+                        - As a rule, less expensive equipment costs more per page to print (supplies tend to be more
+                        expensive) and they don’t hold up as well under heavy print volumes.
+                        <br>
+                        <br>
+                        - Color printing is much more expensive than monochrome. Some of the new color printers have a
+                        greatly reduced printing cost. If you have an older color device, replacing it with a new color
+                        (or
+                        monochrome) printer may provide a quick ROI.
+                        <br>
+                        <br>
+                        - If you need to print 11x17 documents, there are fewer equipment choices and they tend to be
+                        higher
+                        priced.
+                        <br>
+                        <br>
+                        - Consider taking this opportunity to replace some of your older devices with newer more
+                        reliable
+                        printers. While you may have elected to include service with your proposal, down time is still
+                        expensive.
+                        <br>
+                        <br>
+                        - New print technology tends to be much faster than on older devices.
+                        <br>
+                        <br>
+
+                    </div>
+                {% endif %}
+                {% if results %}
+                <!-- this is the root element of the react app which came from our compiled index.html -->
+                    <div id="self-service-viewer" data-results="{{ results }}" ></div>
+                    
+                    <div>
+                        <input class="button self-service-next-page" type="button" value="Continue To Shopping Cart" style="margin-left: 450px">
+                    </div>
+                    <!-- this is the script from the compiled directory -->
+                    <script src="/static/js/rep/proposal/js/compiled/adjuster/bundle.js"></script>
+                {% endif %}
+            </div>
+        </div>
+        {% csrf_token %}
+    </form>
+{% endblock %}

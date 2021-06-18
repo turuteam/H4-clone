@@ -1,0 +1,43 @@
+<div class="grid-x align-middle modal-row text-center">
+    <div class="cell medium-2 medium-offset-1"><h5 class="bold">Part #</h5></div>
+    <div class="cell medium-7 medium-offset-1"><h5 class="bold">Description</h5></div>
+    <div class="cell medium-3 medium-offset-1"><h5 class="bold">Current Cost</h5></div>
+    <div class="cell medium-3 medium-offset-1"><h5 class="bold">Requested Cost</h5></div>
+    <div class="cell medium-3 medium-offset-1"><h5 class="bold">Street Fighter Cost</h5></div>
+</div>
+{% for item in sf_items %}
+    <div class="grid-x align-middle modal-row text-center" data-row-id="{{ item.part_id }}" data-part-type="{{ item.part_type }}">
+        <div class="cell medium-2 medium-offset-1">{{ item.part_id }}</div>
+        <div class="cell medium-7 medium-offset-1 text-left" data-desc>{{ item.desc }}</div>
+        <div class="input-group cell medium-3 medium-offset-1">
+            <span class="input-group-label">$</span>
+            <input data-input="currentCost" class="input-group-field" value="{{ item.current_cost|floatformat:2 }}" type="number" disabled>
+        </div>
+        <div class="input-group cell medium-3 medium-offset-1">
+            <span class="input-group-label">$</span>
+            <input class="input-group-field" {% if item.req_cost > 0 %} value="{{ item.req_cost|floatformat:2 }}" {% endif %} type="number"
+                data-input="reqCost" min="0" step="0.01">
+        </div>
+        <div class="input-group cell medium-3 medium-offset-1">
+            <span class="input-group-label">$</span>
+            <input class="input-group-field" {% if item.new_cost > 0 %} value="{{ item.new_cost|floatformat:2 }}" {% endif %} type="number"
+                data-input="newCost" min="0" step="0.01">
+        </div>
+    </div>
+{% endfor %}
+<hr class="cell medium-offset-1 alert-reveal-hr" />
+<div class="grid-x align-middle modal-row">
+    <div class="cell medium-3 medium-offset-1">Total Cost</div>
+    <div class="input-group cell medium-3 medium-offset-8">
+        <span class="input-group-label">$</span>
+        <input id='totalCost' class="input-group-field" value="0.00" type="number" disabled>
+    </div>
+    <div class="cell medium-3 medium-offset-1"><button type="button" class="button expanded" onclick="downloadRequestedCosts()">Download Request</button></div>
+    <div class="cell medium-3 medium-offset-1"><button type="button" class="button expanded success">Upload Prices</button></div>
+</div>
+<div class="grid-x align-middle modal-row">
+    <div class="cell medium-3 medium-offset-1"><a class="button expanded" href="{% url 'mps:proposal_pricing' proposal.id %}">View Proposal</a></div>
+    <div class="cell medium-3 medium-offset-8"><button type="button" class="button expanded alert" onclick="declineStreetFighterItems({{ proposal.id }}, {{ alert_id }})">Decline</button></div>
+    <div class="cell medium-3 medium-offset-1"><button type="button" class="button expanded" onclick="saveStreetFighterItems({{ alert_id }})">Save</button></div>
+    <div class="cell medium-3 medium-offset-1"><button type="button" class="button expanded success" onclick="acceptStreetFighterItems({{ proposal.id }}, {{ alert_id }})">Accept</button></div>
+</div>

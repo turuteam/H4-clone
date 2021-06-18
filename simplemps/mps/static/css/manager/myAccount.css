@@ -1,0 +1,42 @@
+.account-menu.menu > li > a {
+    padding: 1.5rem 0;
+    background-color: var(--mps-blue-transparent);
+    border: 1px solid darkslategray;
+    color: white;
+    letter-spacing: 2px;
+}
+
+.account-menu.menu > li.is-active > a {
+    background-color: white;
+    color: black;
+    border-color: black;
+}
+
+#equipmentTable_wrapper {
+    font-size: .75rem !important; /* jank fix for now */
+}
+
+a.accordion-title {
+    /* font-size: larger; */
+}
+
+button.button {
+    margin: .5rem 0;
+}
+
+.input-group {
+    margin: auto;
+    width: 85%;
+}
+
+tr.text-center > th {
+    text-align: center;
+}
+
+.table-scroll {
+    overflow-y: hidden;
+}
+
+ul.accordion {
+    margin-bottom: 0;
+}

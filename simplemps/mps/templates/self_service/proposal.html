@@ -1,0 +1,21 @@
+{% extends 'self_service/base.html' %}
+{% load static from staticfiles %}
+
+{% block page_css %}
+    <link rel="stylesheet" href="{% static 'css/rep/proposal/proposal.css' %}">
+
+    {% block proposal_css %}
+    {% endblock %}
+{% endblock %}
+
+{% block page_content %}
+    {% csrf_token %}
+    <h2 class="show-for-medium">Managed Self-Service Portal</h2>
+    <br>
+    <div class="grid-x">
+        {% include 'self_service/header.html' %}
+    </div>
+    {% block proposal_page_content %}
+    {% endblock %}
+
+{% endblock %}

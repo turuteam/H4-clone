@@ -1,0 +1,430 @@
+{% load static %}
+{% load humanize %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Proposal</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="{% static 'css/proposal/css/base.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/proposal/css/fancy.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/proposal/css/main.css' %}" />
+    <script src="{% static 'js/rep/proposal/js/compatibility.min.js' %}"></script>
+    <script src="{% static 'js/rep/proposal/js/theViewer.min.js' %}"></script>
+    <script>
+        try {
+            theViewer.defaultViewer = new theViewer.Viewer({});
+        } catch (e) { }
+    </script>
+    <title></title>
+</head>
+<body>
+    <div id="sidebar">
+        <div id="outline"></div>
+    </div>
+    <div id="page-container">
+        <div id="pf1" class="pf w0 h0" data-page-no="1">
+            <div class="pc pc1 w0 h0">
+                <img class="bi x0 y0 w0 h0" alt="" src="{% static 'img/images/bg1.jpg' %}" />
+                <div class="t m0 x1 h1 y1 ff1 fs0 fc0 sc0 ls0 ws0">Technology Proposal Review</div>
+                <div class="t m0 x2 h2 y2 ff1 fs1 fc0 sc0 ls0 ws0">Prepared For: {{ client.name }}</div>
+                <div class="t m0 x2 h2 y3 ff1 fs1 fc0 sc0 ls0 ws0">Prepared For: {{ client.name }}</div>
+                <div class="t m0 x2 h2 y4 ff1 fs1 fc0 sc0 ls0 ws0">Date–Version</div>
+                <div class="t m0 x2 h2 y5 ff1 fs1 fc0 sc0 ls0 ws0">Date–Version</div>
+                <div class="t m0 x2 h2 y6 ff1 fs1 fc0 sc0 ls0 ws0">Confidential</div>
+                <div class="t m0 x2 h2 y7 ff1 fs1 fc0 sc0 ls0 ws0">Confidential *Pricing valid until {{ proposal.expiration_date }}</div>
+            </div>
+            <div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+        </div>
+        <div id="pf2" class="pf w0 h0" data-page-no="2">
+            <div class="pc pc2 w0 h0">
+                <img class="bi x0 y0 w0 h0" alt="" src="{% static 'img/images/bg2.png' %}" />
+                <div class="t m0 x3 h3 y8 ff2 fs2 fc1 sc0 ls0 ws0"> </div>
+                <div class="t m0 x4 h3 y9 ff2 fs2 fc0 sc0 ls0 ws0"> </div>
+                <div class="t m0 x5 h1 ya ff1 fs0 fc2 sc0 ls0 ws0">TODAY’S<span class="fc0"><span class="fc3">AGENDA</span></span></div>
+                <div class="t m0 x6 h4 yb ff3 fs3 fc4 sc0 ls0 ws0">YourDedicatedAccountTeam</div>
+                <div class="t m0 x7 h4 yc ff3 fs3 fc4 sc0 ls0 ws0">ExecutiveSummary/Impact</div>
+                <div class="t m0 x8 h4 yd ff3 fs3 fc4 sc0 ls0 ws0">WhoweareandwhyXerox?</div>
+                <div class="t m0 x9 h4 ye ff3 fs3 fc4 sc0 ls0 ws0">XeroxAppGallery</div>
+                <div class="t m0 xa h4 yf ff3 fs3 fc4 sc0 ls0 ws0">OurSolutionOverview</div>
+                <div class="t m0 xa h4 y10 ff3 fs3 fc4 sc0 ls0 ws0">FinancialOverview</div>
+                <div class="t m0 xb h4 y11 ff3 fs3 fc4 sc0 ls0 ws0">ImplementationSchedule</div>
+                <div class="t m0 xc h4 y12 ff3 fs3 fc4 sc0 ls0 ws0">ManagedPrintServices</div>
+            </div>
+            <div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+        </div>
+        <div id="pf3" class="pf w0 h0" data-page-no="3">
+            <div class="pc pc3 w0 h0">
+                <img class="bi x0 y0 w0 h0" alt="" src="{% static 'img/images/bg3.png' %}" />
+                <div class="t m0 xd h1 y13 ff1 fs0 fc3 sc0 ls0 ws0">ThankYouforSelectingUs!</div>
+                <div class="t m0 xe h5 y14 ff1 fs4 fc0 sc0 ls0 ws0">Central|<span class="ff3 fs2">145WellingtonSt.W,Suite205Toronto,ONM5J1H8</span></div>
+                <div class="t m0 xf h6 y15 ff4 fs5 fc0 sc0 ls0 ws0">Email: {{ sales_rep.email }}</div>
+                <div class="t m0 xf h6 y16 ff4 fs5 fc0 sc0 ls0 ws0">Phone: {{ company.telephone }}</div>
+                <div class="t m0 xf h7 y17 ff3 fs1 fc0 sc0 ls0 ws0">AccountManager</div>
+                <div class="t m0 xf h8 y18 ff3 fs6 fc0 sc0 ls0 ws0">{{ sales_rep.first_name }} {{ sales_rep.last_name }}</div>
+                <div class="t m0 x10 h5 y14 ff1 fs4 fc0 sc0 ls0 ws0">West|<span class="ff3 fs2">35KelfieldStToronto,ONM9W5A3</span></div>
+                <div class="t m0 x11 h7 y19 ff3 fs1 fc0 sc0 ls0 ws0">www.hubtgi.com</div>
+                <div class="t m0 x12 h7 y1a ff3 fs1 fc0 sc0 ls0 ws0">BriannaGanton</div>
+                <div class="t m0 x12 h9 y1b ff3 fs4 fc0 sc0 ls0 ws0">Manager,TalentDevelopment</div>
+                <div class="t m0 x12 h9 y1c ff3 fs4 fc5 sc0 ls0 ws0">Bganton@hubtgi.com</div>
+                <div class="t m0 x13 h7 y1d ff3 fs1 fc0 sc0 ls0 ws0">MichaelRockert</div>
+                <div class="t m0 x13 h9 y1e ff3 fs4 fc0 sc0 ls0 ws0">President,Advance2000Canada</div>
+                <div class="t m0 x13 h9 y1f ff3 fs4 fc5 sc0 ls0 ws0">Mrockert@advance2000.com</div>
+                <div class="t m0 x14 h7 y20 ff3 fs1 fc0 sc0 ls0 ws0">NickDiPaola</div>
+                <div class="t m0 x14 h9 y21 ff3 fs4 fc0 sc0 ls0 ws0">DirectorofOperations&amp;Innovation</div>
+                <div class="t m0 x14 h9 y22 ff3 fs4 fc5 sc0 ls0 ws0">Ndipaola@hubtgi.com</div>
+                <div class="t m0 x12 h7 y23 ff3 fs1 fc0 sc0 ls0 ws0">DougJarvis</div>
+                <div class="t m0 x12 h9 y24 ff3 fs4 fc0 sc0 ls0 ws0">IT&amp;SoftwareManager</div>
+                <div class="t m0 x12 h9 y25 ff3 fs4 fc5 sc0 ls0 ws0">Djarvis@hubtgi.com</div>
+                <div class="t m0 x15 h7 y26 ff3 fs1 fc0 sc0 ls0 ws0">DavidFlores</div>
+                <div class="t m0 x15 h9 y27 ff3 fs4 fc0 sc0 ls0 ws0">SuppliesLead</div>
+                <div class="t m0 x15 h9 y28 ff3 fs4 fc6 sc0 ls0 ws0">Dflores@hubtgi.com</div>
+                <div class="t m0 x13 h7 y29 ff3 fs1 fc0 sc0 ls0 ws0">AjayDhingra</div>
+                <div class="t m0 x13 h7 y2a ff3 fs4 fc0 sc0 ls0 ws0">President<span class="fs1">/CEO</span></div>
+                <div class="t m0 x13 h9 y2b ff3 fs4 fc5 sc0 ls0 ws0">Adhingra@hubtgi.co<span class="fc7">m</span></div>
+                <div class="t m0 x15 h7 y2c ff3 fs1 fc0 sc0 ls0 ws0">NathanWolters</div>
+                <div class="t m0 x15 h9 y2d ff3 fs4 fc0 sc0 ls0 ws0">TechnicalSolutions</div>
+                <div class="t m0 x15 h9 y2e ff3 fs4 fc0 sc0 ls0 ws0">Analyst</div>
+                <div class="t m0 x15 h9 y2f ff3 fs4 fc5 sc0 ls0 ws0">Nwolters@hubtgi.com</div>
+                <div class="t m0 x16 h7 y30 ff3 fs1 fc0 sc0 ls0 ws0">ReneeDhingra</div>
+                <div class="t m0 x16 h9 y31 ff3 fs4 fc0 sc0 ls0 ws0">PartnerSalesManager</div>
+                <div class="t m0 x16 h9 y32 ff3 fs4 fc7 sc0 ls0 ws0">Rdhingra@hubtgi.com</div>
+                <div class="t m0 x10 h7 y33 ff3 fs1 fc0 sc0 ls0 ws0">AbiyeBirku</div>
+                <div class="t m0 x10 h9 y34 ff3 fs4 fc0 sc0 ls0 ws0">SolutionsArchitect<span class="fc8"></span></div>
+                <div class="t m0 x10 h9 y35 ff3 fs4 fc9 sc0 ls0 ws0">Abirku@hubTGI.com</div>
+                <div class="t m0 x10 h7 y23 ff3 fs1 fc0 sc0 ls0 ws0">GregVitale</div>
+                <div class="t m0 x10 h9 y24 ff3 fs4 fc0 sc0 ls0 ws0">PSGSpecialist,Xerox</div>
+                <div class="t m0 x10 h9 y25 ff3 fs4 fc5 sc0 ls0 ws0">Greg.vitale@xerox.com<span class="fc7"></span></div>
+                <div class="t m0 x16 h7 y36 ff3 fs1 fc0 sc0 ls0 ws0">ChelseaMosgrove</div>
+                <div class="t m0 x16 h9 y37 ff3 fs4 fc0 sc0 ls0 ws0">GeneralSalesManager</div>
+                <div class="t m0 x16 h9 y38 ff3 fs4 fc5 sc0 ls0 ws0">Cmosgrove@hubtgi.com</div>
+                <div class="t m0 x14 h7 y39 ff3 fs1 fc0 sc0 ls0 ws0">{{ sales_rep.first_name }} {{ sales_rep.last_name }}</div>
+                <div class="t m0 x14 h9 y3a ff3 fs4 fc0 sc0 ls0 ws0">SalesAssociate</div>
+                <div class="t m0 x14 h9 y3b ff3 fs4 fc7 sc0 ls0 ws0">{{ sales_rep.email }}</div>
+                <div class="t m0 x10 h7 y3c ff3 fs1 fc0 sc0 ls0 ws0">DanielleEllis</div>
+                <div class="t m0 x10 h9 y3d ff3 fs4 fc0 sc0 ls0 ws0">InstallAnalyst</div>
+                <div class="t m0 x10 h9 y3e ff3 fs4 fc7 sc0 ls0 ws0">Dellis@hubtgi.com</div>
+                <div class="t m0 x10 h7 y3f ff3 fs1 fc0 sc0 ls0 ws0">RodneyLock</div>
+                <div class="t m0 x10 h9 y40 ff3 fs4 fc0 sc0 ls0 ws0">DirectorofServiceOperations</div>
+                <div class="t m0 x10 h8 y41 ff3 fs6 fc5 sc0 ls0 ws0">Rlock@hubtgi.com</div>
+                <a class="l" href="mailto:Bganton@hubtgi.com">
+                    <div class="d m1" style="border-style:none;position:absolute;left:385.236938px;bottom:293.533203px;width:105.955566px;height:12.289063px;background-color:rgba(255,255,255,0.000001);"></div>
+                </a>
+                <a class="l" href="mailto:Mrockert@advance2000.com">
+                    <div class="d m1" style="border-style:none;position:absolute;left:179.003693px;bottom:117.807999px;width:143.843262px;height:12.289063px;background-color:rgba(255,255,255,0.000001);"></div>
+                </a>
+                <a class="l" href="mailto:Ndipaola@hubtgi.com">
+                    <div class="d m1" style="border-style:none;position:absolute;left:386.308472px;bottom:117.459000px;width:108.394043px;height:12.289062px;background-color:rgba(255,255,255,0.000001);"></div>
+                </a>
+                <a class="l" href="mailto:Djarvis@hubtgi.com">
+                    <div class="d m1" style="border-style:none;position:absolute;left:385.236938px;bottom:207.206345px;width:98.586426px;height:12.289063px;background-color:rgba(255,255,255,0.000001);"></div>
+                </a>
+                <a class="l" href="mailto:Adhingra@hubtgi.com">
+                    <div class="d m1" style="border-style:none;position:absolute;left:179.003708px;bottom:207.606400px;width:99.843277px;height:12.289062px;background-color:rgba(255,255,255,0.000001);"></div>
+                </a>
+                <a class="l" href="mailto:Nwolters@hubtgi.com">
+                    <div class="d m1" style="border-style:none;position:absolute;left:588.091614px;bottom:206.475555px;width:107.760254px;height:12.289063px;background-color:rgba(255,255,255,0.000001);"></div>
+                </a>
+                <a class="l" href="mailto:Greg.vitale@xerox.com">
+                    <div class="d m1" style="border-style:none;position:absolute;left:769.453369px;bottom:207.206345px;width:115.091797px;height:12.289063px;background-color:rgba(255,255,255,0.000001);"></div>
+                </a>
+                <a class="l" href="mailto:Cmosgrove@hubtgi.com">
+                    <div class="d m1" style="border-style:none;position:absolute;left:586.036926px;bottom:358.821228px;width:121.214844px;height:12.289063px;background-color:rgba(255,255,255,0.000001);"></div>
+                </a>
+                <a class="l" href="mailto:Rlock@hubtgi.com">
+                    <div class="d m1" style="border-style:none;position:absolute;left:768.761108px;bottom:359.653259px;width:100.886719px;height:13.406250px;background-color:rgba(255,255,255,0.000001);"></div>
+                </a>
+            </div>
+            <div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+        </div>
+        <div id="pf4" class="pf w0 h0" data-page-no="4">
+            <div class="pc pc4 w0 h0">
+                <img class="bi x0 y0 w0 h0" alt="" src="{% static 'img/images/bg4.png' %}" />
+                <div class="t m0 x17 ha y42 ff1 fs7 fc0 sc0 ls0 ws0">WhoWeAre</div>
+                <div class="t m0 x18 ha y43 ff1 fs7 fc4 sc0 ls0 ws0">WhoWeAre</div>
+                <div class="t m0 x19 hb y44 ff5 fs3 fc0 sc0 ls0 ws0"></div>
+                <div class="t m0 x1a h8 y45 ff3 fs6 fc0 sc0 ls0 ws0">Welcometo<span class="ff1">hubTechnologyGroupINC<span class="_ _0"></span></span>,</div>
+                <div class="t m0 x1a h8 y46 ff3 fs6 fc0 sc0 ls0 ws0">Canada’sPremierXerox<span class="_ _1"></span>®SalesPartnersupportingdowntownTorontoandtheGTA.</div>
+                <div class="t m0 x1a h8 y47 ff3 fs6 fc0 sc0 ls0 ws0">Asthearea’sonlyAuthorizedXerox<span class="_ _1"></span>®SalesPartner,youbenefitfromourexperienceandpartnerrelationshipswithtechnologyprovidersincludingtheundisputedleader</div>
+                <div class="t m0 x1a h8 y48 ff3 fs6 fc0 sc0 ls0 ws0">indocumentmanagement–Xerox<span class="_ _1"></span>®,Advance2000.</div>
+                <div class="t m0 x1b hc y49 ff6 fs7 fc0 sc0 ls0 ws0">         </div>
+                <div class="t m0 x1c hc y4a ff6 fs7 fc4 sc0 ls0 ws0">         </div>
+                <div class="t m0  x25 ha y4a ff1 fs7 fc4 sc0 ls0 ws0">WhyhubTGI?</div>
+               
+                <div class="t m0 x1a hd y4e ff7 fs8 fc0 sc0 ls0 ws0">§<span class="_ _2"> </span><span class="ff1 fs6">InstallationandTraining:<span class="_ _0"></span><span class="ff3 fs4">hubTGIhasitsownin-houseInstallationAnalyst,whowillcompletethefullinstallationandtraining.</span></span></div>
+                <div class="t m0 x1a hd y4f ff7 fs8 fc0 sc0 ls0 ws0">§<span class="_ _2"> </span><span class="ff1 fs6">Partnerships:<span class="ff3 fs4">With55differentstrategicpartnerships,hubTGIcanprovideasolutionforanyofficeneed.</span></span></div>
+                <div class="t m0 x1a hd y50 ff7 fs8 fc0 sc0 ls0 ws0">§<span class="_ _2"> </span><span class="ff1 fs6">SuppliesManagement:<span class="ff3 fs4">hubTGIactsasasuppliesbrokerandcansupplyavarietyofpapertypesto<span class="_ _1"></span><span class="ff1">{{ client.name }} <span class="ff3">atthelowestcostinthemarketwithnextdaydelivery.</span></span></span></span></div>
+                <div class="t m0 x1a hd y51 ff7 fs8 fc0 sc0 ls0 ws0">§<span class="_ _2"> </span><span class="ff1 fs6">AccountManagement:<span class="ff3 fs4">WithhubTGI,<span class="ff1">{{ client.name }} </span>willreceiveadedicatedAccountManager,<span class="ff1">{{ sales_rep.first_name }} {{ sales_rep.last_name }}<span class="_ _0"></span></span>,whosespecificroleisretentionandtoensuresatisfaction.</span></span></div>
+            </div>
+            <div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+        </div>
+        <div id="pf5" class="pf w0 h0" data-page-no="5">
+            <div class="pc pc5 w0 h0">
+                <img class="bi x0 y0 w0 h0" alt="" src="{% static 'img/images/bg5.png' %}" />
+                <div class="t m0 x19 hb y44 ff5 fs3 fc0 sc0 ls0 ws0"></div>
+                <div class="t m0 x1f he y52 ff1 fs9 fc0 sc0 ls0 ws0"></div>
+                <div class="t m0 x1f he y53 ff1 fs9 fc4 sc0 ls0 ws0"></div>
+                <div class="t m0 x20 ha y54 ff1 fs7 fc0 sc0 ls0 ws0">WhyXerox?</div>
+                <div class="t m0 x21 ha y53 ff1 fs7 fc4 sc0 ls0 ws0">WhyXerox?</div>
+                <div class="t m0 x4 hf y55 ff7 fsa fc0 sc0 ls0 ws0">§<span class="_ _3"> </span><span class="ff1 fs1">CRUs:<span class="ff3 fs6">Customerreplaceableunits(CRUs),allowsourcustomerstochangetheirtoners,drums,wastetonercontainersandevenfuserswhenneeded.This</span></span></div>
+                <div class="t m0 x22 h8 y56 ff3 fs6 fc0 sc0 ls0 ws0">resolvesalmost85%ofcommonserviceissue.</div>
+                <div class="t m0 x4 hf y57 ff7 fsa fca sc0 ls0 ws0">§<span class="_ _3"> </span><span class="ff1 fs1">In-HouseFinancing<span class="fs6">:<span class="ff3">Xeroxistheonlyvendorinthemarketthathasitsownin-housefinancing,thisminimizesthepotentialforbillingerrorstooccur.</span></span></span></div>
+                <div class="t m0 x4 hf y58 ff7 fsa fc0 sc0 ls0 ws0">§<span class="_ _3"> </span><span class="ff1 fs1">Hands-OffManagement:<span class="ff3 fs6">Xeroxhasautomatictonerdeliveryandautomaticmeterreadssothatthedevicemanagesitself.</span></span></div>
+                <div class="t m0 x4 hf y59 ff7 fsa fc0 sc0 ls0 ws0">§<span class="_ _3"> </span><span class="ff1 fs1">Service:<span class="ff3 fs6">Xeroxistheonlyvendortomeasureservicebasedonresolutiontime,notjustresponsetime.</span></span></div>
+                <div class="t m0 x4 h2 y5a ff1 fs1 fc0 sc0 ls0 ws0">Wearetheworldslargestenterpriseforbusinessprocessanddocumentmanagement.</div>
+                <div class="t m0 x4 hd y5b ff7 fs8 fc0 sc0 ls0 ws0">§<span class="_ _2"> </span><span class="ff3 fs6">Presenceinmorethan180countries</span></div>
+                <div class="t m0 x4 hd y5c ff7 fs8 fc0 sc0 ls0 ws0">§<span class="_ _2"> </span><span class="ff3 fs6">AcquiredAffiliatedComputerServices,anindustryleaderinbusinessprocessandIToutsourcing,in2010</span></div>
+                <div class="t m0 x4 hd y5d ff7 fs8 fc0 sc0 ls0 ws0">§<span class="_ _2"> </span><span class="ff3 fs6">Annualrevenueof$23Billion,morethan50%fromservices</span></div>
+                <div class="t m0 x4 h7 y5e ff7 fs8 fc0 sc0 ls0 ws0">§<span class="_ _2"> </span><span class="ff3 fs6">NamedtoFortuneMagazine’slistofWorld’sMostAdmiredCompanies<span class="_ _1"></span><span class="fs1"></span></span></div>
+                <div class="t m0 x23 h10 y5f ff1 fs3 fc0 sc0 ls0 ws0"></div>
+                <div class="t m0 x23 h10 y60 ff1 fs3 fc4 sc0 ls0 ws0"></div>
+                <div class="t m0 x24 ha y61 ff1 fs7 fc0 sc0 ls0 ws0">XeroxAtAGlance</div>
+                <div class="t m0 x25 ha y60 ff1 fs7 fc4 sc0 ls0 ws0">XeroxAtAGlance</div>
+            </div>
+            <div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+        </div>
+        <div id="pf6" class="pf w0 h0" data-page-no="6">
+            <div class="pc pc6 w0 h0">
+                <img class="bi x0 y0 w0 h0" alt="" src="{% static 'img/images/bg6.png' %}" />
+                In a meeting with {{client.contact}} the following opportunities were raised.
+                <div class="t m0 x26 h1 y62 ff1 fs0 fc0 sc0 ls0 ws0">ExecutiveSummary</div>
+                <div class="t m0 x27 h11 y63 ff3 fsb fc0 sc0 ls0 ws0">Inameetingwith<u>{{ client.contact }}</u>,thefollowingopportunitieswereraised:</div>
+                <div class="t m0 x27 h11 y64 ff3 fsb fc0 sc0 ls0 ws0">Inameetingwith<u>{{ client.contact }}</u>,thefollowingopportunitieswereraised:</div>
+                <div class="t m0 x27 h12 y65 ff7 fsc fc0 sc0 ls0 ws0">q<span class="_ _4"> </span><span class="ff3 fsb">Desireforareliableandefficientdevice;specifically,theneedtopreventdowntimeon</span></div>
+                <div class="t m0 x2a h11 y66 ff3 fsb fc0 sc0 ls0 ws0">officeequipment.</div>
+                <div class="t m0 x27 h12 y67 ff7 fsc fc0 sc0 ls0 ws0">q<span class="_ _4"> </span><span class="ff3 fsb">Maintainandimproveuponservicingofequipment.</span></div>
+                <div class="t m0 x27 h12 y68 ff7 fsc fc0 sc0 ls0 ws0">q<span class="_ _4"> </span><span class="ff3 fsb">Reducecosts,ascurrentdevicesuseexpensivetonerwhichisverycostly.</span></div>
+                <div class="t m0 x27 h11 y69 ff3 fsb fc0 sc0 ls0 ws0">TheFollowingsolutionswillhelp<u>{{ client.name }}</u>overcometheaboveopportunities</div>
+                <div class="t m0 x27 h11 y6a ff3 fsb fc0 sc0 ls0 ws0">TheFollowingsolutionswillhelp<u>{{ client.name }}</u>overcometheaboveopportunities</div>
+                <div class="t m0 x27 h11 y6b ff3 fsb fc0 sc0 ls0 ws0">andhelpthecompanyachieveitsgoals:</div>
+                <div class="t m0 x27 h11 y6c ff3 fsb fc0 sc0 ls0 ws0">andhelpthecompanyachieveitsgoals:</div>
+                <div class="t m0 x27 h12 y6d ff7 fsc fc0 sc0 ls0 ws0">ü<span class="_ _5"> </span><span class="ff3 fsb">Bestin-classimagequalitywillensurethatallprintswillbenefitfrom1200x2400DPI</span></div>
+                <div class="t m0 x2a h11 y6e ff3 fsb fc0 sc0 ls0 ws0">resolution.Additionally,alloutsourceddocumentscannowbeprintedonproposeddevice.</div>
+                <div class="t m0 x27 h12 y6f ff7 fsc fc0 sc0 ls0 ws0">ü<span class="_ _5"> </span><span class="ff3 fsb">PatentedXeroxSmartKitTechnologyallowsforincreaseinuptime.</span></div>
+                <div class="t m0 x27 h12 y70 ff7 fsc fc0 sc0 ls0 ws0">ü<span class="_ _5"> </span><span class="ff3 fsb">BypartneringwithXerox®,theleaderincustomerserviceintheindustry,<span class="_ _6"></span><span class="ff1">{{ client.name }}</span></span></div>
+                <div class="t m0 x2a h11 y71 ff1 fsb fc0 sc0 ls0 ws0"><span class="ff3">willseeadecreaseindowntimeassociatedwithservicecalls.</span></div>
+                <div class="t m0 x27 h12 y72 ff7 fsc fc0 sc0 ls0 ws0">ü<span class="_ _5"> </span><span class="ff3 fsb">Consolidationofofficeequipmentwillallowforreductionaltotalmonthlycostofoperation</span></div>
+            </div>
+            <div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+        </div>
+        <div id="pf7" class="pf w0 h0" data-page-no="7">
+            <div class="pc pc7 w0 h0">
+                <img class="bi x0 y0 w0 h0" alt="" src="{% static 'img/images/bg7.png' %}" />
+                <div class="t m0 x2d h1 y73 ff1 fs0 fc0 sc0 ls0 ws0">ImpactYourBusiness</div>
+                <div class="t m0 x2e h13 y74 ff2 fs3 fc0 sc0 ls0 ws0">Our focus is a collaborative partnership with “{{ client.name }}” to ensure beneficial business impact.  </div>
+                <div class="t m0 x2e h13 y75 ff2 fs3 fc0 sc0 ls0 ws0">Our proposed solution will greatly influence your business in the following:</div>
+                <div class="t m0 x2e h14 y76 ff8 fsb fcb sc0 ls0 ws0">** In this space please provide a few points you have gathered from your fact find, give specific examples that will cater to the </div>
+                <div class="t m0 x2e h14 y77 ff8 fsb fcb sc0 ls0 ws0">clients business needs. This is where you should be highlighting pain point solutions. (Example Below) **</div>
+                <div class="t m0 x2e h2 y78 ff1 fs1 fc0 sc0 ls0 ws0">Insummary,allthebenefitsofthenewsolutionwillleadto:</div>
+                <div class="t m0 x2e hf y79 ff7 fsa fc0 sc0 ls0 ws0">§<span class="_ _3"> </span><span class="ff3 fs1">Superiorbrandimageandawarenesswithcolourqualitydevices</span></div>
+                <div class="t m0 x2e hf y7a ff7 fsa fc0 sc0 ls0 ws0">§<span class="_ _3"> </span><span class="ff3 fs1">Improvedmarketingcapabilities</span></div>
+                <div class="t m0 x2e hf y7b ff7 fsa fc0 sc0 ls0 ws0">§<span class="_ _3"> </span><span class="ff3 fs1">Fasterserviceturnaroundtimes</span></div>
+                <div class="t m0 x2e hf y7c ff7 fsa fc0 sc0 ls0 ws0">§<span class="_ _3"> </span><span class="ff3 fs1">Decreasedoverallprintcosts</span></div>
+                <div class="t m0 x2e hf y7d ff7 fsa fc0 sc0 ls0 ws0">§<span class="_ _3"> </span><span class="ff3 fs1">Provide“{{ client.name }}”withabrandnew,stateoftheartprintenvironment,ensuringfastandreliablesolution</span></div>
+                <div class="t m0 x2e hf y7e ff7 fsa fc0 sc0 ls0 ws0">§<span class="_ _3"> </span><span class="ff3 fs1">FullvisibilityandcontroloverentirefleetofdevicesfromaprintmanagementstandpointwithXerox’sManagedPrintServices</span></div>
+                <div class="t m0 x2f h7 y7f ff3 fs1 fc0 sc0 ls0 ws0">program</div>
+                <div class="t m0 x2e hf y80 ff7 fsa fc0 sc0 ls0 ws0">§<span class="_ _3"> </span><span class="ff3 fs1">BrandnewtechnologythatwillrevampyourofficesITenvironmentatacosteffectiverate</span></div>
+            </div>
+            <div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+        </div>
+        <div id="pf8" class="pf w0 h0" data-page-no="8">
+            <div class="pc pc8 w0 h0">
+                <img class="bi x0 y0 w0 h0" alt="" src="{% static 'img/images/bg8.png' %}" />
+                <div class="t m0 x30 h10 y81 ff1 fs3 fc0 sc0 ls0 ws0">CloudStorage</div>
+                <div class="t m0 x31 h10 y82 ff1 fs3 fc0 sc0 ls0 ws0">Connectivity</div>
+                <div class="t m0 x32 h10 y83 ff1 fs3 fc0 sc0 ls0 ws0">ProcessAutomation</div>
+                <div class="t m0 x33 h10 y84 ff1 fs3 fc0 sc0 ls0 ws0">Communication</div>
+                <div class="t m0 x34 h1 y85 ff1 fs0 fc0 sc0 ls0 ws0">Xerox</div>
+                <div class="t m0 x35 h15 y86 ff1 fsd fc0 sc0 ls0 ws0">®</div>
+                <div class="t m0 x36 h1 y85 ff1 fs0 fc0 sc0 ls0 ws0">AppGallery</div>
+                <div class="t m0 x37 h16 y87 ff3 fsa fcc sc0 ls0 ws0">•<span class="_ _7"> </span><span class="fs1">Scanto/PrintfromOffice365&amp;OneDrive</span></div>
+                <div class="t m0 x37 h16 y88 ff3 fsa fcc sc0 ls0 ws0">•<span class="_ _7"> </span><span class="fs1">Scandirectlyintoconcurforreducethestepsof</span></div>
+                <div class="t m0 x38 h7 y89 ff3 fs1 fcc sc0 ls0 ws0">enteringinyourexpensereceipts.</div>
+                <div class="t m0 x37 h16 y8a ff3 fsa fcc sc0 ls0 ws0">•<span class="_ _7"> </span><span class="fs1">LogintoyourSalesforceatthedeviceinterface</span></div>
+                <div class="t m0 x37 h16 y8b ff3 fsa fcc sc0 ls0 ws0">•<span class="_ _7"> </span><span class="fs1">Swipe,tap,scroll,andpinchyourwaythroughtask</span></div>
+                <div class="t m0 x38 h7 y8c ff3 fs1 fcc sc0 ls0 ws0">-focusedappswithease.</div>
+                <div class="t m0 x37 h16 y8d ff3 fsa fcc sc0 ls0 ws0">•<span class="_ _7"> </span><span class="fs1">TheAppGallerywillgrowwiththechangesin</span></div>
+                <div class="t m0 x38 h7 y8e ff3 fs1 fcc sc0 ls0 ws0">technology<span class="fc0">andyourbusinessneeds–removing</span></div>
+                <div class="t m0 x38 h7 y8f ff3 fs1 fc0 sc0 ls0 ws0">thefearofbecomingobsolete.</div>
+                <div class="t m0 x37 h10 y90 ff1 fs3 fcd sc0 ls0 ws0">PopularSolutionsfor<span class="_ _6"></span>{{ client.name }}</div>
+            </div>
+            <div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+        </div>
+        <div id="pf9" class="pf w0 h0" data-page-no="9">
+            <div class="pc pc9 w0 h0">
+                <img class="bi x0 y0 w0 h0" alt="" src="{% static 'img/images/bg9.png' %}" />
+                <div class="t m0 x39 h1 y91 ff1 fs0 fc0 sc0 ls0 ws0">ManagedPrintServices</div>
+                <div class="t m0 x3a h10 y92 ff1 fs3 fc0 sc0 ls0 ws0">KeyFeaturesandBenefits:</div>
+                <div class="t m0 x2f h10 y93 ff1 fs3 fc0 sc0 ls0 ws0">KeyFeaturesandBenefits:</div>
+                <div class="t m0 x2f h7 y94 ff3 fs1 fc0 sc0 ls0 ws0">ManagedPrintServicesgivesyouthebigpicture.Withvisibilityofyourwholenetwork,youcancontrolandmanageyourresources</div>
+                <div class="t m0 x2f h7 y95 ff3 fs1 fc0 sc0 ls0 ws0">moreefficiently.Withtheexperienceofover1.5milliondevicesundermanagement,XeroxistheleaderinManagedPrintServices.</div>
+                <div class="t m0 x3b h17 y96 ff1 fse fce sc0 ls0 ws0">MPS</div>
+                <div class="t m0 x2f h18 y97 ff1 fsb fc0 sc0 ls0 ws0">ACost-Per-PageYouCanCountOn.</div>
+                <div class="t m0 x3a h19 y98 ff9 fs9 fc0 sc0 ls0 ws0">In today’s economy, everyone is looking for ways to cut costs</div>
+                <div class="t m0 x2f h19 y99 ff9 fs9 fcf sc0 ls0 ws0">In today’s economy, everyone is looking for ways to cut costs</div>
+                <div class="t m0 x3c he y98 ff1 fs9 fc0 sc0 ls0 ws0">.</div>
+                <div class="t m0 x3c he y99 ff1 fs9 fcf sc0 ls0 ws0">.</div>
+            </div>
+            <div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+        </div>
+        <div id="pfa" class="pf w0 h0" data-page-no="a">
+            <div class="pc pca w0 h0">
+                <img class="bi x0 y0 w0 h0" alt="" src="{% static 'img/images/bga.png' %}" />
+                <div class="t m0 x2d h1a y9a ff2 fs0 fc0 sc0 ls0 ws0">INSERT SPEC SLIDES HERE</div>
+            </div>
+            <div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+        </div>
+        <div class="pf w0" data-page-no="b">
+            <div class="m0 x45 ff1 fs0 fc0" style="margin-right: 120px;height: 71.375px;">
+            CurrentFinancials</div>
+       
+        <img src="{% static 'img/images/bgc.png' %}" style="width:960px;" />
+        <table>
+            <thead>
+                <tr>
+                    <th>Model</th>
+                    <th>Config </th>
+                    <th>Monthly lease payment</th>
+                    <th>AMF</th>
+                    <th>B&amp;W Volume</th>
+                    <th>B&amp;W CPC</th>
+                    <th>B&amp;W Total</th>
+                    <th>Colour Volume</th>
+                    <th>Colour CPC</th>
+                    <th>Colour total</th>
+                    <th>Total Service Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in tco_items %}
+                <tr>
+                    <td>{{ item.device_name }}</td>
+                    <td></td>
+                    <!-- <td>${{ item.lease_payment|floatformat:2|intcomma }}</td> -->
+                    <td>${{ item.monthly_lease|floatformat:2|intcomma }}</td>
+                    <td>${{ item.total_base|floatformat:2|intcomma }}</td>
+                    <td>{{ item.total_mono_pages }}</td>
+                    <td>${{ item.cpp_mono|floatformat:4 }}</td>
+                    <td>${{ item.total_mono_price|floatformat:2|intcomma }}</td>
+                    <td>{{ item.total_color_pages }}</td>
+                    <td>${{ item.cpp_color|floatformat:4 }}</td>
+                    <td>${{ item.total_color_price|floatformat:2|intcomma }}</td>
+                    <td>${{ item.total_price|floatformat:2|intcomma }}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                    {% if item.tco_total == 0 %}
+                        <div class="t m0 x47 he ya7 ff1 fs9 fc0 sc0 ls0 ws0">Anestimatedannualsavingsof: <span class="fs10 fc12" id="testxxx"></span></div>
+                    {% else %}
+                        <div class="t m0 x47 he ya7 ff1 fs9 fc0 sc0 ls0 ws0">Anestimatedannualsavingsof: <span class="fs10 fc12" id="testxxx">{{total_savings}}</span></div>
+                    {% endif %}
+            </tfoot>
+                {% endfor %}
+        </table>
+
+        <div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+    </div>
+        <div id="pfc" class="pf w0" data-page-no="c">
+             
+                 <div class="m0 x45 ff1 fs0 fc0" style="margin-right: 120px;height: 71.375px;">
+                     ProposalFinancials  
+
+               
+                
+            </div>
+                <img src="{% static 'img/images/bgc.png' %}" style="width:960px;" />
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Config </th>
+                            <th>Monthly lease payment</th>
+                            <th>AMF</th>
+                            <th>B&amp;W Volume</th>
+                            <th>B&amp;W CPC</th>
+                            <th>B&amp;W Total</th>
+                            <th>Colour Volume</th>
+                            <th>Colour CPC</th>
+                            <th>Colour total</th>
+                            <th>Total Service Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in service_items %}
+                        <tr>
+                            <td>{{ item.device_name }}</td>
+                            <td></td>
+                            <td>${{ item.lease_payment|floatformat:2|intcomma }}</td>
+                            <td>${{ item.monthly_cost|floatformat:2|intcomma }}</td>
+                            <td>{{ item.total_mono_pages }}</td>
+                            <td>${{ item.cpp_mono|floatformat:4 }}</td>
+                            <td>${{ item.mono_price|floatformat:2|intcomma }}</td>
+                            <td>{{ item.total_color_pages }}</td>
+                            <td>${{ item.cpp_color|floatformat:4 }}</td>
+                            <td>${{ item.color_price|floatformat:2|intcomma }}</td>
+                            <td>${{ item.total_price|floatformat:2|intcomma }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    <tfoot>
+                        {% for item in tco_items %}
+                            {% if item.tco_total == 0 %}
+                                <div class="t m0 x47 he ya7 ff1 fs9 fc0 sc0 ls0 ws0">Anestimatedannualsavingsof: <span class="fs10 fc12"></span></div>
+                            {% else %}
+                                <div class="t m0 x47 he ya7 ff1 fs9 fc0 sc0 ls0 ws0">Anestimatedannualsavingsof: <span class="fs10 fc12">{{total_savings}}</span></div>
+                            {% endif %}
+                        {% endfor %}
+                    </tfoot>
+                </table>
+             
+            <div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+        </div>
+        <div id="pfd" class="pf w0 h0" data-page-no="d">
+            <div class="pc pcd w0 h0">
+                <img class="bi x0 y0 w0 h0" alt="" src="{% static 'img/images/bgd.png' %}" />
+               <div class="t m0 x44 h1 y9e ff1 fs0 fc0 sc0 ls0 ws0">Implementation Timeline</div>
+                <div class="t m0 x49 h1e yac ff3 fsf fc0 sc0 ls0 ws0">  /  /  </div>
+                <div class="t m0 x49 h1e yad ff3 fsf fc0 sc0 ls0 ws0">  /  /  </div>
+                <div class="t m0 x49 h1e yae ff3 fsf fc0 sc0 ls0 ws0">  /  /  </div>
+                <div class="t m0 x49 h1e yaf ff3 fsf fc0 sc0 ls0 ws0">  /  /  </div>
+                <div class="t m0 x49 h1e yb0 ff3 fsf fc0 sc0 ls0 ws0">  /  /  </div>
+                <div class="t m0 x4a h2 yb1 ff1 fs1 fc0 sc0 ls0 ws0">AuthorizeLease</div>
+                <div class="t m0 x4a h2 yb2 ff1 fs1 fc0 sc0 ls0 ws0">AuthorizeLease.</div>
+                <div class="t m0 x4a h7 yb3 ff3 fs1 fc0 sc0 ls0 ws0">Authorizeagreementfora<span class="ff1">DEVICE</span>.RetrieveConfigurationReport.</div>
+                <div class="t m0 x4a h2 yb4 ff1 fs1 fc0 sc0 ls0 ws0">DeviceDelivery.</div>
+                <div class="t m0 x4a h2 yb5 ff1 fs1 fc0 sc0 ls0 ws0">DeviceDelivery.</div>
+                <div class="t m0 x4a h7 yb6 ff3 fs1 fc0 sc0 ls0 ws0">Atechnicianwillcomeon-sitetodropoff/buildthedevice.Oncebuilt,<span class="_ _6"></span><span class="ff1">{{ client.name }}</span>willbeable</div>
+                <div class="t m0 x4a h7 yb7 ff3 fs1 fc0 sc0 ls0 ws0">toprint.</div>
+                <div class="t m0 x4b h2 yb8 ff1 fs1 fc0 sc0 ls0 ws0">TrainingandSetUp.</div>
+                <div class="t m0 x4b h2 yb9 ff1 fs1 fc0 sc0 ls0 ws0">TrainingandSetUp.</div>
+                <div class="t m0 x4b h7 yba ff3 fs1 fc0 sc0 ls0 ws0">hubTGI’sinstallanalyst<span class="ff1">{{ sales_rep.first_name }} {{ sales_rep.last_name }}</span>willgoon-sitetoconfigurethedevice.Oncethedevice</div>
+                <div class="t m0 x4b h7 ybb ff3 fs1 fc0 sc0 ls0 ws0">issetup<span class="ff1">{{ sales_rep.first_name }} {{ sales_rep.last_name }}</span>willdoafulltrainingforthe{{ client.name }}team.</div>
+                <div class="t m0 x4b h2 ybc ff1 fs1 fc0 sc0 ls0 ws0">PerformanceCheck.</div>
+                <div class="t m0 x4b h2 ybd ff1 fs1 fc0 sc0 ls0 ws0">PerformanceCheck.</div>
+                <div class="t m0 x4b h7 ybe ff3 fs1 fc0 sc0 ls0 ws0">TwoweekcheckinbyAccountManager,<span class="ff1">{{ sales_rep.first_name }} {{ sales_rep.last_name }}</span>,toensuretherearenoissuesorto</div>
+                <div class="t m0 x4b h7 ybf ff3 fs1 fc0 sc0 ls0 ws0">completeanyadditionaltrainingrequired.</div>
+                <div class="t m0 x4b h2 yc0 ff1 fs1 fc0 sc0 ls0 ws0">AccountReview.</div>
+                <div class="t m0 x4b h2 yc1 ff1 fs1 fc0 sc0 ls0 ws0">AccountReview.</div>
+                <div class="t m0 x4b h7 yc2 ff3 fs1 fc0 sc0 ls0 ws0">QuarterlyaccountreviewsbegintoensureclientsatisfactionledbyAccountManager,<span class="_ _6"></span><span class="ff1">{{ sales_rep.first_name }}</span></div>
+                <div class="t m0 x4b h7 yc3 ff1 fs1 fc0 sc0 ls0 ws0">{{ sales_rep.last_name }}<span class="ff3">.</span></div>
+            </div>
+            <div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+        </div>
+        <div id="pfe" class="pf w0 h0" data-page-no="e">
+            <div class="pc pce w0 h0">
+                <img class="bi x0 y0 w0 h0" alt="" src="{% static 'img/images/bge.png' %}" />
+                <div class="t m0 x48 h1f yc4 ff4 fs12 fc4 sc0 ls0 ws0">38</div>
+                <div class="t m0 x48 h1f yc5 ff4 fs12 fc4 sc0 ls0 ws0">%</div>
+                <div class="t m0 x48 h1f yc6 ff4 fs12 fc4 sc0 ls0 ws0">74</div>
+                <div class="t m0 x48 h1f yc7 ff4 fs12 fc4 sc0 ls0 ws0">%</div>
+                <div class="t m0 x4c h1f yc6 ff4 fs12 fc4 sc0 ls0 ws0">89</div>
+                <div class="t m0 x4c h1f yc7 ff4 fs12 fc4 sc0 ls0 ws0">%</div>
+                <div class="t m0 x22 h20 yc8 ff3 fs13 fc0 sc0 ls0 ws0">Yourhubforbusinesstechnologyproductsandservices</div>
+            </div>
+            <div class="pi" data-data='{"ctm":[1.000000,0.000000,0.000000,1.000000,0.000000,0.000000]}'></div>
+        </div>
+    </div>
+    <div class="loading-indicator">
+    </div>
+</body>
+</html>

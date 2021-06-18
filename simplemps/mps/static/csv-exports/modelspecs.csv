@@ -1,0 +1,490 @@
+printer,c_bluetooth,c_ethernet,c_usb,c_walk_up,c_wifi,duty_cycle_max,duty_cycle_normal,f_copy,f_fax,f_print,f_scan,mfg_model_number,mfg_model_name,o_adf_capacity,o_borderless,o_duplex,o_duplex_scan,o_staple,o_touchscreen,papersize_max,papersize_supported,ppm_color,ppm_mono,print_technology,available
+1042,,,,,,,,,,,,B7025/DM2,Xerox VersaLink B7025 - Desktop Version,,,,,,,,,,,,True
+1042,,,,,,,,,,,,B7025/SM2,Xerox VersaLink B7025 - Stand & (2) 520 Sheet Trays,,,,,,,,,,,,True
+863,,,,,,,,,,,,C5F93A,HP LaserJet Pro M402n,,,,,,,,,,,,True
+863,,,,,,,,,,,,C5F94A,HP LaserJet Pro M402dn,,,,,,,,,,,,True
+863,,,,,,,,,,,,C5F95A,HP LaserJet Pro M402dw,,,,,,,,,,,,True
+865,,,,,,,,,,,,W1A52A,HP LaserJet Pro M404n,,,,,,,,,,,,True
+865,,,,,,,,,,,,W1A53A,HP LaserJet Pro M404dn,,,,,,,,,,,,True
+865,,,,,,,,,,,,W1A56A,HP LaserJet Pro M404dw,,,,,,,,,,,,True
+867,,,,,,,,,,,,F6W14A,HP LaserJet Pro MFP M426fdn,,,,,,,,,,,,True
+867,,,,,,,,,,,,F6W15A,HP LaserJet Pro MFP M426fdw,,,,,,,,,,,,True
+868,,,,,,,,,,,,W1A30A,HP LaserJet Pro MFP M428fdw,,,,,,,,,,,,True
+871,,,,,,,,,,,,CF388A,HP Color LaserJet Pro M452nw,,,,,,,,,,,,True
+871,,,,,,,,,,,,CF389A,HP Color LaserJet Pro M452dn,,,,,,,,,,,,True
+871,,,,,,,,,,,,CF394A,HP Color LaserJet Pro M452dw,,,,,,,,,,,,True
+872,,,,,,,,,,,,W1Y45A,HP Color LaserJet Pro M454dw,,,,,,,,,,,,True
+873,,,,,,,,,,,,CE738A,HP LaserJet Enterprise M4555h MFP,,,,,,,,,,,,True
+876,,,,,,,,,,,,CF377A,HP Color LaserJet Pro MFP M477fnw,,,,,,,,,,,,True
+876,,,,,,,,,,,,CF378A,HP Color LaserJet Pro MFP M477fdn,,,,,,,,,,,,True
+876,,,,,,,,,,,,CF379A,HP Color LaserJet Pro MFP M477fdw,,,,,,,,,,,,True
+877,,,,,,,,,,,,W1A79A,HP Color LaserJet Pro MFP M479fdn,,,,,,,,,,,,True
+877,,,,,,,,,,,,W1A80A,HP Color LaserJet Pro MFP M479fdw,,,,,,,,,,,,True
+878,,,,,,,,,,,,J8H61A,HP LaserJet Pro M501dn,,,,,,,,,,,,True
+881,,,,,,,,,,,,F2A68A,HP LaserJet Enterprise M506n,,,,,,,,,,,,True
+881,,,,,,,,,,,,F2A69A,HP LaserJet Enterprise M506dn,,,,,,,,,,,,True
+881,,,,,,,,,,,,F2A70A,HP LaserJet Enterprise M506x,,,,,,,,,,,,True
+885,,,,,,,,,,,,F2A76A,HP LaserJet Enterprise Flow MFP M527dn,,,,,,,,,,,,True
+885,,,,,,,,,,,,F2A77A,HP LaserJet Enterprise Flow MFP M527f,,,,,,,,,,,,True
+885,,,,,,,,,,,,F2A78A,HP LaserJet Enterprise Flow MFP M527z,,,,,,,,,,,,True
+885,,,,,,,,,,,,F2A80A,HP LaserJet Enterprise Managed Flow MFP M527cm,,,,,,,,,,,,True
+891,,,,,,,,,,,,CD646A,HP LaserJet Color Flow MFP M575C,,,,,,,,,,,,True
+892,,,,,,,,,,,,B5L46A,HP Color LaserJet Enterprise MFP M577dn,,,,,,,,,,,,True
+892,,,,,,,,,,,,B5L50A,HP Color LaserJet Enterprise Mangd Flow MFP M577cm,,,,,,,,,,,,True
+895,,,,,,,,,,,,CE995A,HP LaserJet 600 M603dn,,,,,,,,,,,,True
+899,,,,,,,,,,,,K0Q14A,HP LaserJet Enterprise M607n,,,,,,,,,,,,True
+900,,,,,,,,,,,,K0Q17A,HP LaserJet Enterprise M608n,,,,,,,,,,,,True
+901,,,,,,,,,,,,K0Q22A,HP LaserJet Enterprise M609x,,,,,,,,,,,,True
+903,,,,,,,,,,,,J8J64A,HP LaserJet Enterprise MFP M631h,,,,,,,,,,,,True
+903,,,,,,,,,,,,J8J65A,HP LaserJet Enterprise MFP M631z,,,,,,,,,,,,True
+904,,,,,,,,,,,,J8J70A,HP LaserJet Enterprise MFP M632h,,,,,,,,,,,,True
+904,,,,,,,,,,,,J8J71A,HP LaserJet Enterprise MFP M632fht,,,,,,,,,,,,True
+904,,,,,,,,,,,,J8J72A,HP LaserJet Enterprise MFP M632z,,,,,,,,,,,,True
+909,,,,,,,,,,,,CZ249A,HP Color LaserJet Enterprise MFP M680f,,,,,,,,,,,,True
+909,,,,,,,,,,,,L3U48A,HP Color LaserJet Managed Flow MFP M680zm,,,,,,,,,,,,True
+913,,,,,,,,,,,,CF066A,HP LaserJet MFP M725dn,,,,,,,,,,,,True
+914,,,,,,,,,,,,D3L10A,HP Color LaserJet Enterprise M750xh,,,,,,,,,,,,True
+915,,,,,,,,,,,,T3U43A,HP Color LaserJet Enterprise M751n,,,,,,,,,,,,True
+915,,,,,,,,,,,,T3U44A,HP Color LaserJet Enterprise M751dn,,,,,,,,,,,,True
+917,,,,,,,,,,,,CZ244A,HP LaserJet 800 M806dn,,,,,,,,,,,,True
+917,,,,,,,,,,,,D7P69A,HP LaserJet 800 M806x+ w/ NFC,,,,,,,,,,,,True
+960,,,,,,,,,,,,M9L75A,HP OfficeJet Pro 8720 All-in-One Printer,,,,,,,,,,,,True
+962,,,,,,,,,,,,CN459A,HP OfficeJet Pro X451DN,,,,,,,,,,,,True
+965,,,,,,,,,,,,C2S11A,HP Officejet Enterprise Color X555dn,,,,,,,,,,,,True
+969,,,,,,,,,,,,D3Q16A,HP PageWide Pro 452dw,,,,,,,,,,,,True
+970,,,,,,,,,,,,D3Q19A,HP PageWide Pro MFP 477dn,,,,,,,,,,,,True
+970,,,,,,,,,,,,D3Q20A,HP PageWide Pro MFP 477dw,,,,,,,,,,,,True
+971,,,,,,,,,,,,D3Q17A,HP PageWide Pro 552dw,,,,,,,,,,,,True
+972,,,,,,,,,,,,G1W46A,HP PageWide Enterprise Color 556dn,,,,,,,,,,,,True
+973,,,,,,,,,,,,D3Q21A,HP PageWide Pro MFP 577dw,,,,,,,,,,,,True
+974,,,,,,,,,,,,G1W39A,HP PageWide Enterprise Color MFP 586dn,,,,,,,,,,,,True
+974,,,,,,,,,,,,G1W40A,HP PageWide Enterprise Color MFP 586f,,,,,,,,,,,,True
+974,,,,,,,,,,,,G1W41A,HP PageWide Enterprise Color Flow MFP 586z,,,,,,,,,,,,True
+975,,,,,,,,,,,,J7Z04A,HP PageWide Enterprise Color 765dn,,,,,,,,,,,,True
+977,,,,,,,,,,,,Y3Z55A,HP PageWide Pro MFP 777z,,,,,,,,,,,,True
+978,,,,,,,,,,,,4PZ45A,HP PageWide Pro MFP 779dn,,,,,,,,,,,,True
+978,,,,,,,,,,,,4PZ46A,HP PageWide Pro MFP 779dns,,,,,,,,,,,,True
+979,,,,,,,,,,,,J7Z09A,HP PageWide Enterprise Color MFP 780dn,,,,,,,,,,,,True
+979,,,,,,,,,,,,J7Z10A,HP PageWide Enterprise Color MFP 780dns,,,,,,,,,,,,True
+980,,,,,,,,,,,,J7Z11A,HP PageWide Enterprise Color Flow MFP 785f,,,,,,,,,,,,True
+980,,,,,,,,,,,,J7Z12A,HP PageWide Enterprise Color Flow MFP 785zs,,,,,,,,,,,,True
+984,,,,,,,,,,,,W1B33A,HP PageWide Managed MFP P77740dw,,,,,,,,,,,,True
+826,,,,,,,,,,,,3GY14A,HP LaserJet Managed MFP E62655dn,,,,,,,,,,,,True
+827,,,,,,,,,,,,3GY16A,HP LaserJet Managed Flow MFP E62665h,,,,,,,,,,,,True
+827,,,,,,,,,,,,3GY17A,HP LaserJet Managed Flow MFP E62665z,,,,,,,,,,,,True
+828,,,,,,,,,,,,L3U55A,HP Color LaserJet Managed E65050dn,,,,,,,,,,,,True
+829,,,,,,,,,,,,L3U56A,HP Color LaserJet Managed E65060dn,,,,,,,,,,,,True
+831,,,,,,,,,,,,L3U66A,HP Color LaserJet Managed MFP E67550dh,,,,,,,,,,,,True
+832,,,,,,,,,,,,L3U70A,HP Color LaserJet Managed MFP E67560z,,,,,,,,,,,,True
+1042,,,,,,,,,,,,B7025/HM2,Xerox VersaLink B7025 - Tandem Try & (2) 520 Sheet Trays,,,,,,,,,,,,True
+1043,,,,,,,,,,,,B7030/DM2,Xerox VersaLink B7030 - Desktop Version,,,,,,,,,,,,True
+703,,,,,,,,,,,,Z8Z07A,HP LaserJet MFP E72525z,,,,,,,,,,,,True
+704,,,,,,,,,,,,Z8Z08A,HP LaserJet MFP E72530dn,,,,,,,,,,,,True
+704,,,,,,,,,,,,Z8Z09A,HP LaserJet MFP E72530z,,,,,,,,,,,,True
+705,,,,,,,,,,,,Z8Z10A,HP LaserJet MFP E72535dn,,,,,,,,,,,,True
+705,,,,,,,,,,,,Z8Z11A,HP LaserJet MFP E72535z,,,,,,,,,,,,True
+706,,,,,,,,,,,,Z8Z00A,HP Color LaserJet MFP E77822dn,,,,,,,,,,,,True
+706,,,,,,,,,,,,Z8Z01A,HP Color LaserJet MFP E77822z,,,,,,,,,,,,True
+707,,,,,,,,,,,,Z8Z02A,HP Color LaserJet MFP E77825dn,,,,,,,,,,,,True
+707,,,,,,,,,,,,Z8Z03A,HP Color LaserJet MFP E77825z,,,,,,,,,,,,True
+708,,,,,,,,,,,,Z8Z04A,HP Color LaserJet MFP E77830dn,,,,,,,,,,,,True
+708,,,,,,,,,,,,Z8Z05A,HP Color LaserJet MFP E77830z,,,,,,,,,,,,True
+709,,,,,,,,,,,,Z8Z18A,HP LaserJet Managed MFP E82540dn,,,,,,,,,,,,True
+709,,,,,,,,,,,,Z8Z19A,HP LaserJet Managed MFP E82540z,,,,,,,,,,,,True
+710,,,,,,,,,,,,Z8Z20A,HP LaserJet Managed MFP E82550dn,,,,,,,,,,,,True
+710,,,,,,,,,,,,Z8Z21A,HP LaserJet Managed MFP E82550z,,,,,,,,,,,,True
+711,,,,,,,,,,,,Z8Z22A,HP LaserJet Managed MFP E82560dn,,,,,,,,,,,,True
+711,,,,,,,,,,,,Z8Z23A,HP LaserJet Managed MFP E82560z,,,,,,,,,,,,True
+712,,,,,,,,,,,,Z8Z12A,HP Color LaserJet MFP E87640dn,,,,,,,,,,,,True
+712,,,,,,,,,,,,Z8Z13A,HP Color LaserJet MFP E87640z,,,,,,,,,,,,True
+713,,,,,,,,,,,,Z8Z14A,HP Color LaserJet MFP E87650dn,,,,,,,,,,,,True
+713,,,,,,,,,,,,Z8Z15A,HP Color LaserJet MFP E87650z,,,,,,,,,,,,True
+714,,,,,,,,,,,,Z8Z16A,HP Color LaserJet MFP E87660dn,,,,,,,,,,,,True
+714,,,,,,,,,,,,Z8Z17A,HP Color LaserJet MFP E87660z,,,,,,,,,,,,True
+714,,,,,,,,,,,,X3A92A,HP Color LaserJet Managed Flow MFP E87660z,,,,,,,,,,,,True
+714,,,,,,,,,,,,X3A93A,HP Color LaserJet Managed MFP E87660dn,,,,,,,,,,,,True
+1043,,,,,,,,,,,,B7030/SM2,Xerox VersaLink B7030 - Stand & (2) 520 Sheet Trays,,,,,,,,,,,,True
+805,,,,,,,,,,,,CC489A,HP Color LaserJet CP4025n,,,,,,,,,,,,True
+805,,,,,,,,,,,,CC490A,HP Color LaserJet CP4025dn,,,,,,,,,,,,True
+809,,,,,,,,,,,,Q3933A,HP Color LaserJet CP6015x,,,,,,,,,,,,True
+811,,,,,,,,,,,,1PU51A,HP LaserJet Managed E50145dn,,,,,,,,,,,,True
+812,,,,,,,,,,,,3GY20A,HP LaserJet Managed MFP E52545c,,,,,,,,,,,,True
+812,,,,,,,,,,,,3GY19A,HP LaserJet Managed MFP E52545dn,,,,,,,,,,,,True
+813,,,,,,,,,,,,1PS55A,HP LaserJet Managed Flow MFP E52645c,,,,,,,,,,,,True
+813,,,,,,,,,,,,1PS54A,HP LaserJet Managed MFP E52645dn,,,,,,,,,,,,True
+814,,,,,,,,,,,,3GX98A,HP Color LaserJet Managed E55040dw,,,,,,,,,,,,True
+815,,,,,,,,,,,,L3U44A,HP PageWide Managed Color E55650dn,,,,,,,,,,,,True
+816,,,,,,,,,,,,3GY25A,HP Color LaserJet Managed E57540dn,,,,,,,,,,,,True
+816,,,,,,,,,,,,3GY26A,HP Color LaserJet Managed E57540c,,,,,,,,,,,,True
+817,,,,,,,,,,,,L3U42A,HP PageWide Managed Color MFP E58650dn,,,,,,,,,,,,True
+817,,,,,,,,,,,,L3U43A,HP PageWide Managed Color Flow MFP E58650z,,,,,,,,,,,,True
+818,,,,,,,,,,,,M0P33A,HP LaserJet Managed E60055dn,,,,,,,,,,,,True
+819,,,,,,,,,,,,M0P35A,HP LaserJet Managed E60065dn,,,,,,,,,,,,True
+819,,,,,,,,,,,,M0P36A,HP LaserJet Managed E60065x,,,,,,,,,,,,True
+820,,,,,,,,,,,,M0P39A,HP LaserJet Managed E60075dn,,,,,,,,,,,,True
+820,,,,,,,,,,,,M0P40A,HP LaserJet Managed E60075x,,,,,,,,,,,,True
+821,,,,,,,,,,,,3GY09A,HP LaserJet Managed E60155dn,,,,,,,,,,,,True
+822,,,,,,,,,,,,3GY10A,HP LaserJet Managed E60165dn,,,,,,,,,,,,True
+823,,,,,,,,,,,,3GY12A,HP LaserJet Managed E60175dn,,,,,,,,,,,,True
+824,,,,,,,,,,,,J8J66A,HP LaserJet Managed MFP E62555dn,,,,,,,,,,,,True
+825,,,,,,,,,,,,J8J73A,HP LaserJet Managed MFP E62565z,,,,,,,,,,,,True
+825,,,,,,,,,,,,J8J74A,HP LaserJet Managed Flow MFP E62565h,,,,,,,,,,,,True
+825,,,,,,,,,,,,J8J79A,HP LaserJet Managed Flow MFP E62565z,,,,,,,,,,,,True
+1043,,,,,,,,,,,,B7030/HM2,Xerox VersaLink B7030 - Tandem Try & (2) 520 Sheet Trays,,,,,,,,,,,,True
+1044,,,,,,,,,,,,B7035/DM2,Xerox VersaLink B7035 - Desktop Version,,,,,,,,,,,,True
+1044,,,,,,,,,,,,B7035/SM2,Xerox VersaLink B7035 - Stand & (2) 520 Sheet Trays,,,,,,,,,,,,True
+1044,,,,,,,,,,,,B7035/HM2,Xerox VersaLink B7035 - Tandem Try & (2) 520 Sheet Trays,,,,,,,,,,,,True
+988,,,,,,,,,,,,B8045/H2,Xerox AltaLink B8045,,,,,,,,,,,,True
+989,,,,,,,,,,,,B8055/H2,Xerox AltaLink B8055,,,,,,,,,,,,True
+990,,,,,,,,,,,,B8065/H2,Xerox AltaLink B8065,,,,,,,,,,,,True
+991,,,,,,,,,,,,B8075/H2,Xerox AltaLink B8075,,,,,,,,,,,,True
+992,,,,,,,,,,,,B8090/H2,Xerox AltaLink B8090,,,,,,,,,,,,True
+1046,,,,,,,,,,,,C7020/DM2,Xerox VersaLink C7020 - Desktop Version,,,,,,,,,,,,True
+1046,,,,,,,,,,,,C7020/SM2,Xerox VersaLink C7020 - Stand & (2) 520 Sheet Trays,,,,,,,,,,,,True
+1046,,,,,,,,,,,,C7020/TM2,Xerox VersaLink C7020 - Tandem Try & (2) 520 Sheet Trays,,,,,,,,,,,,True
+1047,,,,,,,,,,,,C7025/DM2,Xerox VersaLink C7025 - Desktop Version,,,,,,,,,,,,True
+1047,,,,,,,,,,,,C7025/SM2,Xerox VersaLink C7025 - Stand & (2) 520 Sheet Trays,,,,,,,,,,,,True
+1047,,,,,,,,,,,,C7025/TM2,Xerox VersaLink C7025 - Tandem Try & (2) 520 Sheet Trays,,,,,,,,,,,,True
+1048,,,,,,,,,,,,C7030/DM2,Xerox VersaLink C7030 - Desktop Version,,,,,,,,,,,,True
+1048,,,,,,,,,,,,C7030/SM2,Xerox VersaLink C7030 - Stand & (2) 520 Sheet Trays,,,,,,,,,,,,True
+1048,,,,,,,,,,,,C7030/TM2,Xerox VersaLink C7030 - Tandem Try & (2) 520 Sheet Trays,,,,,,,,,,,,True
+993,,,,,,,,,,,,C8030/T2,Xerox AltaLink C8030,,,,,,,,,,,,True
+993,,,,,,,,,,,,C8030/H2,Xerox AltaLink C8030 - High Capacity Tandem Tray,,,,,,,,,,,,True
+994,,,,,,,,,,,,C8035/T2,Xerox AltaLink C8035,,,,,,,,,,,,True
+994,,,,,,,,,,,,C8035/H2,Xerox AltaLink C8035 - High Capacity Tandem Tray,,,,,,,,,,,,True
+995,,,,,,,,,,,,C8045/H2,Xerox AltaLink C8045,,,,,,,,,,,,True
+996,,,,,,,,,,,,C8055/H2,Xerox AltaLink C8055,,,,,,,,,,,,True
+997,,,,,,,,,,,,C8070/H2,Xerox AltaLink C8070,,,,,,,,,,,,True
+1081,,,,,,,,,,,,EC7836/H2,Xerox WorkCentre EC7836,,,,,,,,,,,,True
+1084,,,,,,,,,,,,EC7856/H2,Xerox WorkCentre EC7856,,,,,,,,,,,,True
+1322,,,,,,,,,,,,32C0401,Lexmark XC9245 Color A3 MFP,,,,,,,,,,,,True
+1323,,,,,,,,,,,,32C0402,Lexmark XC9255 Color A3 MFP,,,,,,,,,,,,True
+1324,,,,,,,,,,,,32C0403,Lexmark XC9265 Color A3 MFP,,,,,,,,,,,,True
+1209,,,,,,,,,,,,35S0040,Lexmark M1145 Mono SFP,,,,,,,,,,,,True
+1212,,,,,,,,,,,,35S0041,Lexmark M3150 Mono SFP,,,,,,,,,,,,True
+1215,,,,,,,,,,,,40G0730,Lexmark M5163 Mono SFP,,,,,,,,,,,,True
+1216,,,,,,,,,,,,40G0740,Lexmark M5170 Mono SFP,,,,,,,,,,,,True
+1327,,,,,,,,,,,,35S5705,Lexmark XM1145 Mono MFP,,,,,,,,,,,,True
+1330,,,,,,,,,,,,35S6830,Lexmark XM3150 Mono MFP,,,,,,,,,,,,True
+1334,,,,,,,,,,,,24T9400,Lexmark XM5263 Mono MFP,,,,,,,,,,,,True
+1312,,,,,,,,,,,,28E0600,Lexmark XC2132 Color MFP,,,,,,,,,,,,True
+1214,,,,,,,,,,,,40G0720,Lexmark M5155 Mono SFP,,,,,,,,,,,,True
+1149,,,,,,,,,,,,42C0008,Lexmark C2240 Color SFP,,,,,,,,,,,,True
+1151,,,,,,,,,,,,40C9054,Lexmark C4150 Color SFP,,,,,,,,,,,,True
+1161,,,,,,,,,,,,21K0300,Lexmark C6160 Color SFP,,,,,,,,,,,,True
+1210,,,,,,,,,,,,36S0240,Lexmark M1242 Mono SFP,,,,,,,,,,,,True
+1211,,,,,,,,,,,,36S0320,Lexmark M1246 Mono SFP,,,,,,,,,,,,True
+1213,,,,,,,,,,,,36S0520,Lexmark M3250 Mono SFP,,,,,,,,,,,,True
+1217,,,,,,,,,,,,50G0720,Lexmark M5255 Mono SFP,,,,,,,,,,,,True
+1218,,,,,,,,,,,,50G0740,Lexmark M5270 Mono SFP,,,,,,,,,,,,True
+1313,,,,,,,,,,,,42C7306,Lexmark XC2235 Color MFP,,,,,,,,,,,,True
+1315,,,,,,,,,,,,40C9720,Lexmark XC4140 Color MFP,,,,,,,,,,,,True
+1316,,,,,,,,,,,,40C9611,Lexmark XC4150 Color MFP,,,,,,,,,,,,True
+1317,,,,,,,,,,,,42C7808,Lexmark XC4240 Color MFP,,,,,,,,,,,,True
+1318,,,,,,,,,,,,42K1212,Lexmark XC6152 Color MFP,,,,,,,,,,,,True
+1319,,,,,,,,,,,,42K1241,Lexmark XC8155 Color MFP,,,,,,,,,,,,True
+1320,,,,,,,,,,,,42K1271,Lexmark XC8160 Color MFP,,,,,,,,,,,,True
+1328,,,,,,,,,,,,36S0740,Lexmark XM1242 Mono MFP,,,,,,,,,,,,True
+1329,,,,,,,,,,,,36S0860,Lexmark XM1246 Mono MFP,,,,,,,,,,,,True
+1331,,,,,,,,,,,,36S0940,Lexmark XM3250 Mono MFP,,,,,,,,,,,,True
+1335,,,,,,,,,,,,24T9401,Lexmark XM5270 Mono MFP,,,,,,,,,,,,True
+1336,,,,,,,,,,,,25B1200,Lexmark XM5365 Mono MFP,,,,,,,,,,,,True
+1343,,,,,,,,,,,,24T9403,Lexmark XM7263 Mono MFP,,,,,,,,,,,,True
+703,,,,,,,,,,,,Z8Z07A,HP LaserJet MFP E72525z,,,,,,,,,,,,True
+704,,,,,,,,,,,,Z8Z08A,HP LaserJet MFP E72530dn,,,,,,,,,,,,True
+704,,,,,,,,,,,,Z8Z09A,HP LaserJet MFP E72530z,,,,,,,,,,,,True
+705,,,,,,,,,,,,Z8Z10A,HP LaserJet MFP E72535dn,,,,,,,,,,,,True
+705,,,,,,,,,,,,Z8Z11A,HP LaserJet MFP E72535z,,,,,,,,,,,,True
+706,,,,,,,,,,,,Z8Z00A,HP Color LaserJet MFP E77822dn,,,,,,,,,,,,True
+706,,,,,,,,,,,,Z8Z01A,HP Color LaserJet MFP E77822z,,,,,,,,,,,,True
+707,,,,,,,,,,,,Z8Z02A,HP Color LaserJet MFP E77825dn,,,,,,,,,,,,True
+707,,,,,,,,,,,,Z8Z03A,HP Color LaserJet MFP E77825z,,,,,,,,,,,,True
+708,,,,,,,,,,,,Z8Z04A,HP Color LaserJet MFP E77830dn,,,,,,,,,,,,True
+708,,,,,,,,,,,,Z8Z05A,HP Color LaserJet MFP E77830z,,,,,,,,,,,,True
+709,,,,,,,,,,,,Z8Z18A,HP LaserJet Managed MFP E82540dn,,,,,,,,,,,,True
+709,,,,,,,,,,,,Z8Z19A,HP LaserJet Managed MFP E82540z,,,,,,,,,,,,True
+710,,,,,,,,,,,,Z8Z20A,HP LaserJet Managed MFP E82550dn,,,,,,,,,,,,True
+710,,,,,,,,,,,,Z8Z21A,HP LaserJet Managed MFP E82550z,,,,,,,,,,,,True
+711,,,,,,,,,,,,Z8Z22A,HP LaserJet Managed MFP E82560dn,,,,,,,,,,,,True
+711,,,,,,,,,,,,Z8Z23A,HP LaserJet Managed MFP E82560z,,,,,,,,,,,,True
+712,,,,,,,,,,,,Z8Z12A,HP Color LaserJet MFP E87640dn,,,,,,,,,,,,True
+712,,,,,,,,,,,,Z8Z13A,HP Color LaserJet MFP E87640z,,,,,,,,,,,,True
+713,,,,,,,,,,,,Z8Z14A,HP Color LaserJet MFP E87650dn,,,,,,,,,,,,True
+713,,,,,,,,,,,,Z8Z15A,HP Color LaserJet MFP E87650z,,,,,,,,,,,,True
+714,,,,,,,,,,,,Z8Z16A,HP Color LaserJet MFP E87660dn,,,,,,,,,,,,True
+714,,,,,,,,,,,,Z8Z17A,HP Color LaserJet MFP E87660z,,,,,,,,,,,,True
+714,,,,,,,,,,,,X3A92A,HP Color LaserJet Managed Flow MFP E87660z,,,,,,,,,,,,True
+714,,,,,,,,,,,,X3A93A,HP Color LaserJet Managed MFP E87660dn,,,,,,,,,,,,True
+805,,,,,,,,,,,,CC489A,HP Color LaserJet CP4025n,,,,,,,,,,,,True
+805,,,,,,,,,,,,CC490A,HP Color LaserJet CP4025dn,,,,,,,,,,,,True
+809,,,,,,,,,,,,Q3933A,HP Color LaserJet CP6015x,,,,,,,,,,,,True
+811,,,,,,,,,,,,1PU51A,HP LaserJet Managed E50145dn,,,,,,,,,,,,True
+812,,,,,,,,,,,,3GY20A,HP LaserJet Managed MFP E52545c,,,,,,,,,,,,True
+812,,,,,,,,,,,,3GY19A,HP LaserJet Managed MFP E52545dn,,,,,,,,,,,,True
+813,,,,,,,,,,,,1PS55A,HP LaserJet Managed Flow MFP E52645c,,,,,,,,,,,,True
+813,,,,,,,,,,,,1PS54A,HP LaserJet Managed MFP E52645dn,,,,,,,,,,,,True
+814,,,,,,,,,,,,3GX98A,HP Color LaserJet Managed E55040dw,,,,,,,,,,,,True
+815,,,,,,,,,,,,L3U44A,HP PageWide Managed Color E55650dn,,,,,,,,,,,,True
+816,,,,,,,,,,,,3GY25A,HP Color LaserJet Managed E57540dn,,,,,,,,,,,,True
+816,,,,,,,,,,,,3GY26A,HP Color LaserJet Managed E57540c,,,,,,,,,,,,True
+817,,,,,,,,,,,,L3U42A,HP PageWide Managed Color MFP E58650dn,,,,,,,,,,,,True
+817,,,,,,,,,,,,L3U43A,HP PageWide Managed Color Flow MFP E58650z,,,,,,,,,,,,True
+818,,,,,,,,,,,,M0P33A,HP LaserJet Managed E60055dn,,,,,,,,,,,,True
+819,,,,,,,,,,,,M0P35A,HP LaserJet Managed E60065dn,,,,,,,,,,,,True
+819,,,,,,,,,,,,M0P36A,HP LaserJet Managed E60065x,,,,,,,,,,,,True
+820,,,,,,,,,,,,M0P39A,HP LaserJet Managed E60075dn,,,,,,,,,,,,True
+820,,,,,,,,,,,,M0P40A,HP LaserJet Managed E60075x,,,,,,,,,,,,True
+821,,,,,,,,,,,,3GY09A,HP LaserJet Managed E60155dn,,,,,,,,,,,,True
+822,,,,,,,,,,,,3GY10A,HP LaserJet Managed E60165dn,,,,,,,,,,,,True
+823,,,,,,,,,,,,3GY12A,HP LaserJet Managed E60175dn,,,,,,,,,,,,True
+824,,,,,,,,,,,,J8J66A,HP LaserJet Managed MFP E62555dn,,,,,,,,,,,,True
+825,,,,,,,,,,,,J8J73A,HP LaserJet Managed MFP E62565z,,,,,,,,,,,,True
+825,,,,,,,,,,,,J8J74A,HP LaserJet Managed Flow MFP E62565h,,,,,,,,,,,,True
+825,,,,,,,,,,,,J8J79A,HP LaserJet Managed Flow MFP E62565z,,,,,,,,,,,,True
+826,,,,,,,,,,,,3GY14A,HP LaserJet Managed MFP E62655dn,,,,,,,,,,,,True
+827,,,,,,,,,,,,3GY16A,HP LaserJet Managed Flow MFP E62665h,,,,,,,,,,,,True
+827,,,,,,,,,,,,3GY17A,HP LaserJet Managed Flow MFP E62665z,,,,,,,,,,,,True
+828,,,,,,,,,,,,L3U55A,HP Color LaserJet Managed E65050dn,,,,,,,,,,,,True
+829,,,,,,,,,,,,L3U56A,HP Color LaserJet Managed E65060dn,,,,,,,,,,,,True
+831,,,,,,,,,,,,L3U66A,HP Color LaserJet Managed MFP E67550dh,,,,,,,,,,,,True
+832,,,,,,,,,,,,L3U70A,HP Color LaserJet Managed MFP E67560z,,,,,,,,,,,,True
+833,,,,,,,,,,,,T3U64A,HP Color LaserJet Managed E75245dn,,,,,,,,,,,,True
+852,,,,,,,,,,,,T6B60A,HP Color LaserJet Pro M254dw,,,,,,,,,,,,True
+1344,,,,,,,,,,,,24T9404,Lexmark XM7270 Mono MFP,,,,,,,,,,,,True
+1346,,,,,,,,,,,,25B1204,Lexmark XM7370 Mono MFP,,,,,,,,,,,,True
+833,,,,,,,,,,,,T3U64A,HP Color LaserJet Managed E75245dn,,,,,,,,,,,,True
+852,,,,,,,,,,,,T6B60A,HP Color LaserJet Pro M254dw,,,,,,,,,,,,True
+863,,,,,,,,,,,,C5F93A,HP LaserJet Pro M402n,,,,,,,,,,,,True
+863,,,,,,,,,,,,C5F94A,HP LaserJet Pro M402dn,,,,,,,,,,,,True
+863,,,,,,,,,,,,C5F95A,HP LaserJet Pro M402dw,,,,,,,,,,,,True
+865,,,,,,,,,,,,W1A52A,HP LaserJet Pro M404n,,,,,,,,,,,,True
+865,,,,,,,,,,,,W1A53A,HP LaserJet Pro M404dn,,,,,,,,,,,,True
+865,,,,,,,,,,,,W1A56A,HP LaserJet Pro M404dw,,,,,,,,,,,,True
+867,,,,,,,,,,,,F6W14A,HP LaserJet Pro MFP M426fdn,,,,,,,,,,,,True
+867,,,,,,,,,,,,F6W15A,HP LaserJet Pro MFP M426fdw,,,,,,,,,,,,True
+868,,,,,,,,,,,,W1A30A,HP LaserJet Pro MFP M428fdw,,,,,,,,,,,,True
+871,,,,,,,,,,,,CF388A,HP Color LaserJet Pro M452nw,,,,,,,,,,,,True
+871,,,,,,,,,,,,CF389A,HP Color LaserJet Pro M452dn,,,,,,,,,,,,True
+871,,,,,,,,,,,,CF394A,HP Color LaserJet Pro M452dw,,,,,,,,,,,,True
+872,,,,,,,,,,,,W1Y45A,HP Color LaserJet Pro M454dw,,,,,,,,,,,,True
+873,,,,,,,,,,,,CE738A,HP LaserJet Enterprise M4555h MFP,,,,,,,,,,,,True
+876,,,,,,,,,,,,CF377A,HP Color LaserJet Pro MFP M477fnw,,,,,,,,,,,,True
+876,,,,,,,,,,,,CF378A,HP Color LaserJet Pro MFP M477fdn,,,,,,,,,,,,True
+876,,,,,,,,,,,,CF379A,HP Color LaserJet Pro MFP M477fdw,,,,,,,,,,,,True
+877,,,,,,,,,,,,W1A79A,HP Color LaserJet Pro MFP M479fdn,,,,,,,,,,,,True
+877,,,,,,,,,,,,W1A80A,HP Color LaserJet Pro MFP M479fdw,,,,,,,,,,,,True
+878,,,,,,,,,,,,J8H61A,HP LaserJet Pro M501dn,,,,,,,,,,,,True
+881,,,,,,,,,,,,F2A68A,HP LaserJet Enterprise M506n,,,,,,,,,,,,True
+881,,,,,,,,,,,,F2A69A,HP LaserJet Enterprise M506dn,,,,,,,,,,,,True
+881,,,,,,,,,,,,F2A70A,HP LaserJet Enterprise M506x,,,,,,,,,,,,True
+885,,,,,,,,,,,,F2A76A,HP LaserJet Enterprise Flow MFP M527dn,,,,,,,,,,,,True
+885,,,,,,,,,,,,F2A77A,HP LaserJet Enterprise Flow MFP M527f,,,,,,,,,,,,True
+885,,,,,,,,,,,,F2A78A,HP LaserJet Enterprise Flow MFP M527z,,,,,,,,,,,,True
+885,,,,,,,,,,,,F2A80A,HP LaserJet Enterprise Managed Flow MFP M527cm,,,,,,,,,,,,True
+891,,,,,,,,,,,,CD646A,HP LaserJet Color Flow MFP M575C,,,,,,,,,,,,True
+892,,,,,,,,,,,,B5L46A,HP Color LaserJet Enterprise MFP M577dn,,,,,,,,,,,,True
+892,,,,,,,,,,,,B5L50A,HP Color LaserJet Enterprise Mangd Flow MFP M577cm,,,,,,,,,,,,True
+895,,,,,,,,,,,,CE995A,HP LaserJet 600 M603dn,,,,,,,,,,,,True
+899,,,,,,,,,,,,K0Q14A,HP LaserJet Enterprise M607n,,,,,,,,,,,,True
+900,,,,,,,,,,,,K0Q17A,HP LaserJet Enterprise M608n,,,,,,,,,,,,True
+901,,,,,,,,,,,,K0Q22A,HP LaserJet Enterprise M609x,,,,,,,,,,,,True
+903,,,,,,,,,,,,J8J64A,HP LaserJet Enterprise MFP M631h,,,,,,,,,,,,True
+903,,,,,,,,,,,,J8J65A,HP LaserJet Enterprise MFP M631z,,,,,,,,,,,,True
+904,,,,,,,,,,,,J8J70A,HP LaserJet Enterprise MFP M632h,,,,,,,,,,,,True
+904,,,,,,,,,,,,J8J71A,HP LaserJet Enterprise MFP M632fht,,,,,,,,,,,,True
+904,,,,,,,,,,,,J8J72A,HP LaserJet Enterprise MFP M632z,,,,,,,,,,,,True
+909,,,,,,,,,,,,CZ249A,HP Color LaserJet Enterprise MFP M680f,,,,,,,,,,,,True
+909,,,,,,,,,,,,L3U48A,HP Color LaserJet Managed Flow MFP M680zm,,,,,,,,,,,,True
+913,,,,,,,,,,,,CF066A,HP LaserJet MFP M725dn,,,,,,,,,,,,True
+914,,,,,,,,,,,,D3L10A,HP Color LaserJet Enterprise M750xh,,,,,,,,,,,,True
+915,,,,,,,,,,,,T3U43A,HP Color LaserJet Enterprise M751n,,,,,,,,,,,,True
+915,,,,,,,,,,,,T3U44A,HP Color LaserJet Enterprise M751dn,,,,,,,,,,,,True
+917,,,,,,,,,,,,CZ244A,HP LaserJet 800 M806dn,,,,,,,,,,,,True
+917,,,,,,,,,,,,D7P69A,HP LaserJet 800 M806x+ w/ NFC,,,,,,,,,,,,True
+960,,,,,,,,,,,,M9L75A,HP OfficeJet Pro 8720 All-in-One Printer,,,,,,,,,,,,True
+962,,,,,,,,,,,,CN459A,HP OfficeJet Pro X451DN,,,,,,,,,,,,True
+965,,,,,,,,,,,,C2S11A,HP Officejet Enterprise Color X555dn,,,,,,,,,,,,True
+969,,,,,,,,,,,,D3Q16A,HP PageWide Pro 452dw,,,,,,,,,,,,True
+970,,,,,,,,,,,,D3Q19A,HP PageWide Pro MFP 477dn,,,,,,,,,,,,True
+970,,,,,,,,,,,,D3Q20A,HP PageWide Pro MFP 477dw,,,,,,,,,,,,True
+971,,,,,,,,,,,,D3Q17A,HP PageWide Pro 552dw,,,,,,,,,,,,True
+972,,,,,,,,,,,,G1W46A,HP PageWide Enterprise Color 556dn,,,,,,,,,,,,True
+973,,,,,,,,,,,,D3Q21A,HP PageWide Pro MFP 577dw,,,,,,,,,,,,True
+974,,,,,,,,,,,,G1W39A,HP PageWide Enterprise Color MFP 586dn,,,,,,,,,,,,True
+974,,,,,,,,,,,,G1W40A,HP PageWide Enterprise Color MFP 586f,,,,,,,,,,,,True
+974,,,,,,,,,,,,G1W41A,HP PageWide Enterprise Color Flow MFP 586z,,,,,,,,,,,,True
+975,,,,,,,,,,,,J7Z04A,HP PageWide Enterprise Color 765dn,,,,,,,,,,,,True
+977,,,,,,,,,,,,Y3Z55A,HP PageWide Pro MFP 777z,,,,,,,,,,,,True
+978,,,,,,,,,,,,4PZ45A,HP PageWide Pro MFP 779dn,,,,,,,,,,,,True
+978,,,,,,,,,,,,4PZ46A,HP PageWide Pro MFP 779dns,,,,,,,,,,,,True
+979,,,,,,,,,,,,J7Z09A,HP PageWide Enterprise Color MFP 780dn,,,,,,,,,,,,True
+979,,,,,,,,,,,,J7Z10A,HP PageWide Enterprise Color MFP 780dns,,,,,,,,,,,,True
+980,,,,,,,,,,,,J7Z11A,HP PageWide Enterprise Color Flow MFP 785f,,,,,,,,,,,,True
+980,,,,,,,,,,,,J7Z12A,HP PageWide Enterprise Color Flow MFP 785zs,,,,,,,,,,,,True
+984,,,,,,,,,,,,W1B33A,HP PageWide Managed MFP P77740dw,,,,,,,,,,,,True
+1042,,,,,,,,,,,,B7025/SM2,Xerox VersaLink B7025 - Stand & (2) 520 Sheet Trays,,,,,,,,,,,,True
+1042,,,,,,,,,,,,B7025/HM2,Xerox VersaLink B7025 - Tandem Try & (2) 520 Sheet Trays,,,,,,,,,,,,True
+1043,,,,,,,,,,,,B7030/DM2,Xerox VersaLink B7030 - Desktop Version,,,,,,,,,,,,True
+1043,,,,,,,,,,,,B7030/SM2,Xerox VersaLink B7030 - Stand & (2) 520 Sheet Trays,,,,,,,,,,,,True
+1043,,,,,,,,,,,,B7030/HM2,Xerox VersaLink B7030 - Tandem Try & (2) 520 Sheet Trays,,,,,,,,,,,,True
+1044,,,,,,,,,,,,B7035/DM2,Xerox VersaLink B7035 - Desktop Version,,,,,,,,,,,,True
+1044,,,,,,,,,,,,B7035/SM2,Xerox VersaLink B7035 - Stand & (2) 520 Sheet Trays,,,,,,,,,,,,True
+1044,,,,,,,,,,,,B7035/HM2,Xerox VersaLink B7035 - Tandem Try & (2) 520 Sheet Trays,,,,,,,,,,,,True
+988,,,,,,,,,,,,B8045/H2,Xerox AltaLink B8045,,,,,,,,,,,,True
+989,,,,,,,,,,,,B8055/H2,Xerox AltaLink B8055,,,,,,,,,,,,True
+990,,,,,,,,,,,,B8065/H2,Xerox AltaLink B8065,,,,,,,,,,,,True
+991,,,,,,,,,,,,B8075/H2,Xerox AltaLink B8075,,,,,,,,,,,,True
+992,,,,,,,,,,,,B8090/H2,Xerox AltaLink B8090,,,,,,,,,,,,True
+1046,,,,,,,,,,,,C7020/DM2,Xerox VersaLink C7020 - Desktop Version,,,,,,,,,,,,True
+1046,,,,,,,,,,,,C7020/SM2,Xerox VersaLink C7020 - Stand & (2) 520 Sheet Trays,,,,,,,,,,,,True
+1046,,,,,,,,,,,,C7020/TM2,Xerox VersaLink C7020 - Tandem Try & (2) 520 Sheet Trays,,,,,,,,,,,,True
+1047,,,,,,,,,,,,C7025/DM2,Xerox VersaLink C7025 - Desktop Version,,,,,,,,,,,,True
+1047,,,,,,,,,,,,C7025/SM2,Xerox VersaLink C7025 - Stand & (2) 520 Sheet Trays,,,,,,,,,,,,True
+1047,,,,,,,,,,,,C7025/TM2,Xerox VersaLink C7025 - Tandem Try & (2) 520 Sheet Trays,,,,,,,,,,,,True
+1048,,,,,,,,,,,,C7030/DM2,Xerox VersaLink C7030 - Desktop Version,,,,,,,,,,,,True
+1048,,,,,,,,,,,,C7030/SM2,Xerox VersaLink C7030 - Stand & (2) 520 Sheet Trays,,,,,,,,,,,,True
+1048,,,,,,,,,,,,C7030/TM2,Xerox VersaLink C7030 - Tandem Try & (2) 520 Sheet Trays,,,,,,,,,,,,True
+993,,,,,,,,,,,,C8030/T2,Xerox AltaLink C8030,,,,,,,,,,,,True
+993,,,,,,,,,,,,C8030/H2,Xerox AltaLink C8030 - High Capacity Tandem Tray,,,,,,,,,,,,True
+994,,,,,,,,,,,,C8035/T2,Xerox AltaLink C8035,,,,,,,,,,,,True
+994,,,,,,,,,,,,C8035/H2,Xerox AltaLink C8035 - High Capacity Tandem Tray,,,,,,,,,,,,True
+995,,,,,,,,,,,,C8045/H2,Xerox AltaLink C8045,,,,,,,,,,,,True
+996,,,,,,,,,,,,C8055/H2,Xerox AltaLink C8055,,,,,,,,,,,,True
+997,,,,,,,,,,,,C8070/H2,Xerox AltaLink C8070,,,,,,,,,,,,True
+1081,,,,,,,,,,,,EC7836/H2,Xerox WorkCentre EC7836,,,,,,,,,,,,True
+1084,,,,,,,,,,,,EC7856/H2,Xerox WorkCentre EC7856,,,,,,,,,,,,True
+1042,,,,,,,,,,,,B7025/DM2,Xerox VersaLink B7025 - Desktop Version,,,,,,,,,,,,True
+703,,,,,,,,,,,,Z8Z07A,HP LaserJet MFP E72525z,,,,,,,,,,,,True
+704,,,,,,,,,,,,Z8Z08A,HP LaserJet MFP E72530dn,,,,,,,,,,,,True
+704,,,,,,,,,,,,Z8Z09A,HP LaserJet MFP E72530z,,,,,,,,,,,,True
+705,,,,,,,,,,,,Z8Z10A,HP LaserJet MFP E72535dn,,,,,,,,,,,,True
+705,,,,,,,,,,,,Z8Z11A,HP LaserJet MFP E72535z,,,,,,,,,,,,True
+706,,,,,,,,,,,,Z8Z00A,HP Color LaserJet MFP E77822dn,,,,,,,,,,,,True
+706,,,,,,,,,,,,Z8Z01A,HP Color LaserJet MFP E77822z,,,,,,,,,,,,True
+707,,,,,,,,,,,,Z8Z02A,HP Color LaserJet MFP E77825dn,,,,,,,,,,,,True
+707,,,,,,,,,,,,Z8Z03A,HP Color LaserJet MFP E77825z,,,,,,,,,,,,True
+708,,,,,,,,,,,,Z8Z04A,HP Color LaserJet MFP E77830dn,,,,,,,,,,,,True
+708,,,,,,,,,,,,Z8Z05A,HP Color LaserJet MFP E77830z,,,,,,,,,,,,True
+709,,,,,,,,,,,,Z8Z18A,HP LaserJet Managed MFP E82540dn,,,,,,,,,,,,True
+709,,,,,,,,,,,,Z8Z19A,HP LaserJet Managed MFP E82540z,,,,,,,,,,,,True
+710,,,,,,,,,,,,Z8Z20A,HP LaserJet Managed MFP E82550dn,,,,,,,,,,,,True
+710,,,,,,,,,,,,Z8Z21A,HP LaserJet Managed MFP E82550z,,,,,,,,,,,,True
+711,,,,,,,,,,,,Z8Z22A,HP LaserJet Managed MFP E82560dn,,,,,,,,,,,,True
+711,,,,,,,,,,,,Z8Z23A,HP LaserJet Managed MFP E82560z,,,,,,,,,,,,True
+712,,,,,,,,,,,,Z8Z12A,HP Color LaserJet MFP E87640dn,,,,,,,,,,,,True
+712,,,,,,,,,,,,Z8Z13A,HP Color LaserJet MFP E87640z,,,,,,,,,,,,True
+713,,,,,,,,,,,,Z8Z14A,HP Color LaserJet MFP E87650dn,,,,,,,,,,,,True
+713,,,,,,,,,,,,Z8Z15A,HP Color LaserJet MFP E87650z,,,,,,,,,,,,True
+714,,,,,,,,,,,,Z8Z16A,HP Color LaserJet MFP E87660dn,,,,,,,,,,,,True
+714,,,,,,,,,,,,Z8Z17A,HP Color LaserJet MFP E87660z,,,,,,,,,,,,True
+714,,,,,,,,,,,,X3A92A,HP Color LaserJet Managed Flow MFP E87660z,,,,,,,,,,,,True
+714,,,,,,,,,,,,X3A93A,HP Color LaserJet Managed MFP E87660dn,,,,,,,,,,,,True
+805,,,,,,,,,,,,CC489A,HP Color LaserJet CP4025n,,,,,,,,,,,,True
+805,,,,,,,,,,,,CC490A,HP Color LaserJet CP4025dn,,,,,,,,,,,,True
+811,,,,,,,,,,,,1PU51A,HP LaserJet Managed E50145dn,,,,,,,,,,,,True
+812,,,,,,,,,,,,3GY20A,HP LaserJet Managed MFP E52545c,,,,,,,,,,,,True
+812,,,,,,,,,,,,3GY19A,HP LaserJet Managed MFP E52545dn,,,,,,,,,,,,True
+813,,,,,,,,,,,,1PS55A,HP LaserJet Managed Flow MFP E52645c,,,,,,,,,,,,True
+813,,,,,,,,,,,,1PS54A,HP LaserJet Managed MFP E52645dn,,,,,,,,,,,,True
+814,,,,,,,,,,,,3GX98A,HP Color LaserJet Managed E55040dw,,,,,,,,,,,,True
+815,,,,,,,,,,,,L3U44A,HP PageWide Managed Color E55650dn,,,,,,,,,,,,True
+816,,,,,,,,,,,,3GY25A,HP Color LaserJet Managed E57540dn,,,,,,,,,,,,True
+816,,,,,,,,,,,,3GY26A,HP Color LaserJet Managed E57540c,,,,,,,,,,,,True
+817,,,,,,,,,,,,L3U42A,HP PageWide Managed Color MFP E58650dn,,,,,,,,,,,,True
+817,,,,,,,,,,,,L3U43A,HP PageWide Managed Color Flow MFP E58650z,,,,,,,,,,,,True
+818,,,,,,,,,,,,M0P33A,HP LaserJet Managed E60055dn,,,,,,,,,,,,True
+819,,,,,,,,,,,,M0P35A,HP LaserJet Managed E60065dn,,,,,,,,,,,,True
+819,,,,,,,,,,,,M0P36A,HP LaserJet Managed E60065x,,,,,,,,,,,,True
+820,,,,,,,,,,,,M0P39A,HP LaserJet Managed E60075dn,,,,,,,,,,,,True
+820,,,,,,,,,,,,M0P40A,HP LaserJet Managed E60075x,,,,,,,,,,,,True
+821,,,,,,,,,,,,3GY09A,HP LaserJet Managed E60155dn,,,,,,,,,,,,True
+822,,,,,,,,,,,,3GY10A,HP LaserJet Managed E60165dn,,,,,,,,,,,,True
+823,,,,,,,,,,,,3GY12A,HP LaserJet Managed E60175dn,,,,,,,,,,,,True
+824,,,,,,,,,,,,J8J66A,HP LaserJet Managed MFP E62555dn,,,,,,,,,,,,True
+825,,,,,,,,,,,,J8J73A,HP LaserJet Managed MFP E62565z,,,,,,,,,,,,True
+825,,,,,,,,,,,,J8J74A,HP LaserJet Managed Flow MFP E62565h,,,,,,,,,,,,True
+825,,,,,,,,,,,,J8J79A,HP LaserJet Managed Flow MFP E62565z,,,,,,,,,,,,True
+826,,,,,,,,,,,,3GY14A,HP LaserJet Managed MFP E62655dn,,,,,,,,,,,,True
+827,,,,,,,,,,,,3GY16A,HP LaserJet Managed Flow MFP E62665h,,,,,,,,,,,,True
+827,,,,,,,,,,,,3GY17A,HP LaserJet Managed Flow MFP E62665z,,,,,,,,,,,,True
+828,,,,,,,,,,,,L3U55A,HP Color LaserJet Managed E65050dn,,,,,,,,,,,,True
+829,,,,,,,,,,,,L3U56A,HP Color LaserJet Managed E65060dn,,,,,,,,,,,,True
+831,,,,,,,,,,,,L3U66A,HP Color LaserJet Managed MFP E67550dh,,,,,,,,,,,,True
+832,,,,,,,,,,,,L3U70A,HP Color LaserJet Managed MFP E67560z,,,,,,,,,,,,True
+833,,,,,,,,,,,,T3U64A,HP Color LaserJet Managed E75245dn,,,,,,,,,,,,True
+852,,,,,,,,,,,,T6B60A,HP Color LaserJet Pro M254dw,,,,,,,,,,,,True
+863,,,,,,,,,,,,C5F93A,HP LaserJet Pro M402n,,,,,,,,,,,,True
+863,,,,,,,,,,,,C5F94A,HP LaserJet Pro M402dn,,,,,,,,,,,,True
+863,,,,,,,,,,,,C5F95A,HP LaserJet Pro M402dw,,,,,,,,,,,,True
+865,,,,,,,,,,,,W1A52A,HP LaserJet Pro M404n,,,,,,,,,,,,True
+865,,,,,,,,,,,,W1A53A,HP LaserJet Pro M404dn,,,,,,,,,,,,True
+865,,,,,,,,,,,,W1A56A,HP LaserJet Pro M404dw,,,,,,,,,,,,True
+867,,,,,,,,,,,,F6W14A,HP LaserJet Pro MFP M426fdn,,,,,,,,,,,,True
+867,,,,,,,,,,,,F6W15A,HP LaserJet Pro MFP M426fdw,,,,,,,,,,,,True
+868,,,,,,,,,,,,W1A30A,HP LaserJet Pro MFP M428fdw,,,,,,,,,,,,True
+871,,,,,,,,,,,,CF388A,HP Color LaserJet Pro M452nw,,,,,,,,,,,,True
+871,,,,,,,,,,,,CF389A,HP Color LaserJet Pro M452dn,,,,,,,,,,,,True
+871,,,,,,,,,,,,CF394A,HP Color LaserJet Pro M452dw,,,,,,,,,,,,True
+872,,,,,,,,,,,,W1Y45A,HP Color LaserJet Pro M454dw,,,,,,,,,,,,True
+873,,,,,,,,,,,,CE738A,HP LaserJet Enterprise M4555h MFP,,,,,,,,,,,,True
+876,,,,,,,,,,,,CF377A,HP Color LaserJet Pro MFP M477fnw,,,,,,,,,,,,True
+876,,,,,,,,,,,,CF378A,HP Color LaserJet Pro MFP M477fdn,,,,,,,,,,,,True
+876,,,,,,,,,,,,CF379A,HP Color LaserJet Pro MFP M477fdw,,,,,,,,,,,,True
+877,,,,,,,,,,,,W1A79A,HP Color LaserJet Pro MFP M479fdn,,,,,,,,,,,,True
+877,,,,,,,,,,,,W1A80A,HP Color LaserJet Pro MFP M479fdw,,,,,,,,,,,,True
+878,,,,,,,,,,,,J8H61A,HP LaserJet Pro M501dn,,,,,,,,,,,,True
+881,,,,,,,,,,,,F2A68A,HP LaserJet Enterprise M506n,,,,,,,,,,,,True
+881,,,,,,,,,,,,F2A69A,HP LaserJet Enterprise M506dn,,,,,,,,,,,,True
+881,,,,,,,,,,,,F2A70A,HP LaserJet Enterprise M506x,,,,,,,,,,,,True
+885,,,,,,,,,,,,F2A76A,HP LaserJet Enterprise Flow MFP M527dn,,,,,,,,,,,,True
+885,,,,,,,,,,,,F2A77A,HP LaserJet Enterprise Flow MFP M527f,,,,,,,,,,,,True
+885,,,,,,,,,,,,F2A78A,HP LaserJet Enterprise Flow MFP M527z,,,,,,,,,,,,True
+885,,,,,,,,,,,,F2A80A,HP LaserJet Enterprise Managed Flow MFP M527cm,,,,,,,,,,,,True
+891,,,,,,,,,,,,CD646A,HP LaserJet Color Flow MFP M575C,,,,,,,,,,,,True
+892,,,,,,,,,,,,B5L46A,HP Color LaserJet Enterprise MFP M577dn,,,,,,,,,,,,True
+892,,,,,,,,,,,,B5L50A,HP Color LaserJet Enterprise Mangd Flow MFP M577cm,,,,,,,,,,,,True
+895,,,,,,,,,,,,CE995A,HP LaserJet 600 M603dn,,,,,,,,,,,,True
+899,,,,,,,,,,,,K0Q14A,HP LaserJet Enterprise M607n,,,,,,,,,,,,True
+900,,,,,,,,,,,,K0Q17A,HP LaserJet Enterprise M608n,,,,,,,,,,,,True
+901,,,,,,,,,,,,K0Q22A,HP LaserJet Enterprise M609x,,,,,,,,,,,,True
+903,,,,,,,,,,,,J8J64A,HP LaserJet Enterprise MFP M631h,,,,,,,,,,,,True
+903,,,,,,,,,,,,J8J65A,HP LaserJet Enterprise MFP M631z,,,,,,,,,,,,True
+904,,,,,,,,,,,,J8J70A,HP LaserJet Enterprise MFP M632h,,,,,,,,,,,,True
+904,,,,,,,,,,,,J8J71A,HP LaserJet Enterprise MFP M632fht,,,,,,,,,,,,True
+904,,,,,,,,,,,,J8J72A,HP LaserJet Enterprise MFP M632z,,,,,,,,,,,,True
+909,,,,,,,,,,,,CZ249A,HP Color LaserJet Enterprise MFP M680f,,,,,,,,,,,,True
+909,,,,,,,,,,,,L3U48A,HP Color LaserJet Managed Flow MFP M680zm,,,,,,,,,,,,True
+913,,,,,,,,,,,,CF066A,HP LaserJet MFP M725dn,,,,,,,,,,,,True
+914,,,,,,,,,,,,D3L10A,HP Color LaserJet Enterprise M750xh,,,,,,,,,,,,True
+915,,,,,,,,,,,,T3U43A,HP Color LaserJet Enterprise M751n,,,,,,,,,,,,True
+915,,,,,,,,,,,,T3U44A,HP Color LaserJet Enterprise M751dn,,,,,,,,,,,,True
+917,,,,,,,,,,,,CZ244A,HP LaserJet 800 M806dn,,,,,,,,,,,,True
+917,,,,,,,,,,,,D7P69A,HP LaserJet 800 M806x+ w/ NFC,,,,,,,,,,,,True
+960,,,,,,,,,,,,M9L75A,HP OfficeJet Pro 8720 All-in-One Printer,,,,,,,,,,,,True
+962,,,,,,,,,,,,CN459A,HP OfficeJet Pro X451DN,,,,,,,,,,,,True
+965,,,,,,,,,,,,C2S11A,HP Officejet Enterprise Color X555dn,,,,,,,,,,,,True
+969,,,,,,,,,,,,D3Q16A,HP PageWide Pro 452dw,,,,,,,,,,,,True
+970,,,,,,,,,,,,D3Q19A,HP PageWide Pro MFP 477dn,,,,,,,,,,,,True
+970,,,,,,,,,,,,D3Q20A,HP PageWide Pro MFP 477dw,,,,,,,,,,,,True
+971,,,,,,,,,,,,D3Q17A,HP PageWide Pro 552dw,,,,,,,,,,,,True
+972,,,,,,,,,,,,G1W46A,HP PageWide Enterprise Color 556dn,,,,,,,,,,,,True
+973,,,,,,,,,,,,D3Q21A,HP PageWide Pro MFP 577dw,,,,,,,,,,,,True
+974,,,,,,,,,,,,G1W39A,HP PageWide Enterprise Color MFP 586dn,,,,,,,,,,,,True
+974,,,,,,,,,,,,G1W40A,HP PageWide Enterprise Color MFP 586f,,,,,,,,,,,,True
+974,,,,,,,,,,,,G1W41A,HP PageWide Enterprise Color Flow MFP 586z,,,,,,,,,,,,True
+975,,,,,,,,,,,,J7Z04A,HP PageWide Enterprise Color 765dn,,,,,,,,,,,,True
+977,,,,,,,,,,,,Y3Z55A,HP PageWide Pro MFP 777z,,,,,,,,,,,,True
+978,,,,,,,,,,,,4PZ45A,HP PageWide Pro MFP 779dn,,,,,,,,,,,,True
+978,,,,,,,,,,,,4PZ46A,HP PageWide Pro MFP 779dns,,,,,,,,,,,,True
+979,,,,,,,,,,,,J7Z09A,HP PageWide Enterprise Color MFP 780dn,,,,,,,,,,,,True
+979,,,,,,,,,,,,J7Z10A,HP PageWide Enterprise Color MFP 780dns,,,,,,,,,,,,True
+980,,,,,,,,,,,,J7Z11A,HP PageWide Enterprise Color Flow MFP 785f,,,,,,,,,,,,True
+980,,,,,,,,,,,,J7Z12A,HP PageWide Enterprise Color Flow MFP 785zs,,,,,,,,,,,,True
+984,,,,,,,,,,,,W1B33A,HP PageWide Managed MFP P77740dw,,,,,,,,,,,,True
+703,,,,,,,,,,,,Z8Z06A,HP LaserJet MFP E72525dn,,,,,,,,,,,,True
+809,,,,,,,,,,,,Q3933A,HP Color LaserJet CP6015x,,,,,,,,,,,,True
+1345,,,,,,,,,,,,25B1202,Lexmark XM7355 Mono MFP,,,,,,,,,,,,True
+1350,,,,,,,,,,,,26Z0202,Lexmark XM9145 Mono A3 MFP,,,,,,,,,,,,True
+1351,,,,,,,,,,,,26Z0203,Lexmark XM9155 Mono A3 MFP,,,,,,,,,,,,True
+1352,,,,,,,,,,,,26Z0204,Lexmark XM9165 Mono A3 MFP,,,,,,,,,,,,True
+1321,,,,,,,,,,,,32C0400,Lexmark XC9235 Color A3 MFP,,,,,,,,,,,,True

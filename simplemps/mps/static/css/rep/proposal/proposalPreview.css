@@ -1,0 +1,36 @@
+.proposal-preview-bg {
+    background-color: #ececec;
+    padding-bottom: 2rem;
+}
+
+.button {
+    margin: 0.5rem 0;
+    border: 1px solid black;
+    color: black;
+    font-weight: bold;
+    font-size: medium;
+}
+
+.button.mps-yellow:hover, .button.mps-yellow:focus {
+    background-color: var(--mps-hover-yellow);
+    color: black;
+}
+
+.button.mps-green:hover, .button.mps-green:focus {
+    background-color: var(--mps-hover-green);
+    color: black;
+}
+
+.button.mps-blue:hover, .button.mps-blue:focus {
+    background-color: var(--mps-hover-blue);
+    color: black;
+}
+
+input[type=text], input[type=number], select, .input-group {
+    margin: 0;
+}
+
+.embeded-pdf {
+    width: 100%;
+    height: 50vh;
+}

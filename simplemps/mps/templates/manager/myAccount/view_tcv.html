@@ -1,0 +1,16 @@
+{% extends 'manager/myAccount/myAccountTemplate.html' %}
+{% load static from staticfiles %}
+
+{% block my_account_js %}
+<script type="text/javascript" language="javascript" src="{% static 'js/manager/myAccount/equipment.js' %}"></script>
+{% endblock %}
+
+{% block my_account_content %}
+
+<div style="color: white;">
+    Proposal Id: {{ proposal_id }}
+
+    <a href="{% url 'mps:download_tcv' proposal_id %}">Download</a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,436 @@
+{% load static %}
+{% load humanize %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contract</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/proposal/proposal.css' %}">
+    </style>
+</head>
+<body>
+    <table style="background: lightgrey; padding: 8px; width: 100%; ">
+        <tr>
+            <div id="logo" style="width: 30%">
+                <td style="text-align: left"><img src="{{ proposal.logo. }}" style="max-width: 100%" /></td></div>
+            <td style="text-align: center"><h2>Managed Service Agreement</h2></td> 
+            <td style="text-align: left" content="width=page">
+                <p>{{ company.name }}</p>
+                <p>{{ company.address }}</p>
+                <p>{{ company.city }}, {{ company.state }} {{ company.zipcode }}
+            </td>
+        </tr>
+    </table>
+
+    <p>Agreement# _________________________________</p>
+    <p>Contract# ___________________________________</p>
+    <p>This Agreement (“Agreement”) between {{ company.name }} (“Company”) and the Customer is drafted in plain English. In this Agreement the Customer is also referred to as “You” and “Your.”</p>
+
+    
+    <table style="text-align: left; width: 100%; border: none; display: inline-block;">
+        <tr style="height: 50px">
+            <td>Customer Legal Name:</td>
+            <td>{{ client.name }}</td>
+        </tr>
+        <tr style="height: 50px">
+            <td>Operating As:</td>
+            <td>{{ client.name }}</td>
+        </tr>
+        <tr>
+            <td>Billing Address:</td>
+            <td>{{ client.address }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>{{ client.city }}, {{ client.state }} {{ client.zipcode }}</td>
+        </tr>  
+    </table>
+    <p></p>
+    <table style="text-align: left; width: 100%; border: none; display: inline-block;">
+        <tr>
+            <td >Primary Contact: </td>
+            <td>{{ client.contact }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>{{ client.phone_number }} / {{ client.email }}</td>
+        </tr>  
+    </table>     
+    <p></p>
+
+    <table style="text-align: left; width: 100%; border: none; display: inline-block;">
+        <tr style="height: 30px">
+            <td>Contract Duration:</td>
+            <td>{{ proposal.term }} Months</td>
+        </tr>
+        <tr style="height: 30px">
+            <td>Start Date:</td>
+            <td>{% now "m/d/Y" %}</td>
+        </tr>
+        <tr style="height: 30px">
+            <td>Billing Frequency:</td>
+            <td>
+                <form>
+                    <select name="Frequency" id="">
+                        <option value="1">Monthly</option>
+                        <option value="2">Quarterly</option>
+                    </select>
+                </form>
+            </td>
+        </tr>   
+    </table>
+    <p></p>
+    
+    <table style="text-align: left; width: 100%; border: none; display: inline-block;">
+        <tr>
+            <td>Pre-Authorized:</td>
+            <td>
+                <form>
+                    <label for="">Yes</label>
+                    <input type="radio" name="radio" value="">
+                      
+                    <label for="">No</label>
+                    <input type="radio" name="radio" value="">      
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>OEM Toner Included:</td>
+            <td>
+                <form>
+                    <label for="">Yes</label>
+                    <input type="radio" name="radio" value="">
+                              
+                    <label for="">No</label>
+                    <input type="radio" name="radio" value="">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>Service Included:</td>
+            <td>
+                <form>
+                    <label for="">Yes</label>
+                    <input type="radio" name="radio" value="">
+                                      
+                    <label for="">No</label>
+                    <input type="radio" name="radio" value="">
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>Equipment owned:</td>
+            <td>
+                <form>
+                    <label for="">Yes</label>
+                    <input type="radio" name="radio" value="">
+                                      
+                    <label for="">No</label>
+                    <input type="radio" name="radio" value="">
+                </form>
+            </td>
+        </tr>
+    </table>
+    <h3 style="text-align: center; background-color: lightgray; border: 1px solid black;"><strong>Rate Schedule</strong></h3>
+    {% if proposal.proposal_type == 'cpp' %}
+        <table style="border: none; text-align: center; display: inline-block: font-size: 16px;">
+            <thead style="background-color:lightgray; color: black; text-align: center; border: 1px solid black;">
+                <th style="text-align: left;">Device</th>
+                <th>Mono Allowance  </th>
+                <th>Color Allowance  </th>
+                <th>Base Rate  </th>
+                <th>Mono Overage Rate  </th>
+                <th>Color Overage Rate  </th>
+            </thead>
+            {% for item in service_items %}
+            <tr style="text-align: center;">
+                <td style="text-align: left;">{{ item.device_name }}</td>
+                {% if not item.info.is_non_network %}
+                    <td>{{ item.info.base_volume_mono|intcomma }}</td>
+                {% else %}
+                    <td>N/A</td>
+                {% endif %}
+                {% if not item.info.is_non_network %}
+                    <td>{{ item.info.base_volume_color|intcomma }}</td>
+                {% else %}
+                    <td>N/A</td>
+                {% endif %}
+                <td>${{ item.monthly_cost|floatformat:2|intcomma }}</td>
+                {% if not item.info.is_non_network %}
+                    <td>${{ item.cpp_mono|floatformat:4 }}</td>
+                {% else %}
+                    <td>$0.0000</td>
+                {% endif %}
+                {% if item.info.is_non_network %}
+                    <td>$0.0000</td>
+                {% elif item.cpp_color > 0 %}
+                    <td>${{ item.cpp_color|floatformat:4 }}</td>
+                {% else %}
+                    <td>$0.0000</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+    {% elif proposal.proposal_type == 'nc' %}
+        <table style="border: none; text-align: center; display: inline-block: font-size: 14px;">
+            <thead style="background-color:lightgray; color: black; text-align: center; border: 1px solid black;">
+                <th style="text-align: left;">Device</th>
+                <th>Monthly Rate</th>
+            </thead>
+            {% for item in service_items %}
+            <tr style="text-align: center;">
+                <td style="text-align: left;">{{ item.device_name }}</td>
+                <td>${{ item.flat_price|floatformat:2|intcomma }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% elif proposal.proposal_type == 'blended' %}
+        <table style="border: none; text-align: center; display: inline-block: font-size: 14px;">
+            <thead style="background-color:lightgray; color: black; text-align: center; border: 1px solid black;">
+                <th style="text-align: left;">Tier</th>
+                <th>Allowance</th>
+                <th>Base Rate</th>
+                <th>Overage Rate</th>
+            </thead>
+            {% if mono %}
+            <tr style="text-align: center;">
+                <td style="text-align: left;">Mono</td>
+                <td>{{ mono.blended_volume_mono }}</td>
+                <td>${{ mono.blended_mono_cost|floatformat:2|intcomma }}</td>
+                <td>${{ mono.blended_mono|floatformat:4 }}</td>
+            </tr>
+            {% endif %}
+            {% if mono_on_color %}
+            <tr style="text-align: center;">
+                <td style="text-align: left;">Mono on Color</td>
+                <td>{{ mono_on_color.blended_volume_mono_on_color }}</td>
+                <td>${{ mono_on_color.blended_mono_on_color_cost|floatformat:2|intcomma }}</td>
+                <td>${{ mono_on_color.blended_mono_on_color|floatformat:4 }}</td>
+            </tr>
+            {% endif %}
+            {% if color %}
+            <tr style="text-align: center;">
+                <td style="text-align: left;">Color</td>
+                <td>{{ color.blended_volume_color }}</td>
+                <td>${{ color.blended_color_cost|floatformat:2|intcomma }}</td>
+                <td>${{ color.blended_color|floatformat:4 }}</td>
+            </tr>
+            {% endif %}
+        </table>
+    {% elif proposal.proposal_type == 'tiered' %}
+        <table style="border: none; text-align: center; display: inline-block: font-size: 14px;">
+            <thead style="background-color:lightgray; color: black; text-align: center; border: 1px solid black;">
+                <th style="text-align: left;">Tier</th>
+                <th>Allowance</th>
+                <th>Base Rate</th>
+                <th>Overage Rate</th>
+            </thead> 
+            {% if mono1 %}
+            <tr style="text-align: center;">
+                <td style="text-align: left;">Mono 1</td>
+                <td>{{ mono1.tier_volume_mono }}</td>
+                <td>${{ mono1.tier_cost|floatformat:2|intcomma }}</td>
+                <td>${{ mono1.tier_mono|floatformat:4 }}</td>
+            </tr>
+            {% endif %}
+            {% if mono2 %}
+            <tr style="text-align: center;">
+                <td style="text-align: left;">Mono 2</td>
+                <td>{{ mono2.tier_volume_mono }}</td>
+                <td>${{ mono2.tier_cost|floatformat:2|intcomma }}</td>
+                <td>${{ mono2.tier_mono|floatformat:4 }}</td>
+            </tr>
+            {% endif %}
+            {% if mono3 %}
+            <tr style="text-align: center;">
+                <td style="text-align: left;">Mono 3</td>
+                <td>{{ mono3.tier_volume_mono }}</td>
+                <td>${{ mono3.tier_cost|floatformat:2|intcomma }}</td>
+                <td>${{ mono3.tier_mono|floatformat:4 }}</td>
+            </tr>
+            {% endif %}
+            {% if mono4 %}
+            <tr style="text-align: center;">
+                <td style="text-align: left;">Mono 4</td>
+                <td>{{ mono4.tier_volume_mono }}</td>
+                <td>${{ mono4.tier_cost|floatformat:2|intcomma }}</td>
+                <td>${{ mono4.tier_mono|floatformat:4 }}</td>
+            </tr>
+            {% endif %}
+            {% if color1 %}
+            <tr style="text-align: center;">
+                <td style="text-align: left;">Color 1</td>
+                <td>{{ color1.tier_volume_color }}</td>
+                <td>${{ color1.tier_cost|floatformat:2|intcomma }}</td>
+                <td>${{ color1.tier_color|floatformat:4 }}</td>
+            </tr>
+            {% endif %}
+            {% if color2 %}
+            <tr style="text-align: center;">
+                <td style="text-align: left;">Color 2</td>
+                <td>{{ color2.tier_volume_color }}</td>
+                <td>${{ color2.tier_cost|floatformat:2|intcomma }}</td>
+                <td>${{ color2.tier_color|floatformat:4 }}</td>
+            </tr>
+            {% endif %}
+            {% if color3 %}
+            <tr style="text-align: center;">
+                <td style="text-align: left;">Color 3</td>
+                <td>{{ color3.tier_volume_color }}</td>
+                <td>${{ color3.tier_cost|floatformat:2|intcomma }}</td>
+                <td>${{ color3.tier_color|floatformat:4 }}</td>
+            </tr>
+            {% endif %}
+        </table>
+    {% elif proposal.proposal_type == 'ppc' %}
+        <table style="border: none; text-align: center; display: inline-block: font-size: 14px;">
+            <thead style="background-color:lightgray; color: black; text-align: center; border: 1px solid black;">
+                <th style="text-align: left;">Device</th>
+                <th>Mono Price</th>
+                <th>Color Price</th>
+            </thead>
+            {% for item in service_items %}
+            <tr style="text-align: center;">
+                <td style="text-align: left;">{{ item.device_name }}</td>
+                {% if not item.info.is_non_network %}
+                    <td>${{ item.ppc_mono|floatformat:2|intcomma }} per cartridge</td>
+                {% else %}
+                    <td>${{ item.monthly_cost|floatformat:2|intcomma }} per month</td>
+                {% endif %}
+                {% if item.ppc_color > 0 %}
+                    <td>${{ item.ppc_color|floatformat:2|intcomma }} per cartridge</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    <h3 style="text-align: center; background-color: lightgray; border: 1px solid black;"><strong>Equipment on Contract</strong></h3>
+    <table style="border: none; text-align: center; display: inline-block: font-size: 14px;">
+        <thead style="background-color:lightgray; color: black; text-align: left; border: 1px solid black;">
+            <th>Units</th>
+            <th>Device Model</th>
+            <th>Description</th>
+            <th>Mono Tier</th>
+            <th>Color Tier</th>
+        </thead>
+        {% for item in service_items %}
+        <tr style="text-align: left;">
+            <td>{{ item.device_count }}</td>
+            <td>{{ item.device_name }}</td>
+            <td>{{ item.device_long_name }}</td>
+            {% if proposal.proposal_type == 'cpp' %}
+                <td>Mono 1</td>
+            {% elif proposal.proposal_type == 'tiered' %}
+                <td>{{ item.tier_level_mono }}</td>
+            {% elif proposal.proposal_type == 'nc' %}
+                <td>Mono 1</td>
+            {% elif proposal.proposal_type == 'blended' %}
+                <td>Mono 1</td>
+            {% elif proposal.proposal_type == 'ppc' %}
+                <td>Mono 1</td>
+            {% endif %}
+            {% if proposal.proposal_type == 'tiered' %}
+                <td>{{ item.tier_level_color }}</td>
+            {% elif item.cpp_color > 0 %}
+                <td>Color 1</td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+    <p></p>
+    <h4 style="text-align: center;"><strong>COMPANY</strong></h4>
+    <p></p>
+    <p style="font:size: 12px; text-align: center;">THIS AGREEMENT BECOMES BINDING WHEN ACCEPTED AS FOLLOWS:</p>
+    <p></p>
+    <p></p>
+    <table style="border: none; text-align: center;">
+        <tr>
+            <td>_________________________________________</td>
+            <td>_____________________________</td>
+        </tr>
+        <tr style="font-size: 14px; text-align: center;">
+            <td>(DATE OF COMPANY'S ACCEPTANCE)</td>
+            <td>(COMMENCEMENT DATE)</td>
+        </tr>
+    </table>
+    <p></p>
+    <h4><strong>{{ company.name }}</strong></h4>
+    <p></p>
+    <p>AUTHORIZED SIGNATURE: ___________________________________________</p>
+    <p>PRINTED NAME/TITLE:   ___________________________________________</p>
+    <p>DATE: ___________________________</p>
+    <p></p>
+    <h4><strong>CUSTOMER</strong></h4>
+    <p></p>
+    <p>YOU HAVE READ, UNDERSTAND AND ACCEPT THIS AGREEMENT</p>
+    <p>CUSTOMER'S FULL LEGAL NAME: {{ client.name }}</p>
+    <p>This undersigned affirms that he/she is authorized to execute this Agreement on behalf of the Customer.</p>
+    <p>AUTHORIZED SIGNATURE: ___________________________________________</p>
+    <p>PRINTED NAME/TITLE:   ___________________________________________</p>
+    <p>DATE: ___________________________</p>
+    <p></p>
+    <h4 style="text-align: center;"><i>TERMS & CONDITIONS</i></h4>
+    <table style="border: none; text-align: left; display: inline-block; font-size: 10px; background-color: rgb(250, 244, 244);">
+        <tr>
+            <td>
+                <p>1. You and the Company agree that:
+                    (a) Service under this Agreement, (the “Service”), includes replacement of all  parts to maintain the equipment listed by make/model and serial number in the Agreement and in all schedules referred to in the Agreement, (the “Equipment”) in good condition in accordance with performance specifications and labour necessary to make such parts replacements, technical adjustments, cleaning, and lubrication. Service and standard parts does not include furnishing of supplies such as staples or paper and may or may not include toner and other consumable items such as maintenance kits.  
+                    b) Labour, parts and expense necessary to repair damage and/or malfunctions caused by, but not limited to, Company employees or authorized agents, by accident, abuse, voltage, fire, water, or the use of non-approved items by the Company for use in the Equipment are not covered by this Agreement. When such service is required, a cost estimate of labour and material charges will be submitted for Your authorization before work is started. 
+                    c) All obligations under this Agreement will be performed on Your premises during regular business hours, Monday through Friday except holidays. Emergency service calls required by You that are not performed during regular business hours will be on an “as available” basis and will be billed at the then current hoy rates for overtime labour.
+                    d) It is understood that the Equipment covered by this Agreement is in good condition on the date this Agreement becomes effective. Should the Company consider that an overhaul of Equipment is necessary before accepting this Agreement, a cost estimate of labour and material charges will be submitted for Your authorization before proceeding with the work. Such charges will be in addition to the rate set forth above.
+                    e) If this Agreement includes toner, You may use the toner only in Equipment covered by the Agreement. You shall notify the Company of any equipment subsequently acquired by You which uses toner cartridges of the same type as those supplied by the Company  for the Equipment, and you will include the newly acquired Equipment under the Agreement. The addition of equipment to this agreement may require an adjustment to the rate per page.
+                    f)Used parts and toner cartridge cores, spent or otherwise, supplied by the Company for your use remain the property of the Company and must be returned to a representative of the Company. A charge of $20.00 per cartridge will be payable if spent toner cartridges are not returned. 
+                    g) This Agreement does not include the rebuilding, reconditioning of, re-installation of or alterations to the equipment.
+                    h) Service on Equipment that is more than seven years old will be provided a best efforts basis and may be withdrawn within 90 days’ notice if the Company in its sole discretion believes that acceptable performance standards cannot be maintained. 
+                    i) All components of any one integral system must be simultaneously covered by a Service Agreement. The Company’s liability under the Agreement is limited to the elements stated and the Company shall not be held liable for any damages whatsoever including consequential damage. The Company shall not be liable for failure to render Service or to provide Supplies due to cause beyond the Company’s reasonable control.
+                    
+                    2. Commencement: This Agreement’s original term (the “Term”) commences on the date (“Commencement Date”) that the Company accepts this Agreement and remained in effect for the number of calendar months indicated as the “Term”. Unless this Agreement is cancelled by You or the Company by written notice at least thirty (30) days prior to the completion of  the Agreement, it will be automatically renewed at expiry for a subsequent twelve (12) months until cancelled, without submission of another executed agreement, in accordance with the terms above.
+                    
+                    3. Payments: Under this Agreement the payments You will be required to make periodic payments based on the schedule included in this Agreement.
+                    
+                    During the Term You shall, without notice or request, pay the Company, as each becomes due, the amounts as set forth in the Agreement.  If impressions are included in the Total Payment, plus applicable Taxes, are payable to the Company regardless of usage at, until notice from the Company, the address indicated above. Impressions will be calculated starting the 1st of each month until the last day of each month. All devices under this Agreement will be billed a minimum 1,000 pages per month.  Should You exceed the included number of impressions during any period of this agreement an Overage charge per impression will be charged based on the Agreements schedule. You shall, within 30 days of the Company’s request therefor, pay the Company an amount (an “Overage Payment”) plus applicable taxes. 
+                    You agree that the Company, on each anniversary of the Commencement Date, may increase the Charge(s) per Page and Overage Charge(s) per Page, to cover its increased costs up to maximum of 5%. The Rate per Page is also subject to increase if average toner coverage per page is consistently greater than 5% (monochrome) or 20% (colour).
+                    If this Agreement includes OEM (original manufacturer) toner, the Company may adjust the Per Impression Rate to reflect any price changes from the OEM.  This adjustment is limited to an annual adjustment and will include a minimum 30 day notification to You.
+                    The Company shall be entitled to obtain impressions counts at the end of each Payment  Period. You will provide The Company with any reasonable assistance necessary to permit the Company to obtain accurate impression counts, including facilitating the installation of software and/or hardware to enable electronic meter readings. If electronic meter readings cannot be obtained, Your representative will provide meter readings to the Company at the end of each billing period.  If the Company is unable to ascertain the actual number of impressions You have made during the period, the Company shall estimate Your impression usage, You shall make an Overage Payment based upon such estimate and future payments shall be adjusted to reflect any difference between actual and estimated usage. 
+                    Total Payments and other amounts due under this Agreement are payable unconditionally and without Set- off, compensation, abatement, defense or counter-claim unless specifically provided for in this Agreement. You shall without notice pay interest at the rate of eighteen percent (18%) per annum, calculated and compounded monthly, on any amount which is not paid when due or which bears interest according to this Agreement, in each case from the date any such amount becomes due or interest bearing, before and after maturity, default and judgement, until paid in full. 
+                    If You have selected pre-authorized payment pursuant to the Pre-Authorized Payment Option set forth above, Your Bank is hereby authorized and directed to: (A) debit Your Bank Account for all payments purporting to be drawn on You for payment to the Company pursuant to this Agreement which are presented for payment by the Company or the Company’s agent, and (B) make all such payments to the Company or the Company’s agent from such Account. You agree that such Bank</p>
+            </td>
+            
+            <td>
+                <p>shall not be liable for any loss or damage incurred by You due to such Bank honouring this authorization. If such account is transferred to another branch, this authorization shall be directed to such other branch. This authorization may not be revoked without the Company’s consent. The Company is irrevocably authorized to deliver a copy, details or further evidence of this authorization to such Bank.
+
+                    4.  Print Quality: Before acceptance of this Agreement, the Company may make a sample print on Equipment and obtain a signature from Your representative attesting to the acceptability of the print quality.  Prints  which do not meet this standard because of factors within the Company’s control can be presented to the Company’s representative for credit against payments due under this Agreement, subject to the Company’s sole discretion.
+                    
+                    5. Cancellation: Provided neither You nor the Company is in default under this Agreement, neither you nor the Company may cancel the Agreement. You are in default if:
+                    a) You fail to make payments when due.
+                    b) You make an assignment for the benefit of Your creditors, are insolvent, commit an act of bankruptcy, take any action to wind-up or dissolve, cease or threaten to cease to do business as a going concern, sell all or substantially all of Your assets, amalgamate, are subject to a change in control or seek any arrangement with your creditors; or
+                    c) any proceeding in bankruptcy, receivership, winding-up, dissolution, liquidation or insolvency is commenced by or against You or any of Your property; or
+                    d) The Company in good faith believes and has commercially reasonable grounds to believe that the prospect of payment or performance by You under this Agreement is or is about to be impaired or the Equipment is or is about to be placed in jeopardy; or any guarantor of Your obligations under this Agreement disputes or seeks to terminate its guarantee of Your obligations or becomes subject to any of the events in clauses (c) and (d) above.
+                    The Company is in default if:
+                    a) It is failing to perform its obligations under this Agreement; and
+                    b) You have notified the Company in writing of its alleged failure; and
+                    c) The Company has failed to remedy any such failure within a period of sixty (60) days of the Company’s receipt of your written notice.
+                    Upon Default, in addition to the Company’s other rights under this Agreement and at law or equity:
+                    You shall pay to the Company as liquidated damages, and not as a penalty, an amount (the “Liquidated Damages”) equal to the sum of:
+                    i) all amounts then due and unpaid. 
+                    ii) the present value (calculated using a discount rate of six percent (6%) per annum, compounded monthly) of the remaining Total Payments and 
+                    iii)  all other amounts which would become payable by the Agreement.
+                    
+                    Upon the Company’s Default you may cancel this Agreement without further penalty by means of written notice delivered to the Company. You shall pay to the Company any amounts due and unpaid, plus any Enforcement Costs incurred by the Company in collecting such payments, and interest thereon.
+                    
+                    6. Assignment: This Agreement shall not be assigned by You and You are not released by an assignment. This Agreement may be assigned by the Company without notice to You.
+                    
+                    7. Administration: You shall immediately notify the Company in writing of any change in Your name and of any change in Your Head Office.
+                    
+                    8. Definitions: In this Agreement: “including” means “including without limitation”; “Encumbrance” means any claim, lien, charge, encumbrance, levy, security interest, mortgage, pledge, hypothecation, seizure, trust, attachment, judicial process, ownership interest, license or leasehold interest; and “Taxes” includes all taxes, imposts, levies, fees, duties and charges now or hereafter imposed by an taxation authority on You, on the Equipment, on the purchase, sale, ownership, delivery, possession, use, maintenance, operation, rental or lease of the Equipment, on amounts payable under this Agreement or on the Company in respect of any of the foregoing (including sales, excise, use, property, business, transfer, goods and services and value added taxes and penalties or interest on Taxes, excluding taxes on the Company’s net income.
+                    
+                    9. Interpretation: This Agreement constitutes the entire agreement between the Company and You with respect to its subject matter. Amendments to this Agreement must be in writing, reference this Agreement and be signed by You and the Company. This Agreement shall be interpreted according to laws of the Province of where the Company above is located. The singular shall include the plural and vice versa and words importing one gender shall include all genders. Time is of the essence. Headings are only for convenience and do not affect interpretation. This Agreement has been drafted in plain language, its terms should be given a broad construction and it should not be strictly construed against the Company. This Agreement shall endure to and be binding upon parties hereto and their respective heirs, executors, administrators, successors, permitted assigns and legal representatives. Any provision of this Agreement not permitted by applicable law shall be ineffective and severed here from without invalidating the remaining provisions of the Agreement. All of Your unperformed Obligations which are not released by the termination of this Agreement and the rights of the Company under this Agreement shall survive the termination of this Agreement.
+                    
+                    10. Language: The parties herby acknowledge that they have required this Agreement, and all other agreements and notices required or permitted to be entered into or given pursuant hereto, to be drawn up in the English language only. Les parties reconnaissent avoir demandé que le présent contrat ainsi que toute autre entente ou avis requis ou permis à être conclu ou donné en vertu des dispositions du présent contrat, soient rédigés en langue anglaise seule- ment.
+                    
+                    11. Joint and Several Liability: If more than one person executes this Agreement as Customer.</p>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

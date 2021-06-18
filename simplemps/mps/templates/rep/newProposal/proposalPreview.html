@@ -1,0 +1,118 @@
+{% extends 'rep/newProposal/proposal.html' %}
+{% load static from staticfiles %}
+
+{% block proposal_css %}
+<link rel="stylesheet" href="{% static 'css/rep/proposal/proposalPreview.css' %}">
+{% endblock %}
+
+{% block proposal_js %}
+<script>
+    var proposal_details = {{ proposal_details | safe }};
+</script>
+
+<script type="text/javascript" language="javascript" src="{% static 'js/rep/proposal/proposalPreview.js' %}"></script>
+{% endblock %}
+
+{% block proposal_page_content %}
+
+<div class="cell grid-x large-6 align-bottom">
+    <div class="cell medium-6">
+        <button id="print-proposal" class="cell button mps-yellow">Print Proposal</button>
+    </div>
+</div>
+
+<div class="grid-x">
+    <div class="cell grid-x large-23 grid-padding-y">
+        <div class="cell grid-x large-24 grid-margin-y">
+            <div class="cell large-12 embedded-pdf" style="height: 70vh;">
+                <!-- more tech debt -->
+                {% if company_id == 13 %}
+                <iframe 
+                    id="embedded-proposal"
+                    src="{% url 'mps:view_proposal_cpp' proposal_id=proposal_details.proposal_id %}"
+                    class="cell"
+                    width="100%"
+                    height="100%"
+                    style="transform: scale(0.5);transform-origin: 0 0;width: 1117px;height: 1300px;background: white;"
+                    frameborder="0">
+                </iframe>
+                {% elif company_id == 14 %}
+                <iframe 
+                    id="embedded-proposal"
+                    src="{% url 'mps:view_proposal_cpp' proposal_id=proposal_details.proposal_id %}"
+                    class="cell"
+                    width="100%"
+                    height="100%"
+                    style="transform: scale(0.5);transform-origin: 0 0;width: 1117px;height: 1300px;background: white;"
+                    frameborder="0">
+                </iframe>
+                {% else %}
+                <iframe 
+                    id="embedded-proposal"
+                    src="{% url 'mps:view_proposal_cpp' proposal_id=proposal_details.proposal_id %}"
+                    class="cell"
+                    width="100%"
+                    height="100%"
+                    style="background: white;"
+                    frameborder="0">
+                </iframe>
+                {% endif %}
+            </div>
+            <div class="cell large-12 grid-x">
+                <div class="cell large-22 align-top">
+                    <div class="cell grid-x large-20 large-offset-2 align-middle proposal-preview-bg" style="padding-top:2rem;">
+                        <div class="cell medium-6 medium-offset-2">Proposal Sale</div>
+                        <div class="cell medium-6 medium-offset-8">
+                            <select id="proposal-type">
+                                <option value="tiered">Tiered Pricing</option>
+                                <option value="blended">Blended CPP</option>
+                                <option value="cpp" selected>CPP Per Device</option>
+                                <option value="nc">No Click</option>
+                                <option value="ppc">Price Per Cartridge</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="cell grid-x large-20 large-offset-2 align-middle proposal-preview-bg">
+                        <div class="cell medium-6 medium-offset-2">Toner Type</div>
+                        <div class="cell medium-6 medium-offset-8 text-center">
+                            <select id="manufacturerSelect" disabled>
+                                <option value="1">OEM</option>
+                                <option value="2">OEM SMP</option>
+                                <option value="3">Reman</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="cell grid-x large-20 large-offset-2 align-middle proposal-preview-bg">
+                        <div class="cell medium-6 medium-offset-2">Contract Type</div>
+                        <div class="cell medium-6 medium-offset-8 text-center">
+                            <select id="contractTypeSelect" disabled>
+                                <option value="1">Open Contracts</option>
+                                <option value="2">Supplies and Service</option>
+                                <option value="3">Service Only</option>
+                                <option value="4">Supplies Only</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="cell grid-x large-22 large-offset-2 align-bottom">
+                    <div class="cell grid-x" style="padding: 10px;">
+                        <div class="cell medium-4 medium-offset-1">
+                            <button class="cell button mps-blue" id="previous-page">Back</button>
+                        </div>
+                        <div class="cell medium-4 medium-offset-2">
+                            <button class="cell button mps-yellow" id="save-proposal">Save</button>
+                        </div>
+                        <div class="cell medium-4 medium-offset-2">
+                            <button class="cell button mps-green" id="send-proposal">Send Proposal to Client</button>
+                        </div>
+                        <div class="cell medium-4 medium-offset-2">
+                            <button class="cell button mps-green" id="send-proposal-to-me">Send Proposal to Me</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends 'baseTemplate.html' %}
+{% load static from staticfiles %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'css/rep/sentProposals.css' %}">
+<!-- <link rel="stylesheet" href="{% static 'csslib/handsontable.full.min.css' %}"> -->
+{% endblock %}
+
+{% block page_js %}
+<!-- <script type="text/javascript" language="javascript" src="{% static 'jslib/handsontable.full.min.js' %}"></script> -->
+{% endblock %}
+
+{% block page_content %}
+<div class="grid-x">
+    <div class="cell large-23 align-middle">
+        <div class="text-center callout border-none title">
+            <h6>Sent Proposals</h6>
+        </div>
+    </div>
+    <div class="grid-x large-23">
+        <div class="cell align-middle medium-cell-block">
+            <table class="sent-proposal size-14">
+                <thead>
+                    <tr>
+
+                        <th>Company</th>
+                        <th>Date Sent</th>
+                        <th>Estimated Value of Contract</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Amazon</td>
+                        <td>1/1/19</td>
+                        <td>$10,000</td>
+                        <td>Ready for Contract</td>
+                        <td>
+                            <button>
+                                <i class="fa fa-check-square size-21"></i>
+                            </button>
+                            <button>
+                                <i class="fa fa-trash-alt size-21"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sycamore Terrace</td>
+                        <td>12/21/18</td>
+                        <td>$7,500</td>
+                        <td>Pending</td>
+                        <td>
+                            <button>
+                                <i class="fa fa-search size-21"></i>
+                            </button>
+                            <button>
+                                <i class="fa fa-trash-alt size-21"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Rose-Hulman</td>
+                        <td>12/15/18</td>
+                        <td>$2,350</td>
+                        <td>Pending</td>
+                        <td>
+                            <button>
+                                <i class="fa fa-search size-21"></i>
+                            </button>
+                            <button>
+                                <i class="fa fa-trash-alt size-21"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr class="not-approved">
+                        <td>Kroger</td>
+                        <td>1/17/19</td>
+                        <td>$8,900</td>
+                        <td>Not Approved</td>
+                        <td>
+                            <button>
+                                <i class="fa fa-recycle size-21"></i>
+                            </button>
+                            <button>
+                                <i class="fa fa-trash-alt size-21"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Kellogg's</td>
+                        <td>1/5/19</td>
+                        <td>$900</td>
+                        <td>Pending</td>
+                        <td>
+                            <button>
+                                <i class="fa fa-search size-21"></i>
+                            </button>
+                            <button>
+                                <i class="fa fa-trash-alt size-21"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

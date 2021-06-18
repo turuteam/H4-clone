@@ -1,0 +1,104 @@
+<div class="large reveal" id="transferPages" data-reveal data-overlay="true" data-multiple-opened="true">
+    <div class="grid-x grid-padding-y align-middle modal-header mps-blue">
+        <div class="cell large-21 large-offset-1">
+            <h3 class="bold">Transfer Page Counts</h3>
+        </div>
+        <div class="cell large-1 text-center">
+            <button data-close aria-label="Close reveal" type="button" id="transfer-pages-close">
+                <h3>X</h3>
+            </button>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-4 text-center"></div>
+        <div class="cell medium-9 text-center bold">Device Description</div>
+        <div class="cell medium-4 medium-offset-1 text-center bold">Mono Pages</div>
+        <div class="cell medium-4 medium-offset-1 text-center bold">Color Pages</div>
+    </div>
+    <hr style="margin:0.1rem 0;">
+    <div class="grid-x" data-device-section="1">
+        <div class="cell grid-x align-middle modal-row">
+            <div class="cell medium-3 medium-offset-1">From Device</div>
+            <div class="cell medium-8 medium-offset-1">
+                <div class="input-group">
+                    <input class-"input-group-field" id="sourceDevice-shortName" disabled value=" " type="text">
+                </div>
+            </div>
+            <div class="cell medium-4 medium-offset-1">
+                <div class="input-group">
+                    <input class="input-group-field" id="sourceMonoPages" disabled value="0" type="number" min="0" data-page-type="mono">
+                </div>
+            </div>
+            <div class="cell medium-4 medium-offset-1">
+                <div class="input-group">
+                    <input class="input-group-field" id="sourceColorPages" disabled value="0" type="number" min="0" data-page-type="color">
+                </div>
+            </div>
+        </div>
+        <div class="cell grid-x align-middle modal-row">
+            <div class="cell medium-3 medium-offset-1">To Device</div>
+            <div class="cell medium-8 medium-offset-1">
+                <div class="select-group input-group">
+                    <select id="destination-dropdown1" onChange="selectDestinationDevice(this, 1)"></select>
+                </div>
+            </div>
+            <div class="cell medium-4 medium-offset-1">
+                <div class="input-group">
+                    <input class="input-group-field" id="destinationMonoPages" disabled value="0" type="number" min="0" data-page-type="mono">
+                </div>
+            </div>
+            <div class="cell medium-4 medium-offset-1">
+                <div class="input-group">
+                    <input class="input-group-field" id="destinationColorPages" disabled value="0" type="number" min="0" data-page-type="color">
+                </div>
+            </div>
+        </div>
+        <div class="cell grid-x align-middle modal-row">
+            <div class="cell medium-10 text-right bold">Enter Pages to Transfer</div>
+            <div class="cell grid-x medium-9 medium-offset-4 align-top grid-padding-y top-border">
+                <div class="cell medium-11">
+                    <div class="input-group">
+                        <input class="input-group-field" id="transferMonoPages" step="100" value="0" type="number" min="0">
+                    </div>
+                </div>
+                <div class="cell medium-11 medium-offset-2">
+                    <div class="input-group">
+                        <input class="input-group-field" id="transferColorPages" disabled step="100" value="0" type="number" min="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="cell" style="margin:1rem 0 1rem 0">
+    </div>
+    <div class="grid-x align-middle modal-row" style="margin-bottom: 1rem;">
+        <div class="cell medium-4 medium-offset-3 text-center">
+            <button id="transfer-cancel" class="cell size-16 button fake-btn-blue network-modal-btn" data-close aria-label="Close reveal"
+                 >Cancel</button>
+        </div>
+        <div class="cell medium-4 medium-offset-2 text-center">
+            <button id="transfer-update" class="cell size-16 button fake-btn network-modal-btn" data-close aria-label="Close reveal"
+                 >Update</button>
+        </div>
+        <div class="cell medium-11">
+            <div class="input-group">
+                <input class="input-group-field" id="fromID" type="number">
+            </div>
+        </div>
+        <div class="cell medium-11">
+            <div class="input-group">
+                <input class="input-group-field" id="toID" type="number">
+            </div>
+        </div>
+        <div class="cell medium-11">
+            <div class="input-group">
+                <input class="input-group-field" id="priorMonoPages" type="number">
+            </div>
+        </div>
+        <div class="cell medium-11 medium-offset-2">
+            <div class="input-group">
+                <input class="input-group-field" id="priorColorPages" type="number">
+            </div>
+        </div>
+
+    </div>
+</div>

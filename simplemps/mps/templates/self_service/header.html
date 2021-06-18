@@ -1,0 +1,67 @@
+<style>
+    a.disabled {
+        pointer-events: none;
+        cursor: default;
+    }
+</style>
+
+<ul class="prop-menu menu cell grid-x large-13 align-middle text-center">
+    {% if is_landing %}
+        <li class="cell auto is-active">
+            <a href="/self-service/{{ client_self_service_key }}">Proposal Info</a>
+        </li>
+        {% if sells_hardware == True %}
+            <li class="cell auto">
+                <a class="disabled" href="/self-service/{{ client_self_service_key }}/{{ proposal_id }}/equipment">Choose Equipment</a>
+            </li>
+        {% endif %}
+        <li class="cell auto">
+            <a class="disabled" href="/self-service/{{ client_self_service_key }}/{{ proposal_id }}/selection">Review Selections</a>
+        </li>
+        <li class="cell auto">
+            <a class="disabled" href="/self-service/{{ client_self_service_key }}/{{ proposal_id }}/review">Review Proposal</a>
+        </li>
+    {% elif is_equipment %}
+        <li class="cell auto is-active">
+            <a href="/self-service/{{ client_self_service_key }}">Proposal Info</a>
+        </li>
+        <li class="cell auto is-active">
+            <a href="/self-service/{{ client_self_service_key }}/{{ proposal_id }}/equipment">Choose Equipment</a>
+        </li>
+        <li class="cell auto">
+            <a class="disabled" id='step-review' href="/self-service/{{ client_self_service_key }}/{{ proposal_id }}/selection">Review Selections</a>
+        </li>
+        <li class="cell auto">
+            <a href="/self-service/{{ client_self_service_key }}/{{ proposal_id }}/review">Review Proposal</a>
+        </li>
+    {% elif is_self_service_review_selection %}
+        <li class="cell auto is-active">
+            <a href="/self-service/{{ client_self_service_key }}">Proposal Info</a>
+        </li>
+        {% if sells_hardware == True %}
+            <li class="cell auto is-active">
+                <a href="/self-service/{{ client_self_service_key }}/{{ proposal_id }}/equipment">Choose Equipment</a>
+            </li>
+        {% endif %}
+        <li class="cell auto is-active">
+            <a href="/self-service/{{ client_self_service_key }}/{{ proposal_id }}/selection">Review Selections</a>
+        </li>
+        <li class="cell auto">
+            <a href="/self-service/{{ client_self_service_key }}/{{ proposal_id }}/review">Review Proposal</a>
+        </li>
+    {% else %}
+        <li class="cell auto is-active">
+            <a href="/self-service/{{ client_self_service_key }}">Proposal Info</a>
+        </li>
+        {% if sells_hardware == True %}
+            <li class="cell auto is-active">
+                <a href="/self-service/{{ client_self_service_key }}/{{ proposal_id }}/equipment">Choose Equipment</a>
+            </li>
+        {% endif %}
+        <li class="cell auto is-active">
+            <a href="/self-service/{{ client_self_service_key }}/{{ proposal_id }}/selection">Review Selections</a>
+        </li>
+        <li class="cell auto is-active">
+            <a href="/self-service/{{ client_self_service_key }}/{{ proposal_id }}/review">Review Proposal</a>
+        </li>
+    {% endif %}

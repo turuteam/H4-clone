@@ -1,0 +1,36 @@
+{% extends 'manager/myAccount/myAccountTemplate.html' %}
+{% load static from staticfiles %}
+
+{% block my_account_js %}
+<script type="text/javascript" language="javascript" src="{% static 'js/manager/myAccount/equipment.js' %}"></script>
+<script type="text/javascript" language="javascript" src="{% static 'js/rep/openProposals.js' %}"></script>
+<script src="{% static 'jslib/DataTables/datatables.min.js'%}"></script>
+{% endblock %}
+
+{% block my_account_content %}
+
+
+<div style="color:black;">
+    <table id="open-proposals">
+        <thead style="background-color: var(--mps-yellow);">
+          <th>Proposal ID</th>
+          <th>Customer</th>
+          <th>Sales Rep</th>
+          <th>Proposal</th>
+          <th>TCV Form</th>
+        </thead>
+        <tbody style="background-color: var(--mps-blue);">
+            {% for proposal in accepted_proposals %}
+                <tr>
+                    <td>{{ proposal.proposal.id }}</td>
+                    <td>{{ proposal.customer_name }}</td>
+                    <td>{{ proposal.sales_rep_name }}</td>
+                    <td><u><a style="color: darkslategray" href="{% url 'mps:view_proposal_cpp' proposal.proposal.id %}">View Proposal</a></u></td>
+                    <td><u><a style="color: darkslategray" href="{% url 'mps:view_tcv' proposal.proposal.id %}">View TCV</a></u></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

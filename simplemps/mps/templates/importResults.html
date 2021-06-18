@@ -1,0 +1,21 @@
+<!doctype html>
+
+<body>
+    {% if success %}
+        <h4>Successfully imported {{ s_count }} items</h4>
+        <br />
+    {% endif %}
+    {% if had_errors %}
+        <h4>There were issues importing {{ e_count }} items</h4>
+        <br/>
+    {% endif %}
+    {% if not success and not had_errors %}
+        <h4>No items imported</h4>
+        <br />
+    {% endif %}
+    <br />
+    <button>
+        <a href="/imports/">Return to imports</a>
+    </button>
+
+</body>

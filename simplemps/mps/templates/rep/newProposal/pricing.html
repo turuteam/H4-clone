@@ -1,0 +1,98 @@
+
+{% extends 'rep/newProposal/proposal.html' %}
+{% load static %}
+
+{% block proposal_css %}
+<link rel="stylesheet" href="{% static 'css/rep/proposal/pricing.css' %}">
+<link rel="stylesheet" href="{% static 'css/rep/proposal/PricePerCartridge.css' %}">
+<link rel="stylesheet" href="{% static 'css/rep/proposal/tieredPricing.css' %}">
+<link rel="stylesheet" href="{% static 'css/rep/proposal/nonTieredPricing.css' %}">
+<link rel="stylesheet" href="{% static 'jslib/jquery-ui/jquery-ui.css' %}" >
+<link rel="stylesheet" href="{% static 'csslib/DataTables/datatables.min.css' %}">
+{% endblock %}
+
+{% block proposal_js %}
+
+<script type="text/javascript" language="javascript" src="{% static 'js/rep/proposal/tieredPricing.js' %}"></script>
+<script type="text/javascript" language="javascript" src="{% static 'js/rep/proposal/nonTieredPricing.js' %}"></script>
+<script type="text/javascript" language="javascript" src="{% static 'js/rep/proposal/PricePerCartridge.js' %}"></script>
+<script type="text/javascript" language="javascript" src="{% static 'js/rep/proposal/FlatRate.js' %}"></script>
+<script type="text/javascript" language="javascript" src="{% static 'js/rep/proposal/pricing.js' %}"></script>
+<script type="text/javascript" language="javascript" src="{% static 'jslib/jquery-ui/jquery-ui.js' %}"></script>
+<script src="{% static 'jslib/DataTables/datatables.min.js'%}"></script>
+
+<script>
+    var mgmtAsmpts = {{ proposal_json_string | safe }};
+    var proposal_service_items = {{ proposal_service_items | safe}};
+    var proposal_purchase_items = {{ proposal_purchase_items | safe}};
+    var p_objects = {}
+    updatePObjects();
+    var streetFighter = {{ street_fighter }};
+    var minNetMargin = (mgmtAsmpts.min_mono_margin + mgmtAsmpts.min_mono_on_color_margin + mgmtAsmpts.min_color_margin) / 3;
+</script>
+{% endblock %}
+
+{% block proposal_page_content %}
+{% if not is_self_service_review_selection %}
+<div class="grid-x tab-section">
+    <ul class="tabs grid-x cell large-13" data-tabs id="pricing-tabs">
+        <li class="tabs-title is-active cell large-6">
+            <a href="#non-tiered-pricing" aria-selected="true">Cost Per Page</a>
+        </li>
+        <li class="tabs-title cell large-6" id="tiered-button">
+            <a href="#tiered-pricing">Tiered Pricing</a>
+        </li>
+        <li class="tabs-title cell large-6" id="ppc-button">
+            <a href="#price-per-cartridge">Price Per Cartridge</a>
+        </li>
+        <li class="tabs-title cell large-6" id="flat-rate-button">
+            <a href="#flat-rate">Flat Rate</a>
+        </li>
+    </ul>
+</div>
+
+<div class="grid-x">
+    <div class="cell large-24">
+        <div class="tabs-content tab-independent-content" data-tabs-content="pricing-tabs">
+            <div class="tabs-panel is-active" id="non-tiered-pricing">
+                {% include 'rep/newProposal/nonTieredPricing.html' %}
+            </div>
+            <div class="tabs-panel" id="tiered-pricing">
+                {% include 'rep/newProposal/tieredPricing.html' %}
+            </div>
+            <div class="tabs-panel" id="price-per-cartridge">
+                {% include 'rep/newProposal/PricePerCartridge.html' %}
+            </div>
+            <div class="tabs-panel" id="flat-rate">
+                {% include 'rep/newProposal/FlatRate.html' %}
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+
+<div class="hide">
+    <ul class="tabs grid-x cell large-13" data-tabs id="pricing-tabs">
+        <li class="tabs-title is-active cell large-6">
+            <a href="#non-tiered-pricing" aria-selected="true">Price Per Page</a>
+        </li>
+        <li class="tabs-title cell large-6" id="ppc-button">
+            <a href="#price-per-cartridge">Price Per Cartridge</a>
+        </li>
+    </ul>
+</div>
+
+<div class="grid-x">
+    <div class="cell large-24">
+            <div data-tabs-content="pricing-tabs">
+            <div class="tabs-panel is-active" id="non-tiered-pricing">
+                {% include 'rep/newProposal/nonTieredPricing.html' %}
+            </div>
+            <div class="tabs-panel" id="price-per-cartridge">
+                {% include 'rep/newProposal/PricePerCartridge.html' %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

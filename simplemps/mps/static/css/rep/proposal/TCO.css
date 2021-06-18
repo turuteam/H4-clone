@@ -1,0 +1,104 @@
+p {
+    font-weight: bold;
+}
+
+.button {
+    margin: 0.5rem 0;
+    font-weight: bold;
+    border: 1px solid black;
+    color: black;
+}
+
+.button.mps-yellow:hover, .button.mps-yellow:focus {
+    background-color: var(--mps-hover-yellow);
+    color: black;
+}
+
+.button.mps-green:hover, .button.mps-green:focus {
+    background-color: var(--mps-hover-green);
+    color: black;
+}
+
+.button.mps-blue:hover, .button.mps-blue:focus {
+    background-color: var(--mps-hover-blue);
+    color: black;
+}
+
+.select-group.input-group {
+    margin-bottom: 0;
+}
+
+.select-label.input-group-label {
+    height: 2.4375rem;
+}
+
+.disabledbutton {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+#client-content2 {
+    background-color: #DCDCDC;
+    padding-top: 2rem;
+    margin-top: 3.5rem;
+    display: none;
+}
+
+.button-row {
+    justify-content: center;
+}
+
+.button-row>button {
+    width: auto;
+    display: inline-block;
+    margin: 0 1rem;
+}
+
+.tco-table thead,
+.tco-table tbody,
+.tco-table tfoot {
+    border: 1px solid black;
+}
+
+.tco-table tfoot td {
+    padding: 0;
+}
+
+.tco-table thead > tr > .blue {
+  background-color: var(--mps-blue);
+}
+
+.tco-table thead > tr > .yellow {
+  background-color: var(--mps-yellow);
+}
+
+
+.tco-table thead > tr > .pink {
+  background-color: var(--mps-pink);
+}
+
+.tco-summary-box {
+  background-color: #DCDCDC;
+  padding-top: 2rem;
+  margin-top: 3.5rem;
+  margin-left: 5rem;
+}
+
+.tco-summary-box-title {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.data_table_wrapper label {
+    color: #fefefe;
+}
+
+.red-delete-icon {
+    color: firebrick;
+}
+
+.row.expanded {
+    background-color: lightgray;
+    text-align: center;
+}

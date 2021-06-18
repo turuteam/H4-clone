@@ -1,0 +1,41 @@
+{% extends 'baseTemplate.html' %}
+{% load static from staticfiles %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'css/rep/proposal/proposal.css' %}">
+
+    {% block proposal_css %}
+    {% endblock %}
+{% endblock %}
+
+{% block page_js %}
+<script type="text/javascript" language="javascript" src="{% static 'js/csrfSetUp.js' %}"></script>
+<script type="text/javascript" language="javascript" src="{% static 'js/rep/proposal/proposal.js' %}"></script>
+
+    {% block proposal_js %}
+    {% endblock %}
+{% endblock %}
+
+{% block page_content %}
+{% csrf_token %}
+
+<div class="grid-x">
+    {% if 'client' in request.path|lower %}
+        {% include 'rep/newProposal//headers/selectClientHeader.html' %}
+    {% elif 'details' in request.path|lower %}
+        {% include 'rep/newProposal/headers/detailsHeader.html' %}
+    {% elif 'pricing' in request.path|lower %}
+        {% include 'rep/newProposal/headers/pricingHeader.html' %}
+    {% elif 'tco' in request.path|lower %}
+        {% include 'rep/newProposal/headers/TCOHeader.html' %}
+    {% elif 'preview' in request.path|lower %}
+        {% include 'rep/newProposal/headers/proposalPreviewHeader.html' %}
+    {% endif %}
+</div>
+<div class="grid-x">
+    <h2 id="clientHeader" class="cell">Client: {{ client | escape }} </h2>
+</div>
+{% block proposal_page_content %}
+{% endblock %}
+
+{% endblock %}

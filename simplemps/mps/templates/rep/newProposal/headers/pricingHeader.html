@@ -1,0 +1,20 @@
+<ul class="prop-menu menu cell grid-x large-13 align-middle text-center">
+    <li class="cell auto">
+        <a href="/proposal/selectClient/{{ proposal_id }}">Select Client</a>
+    </li>
+    <li class="cell auto">
+        <a href="/proposal/details/{{ proposal_id }}">Proposal Details</a>
+    </li>
+    <li class="cell auto is-active">
+        <a href="/proposal/pricing/{{ proposal_id }}">Pricing Detail</a>
+    </li>
+    <li class="cell auto" id="tco-button3" hidden>
+        <a href="/proposal/TCO/{{ proposal_id }}">TCO</a>
+    </li>
+    <li class="cell auto">
+        <a href="/proposal/preview/{{ proposal_id }}" id="proposal-header-link">Proposal</a>
+    </li>
+</ul>
+<div class="cell large-3 large-offset-7">
+    <button id="sf-button" type="button" class="alert button" onclick='requestStreetFighter()'>Request Street Fighter Pricing</button>
+</div>

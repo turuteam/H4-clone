@@ -1,0 +1,499 @@
+{% if not is_self_service_review_selection %}
+<div class="reveal" id="addNetworkDevice" data-reveal data-overlay="true" data-multiple-opened="true">
+    <div class="grid-x grid-padding-y align-middle modal-header mps-blue">
+        <div class="cell large-21 large-offset-1">
+            <h3 class="bold">Add Network Device</h3>
+        </div>
+        <div class="cell large-1 text-center">
+            <button data-close aria-label="Close reveal" type="button">
+                <h3>X</h3>
+            </button>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-10 medium-offset-2">Manufacturer</div>
+        <div class="cell medium-8 medium-offset-2">
+            <select id="networkDevice-makeName"></select>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-10 medium-offset-2">Device</div>
+        <div class="cell medium-8 medium-offset-2">
+            <select id="networkDevice-shortName"></select>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-10 medium-offset-2">Number of Devices</div>
+        <div class="cell medium-8 medium-offset-2">
+            <input id="networkDevice-quantity" type="number" value="1" min="1">
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row hide" id="lock-margin-option">
+        <div class="cell medium-10 medium-offset-2">Lock Mono/Color Margin</div>
+        <div class="cell medium-8 medium-offset-2">
+            <div class="select-group input-group">
+                <select id="lock-margin" class='reactive' disabled>
+                    <option value="0" selected>No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <button id="equipment-options" class="cell medium-10 medium-offset-2 fake-btn text-center button size-16 network-modal-btn"
+            data-open="purchashEquipment" disabled>Purchase Equipment</button>
+        <div class="cell medium-8 medium-offset-2">
+            <div class="input-group">
+                <span class="input-group-label">$</span>
+                <input id="networkDevice-totalOutcost" class="input-group-field" step="0.01" type="number" min="0" disabled>
+            </div>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-10 medium-offset-2">Equipment Purchase Price</div>
+        <div class="cell medium-8 medium-offset-2">
+            <div class="input-group">
+                <span class="input-group-label">$</span>
+                <input id="networkDevice-purchasePrice" class="input-group-field" step="0.01" type="number" min="0" disabled>
+            </div>
+        </div>
+    </div>
+    <div class="hide">
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-8 medium-offset-2" id="def-monthly-mono-pages" type="number"></div>
+            <div class="cell medium-8 medium-offset-2" id="def-monthly-color-pages" type="number"></div>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-10 medium-offset-2">Total Monthly Mono Pages</div>
+        <div class="cell medium-8 medium-offset-2">
+            <input id="total-monthly-mono-pages" class='reactive' type="number" min="0" step="100">
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-10 medium-offset-2">Total Monthly Color Pages</div>
+        <div class="cell medium-8 medium-offset-2">
+            <input id="total-monthly-color-pages" class='reactive' type="number" min="0" step="100" disabled>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-10 medium-offset-2">Total Monthly Pages Printed</div>
+        <div class="cell medium-8 medium-offset-2">
+            <input id="total-monthly-pages" type="number" min="0" step="100" disabled>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row" id="transferButton">
+        <div class="cell medium-10 medium-offset-2"> </div>
+        <button id="transfer-pages-options" class="fake-btn cell size-8 button network-modal-btn medium-8 medium-offset-2 text-center"
+            data-open="transferPages">Transfer Pages</button>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-10 medium-offset-2">Mono Coverage</div>
+        <div class="cell medium-8 medium-offset-2">
+            <div class="select-group input-group">
+                <select id="mono-coverage" class='reactive'>
+                    <option value=".03">3</option>
+                    <option value=".04">4</option>
+                    <option value=".05" selected>5</option>
+                    <option value=".10">10</option>
+                    <option value=".15">15</option>
+                    <option value=".20">20</option>
+                    <option value=".25">25</option>
+                    <option value=".30">30</option>
+                    <option value=".35">35</option>
+                    <option value=".40">40</option>
+                    <option value=".45">45</option>
+                    <option value=".50">50</option>
+                    <option value=".55">55</option>
+                    <option value=".60">60</option>
+                    <option value=".65">65</option>
+                    <option value=".70">70</option>
+                    <option value=".75">75</option>
+                    <option value=".80">80</option>
+                    <option value=".85">85</option>
+                    <option value=".90">90</option>
+                </select>
+                <span class="select-label input-group-label">%</span>
+            </div>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-10 medium-offset-2">Color Coverage</div>
+        <div class="cell medium-8 medium-offset-2">
+            <div class="select-group input-group">
+                <select id="color-coverage" class='reactive' disabled>
+                    <option value=".03">3</option>
+                    <option value=".04">4</option>
+                    <option value=".05" selected>5</option>
+                    <option value=".10">10</option>
+                    <option value=".15">15</option>
+                    <option value=".20">20</option>
+                    <option value=".25">25</option>
+                    <option value=".30">30</option>
+                    <option value=".35">35</option>
+                    <option value=".40">40</option>
+                    <option value=".45">45</option>
+                    <option value=".50">50</option>
+                    <option value=".55">55</option>
+                    <option value=".60">60</option>
+                    <option value=".65">65</option>
+                    <option value=".70">70</option>
+                    <option value=".75">75</option>
+                    <option value=".80">80</option>
+                    <option value=".85">85</option>
+                    <option value=".90">90</option>
+                </select>
+                <span class="select-label input-group-label">%</span>
+            </div>
+        </div>
+    </div>
+    <div class="hide" id="show-pricing">
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">Recommended Mono Toner Price</div>
+            <div class="cell medium-8 medium-offset-2 text-center" id="rcmdp-mono-toner">$<span id="recommended-mono-toner-price">0</span></div>
+        </div>
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">Recommended Color Toner Price</div>
+            <div class="cell medium-8 medium-offset-2 text-center" id="rcmdp-color-toner">$<span id="recommended-color-toner-price">0</span></div>
+        </div>
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">Recommended Service Price</div>
+            <div class="cell medium-8 medium-offset-2 text-center" id="rcmdp-service">$<span id="recommended-service-price">0</span></div>
+        </div>
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">Recommended Monthly Price</div>
+            <div class="cell medium-8 medium-offset-2 text-center" id="rcmdp-monthly">$<span id="recommended-monthly-price">0</span></div>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row" style="background-color: #61dad1">
+        <div class="cell medium-10 medium-offset-2">Recommended Mono Sales Price</div>
+        <div class="cell medium-8 medium-offset-2 text-center" id="rcmdp-mono-sales">$<span id="recommended-mono-sales-price">0.0000</span></div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-10 medium-offset-2">Mono Cost Per Page</div>
+        <div class="cell medium-8 medium-offset-2 text-center" id="raw-mono-cpp">$<span id="raw-mono-cpp">0.0000</span></div>
+    </div>
+    <div class="grid-x align-middle modal-row" style="background-color: #61dad1">
+        <div class="cell medium-10 medium-offset-2">Recommended Color Sales Price</div>
+        <div class="cell medium-8 medium-offset-2 text-center" id="rcmdp-color-sales">$<span id="recommended-color-sales-price">0.0000</span></div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-10 medium-offset-2">Color Cost Per Page</div>
+        <div class="cell medium-8 medium-offset-2 text-center" id="raw-color-cpp2">$<span id="raw-color-cpp">0.0000</span></div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-10 medium-offset-2">Base Volume Mono</div>
+        <div class="cell medium-8 medium-offset-2">
+            <input id="base-volume-mono" class='reactive' type="number" min="0" step="100">
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-10 medium-offset-2">Base Volume Color</div>
+        <div class="cell medium-8 medium-offset-2">
+            <input id="base-volume-color" class='reactive' type="number" min="0" step="100" disabled>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-10 medium-offset-2">Base Rate Mono</div>
+        <div class="cell medium-8 medium-offset-2">
+            <div class="input-group">
+                <span class="input-group-label">$</span>
+                <input id="base-rate-mono" class="input-group-field reactive" step="0.25" type="number" min="0">
+            </div>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-10 medium-offset-2">Base Rate Color</div>
+        <div class="cell medium-8 medium-offset-2">
+            <div class="input-group">
+                <span class="input-group-label">$</span>
+                <input id="base-rate-color" class="input-group-field reactive" step="0.25" type="number" min="0" disabled>
+            </div>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-10 medium-offset-2">Proposed Mono Sales Price</div>
+        <div class="cell medium-8 medium-offset-2">
+            <div class="input-group">
+                <span class="input-group-label">$</span>
+                <input id="proposed-mono-sales" class="input-group-field reactive" step="0.0001" type="number" min="0">
+            </div>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-10 medium-offset-2">Proposed Color Sales Price</div>
+        <div class="cell medium-8 medium-offset-2">
+            <div class="input-group">
+                <span class="input-group-label">$</span>
+                <input id="proposed-color-sales" class="input-group-field reactive" step="0.0001" type="number" min="0" disabled>
+            </div>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row hide">
+        <div class="cell medium-8 medium-offset-2">
+            <div class="input-group">
+                <input id="saved-mono-sales" class="input-group-field reactive" type="number" min="0">
+            </div>
+            <div class="input-group">
+                <input id="saved-color-sales" class="input-group-field reactive" type="number" min="0">
+            </div>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row" style="margin-bottom: 1rem;">
+        <div class="cell medium-4 medium-offset-2 bold">Commission</div>
+        <div class="cell medium-4 medium-offset-2 bold" id="commission">$<span id="calculated-commission">0.00</span></div>
+        <div class="cell medium-8 medium-offset-2 text-center">
+            <button id="add-network-device" class="fake-btn cell size-16 button network-modal-btn" data-close aria-label="Close reveal"
+                 disabled>Add</button>
+        </div>
+    </div>
+</div>
+
+{% else %}
+
+<div class="reveal-self-service" id="addNetworkDevice" data-reveal data-overlay="true" data-multiple-opened="true">
+    <div class="grid-x grid-padding-y align-middle modal-header mps-blue">
+        <div class="cell large-21 large-offset-1">
+            <h3 class="bold">Add Printer</h3>
+        </div>
+        <div class="cell large-1 text-center">
+            <button data-close aria-label="Close reveal" type="button">
+                <h3>X</h3>
+            </button>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-10 medium-offset-2">Manufacturer</div>
+        <div class="cell medium-8 medium-offset-2">
+            <select id="networkDevice-makeName"></select>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-10 medium-offset-2">Device</div>
+        <div class="cell medium-8 medium-offset-2">
+            <select id="networkDevice-shortName"></select>
+        </div>
+    </div>
+    <div class="hide">
+        <div class="cell medium-10 medium-offset-2">Number of Devices</div>
+        <div class="cell medium-8 medium-offset-2">
+            <input id="networkDevice-quantity" type="number" value="1" min="1">
+        </div>
+    </div>
+    <div class="hide">
+        <button id="equipment-options" class="cell medium-10 medium-offset-2 fake-btn text-center button size-16 network-modal-btn"
+            data-open="purchashEquipment" disabled>Purchase Equipment</button>
+        <div class="cell medium-8 medium-offset-2">
+            <div class="input-group">
+                <span class="input-group-label">$</span>
+                <input id="networkDevice-totalOutcost" class="input-group-field" step="0.01" type="number" min="0" disabled>
+            </div>
+        </div>
+    </div>
+    <div class="hide">
+        <div class="cell medium-10 medium-offset-2">Equipment Purchase Price</div>
+        <div class="cell medium-8 medium-offset-2">
+            <div class="input-group">
+                <span class="input-group-label">$</span>
+                <input id="networkDevice-purchasePrice" class="input-group-field" step="0.01" type="number" min="0" disabled>
+            </div>
+        </div>
+    </div>
+    <div class="hide">
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-8 medium-offset-2" id="def-monthly-mono-pages" type="number"></div>
+            <div class="cell medium-8 medium-offset-2" id="def-monthly-color-pages" type="number"></div>
+        </div>
+    </div>
+    <div class="hide">
+        <div class="cell medium-10 medium-offset-2">Total Monthly Mono Pages</div>
+        <div class="cell medium-8 medium-offset-2">
+            <input id="total-monthly-mono-pages" class='reactive' type="number" min="0" step="100">
+        </div>
+    </div>
+    <div class="hide">
+        <div class="hide">Total Monthly Color Pages</div>
+        <div class="cell medium-8 medium-offset-2">
+            <input class="hide" id="total-monthly-color-pages" class='reactive' type="number" min="0" step="100" disabled>
+        </div>
+    </div>
+    <div class="hide">
+        <div class="cell medium-10 medium-offset-2">Total Monthly Pages Printed</div>
+        <div class="cell medium-8 medium-offset-2">
+            <input id="total-monthly-pages" type="number" min="0" step="100" disabled>
+        </div>
+    </div>
+    <div id="transferButton" class="hide">
+        <div class="cell medium-10 medium-offset-2"> </div>
+        <button id="transfer-pages-options" class="fake-btn cell size-8 button network-modal-btn medium-8 medium-offset-2 text-center"
+            data-open="transferPages">Transfer Pages</button>
+    </div>
+    <div class="hide">
+        <div class="cell medium-10 medium-offset-2">Mono Coverage</div>
+        <div class="cell medium-8 medium-offset-2">
+            <div class="select-group input-group">
+                <select id="mono-coverage" class='reactive'>
+                    <option value=".03">3</option>
+                    <option value=".04">4</option>
+                    <option value=".05" selected>5</option>
+                    <option value=".10">10</option>
+                    <option value=".15">15</option>
+                    <option value=".20">20</option>
+                    <option value=".25">25</option>
+                    <option value=".30">30</option>
+                    <option value=".35">35</option>
+                    <option value=".40">40</option>
+                    <option value=".45">45</option>
+                    <option value=".50">50</option>
+                    <option value=".55">55</option>
+                    <option value=".60">60</option>
+                    <option value=".65">65</option>
+                    <option value=".70">70</option>
+                    <option value=".75">75</option>
+                    <option value=".80">80</option>
+                    <option value=".85">85</option>
+                    <option value=".90">90</option>
+                </select>
+                <span class="select-label input-group-label">%</span>
+            </div>
+        </div>
+    </div>
+    <div class="hide">
+        <div class="hide">Color Coverage</div>
+        <div class="hide">
+            <div class="hide" class="select-group input-group">
+                <select id="color-coverage" class='reactive' disabled>
+                    <option value=".03">3</option>
+                    <option value=".04">4</option>
+                    <option value=".05" selected>5</option>
+                    <option value=".10">10</option>
+                    <option value=".15">15</option>
+                    <option value=".20">20</option>
+                    <option value=".25">25</option>
+                    <option value=".30">30</option>
+                    <option value=".35">35</option>
+                    <option value=".40">40</option>
+                    <option value=".45">45</option>
+                    <option value=".50">50</option>
+                    <option value=".55">55</option>
+                    <option value=".60">60</option>
+                    <option value=".65">65</option>
+                    <option value=".70">70</option>
+                    <option value=".75">75</option>
+                    <option value=".80">80</option>
+                    <option value=".85">85</option>
+                    <option value=".90">90</option>
+                </select>
+                <span class="select-label input-group-label">%</span>
+            </div>
+        </div>
+    </div>
+    <div class="hide" id="show-pricing">
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">Recommended Mono Toner Price</div>
+            <div class="cell medium-8 medium-offset-2 text-center" id="rcmdp-mono-toner">$<span id="recommended-mono-toner-price">0</span></div>
+        </div>
+        <div class="hide">
+            <div class="cell medium-10 medium-offset-2">Recommended Color Toner Price</div>
+            <div class="cell medium-8 medium-offset-2 text-center" id="rcmdp-color-toner">$<span id="recommended-color-toner-price">0</span></div>
+        </div>
+        <div class="hide">
+            <div class="cell medium-10 medium-offset-2">Recommended Service Price</div>
+            <div class="cell medium-8 medium-offset-2 text-center" id="rcmdp-service">$<span id="recommended-service-price">0</span></div>
+        </div>
+        <div class="hide">
+            <div class="cell medium-10 medium-offset-2">Recommended Monthly Price</div>
+            <div class="cell medium-8 medium-offset-2 text-center" id="rcmdp-monthly">$<span id="recommended-monthly-price">0</span></div>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="small-2 columns"></div>
+        <div class="small-3 columns">Our Mono Price</div>
+        <div class="small-3 columns" id="rcmdp-mono-sales">$<span id="self-service-mono-price">0.00</span></div>
+        <div class="small-3 columns">Retail Price</div>
+        <div class="small-3 columns">$<span id="retail-mono-price">0.00</span></div>
+        <div class="small-2 columns"></div>
+        <div class="small-3 columns">Total Savings</div>
+        <div class="small-3 columns">$<span id="retail-total-sales-mono-price">0.00</span></div>
+        <div class="small-2 columns"></div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="small-2 columns"></div>
+        <div class="small-3 columns">Our Color Price</div>
+        <div class="small-3 columns" id="rcmdp-color-sales">$<span id="self-service-color-price">0.00</span></div>
+        <div class="small-3 columns">Retail Price</div>
+        <div class="small-3 columns">$<span id="retail-color-price">0.00</span></div>
+        <div class="small-2 columns"></div>
+        <div class="small-3 columns">Total Savings</div>
+        <div class="small-3 columns">$<span id="retail-total-sales-color-price">0.00</span></div>
+        <div class="small-2 columns"></div>
+    </div>
+    <div class="hide">
+        <div class="cell medium-10 medium-offset-2">Base Volume Mono</div>
+        <div class="cell medium-8 medium-offset-2">
+            <input id="base-volume-mono" class='reactive' type="number" min="0" step="100">
+        </div>
+    </div>
+    <div class="hide">
+        <div class="hide">Base Volume Color</div>
+        <div class="hide">
+            <input id="base-volume-color" class='reactive' type="number" min="0" step="100" disabled>
+        </div>
+    </div>
+    <div class="hide">
+        <div class="cell medium-10 medium-offset-2">Base Rate Mono</div>
+        <div class="cell medium-8 medium-offset-2">
+            <div class="input-group">
+                <span class="input-group-label">$</span>
+                <input id="base-rate-mono" class="input-group-field reactive" step="0.25" type="number" min="0">
+            </div>
+        </div>
+    </div>
+    <div class="hide">
+        <div class="hide">Base Rate Color</div>
+        <div class="hide">
+            <div class="input-group">
+                <span class="input-group-label">$</span>
+                <input id="base-rate-color" class="input-group-field reactive" step="0.25" type="number" min="0" disabled>
+            </div>
+        </div>
+    </div>
+    <div class="hide">
+        <div class="cell medium-10 medium-offset-2">Proposed Mono Sales Price</div>
+        <div class="cell medium-8 medium-offset-2">
+            <div class="input-group">
+                <span class="input-group-label">$</span>
+                <input id="proposed-mono-sales" class="input-group-field reactive" step="0.0001" type="number" min="0">
+            </div>
+        </div>
+    </div>
+    <div class="hide">
+        <div class="hide">Proposed Color Sales Price</div>
+        <div class="hide">
+            <div class="input-group">
+                <span class="input-group-label">$</span>
+                <input id="proposed-color-sales" class="input-group-field reactive" step="0.0001" type="number" min="0" disabled>
+            </div>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row hide">
+        <div class="cell medium-8 medium-offset-2">
+            <div class="input-group">
+                <input id="saved-mono-sales" class="input-group-field reactive" type="number" min="0">
+            </div>
+            <div class="input-group">
+                <input id="saved-color-sales" class="input-group-field reactive" type="number" min="0">
+            </div>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row" style="margin-bottom: 1rem;">
+        <div class="hide">Commission</div>
+        <div class="hide" id="commission">$<span id="calculated-commission">0.00</span></div>
+        <div class="cell medium-8 medium-offset-8 text-center">
+            <button id="add-network-device" class="fake-btn cell size-16 button network-modal-btn" data-close aria-label="Close reveal"
+                 disabled>Add</button>
+        </div>
+    </div>
+</div>
+
+{% endif %}

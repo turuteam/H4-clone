@@ -1,0 +1,188 @@
+<div class="reveal" id="rentOptions" data-reveal data-overlay="true" data-multiple-opened="true">
+    <div class="grid-x grid-padding-y align-middle modal-header mps-blue">
+        <div class="cell large-21 large-offset-1">
+            <h3 class="bold">Rental Options</h3>
+        </div>
+        <div class="cell large-1 text-center">
+            <button data-close aria-label="Close reveal" type="button">
+                <h3>X</h3>
+            </button>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-9 medium-offset-2" >Rental Purchase Price</div>
+        <div class="cell medium-9 medium-offset-2">
+            <div class="input-group">
+                <span class="input-group-label">$</span>
+                <input class="input-group-field" id="rentPurchasePrice" step="0.01" type="number" min="0" disabled>
+            </div>
+        </div>
+    </div>
+    <div class="hidden grid-x align-middle modal-row">
+        <div class="cell medium-9 medium-offset-2" >Rental Company</div>
+        <div class="cell medium-9 medium-offset-2">
+            <div class="select-group input-group">
+                <select id="rental-company">
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="hidden grid-x align-middle modal-row">
+        <div class="cell medium-9 medium-offset-2" >CompanyID</div>
+        <div class="cell medium-9 medium-offset-2">
+            <div class="input-group">
+                <span class="input-group-label">$</span>
+                <input class="input-group-field" id="rental-company-id" type="number" min="0">
+            </div>
+        </div>
+    </div>
+    <div class="hidden grid-x align-middle modal-row">
+        <div class="cell medium-9 medium-offset-2" >Rental Type</div>
+        <div class="cell medium-9 medium-offset-2">
+            <div class="select-group input-group">
+                <select id="rent-type">
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-9 medium-offset-2" >Term</div>
+        <div class="cell medium-9 medium-offset-2">
+            <div class="select-group input-group">
+                <select class="input-group-field" id="rent-term">
+                </select>
+                <span class="input-group-label">Months</span>
+            </div>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-9 medium-offset-2" >Select Type</div>
+        <div class="cell medium-9 medium-offset-2">
+            <div class="select-group input-group">
+                <select id="rentSelectType">
+                    <option value="1" selected>Straight Rental</option>
+                    <option value="2">Bundled CPP</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="hidden grid-x align-middle modal-row">
+        <div class="cell medium-9 medium-offset-2" >Rent Buyout Amount</div>
+        <div class="cell medium-9 medium-offset-2">
+            <div class="input-group">
+                <span class="input-group-label">$</span>
+                <input class="input-group-field" id="rentBuyout" step="0.01" type="number" min="0" value="0">
+            </div>
+        </div>
+    </div>
+    <!--    Beginning of Bundled Rent Section  -->
+    <div class="hidden" id=rentbundledSection>
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">Bundled Monthly Mono Pages</div>
+            <div class="cell medium-9 medium-offset-1">
+                <div class="input-group">
+                    <input id="rent-bundled-monthly-mono-pages" class='reactive' type="number" min="0" step="100" value="0">
+                </div>
+            </div>
+        </div>
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-10 medium-offset-2">Bundled Monthly Color Pages</div>
+            <div class="cell medium-9 medium-offset-1">
+                <input id="rent-bundled-monthly-color-pages" class='reactive' type="number" min="0" step="100" value="0">
+            </div>
+        </div>
+        <div class="grid-x align-middle modal-row-thin">
+            <div class="column">
+                <div class="cell medium-6 medium-offset-8" > </div>
+            </div>
+            <div class="column">
+                <div class="cell medium-6 medium-offset-6" >Original $</div>
+            </div>
+            <div class="column">
+                <div class="cell medium-6 medium-offset-3" >Bundled $</div>
+            </div>
+            <div class="column">
+                <div class="cell medium-6 medium-offset-0" >In Rental $</div>
+            </div>
+        </div>
+        <div class="grid-x align-middle modal-row">
+            <div class="column">
+                <div class="cell medium-6 medium-offset-8" >Mono Pages</div>
+            </div>
+            <div class="column small-5" >
+                <div class="cell medium-10 medium-offset-2">
+                    <div class="input-group" width="8">
+                        <input class="input-group-field" id="rent-recommended-mono-sales-price2" step="0.0001" type="number" min="0" value="0" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="column small-5">
+                <div class="cell medium-10 medium-offset-3">
+                    <div class="input-group" width="8">
+                        <input class="input-group-field" id="rent-bundled-mono-price" step="0.0001" type="number" min="0" value="0">
+                    </div>
+                </div>
+            </div>
+            <div class="column small-5">
+                <div class="cell medium-10 medium-offset-4">
+                    <div class="input-group" width="8">
+                        <input class="input-group-field" id="rent-bundled-mono-monthly" step="0.01" type="number" min="0" value="0">
+                    </div>
+                </div>
+            </div>
+        </div>  
+        <div class="grid-x align-middle modal-row" id="rent-bundled-color-section">
+            <div class="column">
+                <div class="cell medium-6 medium-offset-8" >Color Pages</div>
+            </div>
+            <div class="column small-5" >
+                <div class="cell medium-10 medium-offset-2">
+                    <div class="input-group" width="8">
+                        <input class="input-group-field" id="rent-recommended-color-sales-price2" step="0.0001" type="number" min="0" value="0" disabled>
+                    </div>
+                </div>
+            </div>
+            <div class="column small-5">
+                <div class="cell medium-10 medium-offset-3">
+                    <div class="input-group" width="8">
+                        <input class="input-group-field" id="rent-bundled-color-price" step="0.0001" type="number" min="0" value="0">
+                    </div>
+                </div>
+            </div>
+            <div class="column small-5">
+                <div class="cell medium-10 medium-offset-4">
+                    <div class="input-group" width="8">
+                        <input class="input-group-field" id="rent-bundled-color-monthly" step="0.01" type="number" min="0" value="0">
+                    </div>
+                </div>
+            </div>
+        </div>    
+        <div class="grid-x align-middle modal-row">
+            <div class="cell medium-9 medium-offset-2" >Total Bundled Amount</div>
+            <div class="cell medium-9 medium-offset-2">
+                <div class="input-group">
+                    <span class="input-group-label">$</span>
+                    <input class="input-group-field" id="rent-bundledAmt" step="0.01" type="number" min="0" disabled>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--    End of Bundled Rent Section    -->
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-9 medium-offset-2" >Monthly Rental Payment</div>
+        <div class="cell medium-9 medium-offset-2">
+            <div class="input-group">
+                <span class="input-group-label">$</span>
+                <input class="input-group-field" id="rent-monthly-payment" step="0.01" type="number" min="0">
+            </div>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row" style="margin: 2rem 0;">
+        <div class="cell medium-7 medium-offset-2 text-center">
+            <button data-close="rentOptions" class="fake-btn-blue cell button size-16">Back</button>
+        </div>
+        <div class="cell medium-7 medium-offset-6 text-center">
+            <button class="fake-btn cell button size-16" id="save-rent-options">Save</button>
+        </div>
+    </div>
+</div>

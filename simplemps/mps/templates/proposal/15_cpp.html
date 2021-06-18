@@ -1,0 +1,426 @@
+{% load static %}
+{% load humanize %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Elite Document Solutions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/proposal/style_print.css' %}"/>
+</head>
+<body>
+    <section id="main" class="wrapper" style="border-collapse: separate; background-color: #fff">
+        <section>
+        <div class="container" style="border-collapse: separate;background-color: #fff;">
+            <div style="border-collapse: separate;background-color: #fff;">
+                <div class="row">
+                    <div id="logo" style="width: 30%">
+                        <img src="{{ proposal.logo.url }}" style="max-width: 100%" />
+                    </div>
+                    <div class="6u 12u(3)" style="margin-top: 5px;">
+                        <header class="major">
+                            <h2 style="font-family:'Times New Roman', Times, serif; font-size:24px; margin-top: 20px; margin-left: 10px">EQUIPMENT AGREEMENT</h2>
+                        </header>
+                    </div>
+                </div>
+                <div class="table-wrapper" style="margin-left: 0px">
+                    <table class="alt" style="margin-bottom: 5px; font-size: 14px">
+                        <tbody>
+                            <tr>
+                                <td class="TableRowWidth"><b><span>Legal Name:</span></b></td>
+                                <td colspan="8">{{ client.name }}</td>
+                            </tr>
+                            <tr>
+                                <td class="TableRowWidth"><b><span>Installation Address:</span></b></td>
+                                <td colspan="8">{{ client.address }}, {{ client.city }}, {{ client.state }}  {{ client.zipcode }}</td>
+                            </tr>
+                            <tr>
+                                <td class="TableRowWidth"><b><span>Billing Address:</span></b></td>
+                                <td colspan="8"><input size="80" style="border-width: 0 0 0; font-size: 14px;" type="text"></td>
+                            </tr>
+                            <tr>
+                                <td class="TableRowWidth"><b><span>Main Contact:</span></b></td>
+                                <td>{{ client.contact }}</td>
+                                <td class="align-center"><b><span>Email:</span></b></td>
+                                <td>{{ client.email }}</td>
+                                <td class="align-center"><b><span>Phone:</span></b></td>
+                                <td>{{ client.telephone }}</td>
+                                <td class="align-center"><b><span>Ext:</span></b></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="TableRowWidth"><b><span>Meter/Equip Contact:</span></b></td>
+                                <td><input size="20" style="border-width: 0 0 0; font-size: 14px;" type="text"></td>
+                                <td class="align-center"><b><span>Email:</span></b></td>
+                                <td><input size="30" style="border-width: 0 0 0; font-size: 14px;" type="text"></td>
+                                <td class="align-center"><b><span>Phone:</span></b></td>
+                                <td><input size="15" style="border-width: 0 0 0; font-size: 14px;" type="text"></td>
+                                <td class="align-center"><b><span>Ext:</span></b></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="TableRowWidth"><b><span>A/P Contact:</span></b></td>
+                                <td><input size="20" style="border-width: 0 0 0; font-size: 14px;" type="text"></td>
+                                <td class="align-center"><b><span>Email:</span></b></td>
+                                <td><input size="30" style="border-width: 0 0 0; font-size: 14px;" type="text"></td>
+                                <td class="align-center"><b><span>Phone:</span></b></td>
+                                <td><input size="15" style="border-width: 0 0 0; font-size: 14px;" type="text"></td>
+                                <td class="align-center"><b><span>Ext:</span></b></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="box" style="margin:0px; padding:0px; padding-left: 10px; font-size:14px">
+                    <h4><u> Service Agreement: </u></h4>
+                        {% if proposal.service_type == 'total' %}
+                            <strong style="margin:0px; padding:0px; padding-left: 10px;"><u> _X_ </u></strong> Comprehensive Maintenance: Includes labor, travel, parts and toner. Excludes staples, paper & third-party accessories.
+                            <p class="align-center" style="margin:0px; padding:0px; padding-left: 10px;">All IT, Networking / Connectivity service calls are not included.</p>
+                        {% elif proposal.service_type == 'supplies_only' %}
+                            <strong style="margin:0px; padding:0px; padding-left: 10px;"><u> _X_ </u></strong> Supplies Only Coverage: Includes ink/toner. Excludes parts, labor, travel, staples, paper & third-party accessories.
+                            <p class="align-center" style="margin:0px; padding:0px; padding-left: 10px;">All IT, Networking / Connectivity service calls are not included.</p>
+                        {% elif proposal.service_type == 'service_only' %}
+                            <strong style="margin:0px; padding:0px; padding-left: 10px;"><u> _X_ </u></strong> Standard Maintenance: Includes labor and travel. Excludes parts, ink/toner, staples, paper & third-party accessories.
+                            <p class="align-center" style="margin:0px; padding:0px; padding-left: 10px;">All IT, Networking / Connectivity service calls are not included.</p>
+                        {% endif %}
+                        <strong><u>Equipment Options: </u> (Please initial beside your choice of payment) </strong><br>
+                        {% if equipment_purchase %}
+                            <strong><u>_X_</u> Equipment Purchase:</strong> The undersigned agrees to purchase from Elite Document Solutions the
+                            equipment listed at the price shown below plus any sales tax.<br>
+                        {% else %}
+                            <strong><u>___</u> Equipment Purchase:</strong> The undersigned agrees to purchase from Elite Document Solutions the
+                            equipment listed at the price shown below plus any sales tax.<br>
+                        {% endif %}
+                        {% if equipment_lease %}
+                            <strong><u>_X_</u> Equipment Lease:</strong> The undersigned agrees to Lease the equipment listed at the rates shown, plus State sales tax when applicable. Damage caused by misuse,
+                            abuse, neglect and otherwise preventable by the customer will be remedied and billed to the customer separately from the rates stated. Customer will provide an
+                            adequate surge protector and insurance protection on the equipment while in customer’s possession.<br>
+                        {% else %}
+                            <strong><u>___</u> Equipment Lease:</strong> The undersigned agrees to Lease the equipment listed at the rates shown, plus State sales tax when applicable. Damage caused by misuse,
+                            abuse, neglect and otherwise preventable by the customer will be remedied and billed to the customer separately from the rates stated. Customer will provide an
+                            adequate surge protector and insurance protection on the equipment while in customer’s possession.<br>
+                        {% endif %}
+                        {% if equipment_rent %}
+                            <strong><u>_X_</u> Equipment Rental:</strong> The undersigned agrees to Rent from Elite Document Solutions the equipment listed at the rates shown, plus State sales tax when applicable.
+                            Damage caused by misuse, abuse, neglect and otherwise preventable by the customer, will be remedied and billed separately from the rates stated. Customer will
+                            provide an adequate surge protector and insurance protection on the equipment while in customer’s possession.<br>
+                        {% else %}
+                            <strong><u>___</u> Equipment Rental:</strong> The undersigned agrees to Rent from Elite Document Solutions the equipment listed at the rates shown, plus State sales tax when applicable.
+                            Damage caused by misuse, abuse, neglect and otherwise preventable by the customer, will be remedied and billed separately from the rates stated. Customer will
+                            provide an adequate surge protector and insurance protection on the equipment while in customer’s possession.<br>
+                        {% endif %}
+                </div>
+            </div>
+            <div style="margin: 13px auto;border-collapse: separate;background-color: #fff;">
+                <div class="table-wrapper">
+                    <table class="tableModel" style="line-height:1.0em; margin-bottom: 5px; font-size: 14px">
+                        <thead>
+                            <tr>
+                                <th class="TableRowWidth align-left">Model</th>
+                                <th>Equip Plans:</th>
+                                <th colspan="3">Service Fees:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in service_items %}  
+                                <tr>
+                                    <td>{{ item.device_name }}</td>
+                                    <td rowspan="3">
+                                        {% if item.info.proposal_purchase_item.buy_or_lease == 'buy' %}
+                                             X Purchase<br />
+                                        {% else %}
+                                              __ Purchase<br />
+                                        {% endif %}
+                                        {% if item.info.proposal_purchase_item.buy_or_lease == 'rent' %}
+                                             X Rental<br />
+                                        {% else %}
+                                              __ Rental<br />
+                                        {% endif %}
+                                        {% if item.info.proposal_purchase_item.buy_or_lease == 'lease' %}
+                                            {% if item.info.proposal_purchase_item.lease_type == 'Fair Market Value' %}
+                                                 X Lease: FMV<br />
+                                            {% elif item.info.proposal_purchase_item.lease_type == 'Fair Market Value, New Lease, New Equipment Only' %}
+                                                 X Lease: FMV<br />
+                                            {% elif item.info.proposal_purchase_item.lease_type == 'True Rental, Customer FMV Rate' %}
+                                                 X Lease: FMV<br />
+                                            {% elif item.info.proposal_purchase_item.lease_type == 'Knock-Out, Fair Market Value' %}
+                                                 X Lease: FMV<br />
+                                            {% elif item.info.proposal_purchase_item.lease_type == 'FMV, 90 Day Deferred' %}
+                                                 X Lease: FMV<br />
+                                            {% elif item.info.proposal_purchase_item.lease_type == 'FMV, 90 Day Deferred, Knock-Out' %}
+                                                 X Lease: FMV<br />
+                                            {% else %}
+                                                 __ Lease: FMV<br />
+                                            {% endif %}
+                                            {% if item.info.proposal_purchase_item.lease_type == '$1 Buyout' %}
+                                                 X Lease: $1 Buyout<br />
+                                            {% elif item.info.proposal_purchase_item.lease_type == '$1 Buyout, 90 Day Deferred' %}
+                                                 X Lease: $1 Buyout<br />
+                                            {% else %}
+                                                 __ Lease: $1 Buyout<br />
+                                            {% endif %}
+
+                                        {% else %}
+                                             __ Lease: FMV<br />
+                                             __ Lease: $1 Buyout<br />
+
+                                        {% endif %}
+
+                                         X Service
+
+                                    </td>
+                                    <td class="align-center" colspan="2">Base Service Fee: ${{ item.monthly_cost|floatformat:2|intcomma }}</td>
+                                </tr>
+                                <tr>
+                                    {% if item.info.proposal_purchase_item.buy_or_lease == 'buy' %}
+                                        <td rowspan="2">&nbsp;{{ item.info.proposal_purchase_item.long_model }}<input size="50" style="border-width:0px; font-size: 14px;" type="text"><input size="50" style="border-width:0px; font-size: 14px;" type="text"></td>
+                                    {% elif item.info.proposal_purchase_item.buy_or_lease == 'lease' %}
+                                        <td rowspan="2">&nbsp;{{ item.info.proposal_purchase_item.long_model }}<input size="50" style="border-width:0px; font-size: 14px;" type="text"><input size="50" style="border-width:0px; font-size: 14px;" type="text"></td>
+                                    {% elif item.info.proposal_purchase_item.buy_or_lease == 'rent' %}
+                                        <td rowspan="2">&nbsp;{{ item.info.proposal_purchase_item.long_model }}<input size="50" style="border-width:0px; font-size: 14px;" type="text"><input size="50" style="border-width:0px; font-size: 14px;" type="text"></td>
+                                    {% else %}
+                                        <td rowspan="2">&nbsp;</td>
+                                    {% endif %}
+                                    <td class="align-left">
+                                        <strong>B/W Allowance:</strong>  {{ item.info.base_volume_mono|intcomma }}<br />
+                                        Images per: <u>X Mo</u> Qtr Yrs
+                                    </td>
+                                    <td class="align-left">
+                                        <strong>B/W Overage Charge:</strong><br />
+                                        ${{ item.cpp_mono|floatformat:4 }}/Image
+                                    </td>
+                                </tr>
+                                {% if item.cpp_color > 0 %}
+                                    <tr>
+                                        <td class="align-left">
+                                            <strong>Color Allowance:</strong>  {{ item.info.base_volume_color|intcomma }}<br />
+                                            Images per: <u>X Mo</u> Qtr Yrs
+                                        </td>
+                                        <td class="align-left">
+                                            <strong>Color Overage Charge:</strong><br />
+                                            ${{ item.cpp_color|floatformat:4 }}/Image
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td class="align-left"></td>
+                                        <td class="align-left"></td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+
+                        </tbody>
+                        <tfoot style="font-size: 14px; line-height:1.0em">
+                            <tr>
+                                <th class="align-left">Terms</th>
+                                <th class="align-left">Payment Amt:  </th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            {% if buy_items.items or lease_items.items %}
+                            <tr style="font-size: 14px">
+                                {% if lease_items.items%}
+                                    <td class="align-left" style="font-size: 14px"><strong>{{ lease_items.lease_term }} Month- {{ lease_items.lease_type }}</strong></td>
+                                {% elif buy_items.items %}
+                                    <td class="align-left" style="font-size: 14px"><strong>Purchase</strong></td> 
+                                {% else %}
+                                    <td class="align-left" style="font-size: 14px"><strong></strong></td>
+                                {% endif %}
+                                {% if lease_items.items%}
+                                    <td style="font-size: 14px">&nbsp;${{ lease_items.total|floatformat:2|intcomma }}</td>
+                                {% elif buy_items.items %}
+                                    <td style="font-size: 14px">&nbsp;${{ buy_items.total|floatformat:2|intcomma }}</td>
+                                {% else %}
+                                    <td style="font-size: 14px">&nbsp;$0.00</td>
+                                {% endif %}
+                                {% if equipment_lease %}
+                                    <td class="grey" style="font-size: 14px"><strong>Installation & Setup:</strong></td>
+                                {% elif equipment_rent %}
+                                    <td class="grey" style="font-size: 14px"><strong>Delivery & Pickup:</strong></td>
+                                {% else %}
+                                    <td class="grey" style="font-size: 14px"><strong>Installation & Setup:</strong></td>
+                                {% endif %}
+                                {% if equipment_lease %}
+                                    <td style="font-size: 14px"> Included</td>
+                                {% elif equipment_rent %}
+                                    <td style="font-size: 14px"> $(each)</td>
+                                {% elif equipment_purchase %}
+                                    <td style="font-size: 14px"> $ 180.00</td>
+                                {% else %}
+                                    <td style="font-size: 14px"></td>
+                                {% endif %}
+                            </tr>
+                            {% else %}
+                            <tr style="font-size: 14px">
+                                <td class="align-left" style="font-size: 14px"><strong>No New Equipment</strong></td>
+                                <td style="font-size: 14px">&nbsp;${{ lease_items.total|floatformat:2|intcomma }}</td>
+                                <td class="grey" style="font-size: 14px"><strong>Installation & Setup:</strong></td>
+                                <td style="font-size: 14px">No Setup Required</td>
+                            </tr>
+                            {% endif %}
+                            <tr style="font-size: 14px">
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td class="grey" style="font-size: 14px"><strong>Network Integration:  </strong></td>
+                                <td style="font-size: 14px"> $145.00/hr</td>
+                            </tr>
+                            <tr style="font-size: 14px">
+                                <td class="align-left" style="font-size: 14px"><strong>*Upgrade at Anytime*</strong></td>
+                                <td>&nbsp;</td>
+                                <td class="grey" style="font-size: 14px"><strong>Copy Guardian Surge Protector:</strong></td>
+                                <td style="font-size: 14px"> $125.00</td>
+                            </tr>
+                            <tr style="font-size: 14px">
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td class="grey" style="font-size: 14px"><strong>Contract Term in Months:</strong></td>
+                                <td style="font-size: 14px">{{ proposal.term }}</td>
+                            </tr>
+                            <tr style="font-size: 14px">
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                                <td class="grey" style="font-size: 14px"><strong>Sales Representative:</strong></td>
+                                <td style="font-size: 14px">{{ sales_rep.first_name }} {{ sales_rep.last_name }}</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table class="tableModel">
+                    <thead style="line-height:1.0em">
+                        <tr>
+                            <th class="align-left TableRowClientApproval" colspan="2" style="line-height:1.0em">Client Approval –<span style="font-size:14px;"> Subject to terms and conditions on 3nd page</span> </th>
+                            <th class="align-left">Elite Document Solutions</th>
+                        </tr>
+                    </thead>
+                    <tbody style="font-size: 16px">
+                        <tr>
+                            <td class="TableRowWidth" colspan="2">
+                                <strong>By:&emsp;</strong>
+                            </td>
+                            <td>
+                                <strong>By:&emsp;<span style="font-family:Brush Script MT;font-size:28px;">{{ sales_rep.first_name }} {{ sales_rep.last_name }}</span></strong><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <strong>Printed Name:&emsp;{{ client.contact }}</strong>
+                            </td>
+                            <td>
+                                <strong>Printed Name:&emsp;{{ sales_rep.first_name }} {{ sales_rep.last_name }}</strong><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <strong>Title:&emsp;<input size="25" style="border-width:0px; font-size: 14px;" type="text"></strong>
+                            </td>
+                            <td>
+                                <strong>Title:&emsp;Sales Representative</strong><br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong>Date:&emsp;<input size="10" style="border-width:0px; font-size: 14px;" type="text"></strong>
+                            </td>
+                            <td><strong>PO #:</strong><input size="15" style="border-width:0px; font-size: 14px;" type="text"></td>
+                            <td>
+                                <strong>Date:&emsp;{% now "m/d/Y" %}</strong><br />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="page-break-after: always;"></p>&nbsp;
+        </section>
+        <div style="margin: 0px auto;border-collapse: separate;background-color: #fff;padding: 3em;text-align:justify">
+            <section>
+                <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 12px; margin: 0px; line-height: 22px">
+                    <h2 class="align-center" style="font-family: 'Times New Roman', Times, serif; font-size: 26px">Elite Document Solutions</h2>
+                    <h4 class="align-center" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 16px;">Maintenance Agreement – Terms and Conditions</h4>
+
+                    <ol>
+                        <li>
+                            This service agreement is non-cancelable and will remain in effect for the duration of the term stated on the first page. Coverage will become effective upon the signature from both parties and the reception of payment at Elite Document Solutions (EDS) office. The agreement will renew itself automatically at the end of the term unless cancelled in writing by either party prior to 30 days from the anniversary date.  Pricing is subject to change with written notice proved to the customer from Elite Document Solutions 30 days prior to the contract’s renewal date. Unless authorized in writing by EDS, this maintenance agreement is not transferable. If, during the term of this agreement the equipment is upgraded with other equipment by EDS, the Customer
+                            will be credited the unused portion of the existing agreement.  Only the equipment identified on the first page of this document is covered by this agreement.
+                        </li>
+                        <li>
+                            <strong>STANDARD COVERAGE</strong> – EDS agrees to provide to the Customer, during EDS normal business hours, the maintenance service necessary to keep the Equipment in, or restore the Equipment to, good working order in accordance with EDS policies then in effect. This maintenance service includes maintenance based upon the specific needs of individual Equipment, as determined by EDS, and unscheduled, on-call remedial maintenance. For each unscheduled service call requested by Customer, EDS shall have a reasonable time within which to respond. Maintenance will include lubrication, adjustments and replacement of maintenance parts deemed necessary by EDS. Maintenance parts will be furnished on an exchange basis and the replaced parts become the property of EDS. Maintenance service provided under this Agreement does not assure uninterrupted operation of the Equipment.
+                            <br /> <strong>EXCLUSIONS TO MAINTENANCE SERVICE</strong> - Maintenance service provided by EDS under this Agreement does not include: <strong>(a)</strong> Repair of damage or increase in service time caused by failure of the Customer continually to provide a suitable installation environment with all facilities prescribed by EDS, including, but not limited to, the failure to provide adequate electrical power, air-conditioning, or humidity-control; <strong>(b)</strong> Repair of damage or increase in service time caused by:  accident, disaster (which shall include but not be limited to fire, flood, water, wind and lightning); transportation, neglect, power transients, abuse or misuse, failure of the Customer to follow EDS published operating instructions, and unauthorized modifications or repair of Equipment by persons other than authorized representatives of EDS; <strong>(c) </strong>Repair of damage or increase in service time caused by use of the Equipment for purposes other than those for which designed;
+                            <strong>(d)</strong> Replacement of parts, which are consumed in normal Equipment operation, unless specifically included; <strong>(e)</strong> Furnishing supplies or accessories, painting or refinishing the Equipment or furnishing the material therefore, inspecting altered Equipment, performing services connected with relocation of Equipment or adding or removing accessories, attachment or other devices; <strong>(f)</strong> Repair of damage, replacement of parts (due to other than normal wear) or repetitive service calls caused by
+                            use of incompatible supplies; <strong>(g)</strong> Complete unit replacement or refurbishment of the Equipment; <strong>(h)</strong> Electrical work external to the Equipment or maintenance of accessories, attachments, or other devices not furnished by EDS; <strong>(i)</strong> Increase in service time caused by Customer denial of full and free access to the Equipment or denial of departure from Customer's site. <strong>(j)</strong> Unless agreed herein, consumable supplies such as, but not limited to, paper, staples, developer, drum, toner, and fuser oil.  The foregoing items excluded from maintenance service, if performed by EDS, will be charged to the Customer at EDS applicable time and material rates and terms then in effect.
+                            <br />
+                            <strong>2a.   COMPREHENSIVE COVERAGE</strong> – In addition to standard coverage, toner and fuser supplies are also provided by EDS.<u> Cost of delivery for any supplies is charged to the customer.  </u>
+                            <br />
+                            <strong>2b.</strong>	If available, maintenance service requested and performed outside EDS normal business hours will be charged to the Customer at double (2x) EDS currently applicable rate with a four (4) hour minimum portal to portal charge. Additional time beyond the four (4) hour minimum will be billed in six (6) minute intervals.
+
+                        </li>
+                        <li>The Customer will provide an adequate surge protector that meets the equipment’s requirements, including Prolonged Over Voltage Protection, “POVP”, reverse polarity/no ground detection and shutdown, line monitor, high voltage surge and lightening protection, and low voltage spike and noise protection. (15amp/120volt or as required for your particular machine)</li>
+                        <li>If the equipment is located in an environment that is conducive to equipment damage, such as:  Excessive dust, non air-conditioned offices, high humidity, vapors, etc., and these conditions require more than 3 (three) cleaning inspections per year, EDS reserves the right to bill the Customer for the additional cleaning service, at the then current rates.  <u>Any damages caused by any outside agents, other than during the normal usage of the equipment, such as vandalism, abuse and misuse, electrical surges, acts of God, fire, flood, riot, faulty supplies not provided by EDS, etc., are not covered by this agreement and will be remedied at the Customer’s expense.</u>  Shop rebuilding might become necessary at some point. This service is not covered under this maintenance program.</li>
+                        <li>Equipment will be serviced at the original installation location.  Elite shall not be liable during any period in which its performance is delayed or prevented, in whole or in part, by a circumstance beyond its reasonable control, which include, but are not limited to, the following:  act of God (e. g., flood, earthquake, wind); fire; war; act of a public enemy or terrorist; act of sabotage; strike or other labor dispute; riot; misadventure of the sea; inability to secure materials and/or transportation; or, a restriction imposed by legislation, an order or a rule or regulation of a governmental entity.  If such circumstance occurs, Elite shall undertake reasonable action to notify you of the same.  Should the equipment be moved to a new location without our consent, the Customer will be responsible for any repairs that may be needed as a result of mishandling.  If extensive damages have occurred as a result of the move, EDS reserves the right to cancel the balance of the maintenance program in effect.  EDS will provide equipment moving service at an additional charge.</li>
+                        <li>	The Customer and its personnel are responsible for the replenishing of supplies in the equipment (Toner, Paper, etc.) and to replace waste toner containers.  Service calls resulting from the Customers’ failure to meet these needs properly will be billed accordingly.</li>
+                        <li>Prices are guaranteed only for the duration of the term listed. Cost of living and equipment aging price-adjustments may be made at the renewal anniversary date.</li>
+                        <li>	<strong>IMAGE COUNTS</strong> – You may report image counts either by phone, email, facsimile, or our on-line web-reporting tool. Image counts are due between the 23rd & 25th of each month. We may activate and use monitoring software to provide image counts as well as report service issues and provide supply levels for networked equipment. A key contact from your office will be responsible for providing us access to collect image counts when needed. If no image count is received, we reserve the right to utilize past image counts to estimate a current image counts in order to process billing and your image counts will catch up on the following month’s invoice.</li>
+                        <li>	<strong>PAYMENT</strong> – Payment is due ten (10) days from date of invoice. Delinquent amounts will accrue finance charges for the past due amounts. You will pay all federal, state and local sales, use property, excise or other taxes imposed with respect to the to this Equipment Agreement.</li>
+                        <li>
+                            <strong>BREACH OF DEFAULT </strong>– If you do not pay all charges for services as provided hereunder, promptly when due: (1) we may (a) refuse to proceed service or supplies for the Equipment or (b) furnish service and supplies on a C.O.D. (cash on delivery) “Per Call” basis at published rates; (2) you will be responsible for the entire term of the contract, including without limitation, Elite’s lost profits for the whole contract duration based on your pattern of usage; (3) you agree to pay us all costs and expenses of collection including the reasonable attorney’s fees permitted by law in addition to all other rights and remedies available to us.
+                        </li>
+                        <li>
+                            This agreement is deemed fully executed and subject to all the governing laws in the County of DuPage and State of Illinois. Any action or disputes
+                            between Elite Document Solutions and the Customer will be subject to the personal jurisdiction of the State of Illinois, County of DuPage and All State or
+                            Federal Courts Rules thereof.
+                        </li>
+                    </ol>
+
+                </div>
+            </section>
+        </div>
+        <div style="margin: 13px auto;border-collapse: separate;background-color: #fff;padding: 3em;page-break-before: always;">
+            <section>
+                <h2 class="align-center">Buyer/Seller Mediation and Arbitration Contract Clause</h2>
+                <h4 class="align-left">Alternate Dispute Resolution:</h4>
+                <div>
+                    In the event the parties to this agreement have a dispute over the terms or the application of the terms of this agreement, including payment or performance hereunder, as a condition precedent to filing or pursuing any legal remedy, including suit in a court, the parties agree to participate in good faith in mediation at the Better Business Bureau. This is conducted by a neutral third-party mediator qualified to perform mediation services in the State of Illinois. If the parties are unable to resolve the dispute through mediation, the parties further agree to submit, in lieu of filing or pursuing any legal remedy, including suit in a court to participate in binding arbitrations conducted by and under the Better Business Bureau Arbitration Rules by a neutral third-part arbitrator qualified to perform arbitration in the State of Illinois.
+
+                </div>
+
+                <div class="row BuyerSeller">
+
+                    <div class="6u 12u(3)">
+                        <h4><u>BUYER</u></h4>
+                        Signature: <u></u>
+                        <br />
+                        Printed Name: {{ client.contact }} <br />
+                        Company: {{ client.name }}<br />
+                        Date: <br />
+
+                    </div>
+                    <div class="6u 12u(3)">
+                        <h4><u>SELLER</u></h4>
+                        Signature: <u><span style="font-family:Brush Script MT;font-size:28px;"> {{ sales_rep.first_name }} {{ sales_rep.last_name }}</span></u>
+                        <br />
+                        Printed Name: {{ sales_rep.first_name }} {{ sales_rep.last_name }}<br />
+                        Company: {{ company.name }}<br />
+                        Date: {% now "m/d/Y" %}<br />
+
+                    </div>
+                </div>
+            </section>
+            </div>
+      
+    </div>
+</section>
+
+</body>
+<header style="background-color: #fff">
+<div class="header2">
+
+    630.671.9700  | Email info@elitedocument.com
+</div>
+</header>
+<footer></footer>
+<div class="footer">
+<div class="footer1"><span>______ Customer Initials</span></div>
+<div class="footer2"><span></span></div>
+</div>
+</footer>
+</html>

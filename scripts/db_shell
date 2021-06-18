@@ -1,0 +1,10 @@
+#!/bin/sh
+
+export DBHOST=localhost
+export DBNAME=simplemps
+export DBUSER=simplemps_user
+export PGPASSWORD=VrxfL04iEAuJ6pB8
+
+psql -U simplemps_user simplemps_dev -h localhost 
+
+

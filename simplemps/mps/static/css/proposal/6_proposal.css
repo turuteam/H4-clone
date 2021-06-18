@@ -1,0 +1,292 @@
+body{
+  background: #ababab ;
+  color:#000;
+  max-width: 793.700787402px;
+  margin: auto;
+}
+section{
+  padding: 7%;
+  background: #fff;
+  border: 1px solid #111;
+  margin-bottom: 9px;
+  position: relative;
+  height: 980px;
+}
+img{
+  width:100%;
+}
+h1{
+  font-weight: bold;
+  line-height: 1.5em;
+  text-align: center;
+  font-size: 19px;
+  margin-top: 10px;
+}
+h2{
+  line-height: 1.3em;
+  font-size: 17px;
+  margin-top: 10px;
+}
+h3,h4{
+  font-weight: bold;
+  line-height: 1.3em;
+  font-size: 15px;
+  margin-top: 10px;
+}
+p{
+  font-size: 11px;
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+hr {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  border-top: 1px solid #000;
+}
+td {
+  font-size: 11px;
+  border: 1px solid #000 !important;
+  height: 15px;
+  padding-left: 3px;
+  
+}
+
+.statement2 {
+  background-color : lightgrey 
+}
+
+.pricing {
+  background-color : lightgrey;
+}
+
+li {
+  font-size: 11px;
+}
+a{
+  color:#0732FF;
+}
+.container{
+  width:100%;
+  padding:0px;
+}
+input{
+  border: 0;
+  border-bottom: 1px solid;
+  width: 100%;
+}
+label{
+  font-weight: 400;
+}
+.co_field{
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+  margin-top: 3%;
+}
+table{
+  width: 100%;
+}
+
+.button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+th {
+  text-align: center;
+  background: #cacaca;
+  vertical-align: middle;
+  height: 20px;
+  border: 1px solid;
+}
+.section-footer{
+  position: absolute;
+  width: 86%;
+  bottom: 50px;
+}
+@media print
+{
+
+  body {
+  color-adjust: exact ;
+  -webkit-print-color-adjust: exact;
+
+  }
+
+  .statement2 {
+      background-color : black !important
+  }
+
+  .pricing {
+      background-color : lightgrey !important 
+  }
+
+  .table td {
+      background-color : lightgrey !important
+  }
+  
+  .page-break{
+    display:block;
+    page-break-before:always;
+    
+  }
+  .col-md-6{
+      width: 50%;
+      float: left;
+  }
+  .row {
+      margin-right: -15px;
+      margin-left: -15px;
+  }
+  
+  
+.button {
+  background-color: #4caf50 !important;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+  
+ 
+ 
+}
+
+
+
+
+
+
+
+/* body{
+  background: #ababab;
+  margin: 13px;
+  color:#000;
+  max-width: 793.700787402px;
+}
+section{
+  padding: 7%;
+  background: #fff;
+  border: 1px solid #111;
+  margin-bottom: 9px;
+  height: 980px;
+}
+img{
+  width:100%;
+}
+h1{
+  font-weight: bold;
+  line-height: 1.5em;
+  text-align: center;
+}
+h2{
+  line-height: 1.5em;
+}
+h3,h4{
+  font-weight: bold;
+  line-height: 1.5em;
+}
+p{
+  font-size: 19px;
+  font-weight: 400;
+}
+hr {
+  margin-top: 20px;
+  margin-bottom: 0px;
+  border-top: 2px solid #000;
+}
+td {
+  font-size: 19px;
+  border: 2px solid #000 !important;
+  height: 47px;
+  padding-left: 3px;
+}
+li {
+  font-size: 19px;
+}
+a{
+  color:#0732FF;
+}
+.container{
+  width:100%;
+  padding:0px;
+}
+input{
+  border: 0;
+  border-bottom: 1px solid;
+  width: 100%;
+}
+label{
+  font-weight: 400;
+}
+.co_field{
+  display: flex;
+  align-items: center;
+  font-size: 19px;
+  margin-top: 3%;
+}
+table{
+  width: 100%;
+}
+th {
+  text-align: center;
+  background: #cacaca;
+  vertical-align: middle;
+  height: 71px;
+  border: 2px solid;
+}
+.button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print
+{
+
+ 
+    .page-break{
+      display:block;
+      page-break-before:always;
+    }
+    .col-md-6{
+        width: 50%;
+        float: left;
+    }
+    .row {
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+    
+
+    .button {
+      background-color: #4caf50  ;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
+    
+    
+} */

@@ -1,0 +1,245 @@
+<script>
+  window.addEventListener('beforeunload', function() {
+    const mps_price = $('#monthlyNetPrice').attr('val');
+    const monthly_lease = $('#monthly-lease').attr('val');
+
+    $.ajax({
+        type: 'POST',
+        cache: false,
+        data: { mps_price, monthly_lease },
+        url: window.location.origin + '/proposal/pricing/' + proposal_id + '/update_tco_calculations'
+    });
+  });
+</script>
+
+{% if not is_self_service_review_selection %}
+<div class="grid-x">
+    <div class="cell medium-13">
+        <table class="subtotal-table size-14">
+            <caption>BLENDED PRICE PER PAGE SECTION</caption>
+            <thead>
+                <tr>
+                    <th width="130"></th>
+                    <th>Term</th>
+                    <th>Base Volume</th>
+                    <th>Base Rate</th>
+                    <th>Overage Volume</th>
+                    <th>Blended Price Per Page</th>
+                    <th width="149">Proposed Price Per Page</th>
+                    <th>Margin</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mono</td>
+                    <td class="term"></td>
+                    <td id="total-mono-base-volume"></td>
+                    <td id="total-mono-base-rate"></td>
+                    <td id="overage-mono-volume"></td>
+                    <td id="monoBlended"></td>
+                    <td>
+                        <div class="input-group">
+                            <span></span>
+                            <input id="monoCPP" class="input-group-field" step="0.0001" type="number" min="0" onkeyup="calculateMargin()" onchange="calculateMargin()">
+                        </div>
+                    </td>
+                    <td id="monoMargin" class="bold"></td>
+                </tr>
+                <tr>
+                    <td>Mono On Color</td>
+                    <td class="term"></td>
+                    <td id="total-mono-on-color-base-volume"></td>
+                    <td id="total-mono-on-color-base-rate"></td>
+                    <td id="overage-mono-on-color-volume"></td>
+                    <td id="monoColorBlended"></td>
+                    <td>
+                        <div class="input-group">
+                            <span></span>
+                            <input id="monoColorCPP" class="input-group-field" step="0.0001" type="number" min="0" onkeyup="calculateMargin()" onchange="calculateMargin()">
+                        </div>
+                    </td>
+                    <td id="monoColorMargin" class="bold"></td>
+                </tr>
+                <tr>
+                    <td>Color</td>
+                    <td class="term"></td>
+                    <td id="total-color-base-volume"></td>
+                    <td id="total-color-base-rate"></td>
+                    <td id="overage-color-volume"></td>
+                    <td id="colorBlended"></td>
+                    <td>
+                        <div class="input-group">
+                            <span></span>
+                            <input id="colorCPP" class="input-group-field" step="0.0001" type="number" min="0" onKeyUp="calculateMargin()" onchange="calculateMargin()">
+                        </div>
+                    </td>
+                    <td id="colorMargin" class="bold"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="cell medium-10 medium-offset-1">
+        <table class="total-table size-14">
+            <caption>MONTHLY TOTALS</caption>
+            <tbody>
+                <tr>
+                    <td>MPS Price</td>
+                    <td id="monthlyNetPrice" class="bold" width="100">
+                        {% comment %} <div class="input-group">
+                            <span class="input-group-label">$</span>
+                            <input id="monthlyNetPrice" class="input-group-field" step="0.0001" type="number" min="0" onKeyUp="calculateMargin()">
+                        </div> {% endcomment %}
+                    </td>
+                    <td></td>
+                    <td>Margin</td>
+                    <td id="netMargin" class="bold" width="100"></td>
+                </tr>
+                <tr>
+                    <td>Lease Payments</td>
+                    <td id="monthly-lease" class="bold"></td>
+                    <td style="border: none;"></td>
+                    <td style="background-color: var(--mps-blue); border: none;">Hardware Sales</td>
+                    <td id="equipment-bought" class="bold" style="background-color: white; text-align: right"></td>
+                </tr>
+                <tr>
+                    <td>Non-Network Price</td>
+                    <td id="monthlyNonNetPrice" class="bold"></td>
+                    <td style="border: none;"></td>
+                    <td style="background-color: lightgray; border: none;">HW Commission</td>
+                    <td style="background-color: white; text-align: right;" class="bold" id="monthly-eq-commission"></td>
+
+                </tr>
+                <tr>
+                    <td><strong>Monthly Payment</strong></td>
+                    <td id="monthlyTotalPrice" class="bold"></td>
+                    <td style="border: none;"></td>
+                    <td style="background-color: lightgray; border: none;">Monthly MPS Commission</td>
+                    <td style="background-color: white; text-align: right;" class="bold" id="monthly-commission"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- This patch to add table spacing needs fixed... -->
+<div class="cell large-10 large-offset-1">
+        <p>        </p>
+</div>
+    
+<!-- NETWORK TABLE -->
+<div class="cell fluid">
+    <table id="network-devices-table">
+        <thead>
+            <tr style="background-color:darkgrey">
+                <th colspan="13" class="text-center"><strong>NETWORK DEVICES ( ** REQUIRED)</strong></th>
+            </tr>
+            <tr>
+                <th>Equipment</th>
+                <th>#Devices</th>
+                <th>Monthly Mono Pages</th>
+                <th>Monthly Color Pages</th>
+                <th>Base Volume Mono</th>
+                <th>Base Rate</th>
+                <th>Base Volume Color</th>
+                <th>Base Rate</th>
+                <th>Proposed Mono Price</th>
+                <th>Proposed Color Price</th>
+                <th>Equipment Purchase</th>
+                <th>Equipment Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+            <tr>
+                <td colspan="13" class="text-center">
+                    <button id='add-device-network' class="button tlength-btn"><i class="fas fa-plus-circle"></i>&nbsp;Add Device</button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<!-- NON-NETWORK TABLE -->
+<div class="cell grid-x align-bottom">
+    <div class="cell medium-12">
+        <table id='non-network-devices-table'>
+            <thead>
+                <tr style="background-color:darkgrey">
+                    <td colspan="4" class="text-center"><strong>NON-NETWORK DEVICES</strong></td>
+                </tr>
+                <tr>
+                    <td>Equipment</td>
+                    <td>#Devices</td>
+                    <td>Monthly Price</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4" class="text-center">
+                        <button id='add-device-non-network' data-open="addNonNetworkDevice" class="button tlength-btn"><i class="fas fa-plus-circle"></i>Add Device</button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <div class="cell medium-2 medium-offset-9">
+        <button class="button btn-continue">Continue</button>
+        <button class="button btn-previous">Previous</button>
+
+            <!-- <input class="button" type="button" value="Save" data-id="1018" onclick="patchProposalServiceItem.call(this)"> -->
+
+    </div>
+</div>
+
+{% else %}
+
+<div class="cell fluid">
+    <table id="network-devices-table" class="responsive">
+        <thead>
+            <tr style="background-color:darkgrey">
+                <th colspan="13" class="text-center"><strong>SHOPPING CART</strong></th>
+            </tr>
+            <tr>
+                <th>Equipment</th>
+                <th>#Devices</th>
+                <th>Monthly Mono Pages</th>
+                <th>Monthly Color Pages</th>
+                <th>Base Volume Mono</th>
+                <th>Base Rate</th>
+                <th>Base Volume Color</th>
+                <th>Base Rate</th>
+                <th>Mono Price</th>
+                <th>Color Price</th>
+                <th>Equipment Purchase</th>
+                <th>Equipment Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+            <tr>
+                <td colspan="13" class="text-center">
+                    <button id='add-device-network' class="button tlength-btn"><i class="fas fa-plus-circle"></i>&nbsp;Add Device</button>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+    
+    <div class="medium button-group align-center">
+        <div class="button-group-spacing">
+            <input class="button self-service-equipment" type="button" value="Previous" >
+            <input class="button self-service-save" type="button" value="Save" >
+            <input class="button self-service-proposal" type="button" value="View Proposal" >
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+{% include 'rep/newProposal/reveals/addNetworkDevice.html' %}
+{% include 'rep/newProposal/reveals/addNonNetworkDevice.html' %}
+{% include 'rep/newProposal/reveals/purchaseEquipment.html' %}
+{% include 'rep/newProposal/reveals/transferPageCounts.html'%}
+{% include 'rep/newProposal/reveals/leasingOptions.html' %}
+{% include 'rep/newProposal/reveals/rentOptions.html' %}

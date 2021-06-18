@@ -1,0 +1,125 @@
+<div class="large reveal" id="purchashEquipment" data-reveal data-overlay="true" data-multiple-opened="true">
+    <div class="grid-x grid-padding-y align-middle modal-header mps-blue">
+        <div class="cell large-21 large-offset-1">
+            <h3 class="bold">Equipment Options: <span id="equipment-options-title"></span></h3>
+        </div>
+        <div class="cell large-1 text-center">
+            <button data-close aria-label="Close reveal" type="button" id="equipment-options-close">
+                <h3>X</h3>
+            </button>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-13 text-center bold">Description</div>
+        <div class="cell medium-4 medium-offset-1 text-center bold">Outcost</div>
+        <div class="cell medium-4 medium-offset-1 text-center bold">MSRP</div>
+    </div>
+    <hr style="margin:0.5rem 0;">
+    <div class="grid-x" data-device-section="1">
+        <div class="cell grid-x align-middle modal-row">
+            <div class="cell medium-3 medium-offset-1">Device</div>
+            <div class="cell medium-8 medium-offset-1">
+                <div class="select-group input-group">
+                    <select id="device-dropdown1" onChange="selectPurchaseDevice(this, 1)"></select>
+                </div>
+            </div>
+            <div class="cell medium-4 medium-offset-1">
+                <div class="input-group">
+                    <span class="input-group-label">$</span>
+                    <input class="input-group-field" id="deviceOutcost1" disabled value="0.00" step="0.01" type="number" min="0" data-price-type="out">
+                </div>
+            </div>
+            <div class="cell medium-4 medium-offset-1">
+                <div class="input-group">
+                    <span class="input-group-label">$</span>
+                    <input class="input-group-field" id="deviceMsrp1" disabled value="0.00" step="0.01" type="number" min="0" data-price-type="msrp">
+                </div>
+            </div>
+        </div>
+        <div class="cell grid-x align-middle modal-row">
+            <button id='addAccessory1' class="cell medium-7 medium-offset-3 text-center button fake-btn size-16" onClick="appendNewAccessory(this, 1)" data-acc-row="0" disabled>Add Accessory</button>
+            <div class="cell grid-x medium-9 medium-offset-4 align-top grid-padding-y top-border">
+                <div class="cell medium-11">
+                    <div class="input-group">
+                        <span class="input-group-label">$</span>
+                        <input class="input-group-field" id="total-outcost" disabled step="0.01" type="number" min="0">
+                    </div>
+                </div>
+                <div class="cell medium-11 medium-offset-2">
+                    <div class="input-group">
+                        <span class="input-group-label">$</span>
+                        <input class="input-group-field" id="total-msrpcost" disabled step="0.01" type="number" min="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="cell" style="margin:2rem 0 0 0">
+    </div>
+    <div class = "hide" class="grid-x align-middle modal-row">
+        <div class="cell medium-6 medium-offset-1">Purchase</div>
+        <div class="cell medium-5">
+            <select id="buy-lease">
+                <option value="buy" selected>Buy</option>
+                <option value="lease">Lease</option>
+                <option value="rent">Rent</option>
+            </select>
+        </div>
+        <div class="cell medium-4 medium-offset-2 text-center bold">Margin</div>
+        <div class="cell medium-4 medium-offset-1 text-center bold">Margin %</div>
+    </div>
+    <div class="grid-x align-middle modal-row">
+        <div class="cell medium-6 medium-offset-1 bold">Equipment Purchase Price</div>
+        <div class="cell medium-5">
+            <div class="input-group">
+                <span class="input-group-label">$</span>
+                <input class="input-group-field" id="equipment-purchase-price" value="" step="0.01" type="number" min="0">
+            </div>
+        </div>
+        <div class="cell medium-4 medium-offset-2">
+            <div class="input-group">
+                <span class="input-group-label">$</span>
+                <input class="input-group-field" id="margin" value="0.00" step="0.01" type="number" min="0">
+            </div>
+        </div>
+        <div class="cell medium-4 medium-offset-1">
+            <div class="input-group">
+                <input class="input-group-field" id="margin-percentage" value="0.00" step="0.01" type="number" min="0">
+                <span class="input-group-label">%</span>
+            </div>
+        </div>
+    </div>
+    <div class="grid-x align-middle modal-row" >
+        <div class="cell medium-6 medium-offset-1 bold">Include Price $$$ in CPP?</div>
+        <!--div class="cell medium-2 medium-offset-0"-->
+        <div class="cell medium-2">
+            <select id="changePurchaseOption">
+                <option value="1">Yes</option>
+                <option value="0" selected="selected">No</option>
+            </select>
+        </div>
+    </div>
+    <div class="hide grid-x align-middle modal-row" id="priceInCPPSection" >    
+            <div class="cell align-right medium-7 medium-offset-7 bold">Effective CPP with price included:</div>
+            <div class="cell medium-4 medium-offset-0">
+                <div class="input-group">
+                    <span class="input-group-label">Mono</span>
+                    <input class="input-group-field" id="price-in-cpp-mono" value="0.00" step="0.001" type="number" min="0" disabled>
+                </div>
+            </div>
+            <div class="cell medium-4 medium-offset-1" id="price-in-color">
+                <div class="input-group">
+                    <span class="input-group-label">Color</span>
+                    <input class="input-group-field" id="price-in-cpp-color" value="0.00" step="0.001" type="number" min="0" disabled>
+                </div>
+            </div>
+    </div>
+    <div class="grid-x align-middle modal-row" style="margin: 2rem 0;">
+        <table>
+            <td><button class="cell medium-5 medium-offset-2 text-center button fake-btn-blue size-16" id="open-lease-options" disabled>Lease Options</button></td>
+            <td><button class="cell medium-5 medium-offset-2 text-center button fake-btn-yellow size-16" id="open-rent-options" disabled>Rental Options</button></td>
+            <td><button class="cell medium-5 medium-offset-2 text-center button fake-btn size-16" id="save-new-network-device" disabled>Save</button></td>
+            <td>Commission:</td>
+            <td id="eqcommission"></td>
+        </table>
+    </div>
+</div>

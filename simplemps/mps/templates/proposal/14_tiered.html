@@ -1,0 +1,810 @@
+{% load static %}
+{% load humanize %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/proposal/proposal.css' %}">
+    <style>
+        .vl {
+          background-color: grey;
+          width: 80px;
+
+          height: 800px;
+        }
+        .vl2 {
+            column-span: all;
+            margin-left: 20px;
+          background-color: rgb(108, 108, 177);
+          width: 80px;
+
+          height: 800px;
+        }
+
+       input {
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: grey;
+}
+
+input.largecheckbox {
+    background-color: white;
+            width: 40px;
+            height: 40px;
+        }
+        th {
+  border: 1px solid black;
+}
+input{
+    background-color: rgb(221, 237, 243);
+
+}
+input:hover{
+    background-color:white;
+}
+
+
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+
+}
+
+table{
+  border-collapse: collapse;
+}
+
+
+
+
+
+        </style>
+</head>
+<body>
+
+
+<center>
+<img src="{{ proposal.logo.url }}" alt="Smiley face" width="760" height="300">
+<br>
+<br>
+<br>
+<img src="{% static 'img/US_Bus/h.png' %}" alt="Smiley face" width="500" height="100">
+<h2 style="font-size: 30px; font-family:   Brush Script MT, Brush Script Std, cursive; color: rgb(61, 61, 99);">Managing Your Printing Costs
+</h2>
+
+<hr style="width: 800px;"class="solid">
+<br>
+<br>
+<br>
+<img src="{% static 'img/US_Bus/head2.png' %}" alt="Smiley face" width="820" height="260">
+
+<br>
+<br>
+<br>
+
+
+<h1 style="font-size: 50px; font-style: italic; color: red;">You Can Depend on U.S.  </h1>
+
+<h3>3221 Southview Dr.
+</h3>
+
+<h3>Elkhart, IN 46515
+</h3>
+
+<h3>
+    Local - (574) 264-3065    &nbsp;&nbsp;&nbsp;&nbsp;  Toll Free - (800) 291-2561
+</h3>
+
+<h1 style="font-size: 50px; font-style: italic; color:blue;">WWW.USBUS.COM
+</h1>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<img class="i1" src="{% static 'img/US_Bus/p2.png' %}" alt="Smiley face" width="1020" height="1360">
+<br>
+<br>
+<br>
+<img class="i1" src="{% static 'img/US_Bus/p3.png' %}" alt="Smiley face" width="1020" height="1400">
+</center>
+{% if buy_items.items or lease_items.items %}
+<br>
+<br>
+<br>
+<br>
+
+<center>
+<form style="font-size: 15px;">
+    <label for="fname">Customer Purchase Order No.</label>&nbsp;&nbsp;
+    <input style="font-size: 15px;" type="text">
+    <label for="fname">Order Date</label>&nbsp;&nbsp;
+    <u>&nbsp;&nbsp;{% now "m/d/Y" %}&nbsp;&nbsp;</u>
+    <label for="fname">Sales Person:</label>&nbsp;&nbsp;
+    <u>&nbsp;&nbsp;{{ sales_rep.first_name }} {{ sales_rep.last_name }}&nbsp;&nbsp;</u>
+    <br>
+    <label style="font-size: 18px;"for="fname"><b>Customer:</b></label>&nbsp;&nbsp;
+    <u>&nbsp;&nbsp;{{ client.name }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>
+
+    <label style="font-size: 18px;"><b>NB</b></label>
+    <input class="largecheckbox" type="checkbox">
+    <label style="font-size: 18px;"><b>UG</b></label>
+    <input class="largecheckbox" type="checkbox">
+    <label style="font-size: 18px;"><b>ADD</b></label>
+    <input class="largecheckbox" type="checkbox">
+
+  </form>
+
+<br>
+
+  <table >
+    <tr>
+      <th style="font-size: 18px;">Bill Address</th>
+      <th style="font-size: 18px;">Ship Address:<input style="border-width: 0 0 0" size="35" style="font-size: 10px;" type="text"></th>
+
+    </tr>
+    <tr>
+      <th size="50" style="border-width: 0 0 0; font-size: 18px;">{{ client.address }}</th>
+      <th><input size="47" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+
+    </tr>
+    <tr>
+      <th size="50" style=" border-width: 0 0 0; font-size: 18px;" type="text">{{ client.city }}, {{ client.state }}  {{ client.zipcode }}</th>
+      <th style="font-size: 18px;">Phys. Loc./Dept.<input size="35" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+    </tr>
+    <tr>
+        <th style="font-size: 18px;">Telephone #:&nbsp;&nbsp; {{ client.telephone }}</th>
+        <th style="font-size: 18px;">Telephone #:<input size="35" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+
+      </tr>
+    <tr>
+        <th style="font-size:18px;">Fax #:<input size="35" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;">Fax #:<input size="35" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+
+      </tr>
+    <tr>
+
+        <th style="font-size: 18px;"><b>Contact:</b> Accts. Payable</th>
+        <th style="font-size: 18px;">Contact #:<input size="35" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+
+      </tr>
+    <tr>
+
+
+      <th style="font-size: 18px;">Lease Details:  Co: <input size="1" style="border-width: 0 0 0; font-size: 18px;" type="text"> Term: <input size="1" style="border-width: 0 0 0; font-size: 18px;" type="text"> Type: <input size="1" style="border-width: 0 0 0; font-size: 18px;" type="text">Pmt. <input size="1" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+      {% if buy_items.items %}
+        <th style="font-size: 18px; border: none;"> Terms:   Cash </th>
+      {% elif lease_items.items %}
+        <th style="font-size: 18px; border: none;"> Terms:   Lease </th>
+      {% else %}
+        <th style="font-size: 18px; border: none;"> Terms:   Cash / Lease / Other </th>
+      {% endif %}
+ </tr>
+
+  </table>
+<br>
+<br>
+<br>
+
+
+<table >
+    <tr >
+        <th style="border: none; font-size: 18px; border: none;" >Model</th>
+        <th style="border: none; font-size: 18px; border: none;" >Serial # </th>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <th style="border: none; font-size: 18px; border: none;" >Machine ID #</th>
+        <th style="border: none; font-size: 18px; border: none;" >Price</th>
+
+
+
+      </tr>
+      {% if buy_items.items %}
+        {% for item in buy_items.items %}
+      <tr>
+        <th style="font-size: 18px;">{{ item.long_model }}</th>
+        <th style="font-size: 18px;"><input size="30" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="width: 0.5px;"></th>
+
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;">${{ item.proposed_cost|floatformat:2|intcomma }}</th>
+
+
+
+      </tr>
+        {% endfor %}
+      {% endif %}
+      {% if lease_items.items %}
+        {% for item in lease_items.items %}
+      <tr>
+        <th style="font-size: 18px;">{{ item.long_model }}</th>
+        <th style="font-size: 18px;"><input size="30" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="width: 0.5px;"></th>
+
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;">${{ item.lease_payment|floatformat:2|intcomma }}/month</th>
+
+
+
+      </tr>
+        {% endfor %}
+      {% endif %}
+      <tr>
+        <th style="font-size: 18px;"><input size="10" style=" border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="30" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="width: 0.5px;"></th>
+
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+
+
+
+      </tr>
+      <tr>
+        <th style="font-size: 18px;"><input size="10" style=" border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="30" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="width: 0.5px;"></th>
+
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+
+
+
+      </tr>
+      <tr>
+        <th style="font-size: 18px;"><input size="10" style=" border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="30" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="width: 0.5px;"></th>
+
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+
+
+
+      </tr>
+      <tr>
+        <th style="font-size: 18px;"><input size="10" style=" border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="30" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="width: 0.5px;"></th>
+
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+
+
+
+      </tr>
+      <tr>
+        <th style="font-size: 18px;"><input size="10" style=" border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="30" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="width: 0.5px;"></th>
+
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+
+
+
+      </tr>
+      <tr>
+        <th style="font-size: 18px;"><input size="10" style=" border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="30" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="width: 0.5px;"></th>
+
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+
+
+
+      </tr>
+      <tr>
+        <th style="font-size: 18px;"><input size="10" style=" border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="30" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="width: 0.5px;"></th>
+
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+
+
+
+      </tr>
+      <tr>
+        <th style="font-size: 18px;"><input size="10" style=" border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="30" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="width: 0.5px;"></th>
+
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+
+
+
+      </tr>
+      <tr>
+        <th style="font-size: 18px;"><input size="10" style=" border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="30" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="width: 0.5px;"></th>
+
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+
+
+
+      </tr>
+      <tr>
+        <th style="font-size: 18px;"><input size="10" style=" border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="30" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="width: 0.5px;"></th>
+
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+
+
+
+      </tr>
+      <tr>
+        <th style="font-size: 18px;"><input size="10" style=" border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="30" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="width: 0.5px;"></th>
+
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+
+
+
+      </tr>
+      <tr>
+        <th style="font-size: 18px;"><input size="10" style=" border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="30" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="width: 0.5px;"></th>
+
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+
+
+
+      </tr>
+      <tr>
+        <th style="font-size: 18px;"><input size="10" style=" border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="30" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="width: 0.5px;"></th>
+
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+        <th style="font-size: 18px;"><input size="25" style="border-width: 0 0 0; font-size: 18px;" type="text"></th>
+
+
+
+      </tr>
+
+
+    </table>
+
+
+    <h1><b>Customer’s Existing Arrangements: </b></h1>
+
+    <p>On formal acceptance of this order and any relevant lease arrangements, settlements of existing liabilities to a maximum of $ <input size="25" style="font-size: 28px;" type="text"><br>
+    exclusive of any taxes in respect to the following agreement numbers: <input size="25" style="font-size: 28px;" type="text">  will be incorporated in the new arrangement. </p>
+
+    <p><b>It remains the responsibility of the Customer to formally cancel existing agreements relating to the equipment being settled / removed. </b></p>
+    <br>
+    <p style="font-size: 25px;"><b>Please complete Addendum Schedule should you require additional device coverage than what space is available here.</b></p>
+<br>
+<br>
+<br>
+<br>
+
+{% endif %}
+    <h2 style="font-size: 25px;"><b>Managed Print Agreement</b></h2>
+</center>
+
+
+
+    {% if proposal.service_type == 'total' %}
+    <b style="border: 2px; border-color: black; border-style:solid; font-size: 40px;">&#10004;</b>&nbsp;
+    <b style="font-size: 40px;">Complete Fleet Management </b>
+    <p><b>The Complete Fleet Management Option </b>provides for end to end coverage for all of your print equipment and systems. USBS provides managed services to your fleet that include all hardware refreshment / replacement needs, supplies, and services at a fixed price. Monitoring and alert utilities that allow for pro-active support are provided within the program. These utilities relay important information to us and you and are a necessary piece of any true managed agreement. All covered equipment will be replaced as needed and will be based on consultative discussion between us and you and compared against historical data collected. Long term goals of the program are to assist in your efforts to reduce your page volumes and associated costs through optimization and improved utilization of your fleet.</p>
+    {% else %} 
+
+
+    <input class="largecheckbox" type="checkbox" text="">
+    <b style="font-size: 40px;">Complete Fleet Management </b>
+    <p><b>The Complete Fleet Management Option </b>provides for end to end coverage for all of your print equipment and systems. USBS provides managed services to your fleet that include all hardware refreshment / replacement needs, supplies, and services at a fixed price. Monitoring and alert utilities that allow for pro-active support are provided within the program. These utilities relay important information to us and you and are a necessary piece of any true managed agreement. All covered equipment will be replaced as needed and will be based on consultative discussion between us and you and compared against historical data collected. Long term goals of the program are to assist in your efforts to reduce your page volumes and associated costs through optimization and improved utilization of your fleet.</p>
+    {% endif %}
+
+    {% if proposal.service_type == 'supplies_only' %}
+    <b style="border: 2px; border-color: black; border-style:solid; font-size: 40px;">&#10004;</b>&nbsp;
+    <b style="font-size: 40px;">Print Management  </b>
+    <p><b>The Print Management Option </b> covers all your print hardware repairs and the supplies for devices listed as a part of the agreement at a fixed cost. This type of agreement protects your current environment from fluctuating costs in maintaining your existing fleet of print equipment and provides for one point of accountability for managing that cost and reliability performance of the equipment. Monitoring and alert utilities that allow for pro-active support are included in this program option. These utilities relay important information to us and you and are a necessary piece of any true managed agreement. Long term goals of the program are to assist in your efforts to reduce your page volumes and associated costs through optimization and improved utilization of your fleet.</p>
+    {% else %}
+    <input class="largecheckbox" type="checkbox">
+    <b style="font-size: 40px;">Print Management  </b>
+    <p><b>The Print Management Option </b> covers all your print hardware repairs and the supplies for devices listed as a part of the agreement at a fixed cost. This type of agreement protects your current environment from fluctuating costs in maintaining your existing fleet of print equipment and provides for one point of accountability for managing that cost and reliability performance of the equipment. Monitoring and alert utilities that allow for pro-active support are included in this program option. These utilities relay important information to us and you and are a necessary piece of any true managed agreement. Long term goals of the program are to assist in your efforts to reduce your page volumes and associated costs through optimization and improved utilization of your fleet.</p>
+    {% endif %}
+
+
+    <table style="border: 3px solid black;">
+        <tr >
+            <th style="height:40px; border: none; font-size: 18px;">Term of Agreement:  {{ proposal.term }} Months</th>
+
+            </tr>
+        <tr>
+          <th style="height:30px;  font-size: 18px;">Agreed Print Volume&nbsp;&nbsp;&nbsp;<select style="border-width: 0 0 0;height: 50px;">
+              <option style="height: 50px;" value="volvo">Monthly</option>
+              <option style="height: 50px;" value="saab">Quarterly</option>
+              <option style="height: 50px;" value="opel">Annual</option>
+          </th>
+        </tr>
+
+
+    </table>
+          <br>
+          <br>
+          <br>
+
+          <center>
+
+
+    <div class="grid-item">
+        <h1>Tiered Details</h1>
+        <table>
+            <tr >
+                <th style=" font-size: 18px;" >Tier</th>
+                <th style=" font-size: 18px; " >Base Volume</th>
+                <th style=" font-size: 18px; " >Base Rate</th>
+                <th style=" font-size: 18px; " >C.P.P.</th>
+
+
+
+            </tr>
+            {% if mono1 %}
+            <tr>
+                <th style="font-size: 18px;">Tier One Mono</th>
+                <th style="font-size: 18px;">{{ mono1.base_volume_mono|intcomma }}</th>
+                <th style="font-size: 18px;">${{ mono1.monthly_cost|floatformat:2|intcomma }}</th>
+                <th style="font-size: 18px;">${{ mono1.cpp_mono|floatformat:4 }}</th>
+
+            
+            </tr>
+            {% endif %}
+            {% if mono2 %}
+            <tr>
+                <th style="font-size: 18px;">Tier Two Mono</th>
+                <th style="font-size: 18px;">{{ mono2.base_volume_mono|intcomma }}</th>
+                <th style="font-size: 18px;">${{ mono2.monthly_cost|floatformat:2|intcomma }}</th>
+                <th style="font-size: 18px;">${{ mono2.cpp_mono|floatformat:4 }}</th>
+
+            
+            </tr>
+            {% endif %}
+            {% if mono3 %}
+            <tr>
+                <th style="font-size: 18px;">Tier Three Mono</th>
+                <th style="font-size: 18px;">{{ mono3.base_volume_mono|intcomma }}</th>
+                <th style="font-size: 18px;">${{ mono3.monthly_cost|floatformat:2|intcomma }}</th>
+                <th style="font-size: 18px;">${{ mono3.cpp_mono|floatformat:4 }}</th>
+
+            
+            </tr>
+            {% endif %}
+            {% if mono4 %}
+            <tr>
+                <th style="font-size: 18px;">Tier Four Mono</th>
+                <th style="font-size: 18px;">{{ mono4.base_volume_mono|intcomma }}</th>
+                <th style="font-size: 18px;">${{ mono4.monthly_cost|floatformat:2|intcomma }}</th>
+                <th style="font-size: 18px;">${{ mono4.cpp_mono|floatformat:4 }}</th>
+
+            
+            </tr>
+            {% endif %}
+            <tr>
+                <th style="font-size: 18px;"></th>
+                <th style="font-size: 18px;"></th>
+                <th style="font-size: 18px;"></th>
+                <th style="font-size: 18px;"></th>
+
+            
+            </tr>
+            {% if color1 %}
+            <tr>
+                <th style="font-size: 18px;">Tier One Color</th>
+                <th style="font-size: 18px;">{{ color1.base_volume_color|intcomma }}</th>
+                <th style="font-size: 18px;">${{ color1.monthly_cost|floatformat:2|intcomma }}</th>
+                <th style="font-size: 18px;">${{ color1.cpp_color|floatformat:4 }}</th>
+
+            
+            </tr>
+            {% endif %}
+            {% if color2 %}
+            <tr>
+                <th style="font-size: 18px;">Tier Two Color</th>
+                <th style="font-size: 18px;">{{ color2.base_volume_color|intcomma }}</th>
+                <th style="font-size: 18px;">${{ color2.monthly_cost|floatformat:2|intcomma }}</th>
+                <th style="font-size: 18px;">${{ color2.cpp_color|floatformat:4 }}</th>
+
+            
+            </tr>
+            {% endif %}
+            {% if color3 %}
+            <tr>
+                <th style="font-size: 18px;">Tier Three Color</th>
+                <th style="font-size: 18px;">{{ color3.base_volume_color|intcomma }}</th>
+                <th style="font-size: 18px;">${{ color3.monthly_cost|floatformat:2|intcomma }}</th>
+                <th style="font-size: 18px;">${{ color3.cpp_color|floatformat:4 }}</th>
+
+            
+            </tr>
+            {% endif %}
+        </table>
+    </div>
+<br>
+<br>
+<br>
+
+  </center>
+<br>
+<table style="border-style: none">
+  <tr style="border-style: none">
+    <th style="font-size: 20px; border-style: none"><b>Name:</b>&nbsp;&nbsp;</th>
+    <th style="text-align: left; border-style: none">{{ sales_rep.first_name }} {{ sales_rep.last_name }}<br></th>
+    <th style="border-style: none"></th>
+    <th style="border-style: none"></th>
+    <th style="font-size: 20px; border-style: none"><b>Name:</b>&nbsp;&nbsp;</th>
+    <th style="border-style: none; text-align: left"><input style="font-size: 20px;" size="20" type="text"><br></th>
+  </tr>
+  <tr>
+    <th style="font-size: 20px; border-style: none"><b>Title:</b></label>&nbsp;&nbsp;</th>
+    <th style="border-style: none; text-align: left">Account Manager<br></th>
+    <th style="border-style: none"></th>
+    <th style="border-style: none"></th>
+    <th style="border-style: none"><label style="font-size: 20px; border-style: none" for="fname"><b>Title:</b></label>&nbsp;&nbsp;</th>
+    <th style="border-style: none; text-align: left"><input style="font-size: 20px" size="20" type="text"><br><br></th>
+  </tr>
+  <tr>
+    <th style="border-style: none"><label style="font-size: 20px; border-style: none"for="fname"><b>Signature:</b></label>&nbsp;&nbsp;</th>
+    <th style="border-style: none; text-align: left"><strong style="font-family:Brush Script MT;font-size:28px;">{{ sales_rep.first_name }} {{ sales_rep.last_name }}</strong><br></th>
+    <th style="border-style: none"></th>
+    <th style="border-style: none"></th>
+    <th style="border-style: none"><label style="font-size: 20px; border-style: none" for="fname"><b>Signature:</b></label>&nbsp;&nbsp;</th>
+    <th style="border-style: none; text-align: left"><input style="font-size: 20px" size="20" type="text"><br></th>
+  </tr>
+  <tr>
+    <th style="border-style: none"><label style="font-size: 20px; border-style: none" for="fname"><b>Date:</b></label>&nbsp;&nbsp;</th>
+    <th style="border-style: none; text-align: left">{% now "m/d/Y" %}<br></th>
+    <th style="border-style: none"></th>
+    <th style="border-style: none"></th>
+    <th style="border-style: none"><label style="font-size: 20px; border-style: none" for="fname"><b>Date:</b></label>&nbsp;&nbsp;</th>
+    <th style="border-style: none; text-align: left"><input style="font-size: 20px" size="20" type="text"><br></th>
+  </tr>
+
+</table>
+<br>
+<table style="border-style: none">
+  <tr style="border-style: none">
+    <th style="border-style: none"></th>
+    <th style="border-style: none">Signed on behalf of U.S. Business Systems, Inc.</th>
+    <th style="border-style: none"></th>
+    <th style="border-style: none"></th>
+    <th style="border-style: none; text-align: center">I / We agree with the standard Terms and Conditions <br> detailed herein which are incorporated in the terms here of. <br><br>
+      Signed on behalf of the Customer who warrants that <br> he / she has the necessary authority to enter the Customer <br> into a contractual
+       agreement.</th>
+    <th style="border-style: none"></th>
+  </tr>
+</table>
+
+
+
+{% if buy_items.items or lease_items.items %}
+
+<br>
+<br>
+<br><br>
+<br>
+<br>
+<br>
+{% endif %}
+
+<center>
+  <h1>Terms and Conditions </h1>
+</center>
+  <div style="float: right;">
+    Version 1.3.1 <br> Last Rev.01/29/13
+
+
+  </div>
+  <p>
+    <b> 1. The Agreement:</b> This part of the document sets out the full terms and conditions of the agreement (“the Agreement”) made between U.S. Business Systems, Inc. (“USBS”) as described herein and the customer (“the Customer”) described herein for the purchase of the equipment and/or service and consumables described herein as (“the Equipment”) and (“Services & Supplies Agreement”). The Agreement commences following acceptance by USBS on the date of signing the Agreement by a Director of USBS and these terms and conditions may only be varied by written agreement between the Customer and the Managing Director of USBS.
+    <b> All sales are final and are non-cancellable. </b><br>
+    The Agreement shall be construed in accordance with the laws of the state of Michigan. <br>
+    At the date on which the Customer signs the Agreement, the Customer shall be deemed to be satisfied that the Equipment is reasonably fit for the purposes for which it is to be used by the Customer.
+    <b>2. Installation:</b> The Customer shall ensure the premises in which the Equipment is to be installed are ready to receive the Equipment and shall make available to USBS free of charge all such light, heat, air, electric power, communications ports, and other facilities as may be reasonably required for the installation and preparation of the Equipment.  <br>
+    The Equipment shall be at risk of the Customer (a) At and from the time when the Equipment is delivered by USBS to the Customer at the installation address specified opposite or (b) At the time the Equipment is collected from USBS’ premises and is being loaded by the Customer for collection or from the time USBS notifies the Customer that the Equipment is ready for dispatch whichever is earlier. <br>
+    Unless the Agreement specifically provides for installation by USBS the Customer shall arrange for collection of the Equipment from USBS’ premises. If the Customer fails to collect Equipment within seven days after notification the Equipment is ready for dispatch, the Customer shall pay USBS a fee per week equivalent to five percent of the purchase price of the Equipment, such fee to be paid monthly in arrears.  <br>
+    <b>Network connected devices include our standard installation which includes the following and will not exceed one (1) hour per connected device;   1).  System software and drivers installed onto one (1) server and up to two (2) workstations.   2).  Training on the software and driver functionality supplied by USBS.  </b><br>
+    <b>Additional time required for driver installation onto more than two (2) workstations or for more in depth training on the equipment will be billed at the then prevailing rate for IT services, unless The Equipment is covered under The Connection Protection Advantage Agreement. </b><br>
+    <b>3. Compensation:</b>Unless otherwise agreed in writing by USBS payment for the Equipment shall be made in full by the Customer to USBS without any deductions or withholding on any account whatsoever within thirty days following the date of invoice. If any sum due to USBS under the terms of the Agreement is not paid at the due date, the Customer will from time to time pay USBS on demand interest on the unpaid balance for the period beginning on the due date for payment of the same and ending on the date of actual payment at the rate of five percent above the prime rate of Bank of America for the time being and reasonable attorney’s fees incurred by USBS as a result of pursuit of collection due to Customer’s nonpayment. <br>
+    The Customer shall be responsible for any applicable tax charges for any amount due for goods or services provided by USBS under this Agreement. The prices stated opposite do not include tax unless specified in writing to include tax.  <br>
+    The Customer agrees to compensate USBS for maintenance and services based on the Customer’s monthly copy volume and the listing of Attachments for Connection Protection. Payment shall be made quarterly in advance at the agreed upon rates as set forth herein or at time to time applicable. Per copy cost is based on 8 1/2 x 11 paper. Sizes larger than 8 1/2 x 11 shall be treated as two copies. Connection Protection cost is based on the Attachments listed as covered. Attachments that are not listed as covered will be charged at the then prevailing rate for the required services. <br>
+    The agreed upon monthly copy volume and per Attachment rate is the minimum amount that shall be charged to the Customer. Any excess usage of that minimum figure shall be payable by the Customer at a rate equal to the agreed copy cost per quarter in arrears. Any additional charges of the minimum figures as a result of reasons described in the <b> Maintenance and Service </b>  clause shall be payable by the Customer at the then prevailing hourly rate and subject to normal payment terms as described within this document.   <br>
+    USBS reserves the right to increase the per copy cost and the per attachment cost at any time once annually. USBS shall provide thirty days notice to the Customer prior to the effective date of the increase. The increase amount will be dictated by the plan option chosen by the Customer at the time of this Agreement execution. In the event that the increase exceeds the amount described within the chosen plan’s description, the Customer shall be entitled to terminate the Agreement provided that the Customer gives ninety days written notice within thirty days of receiving the proposed increase, unless the increase is justified by an equivalent increase in USBS’ operating costs. <br>
+    The Customer shall pay USBS for all charges due under this Agreement within thirty days of the date of the invoice. Failure to pay by the Customer results in a continuous breach and relieves USBS of its obligations under this Agreement until the Customer pays the invoice. In the event USBS should have to pursue collection action against the Customer, the Customer shall be responsible for interest calculated at five percent above the prime rate at the time of the breach and reasonable attorney fees incurred by USBS as a result of the Customer’s non-payment. <br> The Customer shall be responsible for any applicable tax charges for any amount due for goods or services provided by USBS under this Agreement. The prices stated herein do not include tax.  <br>
+     <b> 4. Legal Title: </b> Upon completion of installation of Equipment and Customer has obtained possession, legal title of Equipment will remain vested in USBS until such time as USBS has received payment from the Customer of full purchase price for the Equipment. Until such time as payment is made in full USBS is irrevocably authorized by the Customer without notice to enter the installation address for the purpose of collecting and removing the Equipment at the Customer’s expense. The Customer shall reimburse USBS for all expenses and costs to USBS arising from any noncompliance by the Customer with clause three herein. If Agreement is a Complete Fleet contract, legal title to all equipment remains vested in USBS and shall not pass to Customer.
+     <b> 5. Extension of Agreement: USBS shall not be liable for any loss or damage whatsoever rising from any failure to deliver or any delay in delivery of the Equipment to the Customer or any malfunction or defect in, or failure of, the Equipment and USBS shall be relieved of its obligations hereunder and shall not be liable to the Customer for any delay, injury, or loss caused by strikes, lockouts, labor disputes, abnormal weather conditions, catastrophes, fires, riots, acts of God, legal acts of public authorities, delays or faults caused by carriers nonavailability of labor or materials force majeure, or from any other cause beyond USBS’ control and any date fixed for delivery of the Equipment in the terms of the Agreement resulting there from shall be extended for the period of the delay so caused. <br> 6.  Extension of Maintenance and Services: USBS shall be relieved of its obligations hereunder and shall not be liable to the Customer for any delay, injury, or loss caused by strikes, lockouts, labor disputes, abnormal weather conditions, catastrophes, fires, riots, acts of God, legal acts of public authorities, delays or faults caused by carriers non-availability of labor or materials, force majeure or from any other cause beyond the control of USBS. If any such delay arises, the time of contracted services shall be extended by the period of delay. Without prejudice to the aforementioned, the amount of any damages recoverable by the Customer from USBS for breach of the Agreement shall be limited to one months agreed copy volume at the prevailing per copy cost for the machine in question and one month’s value of the Connection Protection Agreement fees for the attachment in question if Connection Protection has been purchased by the Customer.
+       <br>   7. Notices:</b> The Customer must within ten working days of receipt of Equipment notify USBS in writing to corporate office of any faults, omissions, or shortages quoting any reference and delivery note numbers. The Agreement shall be deemed to be fully performed and completed and the Equipment accepted unless a written claim is received by USBS at corporate office in respect of any matter within ten working days of receipt of the Equipment. Notices, including invoices to the Customer, shall be sent by ordinary pre-paid post at the address given herein or the last known address given by the Customer and shall be deemed to have been delivered within forty-eight hours of posting.
+
+      <b>  8. Indemnity: </b> USBS shall not be liable for, and the Customer shall indemnify and hold USBS harmless against any claim for loss or damage to any personal property or any other loss directly occasioned by or arising from the use or operation (other than by USBS) or possession of any of the Equipment and from negligence (including the use of any part of the Equipment otherwise than in accordance with manufacturer’s operating instructions in the manuals) or default (including any non-compliance with any obligation of the Agreement, any delay, any wrong information and any lack of required information) or misuse by or on behalf of the Customer or any person or persons other than USBS and this indemnity shall extend to any costs and expenses incurred by USBS and shall continue in force notwithstanding the termination of the Agreement. <br> The Customer will keep USBS indemnified against any expense, judgment, or loss or infringement of any patents copyright or trademarks which result from USBS’ compliance with the Customer’s design specifications or instructions. Nothing in the Agreement shall constitute the grant by USBS of a license in permitting the Customer to interconnect the Equipment with any equipment or software of any person other than those supplied by USBS.
+      <br><b> 9.   Warranty: IT IS HEREBY AGREED BY THE PARTIES HERETO THAT NO WARRANTY IS EXPRESSED OR IMPLIED THAT THE EQUIPMENT OR SOFTWARE IS FIT FOR A PARTICULAR USE OUTSIDE THE MANUFACTURER’S SPECIFICATION. <br>
+         USBS MAKES NO WARRANTIES EXPRESSED OR IMPLIED FOR SOFTWARE SUPPLIED BY USBS. ALL SOFTWARE IS SUPPLIED “AS IS” AND WITHOUT WARRANTY OF ANY KIND. IN NO EVENT WILL USBS BE LIABLE FOR ANY LOST PROFITS, LOSS OF DATA, OR ANY OTHER INCIDENTAL OR CONSEQUENTIAL DAMAGES THAT RESULT FROM USE OR INABILITY TO USE THE SOFTWARE , EVEN IF USBS OR IT’S AUTHORIZED AGENTS HAVE BEEN ADVISED TO THE POSSIBILITY OF SUCH DAMAGES OR FOR ANY CLAIM BY THE CUSTOMER BASED ON A THIRD PARTY CLAIM. <br>
+          IN NO EVENT SHALL USBS BE LIABLE FOR ANY COLLATERAL, CONSEQUENTIAL, INDIRECT, INCIDENTAL OR EXEMPLARY DAMAGES ARISING OUT OF OR RELATED TO THIS AGREEMENT OR ANY GOODS OR SERVICES PROVIDED HEREIN, INCLUDING, WITHOUT LIMITATION, ANY LOSS OF PROFITS OR REVENUE OR ANY LOSS OF USE OR LOSS OR DESTRUCTION OF DATA, HOWSOEVER ARISING. <br>
+           CUSTOMER UNDERSTANDS AND AGREES THAT USBS’ SOLE OBLIGATION AND CUSTOMER’S EXCLUSIVE REMEDY, WHETHER IN CONTRACT, TORT OR OTHERWISE, SHALL BE REPAIR OR REPLACEMENT AS PROVIDED HEREIN. IF FOR ANY REASON USBS IS UNABLE TO REPAIR OR REPLACE THE AFFECTED PRODUCT(S) USBS SHALL, IN LIEU THEREOF, HAVE THE RIGHT TO REFUND TO CUSTOMER THE PURCHASE PRICE PAID THEREFORE, WHICH SHALL CONSTITUTE FULL SATISFACTION OF SUCH REPAIR OR REPLACEMENT OBLIGATION. USBS’ LIABILITY FOR BREACH OF WARRANTY SHALL IN NO EVENT EXCEED THE PRICE PAID BY CUSTOMER FOR THE AFFECTED PRODUCT(S). USBS SHALL NOT BE LIABLE FOR ANY COLLATERAL, CONSEQUENTIAL, INDIRECT, INCIDENTAL OR EXEMPLARY DAMAGES, INCLUDING, WITHOUT LIMITATION, ANY LOSS OF PROFITS OR REVENUE OR ANY LOSS OF USE OR LOSS OR DESTRUCTION OF DATA, ARISING OUT OF OR RELATED TO THIS AGREEMENT OR THE PRODUCTS OR SERVICES PROVIDED HEREUNDER, HOWSOEVER ARISING. <br>
+            USBS WARRANTS THE EQUIPMENT WILL BE FREE FROM DEFECTS IN MATERIALS AND WORKMANSHIP FROM THE DATE OF DELIVERY BY USBS, UNDER NORMAL USE AND SERVICE, AND WHEN INSTALLED, REPAIRED AND MAINTAINED AND USED ACCORDING TO THE MANUFACTURER’S WRITTEN INSTRUCTIONS AND SPECIFICATIONS, FOR THE TIME PERIOD OF NINETY DAYS. USBS WILL, AT IT’S SOLE DISCRETION, REPAIR OR REPLACE DEFECTIVE PARTS WITHIN THE WARRANTY PERIOD PROVIDED (A) CUSTOMER PROMPTLY NOTIFIES USBS IN WRITING OF ANY DEFECT IDENTIFIED BY CUSTOMER WITHIN THE NINETY DAY WARRANTY PERIOD;(B) THE DEFECTIVE PART(S) IS IDENTIFIED BY USBS’ REPRESENTATIVE OR AGENT TO BE DEFECTIVE.
+            <br> USED EQUIPMENT COMES WITH NO WARRANTIES OF ANY KIND AND IS SUPPLIED ON AN “AS IS, AS SEEN” BASIS. USBS MAKES NO WARRANTY, EXPRESSED OR IMPLIED, FOR USED EQUIPMENT PURCHASED FROM USBS.   <br>
+
+ 10.   Way leave and Licenses: </b> The Customer agrees to be responsible for and pay for any way leave or licenses that may be necessary. If the Equipment is to be connected to lines or equipment not included in this Agreement the Customer shall not notify USBS of any fault until such tests have indicated that such fault originates in the Equipment; otherwise the Customer shall be responsible for the service call as set forth in the Maintenance and Service clause of this Agreement. The Customer also acknowledges and agrees to be bound by any and all Software License Agreements that may accompany the Equipment or Software supplied by USBS and understands that nothing in this agreement constitutes a transfer of ownership of the Software.  <br>
+ <b> 11.   Length of Service Agreement: </b>  This Agreement shall continue for a period of ___________ years and automatically renew thereafter from year to year. Either party shall be entitled to terminate the Agreement at the end of ________ years or such anniversary date thereafter by giving ninety days written notice to the other party prior to the anniversary date or term of years stated above.
+<br>
+<b>12.   Maintenance and Service: </b>USBS shall provide necessary maintenance service for normal wear and tear caused by the intended use of the Equipment including technical support, supplies (unless supplies are described opposite as an agreed addition) and replacement parts but excluding paper and agreed upon additions as shown opposite. This Agreement is designed to ensure you continue to enjoy the productivity and efficiency gains your new system has to offer throughout its working life. <br>
+For Toner Inclusive Agreements, USBS shall provide at no additional cost, the toner supplies required to produce the contracted amount of copy / prints plus any overages billed. The Customer agrees that excess toner shipped or delivered to the customer shall be billable at the then prevailing rate for the toner supplies. The calculations for the amount of toner provided at no additional cost shall be figured by using the manufacturer’s published yields for the Equipment listed herein at an average image coverage rate of 5% for black and white and 20% for color. Black and Color toner used in excess of the aforesaid yield will be calculated quarterly based upon quantity supplied in the preceding quarter in relation to the copies / prints made in that same quarter and charged to and payable by you as an agreed addition at the prevailing rate.  <br>
+<b>If it is determined by USBS that the equipment must be replaced or reconditioned due to age or operation, USBS will notify the customer in writing with an estimate for replacement.  If under “Total Fleet” management USBS will notify and review with the customer before replacing the equipment. <br>
+    Customer agrees to allow USBS to use non-OEM supplies and parts in performing this agreement.  All replaced parts become the property of USBS.  <br>
+    Customer agrees to allow USBS use reconditioned equipment in performing this agreement.  <br>
+    Unless “Connection Protection” Agreement is purchased, Print Controllers, Facsimile Modules, Network Interface Cards, Print Servers, and other computer interfaces are not included in the Service Agreement. Services provided for problems resulting from aforementioned devices will be billed at the then current prevailing hourly rate. <br>
+
+</b>
+The Connection Protection Agreement affords you “the Customer” service coverage on Print Controllers, Facsimile Modules, Network Interface Cards, Print Servers and other computer interfaces supplied by USBS. It also provides you with up to four hours per quarter of IT printer driver training and support. Driver installation, upgrades, and training are all included in this four hour limit per quarter. Time required above the four hours will be done at the then prevailing discount rate. Repair and configuration of computer workstations, interfaces, network servers and print servers are not included in Connection Protection. In the event repair or configuration for these or any similar items are required, a quotation will be provided to undertake the work at the then prevailing hourly rate for IT services. <br>
+<b>
+    In no event shall USBS be liable to cover or provide maintenance or service as a result of faults caused by the malfunctioning of any other equipment, software, cabling, or network device to which the Equipment or Software is linked.   <br>
+</b>
+Legal title to all replacement parts and consumables supplied by USBS will remain vested in USBS until such time as USBS has received payment in full from the Customer. The aforementioned services shall be provided between the hours of 8:30 am and 4:00 pm Mondays through Fridays inclusive (excluding public bank and national holidays). All response time calculations shall be based on these previously mentioned hours of operation. <br>
+
+
+<b> No credits for failure to meet response time will be issued for the following reasons:   a) The Customer cancels and reschedules an appointment for services or is not present at the time of arrival; <br>  b) The service representative does not have immediate access to the equipment upon arrival; <br>  c) The equipment failure is deemed to have been caused by operator error, unapproved use of consumables, or is caused by malfunctioning of any other equipment;  <br>  d) The Customer maintains office hours outside of USBS’ standard daily working hours and requires special arrangements; <br>  e) Any acts of nature or weather conditions that affect the traveling abilities of the service department; <br>  f)  The Customer requests for service response that exceeds the guaranteed response time. </b> <br>
+
+The Customer, at its own expense, shall provide adequate space and facilities including electricity, heat, light, and ventilation. Also, if determined to be necessary, dedicated electricity supply points and dedicated phone lines as shall reasonably be required for the Equipment. It is the Customer’s responsibility to ensure that the Equipment complies with relevant Health and Safety requirements that may be applicable. <br>
+
+For the purpose of maintenance and service or inspection, USBS shall have full and free access to the Equipment.  <br>
+
+<b>
+    USBS shall be entitled to charge and the Customer shall be responsible to pay for technical support, replacement parts, consumables, and travel charges above and beyond the terms of this Agreement as a result of: <br>
+      a) Willful neglect, accident, incorrect operation, or misuse of the Equipment by the Customer or their employees or agents;  <br>
+       b) Use of papers, consumables, or interfaces not approved by USBS; <br>
+         c) Faults and damages caused by fluctuating voltage;  <br>
+          d) Damage to the Equipment’s external covers and fittings; <br>
+            e) An aborted service call by the Customer without timely and proper notification prior to the arrival of the USBS technical service representative;  <br>
+             f ) All other problems with the Equipment that do not result from normal wear and tear or that may be caused from neglect or default by USBS. <br>
+     13.   Meter Readings:
+
+</b>
+
+The Customer agrees to allow USBS to install meter reading software in their environment.  The Customer agrees to work with USBS to maintain the reporting of the meter reading utility.  If requested by USBS the customer shall on written or oral request provide meter readings to USBS. If the Customer fails to provide meter readings within forty-eight hours of request, USBS shall be entitled to render an invoice based on an estimated meter reading, which shall be final and binding on the Customer. The estimated reading shall form the base reading for the subsequent quarter and shall be based on an average of the previous three quarters.  <br>
+<b>
+    14.     Restrictions: </b>  Customer shall not move the Equipment from the installation site without prior written approval from USBS. <br>
+     The Customer shall not make or permit any alteration, addition or attachment to any item of the Equipment without prior written approval from USBS. <br>
+      If it is determined by U.S. Business Systems, Inc. personnel that the equipment maintained under this agreement needs to be replaced or reconditioned due to age, U.S. Business Systems, Inc will notify the customer in writing with an estimate for replacement.  <br>
+
+      The Customer agrees to the use of non-OEM parts and supplies in performing this agreement.  All parts replaced become the property of U.S. Business Systems, Inc.
+      <br>  The Customer shall not permit persons other than authorized representatives of USBS to effect any replacement of parts, maintenance, adjustment or repairs to the Equipment.
+      <br> The Customer must comply with all USBS’ and the Manufacturer’s written instructions regarding the use of the Equipment and in the event of any breach thereof  the Customer must keep USBS indemnified against all costs, claims, demands, expenses and liabilities suffered or made against USBS.
+      <br> The Customer’s obligations under this Agreement shall not be affected by theft, loss, or destruction of or damages to the Equipment.
+
+    <b>  15.   Intellectual Property Rights: </b>The Customer acknowledges that all trademarks, patents, copyrights, and other intellectual property rights used or embodied in or in connection with the Equipment, including hardware and software, shall be and remain the sole property of the Manufacturer and/or USBS and the Customer shall not use the same in connection with any advertising or promotion of the Customer’s business. The Customer also acknowledges and agrees to be bound by any and all Software License Agreements that may accompany the Equipment or Software supplied by USBS.
+<br>
+<b>16.    Assignability: </b>
+The Customer shall not transfer or assign any of its interests under the Agreement. <br>
+     USBS may assign or transfer any of its interests under the Agreement.
+
+
+     <b>17.   Reproduction of Materials:  </b>
+     It is the exclusive responsibility of the Customer to establish that any person using the Equipment has all the ownership rights in the materials being reproduced and in any case of doubt the Customer undertakes not to reproduce or permit the reproduction of the material on the Equipment.
+<br>
+     <b>18.    Termination of the Agreement:   </b>
+     The Agreement shall be terminated by any of the following:           <br>
+                a) The natural expiration of the Agreement;           <br>
+                           b) The Customer being in breach of any of the terms of the Agreement;            <br>
+                                     c) The Customer committing any act of bankruptcy including becoming apparently insolvent, sequestrated or suffering from a receiving order, being adjudicated bankrupt, by having a meeting of the creditors called, having any distress, execution, sequestration or other like processes levied or enforced upon the Customer, by having any encumbrancer take possession, by having a receiver appointed, or if the Customer is a company, it becomes insolvent, has winding up proceedings commenced against it, has a receiver appointed, enters into liquidation or becomes subject to an administrative order.  <br>
+
+
+
+                                     <b>19.   Liquidated Damages: BOTH PARTIES AGREE THAT IF THE CUSTOMER ELECTS TO TERMINATE THE AGREEMENT WITHIN THE NATURAL PERIOD OF THE AGREEMENT OR COMMITS ANY OTHER BREACH OF THE AGREEMENT USBS SHALL, IN ADDITION TO ALL OTHER RIGHTS AVAILABLE TO IT, BE ENTITLED TO LIQUIDATED DAMAGES. LIQUIDATED DAMAGES PER ITEM OF EQUIPMENT SHALL BE CALCULATED AS FOLLOWS: SIXTY PERCENT OF THE AGREED MONTHLY COPY VOLUME, AND THE PER ATTACHMENT FEES FOR CONNECTION  PROTECTION, OR AN AVERAGE OF THE ACTUAL MONTHLY COPY VOLUME DURING SIX MONTHS PRIOR TO THE DATE OF TERMINATION OR BREACH, WHICHEVER IS GREATER, AT THE AGREED COST CURRENTLY APPLYING AT THE DATE OF THE BREACH OR TERMINATION FOR THE PERIOD FROM THE DATE OF TERMINATION OR BREACH TO THE ANNIVERSARY DATE OR THE EARLIEST EFFECTIVE DATE OF TERMINATION PURSUANT TO CLAUSE 11, WHICHEVER SHALL BE LONGER. THE CUSTOMER AGREES AND ACKNOWLEDGES THAT THE ABOVE STATED LIQUIDATED DAMAGES REPRESENTS A FAIR MEASURE OF THE LOSSES AND DAMAGES INCURRED BY USBS IF THE CUSTOMER TERMINATES OR BREACHES THE AGREEMENT. </b> <br>
+
+                                     Customer Initials:   ___________
+
+                                     <br>
+                                     <b>21.  Our Staff</b>
+ <br>
+  You agree not to recruit any of our staff introduced to you as a consequence of this Contract until at least twelve months after all of our duties under this Contract have been performed. If you breach this clause, we will be entitled without prejudice to our other remedies to charge you twenty–five percent of the first year’s remuneration of any replacement employee we recruit as consequence of your breach
+  <b>22.  Entire Agreement:</b>
+  This Agreement constitutes the entire agreement between the Customer and USBS and supersedes all proposals or prior agreements written or oral. No alteration, way leave, waiver or modification of the printed terms of this Agreement shall be valid unless submitted in a separate printed document and signed by the Managing Director of USBS and the Customer. Any statements, either written or oral, made by USBS’ employees or agents prior to the Agreement are statements of opinion which do not form part of the Agreement and the Customer acknowledges that it has relied on the exercise of its own skill and judgment in entering into the Agreement.   <br>
+
+
+  <b>23.  Savings Clause:</b>
+  Any provision hereof which proves to be void or unenforceable will only be ineffective or unenforceable to that provision without affecting the validity or enforceability of the other provisions herein. USBS’ failure to insist on strict performance of any provision of the Agreement shall not be deemed to be a waiver of its rights or remedies of any subsequent default by the Customer
+  <br>
+
+</p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+<center>
+
+
+
+    <h1 style="color: red;font-size: 48px"><b>Trust, Commitment and Confidence </b></h1>
+
+<br>
+    <p style="font-size: 24px"><b>
+        When an organization makes a technology investment, it wants to be confident that their “trusted partner” will have an
+unwavering commitment to its success. U. S. Business Systems, Inc.’s experienced professionals instill confidence in their customers by delivering valuable technology solutions in a comprehensive manner.  USBS offers a complete portfolio of solutions, products, implementation, training and support services matched to the customer’s requirements. USBS’s staff has experience and knowledge unmatched in the region. USBS’s commitment to its customers since 1992 has been to deliver current technology solutions while evolving in a rapidly changing industry.  For over 22 years, organizations throughout the region have relied on USBS to invest in people and resources to meet their unique technology and business requirements. Large or small, we value every customer! Our mission is to deliver technology solutions while building a long-term, business relationship founded on trust.</b>
+
+    </p>
+</center>
+
+
+
+
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+</body>
+</html>

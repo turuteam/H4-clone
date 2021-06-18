@@ -1,0 +1,247 @@
+{% extends 'rep/newProposal/proposal.html' %}
+{% load static from staticfiles %}
+
+{% block proposal_css %}
+<link rel="stylesheet" href="{% static 'css/rep/proposal/TCO.css' %}">
+<link rel="stylesheet" href="{% static 'jslib/jquery-ui/jquery-ui.css' %}" >
+<link rel="stylesheet" href="{% static 'csslib/DataTables/datatables.min.css' %}">
+{% endblock %}
+
+{% block proposal_js %}
+<script type="text/javascript" language="javascript" src="{% static 'jslib/jquery-ui/jquery-ui.js' %}"></script>
+<script src="{% static 'jslib/DataTables/datatables.min.js'%}"></script>
+<script type="text/javascript" language="javascript" src="{% static 'js/rep/proposal/tieredPricing.js' %}"></script>
+<script type="text/javascript" language="javascript" src="{% static 'js/rep/proposal/PricePerCartridge.js' %}"></script>
+
+<script type="text/javascript" language="javascript" src="{% static 'js/rep/proposal/TCO.js' %}"></script>
+
+<script>
+  var mgmtAsmpts = {{ proposal_json_string|safe }};
+  var proposal_service_items = JSON.parse({{ proposal_service_items|safe }});
+  var proposal_purchase_items = {{ proposal_purchase_items|safe }};
+  var p_objects = {}
+  updatePObjects();
+  var streetFighter = false;
+  var minNetMargin = (mgmtAsmpts.min_mono_margin + mgmtAsmpts.min_mono_on_color_margin + mgmtAsmpts.min_color_margin) / 3;
+  const mps_price = {{ mps_price|safe }}
+  const monthly_lease = {{ monthly_lease|safe }}
+  const proposal_term = {{ proposal_term|safe }}
+</script>
+{% endblock %}
+
+{% block proposal_page_content %}
+
+<div class="grid-x grid-margin-y grid-padding-y align-top">
+<!--    TCO Options     -->
+    <div id="client-content2" class="cell large-10 large-offset-0 grid-x align-left">
+        <div class="grid-x cell large-24 align-middle" id="proposalTCODetails">
+            <div class="grid-x cell large-24 align-middle">
+                <div class="cell large-24 large-offset-5">
+                    <p>Current Situation (Annual) TCO Assumptions</p>
+                </div>
+            </div>
+            <div class="grid-x large-24 align-middle">
+                <div class="cell large-10 large-offset-1">
+                    <p>Contract Type</p>
+                </div>
+                <div class="cell large-10 large-offset-2">
+                    <select id="currentContractTypeSelect">
+                        <option value="total">Supplies and Service</option>
+                        <option value="service_only">Service Only</option>
+                        <option value="supplies_only">Supplies Only</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid-x cell large-24 align-middle">
+                <div class="cell large-10 large-offset-1">
+                    <p>Total Supply Spend</p>
+                </div>
+                <div class="cell large-10 large-offset-2">
+                    <div class="input-group">
+                        <span class="input-group-label">$</span>
+                        <input id="currentTotalSupplySpend" class="input-group-field" step="100" type="number" min="0" value="0">
+                    </div>
+                </div>
+            </div>
+            <div class="grid-x cell large-24 align-middle">
+                <div class="cell large-10 large-offset-1">
+                    <p>Total Service Spend</p>
+                </div>
+                <div class="cell large-10 large-offset-2">
+                    <div class="input-group">
+                        <span class="input-group-label">$</span>
+                        <input id="currentTotalServiceSpend" class="input-group-field" step="100" type="number" min="0" value="0">
+                    </div>
+                </div>
+            </div>
+            <div class="grid-x cell large-24 align-middle">
+                <div class="cell large-10 large-offset-1">
+                    <p>Total Lease Spend</p>
+                </div>
+                <div class="cell large-10 large-offset-2">
+                    <div class="input-group">
+                        <span class="input-group-label">$</span>
+                        <input id="currentTotalLeaseSpend" class="input-group-field" step="100" type="number" min="0" value="0">
+                    </div>
+                </div>
+            </div>
+            <div class="grid-x cell large-24 align-middle">
+                <div class="cell large-10 large-offset-1">
+                    <p>Burden Rate / Transaction</p>
+                </div>
+                <div class="cell large-10 large-offset-2">
+                    <div class="input-group">
+                        <span class="input-group-label">$</span>
+                        <input id="currentTransactionCost" class="input-group-field" step="5" type="number" min="0" value="60">
+                    </div>
+                </div>
+            </div>
+            <div class="grid-x cell large-24 align-middle">
+                <div class="cell large-10 large-offset-1">
+                    <p>Annual Supply Order Count</p>
+                </div>
+                <div class="cell large-10 large-offset-2">
+                    <div class="input-group">
+                        <input id="currentSalesOrderCount" class="input-group-field" step="1" type="number" min="0" value="0">
+                    </div>
+                </div>
+            </div>
+            <div class="grid-x cell large-24 align-middle">
+                <div class="cell large-10 large-offset-1">
+                    <p>Annual Service Call Count</p>
+                </div>
+                <div class="cell large-10 large-offset-2">
+                    <div class="input-group">
+                        <input id="currentServiceOrderCount" class="input-group-field" step="1" type="number" min="0" value="0">
+                    </div>
+                </div>
+            </div>
+            <div class="grid-x cell large-24 align-middle button-row">
+                <button class="cell button mps-blue" id="previous-page">Previous</button>
+                <a class="cell button mps-pink"  style="width: 100px" id="create-details" href="/proposal/TCO/{{ proposal_id }}/sync">Refresh</a>
+                <button class="cell button mps-green" id="continue-details">Continue</button>
+            </div>
+        </div>
+    </div>
+    <div class='large-10 tco-summary-box'>
+      <div class='tco-summary-box-title'>Total Cost of Ownership Summary</div>
+      <div class="grid-x cell large-24 align-middle">
+        <div class="cell large-10 large-offset-1">
+            <p>Current Monthly Spend</p>
+        </div>
+        <div class="cell large-10 large-offset-2">
+            <div class="input-group">
+                <span class="input-group-label">$</span>
+                <input id="currentMonthlySpend" class="input-group-field" step="100" type="number" min="0" value="0" disabled>
+            </div>
+        </div>
+      </div>
+      <div class="grid-x cell large-24 align-middle">
+        <div class="cell large-10 large-offset-1">
+            <p>Proposed Monthly Spend</p>
+        </div>
+        <div class="cell large-10 large-offset-2">
+            <div class="input-group">
+                <span class="input-group-label">$</span>
+                <input id="proposedMonthlySpend" class="input-group-field" step="100" type="number" min="0" value="0" disabled>
+            </div>
+        </div>
+      </div>
+      <div class="grid-x cell large-24 align-middle">
+        <div class="cell large-10 large-offset-1">
+            <p>Annual Savings</p>
+        </div>
+        <div class="cell large-10 large-offset-2">
+            <div class="input-group">
+                <span class="input-group-label">$</span>
+                <input id="annualSavings" class="input-group-field" step="100" type="number" min="0" value="0" disabled>
+            </div>
+        </div>
+      </div>
+      <div class="grid-x cell large-24 align-middle">
+        <div class="cell large-10 large-offset-1">
+            <p>Savings Over Contract Life</p>
+        </div>
+        <div class="cell large-10 large-offset-2">
+            <div class="input-group">
+                <span class="input-group-label">$</span>
+                <input id="savingsOverContractLife" class="input-group-field" step="100" type="number" min="0" value="0" disabled>
+            </div>
+        </div>
+      </div>
+      <div class="grid-x large-24 align-middle">
+        <div class="cell large-10 large-offset-1">
+            <p>Base Summary On:</p>
+        </div>
+        <div class="cell large-10 large-offset-2">
+            <select id="baseSummaryOn">
+                <option value="device_list">Device List Data</option>
+                <option value="tco_annual_assumptions">TCO Annual Assumptions</option>
+            </select>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- This patch to add table spacing needs fixed... -->
+<div class="cell large-10 large-offset-1">
+        <p></p>
+</div>
+    
+<!-- TCO Device TABLE -->
+<tr class="cell fluid">
+    <table id="tco-devices-table" class="network-table size-14" role="grid">
+        <thead>
+            <tr style="background-color:darkgrey">
+                <th colspan="14" class="text-center"><strong>Current Situation Device List</strong></th>
+            </tr>
+            <tr>
+                <th class="blue">Equipment</th>
+                <th class="blue">#Devices</th>
+                <th class="blue">Monthly Lease Payment</th>
+                <th class="blue">Monthly Mono Pages</th>
+                <th class="blue">Monthly Color Pages</th>
+                <th class="yellow">Base Volume Mono</th>
+                <th class="yellow">Base Rate</th>
+                <th class="yellow">Base Volume Color</th>
+                <th class="yellow">Base Rate</th>
+                <th class="pink">Current Mono CPP</th>
+                <th class="pink">Current Color CPP</th>
+                <th class="pink" style="width: 15px"></th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for item in proposal_tco_items %}
+          <tr role="row" class="odd" id={{item.id}}>
+            <td>{{item.printer.short_model}}</td>
+            <td>{{item.number_printers_serviced}}</td>
+            <td class='monthly-lease-payment'>{{item.monthly_lease_payment}}</td>
+            <td class='monthly-mono'>{{item.total_mono_pages}}</td>
+            <td class='monthly-color'>{{item.total_color_pages}}</td>
+            <td class='base-volume-mono'>{{item.base_volume_mono}}</td>
+            <td class='base-rate-mono'>{{item.base_rate_mono}}</td>
+            <td class='base-volume-color'>{{item.base_volume_color}}</td>
+            <td class='base-rate-color'>{{item.base_rate_color}}</td>
+            <td class='current-mono-cpp'>{{item.current_cpp_mono}}</td>
+            <td class='current-color-cpp'>{{item.current_cpp_color}}</td>
+            <td style="padding: 0">
+              <button data-type="edit-device">
+                <i class="fas fa-edit size-14"></i>
+              </button>
+              <button data-type="remove-device">
+                <i class="fas fa-trash-alt size-14"></i>
+              </button>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        <td colspan="14" class="text-center">
+            <button id='add-device-tco' class="button tlength-btn"><i class="fas fa-plus-circle"></i>&nbsp;Add Device</button>
+        </td>
+    </table>
+</div>
+
+{% include 'rep/newProposal/reveals/addTCODevice.html' %}
+{% include 'rep/newProposal/reveals/editTCODevice.html' %}
+
+{% endblock %}

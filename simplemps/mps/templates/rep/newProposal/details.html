@@ -1,0 +1,276 @@
+{% extends 'rep/newProposal/proposal.html' %}
+{% load static from staticfiles %}
+
+{% block proposal_css %}
+<link rel="stylesheet" href="{% static 'css/rep/proposal/details.css' %}">
+{% endblock %}
+
+{% block proposal_js %}
+<script>
+    var proposal_details = {{ proposal_details | safe }};
+</script>
+
+<script type="text/javascript" language="javascript" src="{% static 'js/rep/proposal/details.js' %}"></script>
+{% endblock %}
+
+{% block proposal_page_content %}
+
+<div class="grid-x grid-margin-y grid-padding-y align-bottom">
+    <div id="client-content" class="cell grid-x grid-margin-y large-10">
+        <div class="grid-x cell large-24 align-middle" id="proposalDetails">
+            <div class="grid-x cell large-24 align-middle">
+                <div class="cell large-24 large-offset-6">
+                    <p>Finalize Settings before adding Equipment</p>
+                </div>
+                <div class="cell large-10 large-offset-1">
+                    <p>Term Length</p>
+                </div>
+                <div class="cell large-10 large-offset-2">
+                    <div class="select-group input-group">
+                        <select id="termSelect">
+                            <option value="12">12</option>
+                            <option value="24">24</option>
+                            <option value="36" selected>36</option>
+                            <option value="48">48</option>
+                            <option value="60">60</option>
+                        </select>
+                        <span class="select-label input-group-label">Months</span>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-x large-24 align-middle">
+                <div class="cell large-10 large-offset-1">
+                    <p>Contract Type</p>
+                </div>
+                <div class="cell large-10 large-offset-2">
+                    {% if company_id == 13 %}
+                    <select id="contractTypeSelect">
+                        <option value="total">Supplies and Service</option>
+                        <option value="service_only">Service Only</option>
+                        <option value="supplies_only">Supplies Only</option>
+                    </select>
+                    {% else %}
+                    <select id="contractTypeSelect">
+                        <option value="total">Supplies and Service</option>
+                        <option value="service_only" class="hide">Service Only</option>
+                        <option value="supplies_only">Supplies Only</option>
+                    </select>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="grid-x cell large-24 align-middle">
+                <div class="cell large-10 large-offset-1" id=mfrButton-1>
+                    <p>Toner Type</p>
+                </div>
+                <div class="cell large-10 large-offset-2">
+                    <select id="manufacturerSelect">
+                        {% for value, text in manufacturers %}
+                            <option value="{{ value }}" {% if toner_type == value %} selected {% endif %}>{{ text }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="grid-x large-24 align-middle">
+                <div class="cell large-10 large-offset-1" id="locationTT">
+                    <p>Device % by service location:</p>
+                </div>
+            </div>
+            <div class="grid-x large-24 align-middle">
+                <div class="cell large-10 large-offset-2">
+                    <p>Local metro zone (standard service cost)</p>
+                </div>
+                <div class="cell large-10 large-offset-1">
+                    <div class="select-group input-group">
+                        <select disabled id="proportionSelect">
+                                <option value="0">0</option>
+                                <option value="0.05">5</option>
+                                <option value="0.1">10</option>
+                                <option value="0.15">15</option>
+                                <option value="0.2">20</option>
+                                <option value="0.25">25</option>
+                                <option value="0.3">30</option>
+                                <option value="0.35">35</option>
+                                <option value="0.4">40</option>
+                                <option value="0.45">45</option>
+                                <option value="0.5">50</option>
+                                <option value="0.55">55</option>
+                                <option value="0.6">60</option>
+                                <option value="0.65">65</option>
+                                <option value="0.7">70</option>
+                                <option value="0.75">75</option>
+                                <option value="0.8">80</option>
+                                <option value="0.85">85</option>
+                                <option value="0.9">90</option>
+                                <option value="0.95">95</option>
+                                <option value="1" selected="selected">100</option>
+                            </select>
+                        <span class="select-label input-group-label">%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-x large-24 align-middle">
+                <div class="cell large-10 large-offset-2">
+                    <p>Non-local zone 1</p>
+                </div>
+                <div class="cell large-10 large-offset-1">
+                    <div class="select-group input-group">
+                        <select id="zone01Select">
+                                <option value="0" selected="selected">0</option>
+                                <option value="0.05">5</option>
+                                <option value="0.1">10</option>
+                                <option value="0.15">15</option>
+                                <option value="0.2">20</option>
+                                <option value="0.25">25</option>
+                                <option value="0.3">30</option>
+                                <option value="0.35">35</option>
+                                <option value="0.4">40</option>
+                                <option value="0.45">45</option>
+                                <option value="0.5">50</option>
+                                <option value="0.55">55</option>
+                                <option value="0.6">60</option>
+                                <option value="0.65">65</option>
+                                <option value="0.7">70</option>
+                                <option value="0.75">75</option>
+                                <option value="0.8">80</option>
+                                <option value="0.85">85</option>
+                                <option value="0.9">90</option>
+                                <option value="0.95">95</option>
+                                <option value="1">100</option>
+                            </select>
+                        <span class="select-label input-group-label">%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-x large-24 align-middle">
+                <div class="cell large-10 large-offset-2">
+                    <p>Non-local zone 2</p>
+                </div>
+                <div class="cell large-10 large-offset-1">
+                    <div class="select-group input-group">
+                        <select id="zone02Select">
+                                <option value="0"selected="selected">0</option>
+                                <option value="0.05">5</option>
+                                <option value="0.1">10</option>
+                                <option value="0.15">15</option>
+                                <option value="0.2" >20</option>
+                                <option value="0.25">25</option>
+                                <option value="0.3">30</option>
+                                <option value="0.35">35</option>
+                                <option value="0.4">40</option>
+                                <option value="0.45">45</option>
+                                <option value="0.5">50</option>
+                                <option value="0.55">55</option>
+                                <option value="0.6">60</option>
+                                <option value="0.65">65</option>
+                                <option value="0.7">70</option>
+                                <option value="0.75">75</option>
+                                <option value="0.8">80</option>
+                                <option value="0.85">85</option>
+                                <option value="0.9">90</option>
+                                <option value="0.95">95</option>
+                                <option value="1">100</option>
+                            </select>
+                        <span class="select-label input-group-label">%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-x large-24 align-middle">
+                <div class="cell large-10 large-offset-2">
+                    <p>Non-local zone 3</p>
+                </div>
+                <div class="cell large-10 large-offset-1">
+                    <div class="select-group input-group">
+                        <select id="zone03Select">
+                                <option value="0" selected="selected">0</option>
+                                <option value="0.05">5</option>
+                                <option value="0.1">10</option>
+                                <option value="0.15">15</option>
+                                <option value="0.2">20</option>
+                                <option value="0.25">25</option>
+                                <option value="0.3">30</option>
+                                <option value="0.35">35</option>
+                                <option value="0.4">40</option>
+                                <option value="0.45">45</option>
+                                <option value="0.5">50</option>
+                                <option value="0.55">55</option>
+                                <option value="0.6">60</option>
+                                <option value="0.65">65</option>
+                                <option value="0.7">70</option>
+                                <option value="0.75">75</option>
+                                <option value="0.8">80</option>
+                                <option value="0.85">85</option>
+                                <option value="0.9">90</option>
+                                <option value="0.95">95</option>
+                                <option value="1">100</option>
+                            </select>
+                        <span class="select-label input-group-label">%</span>
+                    </div>
+                </div>
+            </div>
+            <div class="grid-x cell large-24 align-middle">
+                <div class="cell large-10 large-offset-1">
+                    <p>Service Response Time</p>
+                </div>
+                <div class="cell large-10 large-offset-2">
+                    <select id="serviceLevelSelect">
+                        <option value="24" selected>Next Business Day</option>
+                        <option value="4">4 Hours Response</option>
+                        <option class="hide" value="2">2 Hours Response</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="grid-x cell large-24 align-middle">
+            <div class="cell large-10 large-offset-1">
+                <p>Auto-Populate Base Info</p>
+            </div>
+            <div class="cell large-10 large-offset-2">
+                <select id="autopopbase">
+                    <option value="1" selected>Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+        </div>
+        <div class="grid-x large-24 align-middle button-row">
+            <button class="cell button mps-blue" id="previous-page">Previous</button>
+            <button class="cell button mps-yellow" id="save-details">Save</button>
+            <button class="cell button mps-green" id="continue-details">Continue</button>
+        </div>
+    </div>
+    <div class="cell large-5 large-offset-1" style="padding-bottom:0;">
+        <div class="grid-x align-middle dca-content" data-open="importDCAModal" onClick="getAccounts({{proposal_id}})">
+            <p class="cell large-12 text-center" id="dcaText">Import from FM Audit</p>
+        </div>
+        <div class="grid-x align-middle dca-content" data-open="importDCAModal" onClick="ConnectPrintFleet({{proposal_id}})">
+            <p class="cell large-12 text-center" id="dcaText">Import from Axess - PrintFleet</p>
+        </div>
+        <div class="grid-x cell large-24" style="background-color: #DCDCDC;">
+            <div class="cell large-offset-1 large-23">
+                <p style="margin-top: 0.75rem;">Choose a file to import:</p>
+                <form method="post" enctype="multipart/form-data" onsubmit="saveProposal('dca');" action="/imports/import-dca-post/{{ proposal_id }}">
+                    {% csrf_token %}
+                    <input type="file" name="dcaFile">
+                    <button type="submit">Upload</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="reveal" id="importDCAModal" data-reveal data-overlay="true" data-multiple-opened="true">
+  <div class="grid-x grid-padding-y align-middle modal-header mps-blue">
+      <div class="cell large-21 large-offset-1">
+          <h3 class="bold" id="importDCA-header">Select Account</h3>
+      </div>
+      <div class="cell large-1 text-center">
+          <button data-close aria-label="Close reveal" type="button">
+              <h3>X</h3>
+          </button>
+      </div>
+  </div>
+  <div id="importDCAModalContent" style="padding: 10px">
+    <p>Loading...</p>
+  </div>
+</div>
+
+{% endblock %}

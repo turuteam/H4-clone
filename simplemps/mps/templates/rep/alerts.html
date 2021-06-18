@@ -1,0 +1,112 @@
+{% extends 'baseTemplate.html' %}
+{% load static from staticfiles %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'css/manager/alerts.css' %}">
+<link rel="stylesheet" href="{% static 'csslib/DataTables/datatables.min.css' %}">
+{% endblock %}
+
+{% block page_js %}
+<script src="{% static 'jslib/DataTables/datatables.min.js'%}"></script>
+<script type="text/javascript" language="javascript" src="{% static 'js/csrfSetUp.js' %}"></script>
+<script type="text/javascript" language="javascript" src="{% static 'js/manager/manageAlerts.js' %}"></script>
+{% endblock %}
+
+{% block page_content %}
+{% csrf_token %}
+<div class="grid-x ma-content">
+    <div class="cell large-15">
+        <div class="text-center callout title">
+            <h6>Proposal Margin Alerts</h6>
+        </div>
+    </div>
+    <div class="cell large-15">
+        <table id="marginAlerts" class="mps-table">
+            <thead>
+                <tr>
+                    <th>Alert Date</th>
+                    <th>Proposal</th>
+                    <th>Representative</th>
+                    <th>Client</th>
+                    <th>Number of Devices</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alert in margin_alerts %}
+                    <tr id="alert-{{ alert.id }}">
+                        <td>{{ alert.create_date }}</td>
+                        <td>{{ alert.proposal_id }}</td>
+                        <td>{{ alert.rep }}</td>
+                        <td>{{ alert.client }}</td>
+                        <td>{{ alert.num_devices }}</td>
+                        <td>
+                            <a href="{% url 'mps:proposal_pricing' alert.proposal_id %}"><i class="fas fa-search size-18"></i></a>
+                            <button onclick="approveMarginAlert({{ alert.id }}, {{ request.user.mps_user.id }})"><i class="fas fa-check size-18"></i></button>
+                            <button onclick="denyMarginAlert({{ alert.id }}, {{ request.user.mps_user.id }})"><i class="fas fa-times size-18"></i></button>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="6" class="text-center">There are no Margin Alerts</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="grid-x sf-content">
+    <div class="cell large-15">
+        <div class="text-center callout title">
+            <h6>Street Fighter Requests</h6>
+        </div>
+    </div>
+    <div class="cell large-15">
+        <table id="sfRequests" class="mps-table">
+            <thead>
+                <tr>
+                    <th>Request Date</th>
+                    <th>Proposal</th>
+                    <th>Representative</th>
+                    <th>Client</th>
+                    <th>Number of Devices</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for alert in sf_alerts %}
+                    <tr id="alert-{{ alert.id }}">
+                        <td>{{ alert.create_date }}</td>
+                        <td>{{ alert.proposal_id }}</td>
+                        <td>{{ alert.rep }}</td>
+                        <td>{{ alert.client }}</td>
+                        <td>{{ alert.num_devices }}</td>
+                        <td>
+                            <button onclick="openStreetFighterReq( {{ alert.id }} )"><i class="fas fa-search size-18"></i></button>
+                            <button><i class="fas fa-check size-18"></i></button>
+                            <button><i class="fas fa-times size-18"></i></button>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="6" class="text-center">There are no Steet Fighter requests</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="full reveal" id="streetFighterReveal" data-reveal data-overlay="true">
+        <div class="grid-x grid-padding-y align-middle modal-header mps-blue">
+            <div class="cell large-21 large-offset-1">
+                <h6 class="bold">Street Fighter Items</h6>
+            </div>
+            <div class="cell large-1 text-center">
+                <button data-close aria-label="Close reveal" type="button">
+                    <h6>X</h6>
+                </button>
+            </div>
+        </div>
+        <div id="sfRevealBody"></div>
+    </div>
+</div>
+{% endblock %}
